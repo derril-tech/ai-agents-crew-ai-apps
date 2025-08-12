@@ -1,0 +1,30 @@
+task_breakdown:
+  description: >
+    Analyze the project_requirements for the {project_type} initiative and break them into clear,
+    actionable content tasks. Define each task’s scope, format (blog, video, email),
+    timeline, and dependencies (research → draft → review → publish).
+
+    Requirements:
+    {project_requirements}
+
+    Team members:
+    {team_members}
+  expected_output: >
+    A structured list of content tasks with descriptions, format, target dates, and dependencies.
+
+time_resource_estimation:
+  description: >
+    For each task, estimate time, effort, and required roles/tools (writing, editing, design, approvals).
+    Consider complexity, historical throughput, and availability.
+  expected_output: >
+    A detailed estimation report with per-task hours, resources, and any pipeline risks.
+
+resource_allocation:
+  description: >
+    Assign tasks to team members based on role fit and availability to minimize bottlenecks
+    and avoid burnout.
+
+    Team members:
+    {team_members}
+  expected_output: >
+    A resource allocation plan: task → person, role, start/end dates, and a justification summary.

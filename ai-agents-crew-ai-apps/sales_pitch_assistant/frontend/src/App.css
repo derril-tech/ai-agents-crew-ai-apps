@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the application */
+.prose {
+  @apply text-gray-900;
+}
+
+.prose h1 {
+  @apply text-2xl font-bold mb-4 text-gray-900;
+}
+
+.prose h2 {
+  @apply text-xl font-semibold mb-3 text-gray-800;
+}
+
+.prose h3 {
+  @apply text-lg font-medium mb-2 text-gray-800;
+}
+
+.prose p {
+  @apply mb-3 text-gray-700;
+}
+
+.prose ul {
+  @apply mb-3 list-disc list-inside;
+}
+
+.prose ol {
+  @apply mb-3 list-decimal list-inside;
+}
+
+.prose li {
+  @apply mb-1 text-gray-700;
+}
+
+.prose strong {
+  @apply font-semibold text-gray-900;
+}
+
+.prose em {
+  @apply italic text-gray-700;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-blue-200 pl-4 italic text-gray-600 mb-3;
+}
+
+.prose code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono text-gray-800;
+}
+
+.prose pre {
+  @apply bg-gray-100 p-3 rounded mb-3 overflow-x-auto;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Custom scrollbar for the report display */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animation for loading states */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom focus styles */
+.focus-ring:focus {
+  @apply ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Button hover effects */
+.btn-hover:hover {
+  @apply transform scale-105 transition-transform duration-200;
+}

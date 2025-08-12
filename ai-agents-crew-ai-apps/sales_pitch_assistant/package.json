@@ -1,0 +1,29 @@
+{
+  "name": "sales-pitch-assistant",
+  "version": "1.0.0",
+  "description": "AI-powered sales pitch assistant using CrewAI",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install && cd api && npm install && cd ../frontend && npm install",
+    "start-api": "cd api && npm start",
+    "start-frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run start-api\" \"npm run start-frontend\"",
+    "build": "cd frontend && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "sales",
+    "crewai",
+    "react",
+    "nodejs"
+  ],
+  "author": "Derril Filemon",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
