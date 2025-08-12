@@ -4,13 +4,14 @@
   "description": "Frontend for AI-powered sales pitch assistant",
   "private": true,
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "axios": "^1.5.0",
+    "lucide-react": "^0.263.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "axios": "^1.5.0",
     "react-markdown": "^8.0.7",
-    "react-syntax-highlighter": "^15.5.0",
-    "lucide-react": "^0.263.1"
+    "react-scripts": "5.0.1",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,9 +38,9 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.3",
     "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.29"
+    "postcss": "^8.4.29",
+    "tailwindcss": "^3.3.3"
   },
   "proxy": "http://localhost:3001"
 }

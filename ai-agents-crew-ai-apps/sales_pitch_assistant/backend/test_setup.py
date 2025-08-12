@@ -15,6 +15,7 @@ def test_imports():
         print("✓ crewai imported successfully")
     except ImportError as e:
         print(f"✗ Failed to import crewai: {e}")
+        print("💡 Install with: pip install crewai")
         return False
     
     try:
@@ -22,13 +23,23 @@ def test_imports():
         print("✓ crewai_tools imported successfully")
     except ImportError as e:
         print(f"✗ Failed to import crewai_tools: {e}")
+        print("💡 Install with: pip install crewai-tools")
         return False
     
     try:
-        from langchain_groq import ChatGroq
-        print("✓ langchain_groq imported successfully")
+        from langchain_community.tools import DuckDuckGoSearchRun
+        print("✓ langchain_community imported successfully")
     except ImportError as e:
-        print(f"✗ Failed to import langchain_groq: {e}")
+        print(f"✗ Failed to import langchain_community: {e}")
+        print("💡 Install with: pip install langchain-community")
+        return False
+    
+    try:
+        from langchain_openai import ChatOpenAI
+        print("✓ langchain_openai imported successfully")
+    except ImportError as e:
+        print(f"✗ Failed to import langchain_openai: {e}")
+        print("💡 Install with: pip install langchain-openai")
         return False
     
     try:
@@ -36,6 +47,7 @@ def test_imports():
         print("✓ pyyaml imported successfully")
     except ImportError as e:
         print(f"✗ Failed to import pyyaml: {e}")
+        print("💡 Install with: pip install pyyaml")
         return False
     
     return True
@@ -86,17 +98,24 @@ def test_environment():
     from dotenv import load_dotenv
     load_dotenv()
     
+    openai_key = os.getenv("OPENAI_API_KEY")
+    if not openai_key or openai_key == "your_openai_api_key_here":
+        print("✗ OPENAI_API_KEY not set or using placeholder value")
+        print("💡 Get API key from: https://platform.openai.com/api-keys")
+        print("💡 Set in .env file or environment variable")
+        return False
+    else:
+        print("✓ OPENAI_API_KEY is set")
+    
     groq_key = os.getenv("GROQ_API_KEY")
     if not groq_key or groq_key == "your_groq_api_key_here":
-        print("✗ GROQ_API_KEY not set or using placeholder value")
-        return False
+        print("⚠️ GROQ_API_KEY not set (optional for this setup)")
     else:
         print("✓ GROQ_API_KEY is set")
     
     serper_key = os.getenv("SERPER_API_KEY")
     if not serper_key or serper_key == "your_serper_api_key_here":
-        print("✗ SERPER_API_KEY not set or using placeholder value")
-        return False
+        print("⚠️ SERPER_API_KEY not set (optional for this setup)")
     else:
         print("✓ SERPER_API_KEY is set")
     
