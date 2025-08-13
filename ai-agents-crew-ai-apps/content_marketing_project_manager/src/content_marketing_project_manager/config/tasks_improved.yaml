@@ -1,0 +1,89 @@
+task_breakdown:
+  description: >
+    Analyze the project_requirements for the {project_type} initiative and break them into clear,
+    actionable content tasks. Define each task's scope, format (blog, video, email),
+    timeline, and dependencies (research → draft → review → publish).
+    
+    Consider the following content formats: blog, email, social, video, infographic, 
+    whitepaper, case_study, webinar, podcast, ebook.
+    
+    For each task, specify:
+    - Clear, descriptive task name
+    - Content format type
+    - Estimated completion time in hours
+    - Required resources (roles/tools)
+    - Priority level (low/medium/high/critical)
+    - Complexity (simple/moderate/complex)
+    - Dependencies on other tasks
+    - Target publish date if applicable
+    
+    Use the Content Calendar Generator and Project Metrics Calculator tools to optimize planning.
+
+    Requirements:
+    {project_requirements}
+
+    Team members:
+    {team_members}
+  expected_output: >
+    A structured list of content tasks with detailed specifications including task names, formats,
+    time estimates, resource requirements, priorities, complexities, dependencies, and target dates.
+    Include risk assessments and optimization recommendations.
+
+time_resource_estimation:
+  description: >
+    For each task identified in the previous step, provide detailed time and resource estimates.
+    Consider complexity factors, historical data, team availability, and potential bottlenecks.
+    
+    Account for:
+    - Content research and ideation time
+    - Creation and production time
+    - Review and revision cycles
+    - Approval workflows
+    - Technical setup requirements
+    - Quality assurance time
+    - Publishing and distribution time
+    
+    Use the Project Metrics Calculator to analyze workload distribution and identify potential issues.
+    
+    Provide realistic estimates that account for:
+    - Team member skill levels
+    - Tool availability and learning curves
+    - External dependencies (approvals, guest speakers, etc.)
+    - Buffer time for unexpected challenges
+    
+    Team members and their roles:
+    {team_members}
+  expected_output: >
+    A comprehensive estimation report with detailed time breakdowns for each task, resource 
+    requirements, risk factors, buffer recommendations, and pipeline optimization suggestions.
+    Include workload analysis and capacity planning recommendations.
+
+resource_allocation:
+  description: >
+    Assign tasks to team members based on their roles, skills, availability, and workload capacity.
+    Optimize assignments to minimize bottlenecks, avoid burnout, and ensure efficient project flow.
+    
+    Consider:
+    - Role-based task matching (writers for content, designers for visuals)
+    - Individual workload balancing
+    - Skill level and expertise areas
+    - Availability and scheduling constraints
+    - Cross-training opportunities
+    - Backup assignments for critical tasks
+    
+    Create a resource allocation plan that:
+    - Distributes work evenly across team members
+    - Respects individual capacity limits
+    - Maintains quality standards
+    - Allows for flexibility and adjustments
+    - Includes clear timelines and deadlines
+    
+    Use the Content Calendar Generator to create a comprehensive timeline and the Project Metrics
+    Calculator to validate workload distribution.
+
+    Team members and their capabilities:
+    {team_members}
+  expected_output: >
+    A detailed resource allocation plan mapping each task to specific team members with role 
+    justifications, start/end dates, workload percentages, and timeline optimization. Include 
+    a content calendar, risk mitigation strategies, and recommendations for project success.
