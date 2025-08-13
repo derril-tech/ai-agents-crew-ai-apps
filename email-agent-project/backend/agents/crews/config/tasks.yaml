@@ -1,0 +1,201 @@
+# tasks.yaml
+# backend/agents/crews/config/tasks.yaml
+# CrewAI Tasks Configuration for Email Processing Pipeline
+
+triage_emails:
+  description: >
+    Analyze the batch of unread emails and classify each one with the following:
+    
+    1. Category Assignment:
+       - URGENT: Requires immediate attention (deadline today, crisis, etc.)
+       - ACTION_REQUIRED: Needs response or action but not immediately urgent
+       - INFORMATIONAL: FYI, newsletters, updates that don't require response
+       - SPAM: Promotional, unwanted, or irrelevant content
+    
+    2. Priority Score (1-5):
+       - 5: Critical/Emergency
+       - 4: High Priority
+       - 3: Normal Priority
+       - 2: Low Priority
+       - 1: Minimal Priority
+    
+    3. Sentiment Analysis:
+       - Positive, Neutral, Negative, Mixed
+    
+    4. Confidence Score (0-1):
+       - How confident you are in the classification
+    
+    IMPORTANT: Preserve all original email metadata (id, threadId, sender, subject).
+    Do not modify or invent any values.
+    
+    Input emails: {emails_json}
+  expected_output: >
+    A JSON array of classified emails with the following structure for each:
+    {
+      "id": "original_gmail_id",
+      "threadId": "original_thread_id",
+      "sender": "sender@email.com",
+      "subject": "original subject",
+      "category": "URGENT|ACTION_REQUIRED|INFORMATIONAL|SPAM",
+      "priority": 1-5,
+      "sentiment": "positive|neutral|negative|mixed",
+      "confidence": 0.0-1.0,
+      "key_points": ["point1", "point2"],
+      "requires_response": true|false,
+      "classification_reasoning": "Brief explanation of classification"
+    }
+  agent: email_triage_specialist
+  output_file: "output/triaged_emails.json"
+
+analyze_context:
+  description: >
+    For emails marked as ACTION_REQUIRED or URGENT, perform deep context analysis:
+    
+    1. Thread Analysis:
+       - Summarize the conversation thread
+       - Identify key discussion points
+       - Track commitments and promises made
+    
+    2. Sender Profile:
+       - Relationship to recipient (colleague, client, vendor, etc.)
+       - Communication history summary
+       - Typical response expectations
+    
+    3. Action Items Extraction:
+       - Specific actions requested
+       - Implicit expectations
+       - Deadlines mentioned
+    
+    4. Stakeholder Identification:
+       - Primary stakeholders
+       - CC'd parties and their relevance
+       - Anyone who should be included in response
+    
+    Use the email thread history if available to provide complete context.
+  expected_output: >
+    A JSON array with enhanced context for each actionable email:
+    {
+      "id": "email_id",
+      "threadId": "thread_id",
+      "thread_summary": "Brief thread summary",
+      "sender_profile": {
+        "relationship": "colleague|client|vendor|other",
+        "importance": "high|medium|low",
+        "usual_response_time": "immediate|same_day|few_days"
+      },
+      "action_items": [
+        {
+          "action": "Description of action",
+          "deadline": "Date or null",
+          "priority": "high|medium|low"
+        }
+      ],
+      "stakeholders": ["email1", "email2"],
+      "context_notes": "Additional relevant context",
+      "suggested_response_type": "detailed|brief|acknowledgment|meeting_request"
+    }
+  agent: context_analyzer
+  context:
+    - triage_emails
+  output_file: "output/contextualized_emails.json"
+
+plan_responses:
+  description: >
+    Create a strategic response plan for each email requiring action:
+    
+    1. Response Strategy:
+       - Determine appropriate tone (formal, friendly, apologetic, assertive)
+       - Identify key points that must be addressed
+       - Suggest response structure
+    
+    2. Information Needs:
+       - What information is needed to complete the response
+       - What can be auto-filled vs needs user input
+    
+    3. Template Selection:
+       - Choose from standard templates if applicable
+       - Suggest customizations needed
+    
+    4. Timing Recommendations:
+       - When to send the response
+       - If follow-up will be needed
+    
+    Consider the context analysis and ensure the strategy aligns with
+    sender expectations and organizational communication standards.
+  expected_output: >
+    A JSON array of response strategies:
+    {
+      "id": "email_id",
+      "threadId": "thread_id",
+      "response_strategy": {
+        "tone": "formal|friendly|apologetic|assertive|neutral",
+        "structure": "greeting-body-closing|direct|detailed_explanation",
+        "key_points": ["point1", "point2"],
+        "template_suggestion": "template_name or null",
+        "required_info": ["info_needed"],
+        "placeholder_count": 2,
+        "estimated_length": "short|medium|long",
+        "timing": "immediate|today|tomorrow|this_week"
+      },
+      "follow_up_needed": true|false,
+      "strategy_notes": "Additional strategic considerations"
+    }
+  agent: response_strategist
+  context:
+    - analyze_context
+  output_file: "output/response_strategies.json"
+
+compose_drafts:
+  description: >
+    Compose professional email drafts based on the response strategies:
+    
+    1. Draft Quality Requirements:
+       - Match the specified tone perfectly
+       - Include all key points identified
+       - Maintain professional language
+       - Be concise yet complete
+    
+    2. Placeholder Usage:
+       - Use [PLACEHOLDER: description] for missing information
+       - Common placeholders: [MEETING_TIME], [PROJECT_NAME], [DEADLINE]
+    
+    3. Formatting:
+       - Proper email structure (greeting, body, closing)
+       - Appropriate paragraph breaks
+       - Professional signature block
+    
+    4. Personalization:
+       - Match user's typical writing style if known
+       - Include relevant context from thread
+       - Address recipient appropriately
+    
+    User's name: {user_name}
+    User's company: {user_company}
+    User's role: {user_role}
+  expected_output: >
+    A JSON array of email drafts:
+    {
+      "id": "email_id",
+      "threadId": "thread_id",
+      "draft": {
+        "subject": "Re: Original Subject",
+        "body": "Full email body with proper formatting",
+        "placeholders": ["[PLACEHOLDER: Meeting Time]", "[PLACEHOLDER: Budget Amount]"],
+        "estimated_send_time": "2024-01-15T10:00:00Z",
+        "confidence_score": 0.95,
+        "alternative_phrases": {
+          "greeting": ["Dear John", "Hi John", "Hello John"],
+          "closing": ["Best regards", "Kind regards", "Sincerely"]
+        }
+      },
+      "metadata": {
+        "word_count": 150,
+        "reading_time": "45 seconds",
+        "tone_achieved": "friendly",
+        "completeness": 0.85
+      }
+    }
+  agent: draft_composer
+  context:
+    - plan_responses
+  output_file: "output/email_drafts.json"
