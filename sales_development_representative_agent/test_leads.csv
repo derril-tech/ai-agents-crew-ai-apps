@@ -1,0 +1,11 @@
+name,job_title,company,email,linkedin_url,company_website,use_case,source
+John Smith,VP Engineering,TechCorp,john@techcorp.com,https://linkedin.com/in/johnsmith,https://techcorp.com,AI implementation,conference
+Sarah Johnson,CTO,DataFlow,sarah@dataflow.com,https://linkedin.com/in/sarahjohnson,https://dataflow.com,GenAI strategy,referral
+Mike Chen,Director of AI,InnovateCorp,mike@innovatecorp.com,https://linkedin.com/in/mikechen,https://innovatecorp.com,Machine learning adoption,website
+Emily Rodriguez,VP Product,ScaleTech,emily@scaletech.com,https://linkedin.com/in/emilyrodriguez,https://scaletech.com,Product AI integration,LinkedIn
+David Kim,Head of Engineering,FutureCorp,david@futurecorp.com,https://linkedin.com/in/davidkim,https://futurecorp.com,Engineering AI tools,partner
+Lisa Wang,Chief Innovation Officer,NextGen,lisa@nextgen.com,https://linkedin.com/in/lisawang,https://nextgen.com,Innovation strategy,conference
+Robert Taylor,VP Technology,CloudTech,robert@cloudtech.com,https://linkedin.com/in/roberttaylor,https://cloudtech.com,Cloud AI solutions,website
+Maria Garcia,Director of Digital Transformation,LegacyCorp,maria@legacycorp.com,https://linkedin.com/in/mariagarcia,https://legacycorp.com,Digital transformation,referral
+James Wilson,CTO,StartupXYZ,james@startupxyz.com,https://linkedin.com/in/jameswilson,https://startupxyz.com,Startup AI scaling,LinkedIn
+Jennifer Lee,VP Operations,EnterpriseInc,jennifer@enterpriseinc.com,https://linkedin.com/in/jenniferlee,https://enterpriseinc.com,Enterprise AI adoption,conference
