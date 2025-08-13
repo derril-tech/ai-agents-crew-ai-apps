@@ -1,0 +1,19 @@
+﻿# Node/Next
+**/node_modules/
+**/.next/
+**/.vercel/
+**/.turbo/
+**/.cache/
+**/dist/
+**/build/
+# Python
+**/.venv/
+**/venv/
+**/__pycache__/
+**/.pytest_cache/
+**/*.egg-info/
+**/.mypy_cache/
+**/.ruff_cache/
+# OS
+.DS_Store
+Thumbs.db
