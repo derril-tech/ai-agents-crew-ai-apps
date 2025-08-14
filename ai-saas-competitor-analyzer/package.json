@@ -1,0 +1,15 @@
+{
+  "name": "ai-saas-competitor-analyzer",
+  "version": "1.0.0",
+  "description": "crewai>=0.32.0\r crewai-tools>=0.2.0\r fastapi>=0.110.0\r uvicorn[standard]>=0.29.0\r python-dotenv>=1.0.1\r pydantic>=2.7.0\r httpx>=0.27.0\r trafilatura>=1.9.0\r beautifulsoup4>=4.12.3\r lxml>=5.2.2\r pandas>=2.2.2\r numpy>=1.26.4\r rapidfuzz>=3.9.6\r matplotlib>=3.9.0\r reportlab>=4.1.0\r jinja2>=3.1.4",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.2.1"
+  }
+}

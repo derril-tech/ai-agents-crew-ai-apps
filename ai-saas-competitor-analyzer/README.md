@@ -1,0 +1,16 @@
+crewai>=0.32.0
+crewai-tools>=0.2.0
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+python-dotenv>=1.0.1
+pydantic>=2.7.0
+httpx>=0.27.0
+trafilatura>=1.9.0
+beautifulsoup4>=4.12.3
+lxml>=5.2.2
+pandas>=2.2.2
+numpy>=1.26.4
+rapidfuzz>=3.9.6
+matplotlib>=3.9.0
+reportlab>=4.1.0
+jinja2>=3.1.4
