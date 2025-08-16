@@ -18,6 +18,7 @@ from templates.project_brief_template import PROJECT_BRIEF_TEMPLATE
 from templates.prompt_templates import PROMPT_TEMPLATES
 from validation.pre_code_validator import PreCodeValidator
 from validation.dependency_verifier import DependencyVerifier
+from pipeline_integration_manager import PipelineIntegrationManager
 
 @dataclass
 class ProjectSpecification:
@@ -33,7 +34,10 @@ class ProjectSpecification:
     status: str = "pending"
 
 class Phase3Orchestrator:
-    """Orchestrates the complete Phase 3 workflow"""
+    """Orchestrates the complete Phase 3 workflow: Research → Prompt → Code"""
+    
+    # DEBUG MODE: Set to True for faster testing with minimal iterations
+    DEBUG_MODE = True  # Set to False for full processing
     
     def __init__(self, projects_file: str = "../projects.json"):
         self.projects_file = Path(projects_file)
@@ -45,8 +49,11 @@ class Phase3Orchestrator:
         self.prompt_engineer = PromptEngineer()
         self.claude_coder = ClaudeCoder()
         
+        # Initialize pipeline integration manager
+        self.pipeline_integration = PipelineIntegrationManager()
+        
         # Load projects
-        self.projects = self.load_projects()
+        self.projects = self._load_projects()
         
     def load_projects(self) -> List[Dict[str, Any]]:
         """Load projects from JSON file"""
@@ -174,7 +181,7 @@ class Phase3Orchestrator:
             raise ValueError("Prompt template must be selected first")
         
         # Generate code using 5-prompt development plan
-        generated_code = await self.claude_coder.generate_project_code(
+        generated_code = await self.claude_coder.generate_complete_application(
             project_name=spec.project_name,
             project_brief=spec.project_brief,
             prompt_template=spec.prompt_template,
@@ -264,35 +271,59 @@ class Phase3Orchestrator:
         return mapping.get(archetype.upper(), "CRUD")
     
     async def process_project(self, project: Dict[str, Any]) -> ProjectSpecification:
-        """Process a single project through all phases"""
-        print(f"\n🚀 Processing Project: {project['project_name']}")
-        print("=" * 60)
+        """Process a single project through all pipeline steps"""
         
-        spec = self.get_project_specification(project)
+        project_name = project['project_name']
+        project_id = project_name.lower().replace(" ", "-").replace("&", "and")
+        
+        # Initialize to-do list for this project
+        self.pipeline_integration.initialize_project_todos(project_name, project_id)
+        
+        # Create project specification
+        spec = ProjectSpecification(
+            project_name=project_name,
+            description=project.get('description', ''),
+            tech_stack=project.get('tech_stack', ''),
+            archetype=project.get('archetype', 'CRUD')
+        )
         
         try:
             # Step 1: Market Research
+            self.pipeline_integration.start_agent_work(project_id, "market_research")
             spec = await self.step1_market_research(spec)
+            self.pipeline_integration.complete_step(project_id, "market_research", True)
             
             # Step 2: Create Project Brief
-            spec = self.step2_create_project_brief(spec)
+            self.pipeline_integration.start_agent_work(project_id, "project_brief")
+            spec = await self.step2_create_project_brief(spec)
+            self.pipeline_integration.complete_step(project_id, "project_brief", True)
             
             # Step 3: Select Prompt Template
-            spec = self.step3_select_prompt_template(spec)
+            self.pipeline_integration.start_agent_work(project_id, "prompt_template")
+            spec = await self.step3_select_prompt_template(spec)
+            self.pipeline_integration.complete_step(project_id, "prompt_template", True)
             
             # Step 4: Generate Code
+            self.pipeline_integration.start_agent_work(project_id, "backend_code")
             spec = await self.step4_generate_code(spec)
+            self.pipeline_integration.complete_step(project_id, "backend_code", True)
             
-            # Step 5: Validate and Verify
+            # Step 5: Validation
+            self.pipeline_integration.start_agent_work(project_id, "validation")
             spec = self.step5_validate_and_verify(spec)
+            self.pipeline_integration.complete_step(project_id, "validation", spec.status != "validation_failed")
             
-            print(f"\n🎉 Project Complete: {spec.project_name}")
+            # Update final project status
+            self.pipeline_integration.update_project_status(project_id, spec.status)
+            
+            print(f"\n🎉 Project Complete: {project_name}")
             print(f"Status: {spec.status}")
             
         except Exception as e:
-            print(f"❌ Error processing {spec.project_name}: {str(e)}")
+            print(f"❌ Error processing {project_name}: {e}")
+            # Mark current step as failed
+            self.pipeline_integration.complete_step(project_id, "current_step", False)
             spec.status = "error"
-            spec.validation_report = {"error": str(e)}
         
         return spec
     
@@ -307,14 +338,33 @@ class Phase3Orchestrator:
         projects_to_process = self.projects[start_index:end_index]
         results = []
         
+        # Process projects with progress tracking
         for i, project in enumerate(projects_to_process, start=start_index + 1):
-            print(f"\n📊 Progress: {i}/{len(self.projects)}")
+            print(f"\n📊 Progress: {i}/{len(projects_to_process)}")
             
-            result = await self.process_project(project)
-            results.append(result)
+            # In debug mode, limit to first project only
+            if self.DEBUG_MODE and i > 1:
+                print("  ⚙️ DEBUG_MODE: Limiting to first project only")
+                break
             
-            # Save progress
-            self.save_progress(results)
+            print(f"\n🚀 Processing Project: {project['project_name']}")
+            print("=" * 60)
+            
+            try:
+                result = await self.process_project(project)
+                results.append(result)
+                
+                # In debug mode, add a small delay between projects
+                if self.DEBUG_MODE:
+                    await asyncio.sleep(2)
+                    
+            except Exception as e:
+                print(f"❌ Error processing project {project['project_name']}: {e}")
+                results.append({
+                    "project_name": project['project_name'],
+                    "status": "error",
+                    "error": str(e)
+                })
         
         print(f"\n🎉 Phase 3 Complete!")
         print(f"Processed: {len(results)} projects")

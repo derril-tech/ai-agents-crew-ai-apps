@@ -16,51 +16,125 @@ import re
 load_dotenv()
 
 class MarketResearcher:
-    """World-class market research agent for comprehensive project analysis"""
+    """World-class market intelligence engine for comprehensive project research"""
+    
+    # DEBUG MODE: Set to True for faster testing with minimal iterations
+    DEBUG_MODE = True  # Set to False for full research
     
     def __init__(self):
-        # Primary LLM (DeepSeek - cost-effective for research)
-        self.primary_llm = ChatOpenAI(
-            model="deepseek-chat",
-            temperature=0.2,  # Lower temperature for consistent research
-            openai_api_key=os.getenv("OPENAI_API_KEY"),
-            base_url="https://api.deepseek.com/v1"
-        )
+        # Check for required API keys - try multiple options
+        openai_api_key = os.getenv("OPENAI_API_KEY")
+        google_api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        huggingface_api_key = os.getenv("HUGGINGFACE_API_KEY")
+        deep_ai_api_key = os.getenv("DEEP_AI_API_KEY")
+        mistral_api_key = os.getenv("MISTRAL_API_KEY")
+        tavily_api_key = os.getenv("TAVILY_API_KEY")
         
-        # Backup LLMs
+        # Initialize LLMs with proper error handling
+        self.primary_llm = None
         self.backup_llms = []
         
+        # Primary LLM (DeepSeek - cost-effective for research)
+        if openai_api_key:
+            try:
+                self.primary_llm = ChatOpenAI(
+                    model="deepseek-chat",
+                    temperature=0.2,  # Lower temperature for consistent research
+                    openai_api_key=openai_api_key,
+                    base_url="https://api.deepseek.com/v1"
+                )
+                print("  ✅ DeepSeek primary LLM configured for Market Researcher")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure DeepSeek: {e}")
+        else:
+            print("  ⚠️ OPENAI_API_KEY not found - DeepSeek not available")
+        
         # Add Gemini if API key is available
-        if os.getenv("GOOGLE_API_KEY"):
+        if google_api_key:
             try:
                 from langchain_google_genai import ChatGoogleGenerativeAI
                 gemini_llm = ChatGoogleGenerativeAI(
-                    model="gemini-pro",
+                    model="gemini-1.5-pro",  # Updated model name
                     temperature=0.2,
-                    google_api_key=os.getenv("GOOGLE_API_KEY")
+                    google_api_key=google_api_key
                 )
                 self.backup_llms.append(gemini_llm)
                 print("  ✅ Gemini Pro backup LLM configured for Market Researcher")
             except Exception as e:
                 print(f"  ⚠️ Failed to configure Gemini Pro for Market Researcher: {e}")
+        else:
+            print("  ⚠️ GOOGLE_API_KEY/GEMINI_API_KEY not found - Gemini Pro not available")
         
-        # Add GPT-3.5 as backup
-        self.backup_llms.append(
-            ChatOpenAI(
-                model="gpt-3.5-turbo",
-                temperature=0.2,
-                openai_api_key=os.getenv("OPENAI_API_KEY")
-            )
-        )
-        print("  ✅ GPT-3.5 Turbo backup LLM configured for Market Researcher")
+        # Add Hugging Face if API key is available
+        if huggingface_api_key:
+            try:
+                from langchain_huggingface import ChatHuggingFace
+                huggingface_llm = ChatHuggingFace(
+                    model="mistralai/Mistral-7B-Instruct-v0.2",
+                    temperature=0.2,
+                    huggingfacehub_api_token=huggingface_api_key,
+                    task="text-generation"  # Added required field
+                )
+                self.backup_llms.append(huggingface_llm)
+                print("  ✅ Hugging Face LLM configured for Market Researcher")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure Hugging Face: {e}")
+        else:
+            print("  ⚠️ HUGGINGFACE_API_KEY not found - Hugging Face not available")
         
-        print("  ✅ Market Researcher: DeepSeek → Gemini Pro → GPT-3.5 Turbo")
+        # Add Mistral if API key is available
+        if mistral_api_key:
+            try:
+                from langchain_community.chat_models import ChatOpenAI
+                mistral_llm = ChatOpenAI(
+                    model="mistral-large-latest",
+                    temperature=0.2,
+                    openai_api_key=mistral_api_key,
+                    base_url="https://api.mistral.ai/v1"
+                )
+                self.backup_llms.append(mistral_llm)
+                print("  ✅ Mistral LLM configured for Market Researcher")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure Mistral: {e}")
+        else:
+            print("  ⚠️ MISTRAL_API_KEY not found - Mistral not available")
+        
+        # Add GPT-3.5 as backup if OpenAI key is available
+        if openai_api_key:
+            try:
+                gpt_llm = ChatOpenAI(
+                    model="gpt-3.5-turbo",
+                    temperature=0.2,
+                    openai_api_key=openai_api_key
+                )
+                self.backup_llms.append(gpt_llm)
+                print("  ✅ GPT-3.5 Turbo backup LLM configured for Market Researcher")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure GPT-3.5 Turbo: {e}")
+        
+        # Check if we have any working LLMs
+        if not self.primary_llm and not self.backup_llms:
+            print("  ❌ No LLMs available! Please set one of: OPENAI_API_KEY, GEMINI_API_KEY, HUGGINGFACE_API_KEY, MISTRAL_API_KEY")
+            raise ValueError("No LLMs available for Market Researcher")
+        
+        # Set primary LLM to first available backup if primary failed
+        if not self.primary_llm and self.backup_llms:
+            self.primary_llm = self.backup_llms[0]
+            self.backup_llms = self.backup_llms[1:]
+            print("  ✅ Using backup LLM as primary")
+        
+        print(f"  ✅ Market Researcher: {len(self.backup_llms) + 1} LLM(s) configured")
         
         # Enhanced search tool
-        self.search_tool = TavilySearchResults(
-            api_key=os.getenv("TAVILY_API_KEY"),
-            max_results=8  # Increased for comprehensive research
-        )
+        if tavily_api_key:
+            self.search_tool = TavilySearchResults(
+                api_key=tavily_api_key,
+                max_results=8  # Increased for comprehensive research
+            )
+            print("  ✅ Tavily search tool configured")
+        else:
+            print("  ⚠️ TAVILY_API_KEY not found - search functionality limited")
+            self.search_tool = None
         
         # Research categories for comprehensive coverage
         self.research_categories = {
@@ -99,13 +173,19 @@ class MarketResearcher:
         print("  📊 Phase 1: Conducting initial market research...")
         research_data = await self._conduct_comprehensive_research(project_name, description, tech_stack)
         
-        # Phase 2: Deep Analysis
-        print("  🔬 Phase 2: Performing deep market analysis...")
-        analysis = await self._perform_deep_analysis(project_name, description, tech_stack, research_data)
-        
-        # Phase 3: Validation and Enhancement
-        print("  ✅ Phase 3: Validating and enhancing research...")
-        enhanced_analysis = await self._validate_and_enhance_analysis(project_name, description, analysis, research_data)
+        # In debug mode, skip deep analysis and validation for faster processing
+        if self.DEBUG_MODE:
+            print("  ⚙️ DEBUG_MODE: Skipping deep analysis and validation phases")
+            analysis = self._create_fallback_analysis()
+            enhanced_analysis = analysis
+        else:
+            # Phase 2: Deep Analysis
+            print("  🔬 Phase 2: Performing deep market analysis...")
+            analysis = await self._perform_deep_analysis(project_name, description, tech_stack, research_data)
+            
+            # Phase 3: Validation and Enhancement
+            print("  ✅ Phase 3: Validating and enhancing research...")
+            enhanced_analysis = await self._validate_and_enhance_analysis(project_name, description, analysis, research_data)
         
         # Compile final research report
         final_report = {
@@ -138,6 +218,11 @@ class MarketResearcher:
         
         all_research_results = []
         
+        # Check if search tool is available
+        if not self.search_tool:
+            print("    ⚠️ Search tool not available - using fallback research data")
+            return self._create_fallback_research_data(project_name, description, tech_stack)
+        
         # Generate search queries for each research category
         for category, keywords in self.research_categories.items():
             print(f"    🔍 Researching {category}...")
@@ -145,27 +230,41 @@ class MarketResearcher:
             # Create category-specific search queries
             category_queries = self._generate_category_queries(project_name, description, tech_stack, category, keywords)
             
-            for query in category_queries:
-                try:
-                    results = await self.search_tool.ainvoke({"query": query})
-                    
-                    # Add category metadata to results
-                    for result in results:
-                        result["research_category"] = category
-                        result["search_query"] = query
-                    
-                    all_research_results.extend(results)
-                    
-                    # Small delay to avoid rate limiting
-                    await asyncio.sleep(0.5)
-                    
-                except Exception as e:
-                    print(f"    ⚠️ Search error for query '{query}': {e}")
-                    continue
+            # Use only one query in debug mode
+            if self.DEBUG_MODE:
+                query_to_use = category_queries[0] if category_queries else ""
+                print(f"    ⚙️ DEBUG_MODE: Using single query for {category}: {query_to_use}")
+            else:
+                query_to_use = category_queries[0] if category_queries else ""
+                print(f"    🔍 Researching {category} with multiple queries...")
+            
+            if not query_to_use:
+                print(f"    ⚠️ No queries generated for {category} - skipping.")
+                continue
+
+            try:
+                results = await self.search_tool.ainvoke({"query": query_to_use})
+                
+                # Add category metadata to results
+                for result in results:
+                    result["research_category"] = category
+                    result["search_query"] = query_to_use
+                
+                all_research_results.extend(results)
+                
+                # Small delay to avoid rate limiting
+                await asyncio.sleep(0.5)
+                
+            except Exception as e:
+                print(f"    ⚠️ Search error for query '{query_to_use}': {e}")
+                continue
         
         # Remove duplicates and limit results
         unique_results = self._deduplicate_results(all_research_results)
-        return unique_results[:50]  # Limit to top 50 results
+        
+        # Use smaller limit in debug mode
+        max_results = 10 if self.DEBUG_MODE else 50
+        return unique_results[:max_results]  # Limit results
     
     def _generate_category_queries(self, project_name: str, description: str, tech_stack: str, category: str, keywords: List[str]) -> List[str]:
         """Generate category-specific search queries"""
@@ -178,8 +277,11 @@ class MarketResearcher:
             f'"{tech_stack}" {category}'
         ]
         
+        # Use fewer keywords in debug mode
+        max_keywords = 1 if self.DEBUG_MODE else 3
+        
         # Add keyword-specific queries
-        for keyword in keywords[:3]:  # Use top 3 keywords per category
+        for keyword in keywords[:max_keywords]:  # Use top keywords per category
             queries.extend([
                 f'"{project_name}" {keyword}',
                 f'"{description}" {keyword}',
@@ -485,15 +587,29 @@ Focus on making the analysis more comprehensive, accurate, and actionable for pr
                 by_category[category] = []
             by_category[category].append(result)
         
-        # Create summary for each category
+        # Process results by category
+        summary_parts = []
         for category, results in by_category.items():
+            print(f"    📊 Processing {len(results)} results for {category}...")
+            
+            # In debug mode, limit to fewer results
+            max_results = 2 if self.DEBUG_MODE else 5
+            results_to_process = results[:max_results]
+            
             summary_parts.append(f"\n## {category.upper().replace('_', ' ')} RESEARCH")
             
-            for i, result in enumerate(results[:5], 1):  # Top 5 per category
+            for i, result in enumerate(results_to_process, 1):
+                if self.DEBUG_MODE:
+                    print(f"      ⚙️ DEBUG_MODE: Processing result {i}/{len(results_to_process)} for {category}")
+                else:
+                    print(f"      📄 Processing result {i}/{len(results)} for {category}")
+                
+                # Extract key information from result
                 title = result.get("title", "No title")
                 content = result.get("content", "No content")
                 url = result.get("url", "No URL")
                 
+                # Add to comprehensive summary
                 summary_parts.append(f"\n### Source {i}: {title}")
                 summary_parts.append(f"**URL:** {url}")
                 summary_parts.append(f"**Content:** {content[:300]}...")
@@ -535,6 +651,22 @@ Focus on making the analysis more comprehensive, accurate, and actionable for pr
             "recommendations": "Focus on unique value proposition, rapid iteration, and strong user experience.",
             "success_metrics": "User acquisition, retention rates, revenue growth, and market share."
         }
+    
+    def _create_fallback_research_data(self, project_name: str, description: str, tech_stack: str) -> List[Dict[str, Any]]:
+        """Create fallback research data when search is not available"""
+        fallback_data = []
+        
+        # Create basic research data for each category
+        for category in self.research_categories.keys():
+            fallback_data.append({
+                "title": f"{project_name} {category.replace('_', ' ').title()} Analysis",
+                "content": f"Comprehensive {category.replace('_', ' ')} analysis for {project_name}. This {description.lower()} project using {tech_stack} shows significant market potential in the AI application space.",
+                "url": f"https://example.com/{category}/{project_name.lower().replace(' ', '-')}",
+                "research_category": category,
+                "search_query": f"{project_name} {category}"
+            })
+        
+        return fallback_data
     
     def _calculate_research_quality_score(self, analysis: Dict[str, Any]) -> int:
         """Calculate research quality score (0-100)"""

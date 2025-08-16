@@ -1,0 +1,1 @@
+"fastapi\nuvicorn\nsqlalchemy\npsycopg2-binary  # Or your PostgreSQL driver\npydantic\npython-jose[cryptography] # For JWT\npython-multipart\n# ... other dependencies (e.g., Redis client, OpenAI/Claude API client, email library)\n"

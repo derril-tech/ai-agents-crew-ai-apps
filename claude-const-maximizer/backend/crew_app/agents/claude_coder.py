@@ -19,116 +19,181 @@ from templates.backend_archetypes import generate_backend_instructions
 load_dotenv()
 
 class ClaudeCoder:
-    """Claude coder agent for generating project code with multi-LLM fallback"""
+    """Claude Coder agent for generating complete application code"""
+    
+    # DEBUG MODE: Set to True for faster testing with minimal iterations
+    DEBUG_MODE = True  # Set to False for full code generation
     
     def __init__(self):
-        # Primary LLM (DeepSeek - more cost-effective for debugging)
-        self.primary_llm = ChatOpenAI(
-            model="deepseek-chat",
-            temperature=0.2,
-            openai_api_key=os.getenv("OPENAI_API_KEY"),
-            base_url="https://api.deepseek.com/v1"
-        )
+        # Check for required API keys - try multiple options
+        openai_api_key = os.getenv("OPENAI_API_KEY")
+        google_api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        huggingface_api_key = os.getenv("HUGGINGFACE_API_KEY")
+        deep_ai_api_key = os.getenv("DEEP_AI_API_KEY")
+        mistral_api_key = os.getenv("MISTRAL_API_KEY")
         
-        # Backup LLMs - only add Gemini if API key is available
+        # Initialize LLMs with proper error handling
+        self.primary_llm = None
         self.backup_llms = []
         
+        # Primary LLM (DeepSeek - more cost-effective for debugging)
+        if openai_api_key:
+            try:
+                self.primary_llm = ChatOpenAI(
+                    model="deepseek-chat",
+                    temperature=0.2,
+                    openai_api_key=openai_api_key,
+                    base_url="https://api.deepseek.com/v1"
+                )
+                print("  ✅ DeepSeek primary LLM configured for Claude Coder")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure DeepSeek: {e}")
+        else:
+            print("  ⚠️ OPENAI_API_KEY not found - DeepSeek not available")
+        
         # Add Gemini if API key is available
-        if os.getenv("GOOGLE_API_KEY"):
+        if google_api_key:
             try:
                 gemini_llm = ChatGoogleGenerativeAI(
-                    model="gemini-pro",
+                    model="gemini-1.5-pro",  # Updated model name
                     temperature=0.1,
-                    google_api_key=os.getenv("GOOGLE_API_KEY")
+                    google_api_key=google_api_key
                 )
                 self.backup_llms.append(gemini_llm)
                 print("  ✅ Gemini Pro backup LLM configured")
             except Exception as e:
                 print(f"  ⚠️ Failed to configure Gemini Pro: {e}")
+        else:
+            print("  ⚠️ GOOGLE_API_KEY/GEMINI_API_KEY not found - Gemini Pro not available")
         
-        # Add GPT-3.5 as backup
-        self.backup_llms.append(
-            ChatOpenAI(
-                model="gpt-3.5-turbo",
-                temperature=0.1,
-                openai_api_key=os.getenv("OPENAI_API_KEY")
-            )
-        )
-        print("  ✅ GPT-3.5 Turbo backup LLM configured")
+        # Add Hugging Face if API key is available
+        if huggingface_api_key:
+            try:
+                from langchain_huggingface import ChatHuggingFace
+                huggingface_llm = ChatHuggingFace(
+                    model="mistralai/Mistral-7B-Instruct-v0.2",
+                    temperature=0.1,
+                    huggingfacehub_api_token=huggingface_api_key,
+                    task="text-generation"  # Added required field
+                )
+                self.backup_llms.append(huggingface_llm)
+                print("  ✅ Hugging Face LLM configured for Claude Coder")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure Hugging Face: {e}")
+        else:
+            print("  ⚠️ HUGGINGFACE_API_KEY not found - Hugging Face not available")
         
-        # Note: Claude backup removed - using 2-LLM fallback system
-        print("  ✅ 2-LLM Fallback System: DeepSeek → Gemini Pro → GPT-3.5 Turbo")
+        # Add Mistral if API key is available
+        if mistral_api_key:
+            try:
+                from langchain_community.chat_models import ChatOpenAI
+                mistral_llm = ChatOpenAI(
+                    model="mistral-large-latest",
+                    temperature=0.1,
+                    openai_api_key=mistral_api_key,
+                    base_url="https://api.mistral.ai/v1"
+                )
+                self.backup_llms.append(mistral_llm)
+                print("  ✅ Mistral LLM configured for Claude Coder")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure Mistral: {e}")
+        else:
+            print("  ⚠️ MISTRAL_API_KEY not found - Mistral not available")
+        
+        # Add GPT-3.5 as backup if OpenAI key is available
+        if openai_api_key:
+            try:
+                gpt_llm = ChatOpenAI(
+                    model="gpt-3.5-turbo",
+                    temperature=0.1,
+                    openai_api_key=openai_api_key
+                )
+                self.backup_llms.append(gpt_llm)
+                print("  ✅ GPT-3.5 Turbo backup LLM configured")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure GPT-3.5 Turbo: {e}")
+        
+        # Check if we have any working LLMs
+        if not self.primary_llm and not self.backup_llms:
+            print("  ❌ No LLMs available! Please set one of: OPENAI_API_KEY, GEMINI_API_KEY, HUGGINGFACE_API_KEY, MISTRAL_API_KEY")
+            raise ValueError("No LLMs available for Claude Coder")
+        
+        # Set primary LLM to first available backup if primary failed
+        if not self.primary_llm and self.backup_llms:
+            self.primary_llm = self.backup_llms[0]
+            self.backup_llms = self.backup_llms[1:]
+            print("  ✅ Using backup LLM as primary")
+        
+        print(f"  ✅ Claude Coder: {len(self.backup_llms) + 1} LLM(s) configured")
         
         self.current_llm_index = 0
     
-    async def generate_project_code(
+    async def generate_complete_application(
         self, 
         project_name: str, 
         project_brief: str, 
         prompt_template: Dict[str, Any], 
         market_research: Dict[str, Any]
-    ) -> Dict[str, Any]:
-        """Generate complete project code using 5-prompt development plan with fallback"""
+    ) -> Dict[str, str]:
+        """Generate complete application code using 5-prompt development plan"""
         
-        print(f"💻 Starting 5-prompt development plan for {project_name}")
+        print(f"🚀 Starting code generation for {project_name}")
         
-        # Prompt 1: Backend Architecture & API Design
-        backend_code = await self._generate_with_fallback(
-            lambda: self._prompt1_backend_architecture(
-                project_name, project_brief, prompt_template, market_research
-            ),
-            "backend"
-        )
+        # In debug mode, use fewer prompts for faster testing
+        if self.DEBUG_MODE:
+            print("  ⚙️ DEBUG_MODE: Using minimal prompts for faster testing")
+            prompts_to_run = [
+                ("Backend Architecture", self._prompt1_backend_architecture),
+                ("Frontend Implementation", self._prompt2_frontend_implementation)
+            ]
+        else:
+            print("  🔄 Using full 5-prompt development plan")
+            prompts_to_run = [
+                ("Backend Architecture", self._prompt1_backend_architecture),
+                ("Frontend Implementation", self._prompt2_frontend_implementation),
+                ("Integration & API", self._prompt3_integration_connections),
+                ("Deployment & DevOps", self._prompt4_deployment_configuration),
+                ("Final Polish & Testing", self._prompt5_final_polish)
+            ]
         
-        # Prompt 2: Frontend UI/UX Implementation
-        frontend_code = await self._generate_with_fallback(
-            lambda: self._prompt2_frontend_implementation(
-                project_name, project_brief, prompt_template, market_research, backend_code
-            ),
-            "frontend"
-        )
+        all_code = {}
         
-        # Prompt 3: Integration & API Connections
-        integration_code = await self._generate_with_fallback(
-            lambda: self._prompt3_integration_connections(
-                project_name, project_brief, prompt_template, market_research, backend_code, frontend_code
-            ),
-            "integration"
-        )
+        for section_name, prompt_func in prompts_to_run:
+            print(f"\n📝 Generating {section_name}...")
+            
+            # Handle different parameter requirements
+            if section_name == "Backend Architecture":
+                result = await self._generate_with_fallback(
+                    section_name, 
+                    lambda: prompt_func(project_name, project_brief, prompt_template, market_research)
+                )
+            elif section_name == "Frontend Implementation":
+                # Pass backend_code from previous step
+                backend_code = all_code.get("backend", {})
+                result = await self._generate_with_fallback(
+                    section_name, 
+                    lambda: prompt_func(project_name, project_brief, prompt_template, market_research, backend_code)
+                )
+            else:
+                result = await self._generate_with_fallback(
+                    section_name, 
+                    lambda: prompt_func(project_name, project_brief, prompt_template, market_research)
+                )
+            
+            all_code.update(result)
+            
+            # In debug mode, add a small delay between prompts
+            if self.DEBUG_MODE:
+                await asyncio.sleep(1)
         
-        # Prompt 4: Deployment & Configuration
-        deployment_code = await self._generate_with_fallback(
-            lambda: self._prompt4_deployment_configuration(
-                project_name, project_brief, prompt_template, market_research
-            ),
-            "deployment"
-        )
-        
-        # Prompt 5: Final Polish & Testing
-        final_code = await self._generate_with_fallback(
-            lambda: self._prompt5_final_polish(
-                project_name, project_brief, prompt_template, market_research, 
-                backend_code, frontend_code, integration_code, deployment_code
-            ),
-            "final"
-        )
-        
-        return {
-            "backend": backend_code,
-            "frontend": frontend_code,
-            "integration": integration_code,
-            "deployment": deployment_code,
-            "final": final_code,
-            "project_name": project_name,
-            "generation_timestamp": asyncio.get_event_loop().time()
-        }
+        print(f"\n✅ Code generation completed for {project_name}")
+        return all_code
     
-    async def _generate_with_fallback(self, prompt_func, section_name: str) -> Dict[str, str]:
+    async def _generate_with_fallback(self, section_name: str, prompt_func) -> Dict[str, str]:
         """Generate code with LLM fallback system"""
         
-        # Try primary LLM first
         try:
-            print(f"  🔄 Trying primary LLM (DeepSeek) for {section_name}...")
+            print(f"  🔄 Generating with primary LLM for {section_name}...")
             result = await prompt_func()
             
             # Check if we got actual files (not just fallback)
@@ -172,6 +237,11 @@ class ClaudeCoder:
                 # Restore primary LLM if we switched it
                 if hasattr(self, 'original_llm'):
                     self.primary_llm = self.original_llm
+            
+            # In debug mode, limit to first backup LLM only
+            if self.DEBUG_MODE:
+                print("  ⚙️ DEBUG_MODE: Limiting to first backup LLM only")
+                break
         
         # If all LLMs failed, return the last result (even if it's a fallback)
         print(f"  🚨 All LLMs failed for {section_name}, using last result")

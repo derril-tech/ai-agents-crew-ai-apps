@@ -26,43 +26,111 @@ load_dotenv()
 class PromptEngineer:
     """Prompt Engineer agent for optimizing prompts specifically for Claude"""
     
+    # DEBUG MODE: Set to True for faster testing with minimal iterations
+    DEBUG_MODE = True  # Set to False for full prompt engineering
+    
     def __init__(self):
-        # Primary LLM (DeepSeek - cost-effective for prompt engineering)
-        self.primary_llm = ChatOpenAI(
-            model="deepseek-chat",
-            temperature=0.1,  # Lower temperature for consistent prompt engineering
-            openai_api_key=os.getenv("OPENAI_API_KEY"),
-            base_url="https://api.deepseek.com/v1"
-        )
+        # Check for required API keys - try multiple options
+        openai_api_key = os.getenv("OPENAI_API_KEY")
+        google_api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        huggingface_api_key = os.getenv("HUGGINGFACE_API_KEY")
+        deep_ai_api_key = os.getenv("DEEP_AI_API_KEY")
+        mistral_api_key = os.getenv("MISTRAL_API_KEY")
         
-        # Backup LLMs
+        # Initialize LLMs with proper error handling
+        self.primary_llm = None
         self.backup_llms = []
         
+        # Primary LLM (DeepSeek - cost-effective for prompt engineering)
+        if openai_api_key:
+            try:
+                self.primary_llm = ChatOpenAI(
+                    model="deepseek-chat",
+                    temperature=0.1,  # Lower temperature for consistent prompt engineering
+                    openai_api_key=openai_api_key,
+                    base_url="https://api.deepseek.com/v1"
+                )
+                print("  ✅ DeepSeek primary LLM configured for Prompt Engineer")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure DeepSeek: {e}")
+        else:
+            print("  ⚠️ OPENAI_API_KEY not found - DeepSeek not available")
+        
         # Add Gemini if API key is available
-        if os.getenv("GOOGLE_API_KEY"):
+        if google_api_key:
             try:
                 from langchain_google_genai import ChatGoogleGenerativeAI
                 gemini_llm = ChatGoogleGenerativeAI(
-                    model="gemini-pro",
+                    model="gemini-1.5-pro",  # Updated model name
                     temperature=0.1,
-                    google_api_key=os.getenv("GOOGLE_API_KEY")
+                    google_api_key=google_api_key
                 )
                 self.backup_llms.append(gemini_llm)
                 print("  ✅ Gemini Pro backup LLM configured for Prompt Engineer")
             except Exception as e:
                 print(f"  ⚠️ Failed to configure Gemini Pro for Prompt Engineer: {e}")
+        else:
+            print("  ⚠️ GOOGLE_API_KEY/GEMINI_API_KEY not found - Gemini Pro not available")
         
-        # Add GPT-3.5 as backup
-        self.backup_llms.append(
-            ChatOpenAI(
-                model="gpt-3.5-turbo",
-                temperature=0.1,
-                openai_api_key=os.getenv("OPENAI_API_KEY")
-            )
-        )
-        print("  ✅ GPT-3.5 Turbo backup LLM configured for Prompt Engineer")
+        # Add Hugging Face if API key is available
+        if huggingface_api_key:
+            try:
+                from langchain_huggingface import ChatHuggingFace
+                huggingface_llm = ChatHuggingFace(
+                    model="mistralai/Mistral-7B-Instruct-v0.2",
+                    temperature=0.1,
+                    huggingfacehub_api_token=huggingface_api_key,
+                    task="text-generation"  # Added required field
+                )
+                self.backup_llms.append(huggingface_llm)
+                print("  ✅ Hugging Face LLM configured for Prompt Engineer")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure Hugging Face: {e}")
+        else:
+            print("  ⚠️ HUGGINGFACE_API_KEY not found - Hugging Face not available")
         
-        print("  ✅ Prompt Engineer: DeepSeek → Gemini Pro → GPT-3.5 Turbo")
+        # Add Mistral if API key is available
+        if mistral_api_key:
+            try:
+                from langchain_community.chat_models import ChatOpenAI
+                mistral_llm = ChatOpenAI(
+                    model="mistral-large-latest",
+                    temperature=0.1,
+                    openai_api_key=mistral_api_key,
+                    base_url="https://api.mistral.ai/v1"
+                )
+                self.backup_llms.append(mistral_llm)
+                print("  ✅ Mistral LLM configured for Prompt Engineer")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure Mistral: {e}")
+        else:
+            print("  ⚠️ MISTRAL_API_KEY not found - Mistral not available")
+        
+        # Add GPT-3.5 as backup if OpenAI key is available
+        if openai_api_key:
+            try:
+                gpt_llm = ChatOpenAI(
+                    model="gpt-3.5-turbo",
+                    temperature=0.1,
+                    openai_api_key=openai_api_key
+                )
+                self.backup_llms.append(gpt_llm)
+                print("  ✅ GPT-3.5 Turbo backup LLM configured for Prompt Engineer")
+            except Exception as e:
+                print(f"  ⚠️ Failed to configure GPT-3.5 Turbo: {e}")
+        
+        # Check if we have any working LLMs
+        if not self.primary_llm and not self.backup_llms:
+            print("  ❌ No LLMs available! Please set one of: OPENAI_API_KEY, GEMINI_API_KEY, HUGGINGFACE_API_KEY, MISTRAL_API_KEY")
+            raise ValueError("No LLMs available for Prompt Engineer")
+        
+        # Set primary LLM to first available backup if primary failed
+        if not self.primary_llm and self.backup_llms:
+            self.primary_llm = self.backup_llms[0]
+            self.backup_llms = self.backup_llms[1:]
+            print("  ✅ Using backup LLM as primary")
+        
+        print(f"  ✅ Prompt Engineer: {len(self.backup_llms) + 1} LLM(s) configured")
         
         self.current_llm_index = 0
     
@@ -178,6 +246,11 @@ Remember: The goal is to create the most effective prompt possible for Claude, l
                         
             except Exception as e:
                 print(f"  ⚠️ {llm_name} enhancement failed: {e}")
+            
+            # In debug mode, limit to first backup LLM only
+            if self.DEBUG_MODE:
+                print("  ⚙️ DEBUG_MODE: Limiting to first backup LLM only")
+                break
         
         # Return base prompt if all LLMs fail
         print(f"  ⚠️ All LLMs failed, using base prompt")
