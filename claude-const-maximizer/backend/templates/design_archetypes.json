@@ -1,0 +1,459 @@
+{
+  "design_archetypes": {
+    "professional_saas": {
+      "name": "Professional SaaS",
+      "description": "Clean, modern business applications",
+      "css_library": "tailwind",
+      "color_scheme": {
+        "primary": "#2563eb",
+        "secondary": "#64748b", 
+        "accent": "#0ea5e9",
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444",
+        "background": "#f8fafc",
+        "surface": "#ffffff",
+        "text_primary": "#1e293b",
+        "text_secondary": "#64748b"
+      },
+      "typography": {
+        "heading_font": "Inter, system-ui, sans-serif",
+        "body_font": "Inter, system-ui, sans-serif",
+        "font_weights": [400, 500, 600, 700]
+      },
+      "layout_style": "dashboard_grid",
+      "components": {
+        "cards": "elevated_with_shadow",
+        "buttons": "rounded_primary",
+        "forms": "clean_minimal",
+        "tables": "striped_modern"
+      },
+      "animations": "subtle_fade",
+      "projects": ["CRUD", "DASHBOARD", "ANALYTICS"]
+    },
+    "creative_tool": {
+      "name": "Creative Tool",
+      "description": "Vibrant, artistic applications",
+      "css_library": "chakra_ui",
+      "color_scheme": {
+        "primary": "#ff6b6b",
+        "secondary": "#4ecdc4",
+        "accent": "#45b7d1",
+        "success": "#96ceb4",
+        "warning": "#ffeaa7",
+        "error": "#d63031",
+        "background": "#2d3436",
+        "surface": "#636e72",
+        "text_primary": "#ffffff",
+        "text_secondary": "#b2bec3"
+      },
+      "typography": {
+        "heading_font": "Poppins, sans-serif",
+        "body_font": "Inter, sans-serif",
+        "font_weights": [400, 500, 600, 700, 800]
+      },
+      "layout_style": "creative_canvas",
+      "components": {
+        "cards": "gradient_backgrounds",
+        "buttons": "animated_gradient",
+        "forms": "floating_labels",
+        "tables": "glass_morphism"
+      },
+      "animations": "playful_bounce",
+      "projects": ["GENERATOR", "MEDIA_CONTENT", "CREATIVE_AI"]
+    },
+    "finance_trading": {
+      "name": "Finance & Trading",
+      "description": "Professional financial applications",
+      "css_library": "ant_design",
+      "color_scheme": {
+        "primary": "#1890ff",
+        "secondary": "#722ed1",
+        "accent": "#13c2c2",
+        "success": "#52c41a",
+        "warning": "#faad14",
+        "error": "#ff4d4f",
+        "background": "#f0f2f5",
+        "surface": "#ffffff",
+        "text_primary": "#262626",
+        "text_secondary": "#8c8c8c"
+      },
+      "typography": {
+        "heading_font": "Roboto, sans-serif",
+        "body_font": "Roboto, sans-serif",
+        "font_weights": [400, 500, 600, 700]
+      },
+      "layout_style": "data_heavy_grid",
+      "components": {
+        "cards": "data_cards",
+        "buttons": "professional_flat",
+        "forms": "compact_forms",
+        "tables": "financial_tables"
+      },
+      "animations": "smooth_transitions",
+      "projects": ["FINANCE_TRADING", "CRYPTO_ANALYTICS", "PORTFOLIO_MANAGER"]
+    },
+    "healthcare_demo": {
+      "name": "Healthcare Demo",
+      "description": "Calming, accessible healthcare applications",
+      "css_library": "material_ui",
+      "color_scheme": {
+        "primary": "#2196f3",
+        "secondary": "#4caf50",
+        "accent": "#ff9800",
+        "success": "#4caf50",
+        "warning": "#ff9800",
+        "error": "#f44336",
+        "background": "#fafafa",
+        "surface": "#ffffff",
+        "text_primary": "#212121",
+        "text_secondary": "#757575"
+      },
+      "typography": {
+        "heading_font": "Roboto, sans-serif",
+        "body_font": "Roboto, sans-serif",
+        "font_weights": [300, 400, 500, 700]
+      },
+      "layout_style": "accessible_layout",
+      "components": {
+        "cards": "soft_shadows",
+        "buttons": "accessible_buttons",
+        "forms": "large_touch_targets",
+        "tables": "high_contrast"
+      },
+      "animations": "gentle_fade",
+      "projects": ["HEALTHCARE_DEMO", "MEDICAL_ANALYTICS", "PATIENT_PORTAL"]
+    },
+    "legal_document": {
+      "name": "Legal Document",
+      "description": "Conservative, formal legal applications",
+      "css_library": "bootstrap",
+      "color_scheme": {
+        "primary": "#6c757d",
+        "secondary": "#495057",
+        "accent": "#007bff",
+        "success": "#28a745",
+        "warning": "#ffc107",
+        "error": "#dc3545",
+        "background": "#ffffff",
+        "surface": "#f8f9fa",
+        "text_primary": "#212529",
+        "text_secondary": "#6c757d"
+      },
+      "typography": {
+        "heading_font": "Times New Roman, serif",
+        "body_font": "Arial, sans-serif",
+        "font_weights": [400, 600, 700]
+      },
+      "layout_style": "document_focused",
+      "components": {
+        "cards": "formal_cards",
+        "buttons": "conservative_style",
+        "forms": "legal_forms",
+        "tables": "document_tables"
+      },
+      "animations": "minimal_transitions",
+      "projects": ["LEGAL_DOCUMENT", "CONTRACT_ANALYSIS", "COMPLIANCE_TOOL"]
+    },
+    "gaming_entertainment": {
+      "name": "Gaming & Entertainment",
+      "description": "Dark, bold gaming applications",
+      "css_library": "styled_components",
+      "color_scheme": {
+        "primary": "#ff6b35",
+        "secondary": "#f7931e",
+        "accent": "#00d4ff",
+        "success": "#00ff88",
+        "warning": "#ffd700",
+        "error": "#ff0040",
+        "background": "#0a0a0a",
+        "surface": "#1a1a1a",
+        "text_primary": "#ffffff",
+        "text_secondary": "#cccccc"
+      },
+      "typography": {
+        "heading_font": "Orbitron, monospace",
+        "body_font": "Rajdhani, sans-serif",
+        "font_weights": [400, 500, 600, 700]
+      },
+      "layout_style": "gaming_interface",
+      "components": {
+        "cards": "neon_borders",
+        "buttons": "gaming_buttons",
+        "forms": "futuristic_forms",
+        "tables": "dark_tables"
+      },
+      "animations": "cyberpunk_effects",
+      "projects": ["GAMING_AI", "ENTERTAINMENT_PLATFORM", "VIRTUAL_REALITY"]
+    },
+    "educational_learning": {
+      "name": "Educational & Learning",
+      "description": "Friendly, engaging educational applications",
+      "css_library": "mantine",
+      "color_scheme": {
+        "primary": "#228be6",
+        "secondary": "#40c057",
+        "accent": "#fd7e14",
+        "success": "#40c057",
+        "warning": "#ffc078",
+        "error": "#fa5252",
+        "background": "#f8f9fa",
+        "surface": "#ffffff",
+        "text_primary": "#212529",
+        "text_secondary": "#868e96"
+      },
+      "typography": {
+        "heading_font": "Nunito, sans-serif",
+        "body_font": "Open Sans, sans-serif",
+        "font_weights": [400, 600, 700, 800]
+      },
+      "layout_style": "learning_centered",
+      "components": {
+        "cards": "friendly_cards",
+        "buttons": "rounded_friendly",
+        "forms": "interactive_forms",
+        "tables": "learning_tables"
+      },
+      "animations": "encouraging_motion",
+      "projects": ["EDUCATIONAL_AI", "LEARNING_PLATFORM", "TUTORING_SYSTEM"]
+    },
+    "research_analytics": {
+      "name": "Research & Analytics",
+      "description": "Data-focused research applications",
+      "css_library": "semantic_ui",
+      "color_scheme": {
+        "primary": "#6435c9",
+        "secondary": "#a333c8",
+        "accent": "#21ba45",
+        "success": "#21ba45",
+        "warning": "#fbbd08",
+        "error": "#db2828",
+        "background": "#f9fafb",
+        "surface": "#ffffff",
+        "text_primary": "#2c3e50",
+        "text_secondary": "#7f8c8d"
+      },
+      "typography": {
+        "heading_font": "Lato, sans-serif",
+        "body_font": "Lato, sans-serif",
+        "font_weights": [300, 400, 700, 900]
+      },
+      "layout_style": "research_dashboard",
+      "components": {
+        "cards": "data_visualization",
+        "buttons": "research_buttons",
+        "forms": "analytics_forms",
+        "tables": "research_tables"
+      },
+      "animations": "data_flow",
+      "projects": ["RESEARCH_AI", "DATA_ANALYTICS", "SCIENTIFIC_TOOLS"]
+    },
+    "chatbot_conversational": {
+      "name": "Chatbot & Conversational",
+      "description": "Modern chat and conversational interfaces",
+      "css_library": "tailwind",
+      "color_scheme": {
+        "primary": "#8b5cf6",
+        "secondary": "#06b6d4",
+        "accent": "#f59e0b",
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444",
+        "background": "#f8fafc",
+        "surface": "#ffffff",
+        "text_primary": "#1e293b",
+        "text_secondary": "#64748b"
+      },
+      "typography": {
+        "heading_font": "Inter, system-ui, sans-serif",
+        "body_font": "Inter, system-ui, sans-serif",
+        "font_weights": [400, 500, 600, 700]
+      },
+      "layout_style": "chat_interface",
+      "components": {
+        "cards": "message_bubbles",
+        "buttons": "chat_buttons",
+        "forms": "message_input",
+        "tables": "conversation_history"
+      },
+      "animations": "message_slide",
+      "projects": ["CHATBOT", "CONVERSATIONAL_AI", "CUSTOMER_SUPPORT"]
+    },
+    "rag_knowledge": {
+      "name": "RAG & Knowledge Base",
+      "description": "Document-focused knowledge applications",
+      "css_library": "bulma",
+      "color_scheme": {
+        "primary": "#00d1b2",
+        "secondary": "#3273dc",
+        "accent": "#ff3860",
+        "success": "#23d160",
+        "warning": "#ffdd57",
+        "error": "#ff3860",
+        "background": "#fafafa",
+        "surface": "#ffffff",
+        "text_primary": "#363636",
+        "text_secondary": "#4a4a4a"
+      },
+      "typography": {
+        "heading_font": "BlinkMacSystemFont, -apple-system, sans-serif",
+        "body_font": "BlinkMacSystemFont, -apple-system, sans-serif",
+        "font_weights": [400, 600, 700]
+      },
+      "layout_style": "document_reader",
+      "components": {
+        "cards": "document_cards",
+        "buttons": "bulma_buttons",
+        "forms": "search_forms",
+        "tables": "document_tables"
+      },
+      "animations": "document_transitions",
+      "projects": ["RAG", "KNOWLEDGE_BASE", "DOCUMENT_AI"]
+    }
+  },
+  "css_libraries": {
+    "tailwind": {
+      "name": "Tailwind CSS",
+      "description": "Utility-first CSS framework",
+      "installation": "npm install -D tailwindcss postcss autoprefixer",
+      "config_file": "tailwind.config.js",
+      "pros": ["Highly customizable", "Small bundle size", "Modern approach"],
+      "cons": ["Learning curve", "HTML can get verbose"],
+      "best_for": ["Modern web apps", "Custom designs", "Rapid prototyping"]
+    },
+    "material_ui": {
+      "name": "Material-UI (MUI)",
+      "description": "React components implementing Material Design",
+      "installation": "npm install @mui/material @emotion/react @emotion/styled",
+      "config_file": "theme.js",
+      "pros": ["Comprehensive component library", "Material Design", "Great documentation"],
+      "cons": ["Bundle size", "Material Design constraints"],
+      "best_for": ["Enterprise apps", "Android-like interfaces", "Professional tools"]
+    },
+    "chakra_ui": {
+      "name": "Chakra UI",
+      "description": "Simple, modular and accessible component library",
+      "installation": "npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion",
+      "config_file": "chakra.config.js",
+      "pros": ["Accessible by default", "Modern API", "Great developer experience"],
+      "cons": ["Bundle size", "Less customization than Tailwind"],
+      "best_for": ["Accessible apps", "Modern interfaces", "Quick development"]
+    },
+    "ant_design": {
+      "name": "Ant Design",
+      "description": "Enterprise-level UI design language and React UI library",
+      "installation": "npm install antd",
+      "config_file": "antd.config.js",
+      "pros": ["Enterprise-ready", "Comprehensive", "Great for data-heavy apps"],
+      "cons": ["Bundle size", "Very opinionated", "Chinese design patterns"],
+      "best_for": ["Enterprise apps", "Data-heavy interfaces", "Admin dashboards"]
+    },
+    "bootstrap": {
+      "name": "Bootstrap",
+      "description": "Popular CSS framework for responsive web development",
+      "installation": "npm install bootstrap react-bootstrap",
+      "config_file": "bootstrap.config.js",
+      "pros": ["Mature ecosystem", "Great documentation", "Responsive grid"],
+      "cons": ["Bundle size", "Less modern", "Bootstrap look"],
+      "best_for": ["Traditional web apps", "Quick prototypes", "Legacy projects"]
+    },
+    "mantine": {
+      "name": "Mantine",
+      "description": "React components library with dark theme support",
+      "installation": "npm install @mantine/core @mantine/hooks @emotion/react",
+      "config_file": "mantine.config.js",
+      "pros": ["Dark theme support", "Modern API", "Great TypeScript support"],
+      "cons": ["Smaller ecosystem", "Less mature"],
+      "best_for": ["Modern React apps", "Dark mode apps", "TypeScript projects"]
+    },
+    "semantic_ui": {
+      "name": "Semantic UI React",
+      "description": "Development framework that helps create beautiful, responsive layouts",
+      "installation": "npm install semantic-ui-react semantic-ui-css",
+      "config_file": "semantic.config.js",
+      "pros": ["Semantic HTML", "Beautiful default styling", "Responsive"],
+      "cons": ["Bundle size", "Less active development"],
+      "best_for": ["Content-heavy sites", "Beautiful defaults", "Semantic HTML"]
+    },
+    "styled_components": {
+      "name": "Styled Components",
+      "description": "CSS-in-JS library for styling React components",
+      "installation": "npm install styled-components",
+      "config_file": "styled.config.js",
+      "pros": ["CSS-in-JS", "Dynamic styling", "Component-scoped styles"],
+      "cons": ["Runtime overhead", "Learning curve", "Bundle size"],
+      "best_for": ["Dynamic styling", "Component libraries", "Custom designs"]
+    },
+    "bulma": {
+      "name": "Bulma",
+      "description": "Modern CSS framework based on Flexbox",
+      "installation": "npm install bulma",
+      "config_file": "bulma.config.js",
+      "pros": ["Flexbox-based", "Modern CSS", "No JavaScript"],
+      "cons": ["Less React integration", "Limited components"],
+      "best_for": ["CSS-only projects", "Simple layouts", "Lightweight apps"]
+    }
+  },
+  "layout_patterns": {
+    "dashboard_grid": {
+      "description": "Grid-based dashboard layout",
+      "components": ["sidebar", "header", "main_content", "widgets"],
+      "responsive": true,
+      "best_for": ["Analytics", "Admin panels", "Data visualization"]
+    },
+    "creative_canvas": {
+      "description": "Full-screen creative workspace",
+      "components": ["toolbar", "canvas", "palette", "layers"],
+      "responsive": false,
+      "best_for": ["Design tools", "Creative apps", "Art applications"]
+    },
+    "data_heavy_grid": {
+      "description": "Data-focused grid layout",
+      "components": ["filters", "data_table", "charts", "metrics"],
+      "responsive": true,
+      "best_for": ["Financial apps", "Trading platforms", "Analytics"]
+    },
+    "accessible_layout": {
+      "description": "Accessibility-focused layout",
+      "components": ["large_buttons", "high_contrast", "screen_reader_support"],
+      "responsive": true,
+      "best_for": ["Healthcare", "Government", "Accessibility apps"]
+    },
+    "document_focused": {
+      "description": "Document-centric layout",
+      "components": ["document_viewer", "sidebar", "toolbar", "annotations"],
+      "responsive": true,
+      "best_for": ["Legal apps", "Document processing", "Content management"]
+    },
+    "gaming_interface": {
+      "description": "Gaming-focused interface",
+      "components": ["game_area", "controls", "hud", "inventory"],
+      "responsive": false,
+      "best_for": ["Games", "Entertainment", "Interactive apps"]
+    },
+    "learning_centered": {
+      "description": "Education-focused layout",
+      "components": ["lesson_viewer", "progress_tracker", "interactive_elements"],
+      "responsive": true,
+      "best_for": ["Education", "Training", "Learning platforms"]
+    },
+    "research_dashboard": {
+      "description": "Research and analytics layout",
+      "components": ["data_visualization", "filters", "export_tools", "collaboration"],
+      "responsive": true,
+      "best_for": ["Research", "Analytics", "Scientific tools"]
+    },
+    "chat_interface": {
+      "description": "Conversational interface",
+      "components": ["chat_window", "message_input", "user_list", "settings"],
+      "responsive": true,
+      "best_for": ["Chatbots", "Messaging", "Customer support"]
+    },
+    "document_reader": {
+      "description": "Document reading interface",
+      "components": ["document_viewer", "search", "bookmarks", "annotations"],
+      "responsive": true,
+      "best_for": ["RAG", "Knowledge bases", "Document AI"]
+    }
+  }
+}

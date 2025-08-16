@@ -1,0 +1,1376 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>60 AI Apps Pipeline - Progress Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark': '#0f172a',
+                        'darker': '#020617'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .status-complete { background: linear-gradient(135deg, #10b981, #059669); }
+        .status-in-progress { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .status-not-started { background: linear-gradient(135deg, #6b7280, #4b5563); }
+        .status-failed { background: linear-gradient(135deg, #ef4444, #dc2626); }
+    </style>
+</head>
+<body class="bg-dark text-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4 gradient-bg bg-clip-text text-transparent">
+                60 AI Apps Pipeline
+            </h1>
+            <p class="text-xl text-gray-300 mb-2">Progress Dashboard</p>
+            <p class="text-sm text-gray-400">Last updated: 2025-08-16 08:26:34</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div class="bg-darker rounded-lg p-6 card-hover">
+                <div class="text-3xl font-bold text-blue-400">60</div>
+                <div class="text-gray-400">Total Projects</div>
+            </div>
+            <div class="bg-darker rounded-lg p-6 card-hover">
+                <div class="text-3xl font-bold text-green-400">0</div>
+                <div class="text-gray-400">Completed</div>
+            </div>
+            <div class="bg-darker rounded-lg p-6 card-hover">
+                <div class="text-3xl font-bold text-yellow-400">0</div>
+                <div class="text-gray-400">In Progress</div>
+            </div>
+            <div class="bg-darker rounded-lg p-6 card-hover">
+                <div class="text-3xl font-bold text-red-400">0</div>
+                <div class="text-gray-400">Failed</div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="bg-darker rounded-lg p-6 mb-12">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Overall Progress</h3>
+                <span class="text-2xl font-bold text-blue-400">0%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-4">
+                <div class="gradient-bg h-4 rounded-full transition-all duration-500" 
+                     style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI-Powered Code Review & Refactoring Assistant</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-powered-code-review---refactoring-assistant/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Intelligent Document Processing & Knowledge Base</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/intelligent-document-processing---knowledge-base/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI-Powered Resume Parser & Job Matcher</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-powered-resume-parser---job-matcher/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Real-Time AI Content Moderation System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/real-time-ai-content-moderation-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI-Powered Financial Analysis & Trading Bot</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-powered-financial-analysis---trading-bot/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Intelligent Customer Support Chatbot</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/intelligent-customer-support-chatbot/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI-Powered Medical Diagnosis Assistant</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-powered-medical-diagnosis-assistant/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Smart Contract Analysis & Security Auditor</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/smart-contract-analysis---security-auditor/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI-Powered Video Content Generator</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-powered-video-content-generator/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Intelligent Supply Chain Optimization System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/intelligent-supply-chain-optimization-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Autonomous Research & Report Generation System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/autonomous-research---report-generation-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Multi-Agent Software Development Team</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/multi-agent-software-development-team/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Intelligent E-commerce Management System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/intelligent-e-commerce-management-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI-Powered Legal Document Analysis & Contract Negotiation</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-powered-legal-document-analysis---contract-negotiation/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Autonomous Data Science Pipeline</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/autonomous-data-science-pipeline/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Multi-Agent Cybersecurity Defense System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/multi-agent-cybersecurity-defense-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Intelligent Healthcare Diagnosis & Treatment Planning</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/intelligent-healthcare-diagnosis---treatment-planning/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Autonomous Financial Trading & Portfolio Management</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/autonomous-financial-trading---portfolio-management/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Multi-Agent Content Creation & Marketing System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/multi-agent-content-creation---marketing-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Intelligent Smart City Management System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/intelligent-smart-city-management-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Personal AI-Powered Codebase Documentation Tool</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/personal-ai-powered-codebase-documentation-tool/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Local Retrieval-Augmented Generation (RAG) System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/local-retrieval-augmented-generation--rag--system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Multimodal AI Medical Assistant</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/multimodal-ai-medical-assistant/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI-Driven Music Composition Tool</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-driven-music-composition-tool/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Realistic Synthetic Data Generator</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/realistic-synthetic-data-generator/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Real-Time AI-Powered Text-to-3D Model Generator</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/real-time-ai-powered-text-to-3d-model-generator/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI-Powered Resume and Cover Letter Tailor</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-powered-resume-and-cover-letter-tailor/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Dynamic Video Storyboard Creator</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/dynamic-video-storyboard-creator/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Customer Support Chatbot with Hallucination Correction</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/customer-support-chatbot-with-hallucination-correction/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Creative Content Generator for Social Media</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/creative-content-generator-for-social-media/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Automated Market Research and Report Generation Team</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/automated-market-research-and-report-generation-team/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Cybersecurity Threat Analysis Team</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/cybersecurity-threat-analysis-team/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Financial Portfolio Management System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/financial-portfolio-management-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Personalized Career Coach Agent System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/personalized-career-coach-agent-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Automated Software Development Team</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/automated-software-development-team/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Creative Content Generation and Marketing Team</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/creative-content-generation-and-marketing-team/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">E-commerce Customer Service and Fraud Detection</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/e-commerce-customer-service-and-fraud-detection/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Autonomous Learning and Research Assistant</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/autonomous-learning-and-research-assistant/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Virtual Real Estate Agent System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/virtual-real-estate-agent-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Personal Brain Agent System</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/personal-brain-agent-system/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Universal RAG Chatbot</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/universal-rag-chatbot/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI Meeting Notes & Action Items</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-meeting-notes---action-items/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Multilingual Customer Support Reply Generator</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/multilingual-customer-support-reply-generator/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Smart Contract Clause Explainer</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/smart-contract-clause-explainer/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Podcast to Blog Post Converter</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/podcast-to-blog-post-converter/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Website Content Refresher</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/website-content-refresher/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Resume & Cover Letter Personalizer</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/resume---cover-letter-personalizer/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Learning Path Generator</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/learning-path-generator/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Auto Blog Post Series Creator</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/auto-blog-post-series-creator/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI Email Campaign Writer</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-email-campaign-writer/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Startup Idea to Pitch Deck Crew</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/startup-idea-to-pitch-deck-crew/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Social Media Factory</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/social-media-factory/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Automated Research Department</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/automated-research-department/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">AI Content Localizer</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/ai-content-localizer/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Recruitment Flow AI</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/recruitment-flow-ai/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Real Estate Investment Finder</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/real-estate-investment-finder/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">Conference Planning Crew</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/conference-planning-crew/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">B2B Sales Prospecting AI</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/b2b-sales-prospecting-ai/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">SEO Growth Team</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/seo-growth-team/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+
+    <div class="bg-darker rounded-lg p-6 card-hover">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-blue-300">E-Commerce Launch Crew</h3>
+            <div class="w-3 h-3 rounded-full status-not-started"></div>
+        </div>
+        <div class="text-sm text-gray-400 mb-2">Not Started</div>
+        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+            <div class="gradient-bg h-2 rounded-full transition-all duration-500" 
+                 style="width: 0%"></div>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">0% complete</div>
+        
+        <div class="mt-4">
+            <a href="deliverables/e-commerce-launch-crew/" 
+               class="text-blue-400 hover:text-blue-300 text-sm">
+                View Details →
+            </a>
+        </div>
+    </div>
+    
+        </div>
+
+        <!-- Legend -->
+        <div class="mt-12 bg-darker rounded-lg p-6">
+            <h3 class="text-lg font-semibold mb-4">Status Legend</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full status-complete mr-2"></div>
+                    <span class="text-sm">Complete</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full status-in-progress mr-2"></div>
+                    <span class="text-sm">In Progress</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full status-not-started mr-2"></div>
+                    <span class="text-sm">Not Started</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full status-failed mr-2"></div>
+                    <span class="text-sm">Failed</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-refresh every 30 seconds
+        setTimeout(() => {
+            window.location.reload();
+        }, 30000);
+    </script>
+</body>
+</html>

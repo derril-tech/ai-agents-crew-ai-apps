@@ -1,0 +1,152 @@
+{
+  "app_types": {
+    "CRUD": {
+      "name": "CRUD SaaS Application",
+      "description": "Standard Create, Read, Update, Delete application with user management",
+      "prompt_template": "You are coding a CRUD SaaS application called {project_name}. Follow these rules: {claude_constitution}. Here is the project brief: {project_brief}. Here is the frontend boilerplate spec: {frontend_spec}. Here is the backend boilerplate spec: {backend_spec}. Focus on: 1) User authentication and authorization 2) Data models and relationships 3) CRUD operations with proper validation 4) Responsive data tables and forms 5) Search and filtering capabilities 6) File upload and management 7) User dashboard and analytics 8) API rate limiting and security",
+      "key_features": [
+        "User authentication (Clerk/Auth.js)",
+        "Database models (PostgreSQL/MongoDB)",
+        "CRUD API endpoints",
+        "Data tables with sorting/filtering",
+        "Form validation and error handling",
+        "File upload (UploadThing/AWS S3)",
+        "User roles and permissions",
+        "Search functionality",
+        "Pagination and infinite scroll",
+        "Export/import capabilities"
+      ],
+      "tech_stack": "Next.js 14, React, Tailwind CSS, FastAPI/Express.js, PostgreSQL/MongoDB, Clerk/Auth.js, UploadThing"
+    },
+    "CHATBOT": {
+      "name": "AI Chatbot Application",
+      "description": "Conversational AI application with chat interface and AI integration",
+      "prompt_template": "You are coding an AI Chatbot application called {project_name}. Follow these rules: {claude_constitution}. Here is the project brief: {project_brief}. Here is the frontend boilerplate spec: {frontend_spec}. Here is the backend boilerplate spec: {backend_spec}. Focus on: 1) Real-time chat interface with WebSocket 2) AI model integration (OpenAI/Anthropic) 3) Message history and context management 4) Multi-language support 5) Sentiment analysis and moderation 6) File sharing and media support 7) User authentication and chat rooms 8) Analytics and conversation insights",
+      "key_features": [
+        "Real-time chat interface",
+        "AI model integration (OpenAI/Anthropic)",
+        "WebSocket connections (Pusher/Ably)",
+        "Message history and context",
+        "Multi-language support",
+        "Sentiment analysis",
+        "File and media sharing",
+        "Chat rooms and channels",
+        "User authentication",
+        "Conversation analytics",
+        "Moderation and filtering",
+        "Voice-to-text integration"
+      ],
+      "tech_stack": "Next.js 14, React, Tailwind CSS, FastAPI/Express.js, PostgreSQL, OpenAI/Anthropic API, Pusher/Ably, AssemblyAI"
+    },
+    "RAG": {
+      "name": "RAG (Retrieval-Augmented Generation) Application",
+      "description": "Document processing and AI-powered Q&A system with vector search",
+      "prompt_template": "You are coding a RAG application called {project_name}. Follow these rules: {claude_constitution}. Here is the project brief: {project_brief}. Here is the frontend boilerplate spec: {frontend_spec}. Here is the backend boilerplate spec: {backend_spec}. Focus on: 1) Document upload and processing 2) Vector database integration (Pinecone/Weaviate) 3) Text embedding and chunking 4) Semantic search functionality 5) AI-powered Q&A interface 6) Document management and organization 7) User authentication and document sharing 8) Search analytics and insights",
+      "key_features": [
+        "Document upload (PDF, DOC, TXT)",
+        "Text processing and chunking",
+        "Vector database (Pinecone/Weaviate)",
+        "Semantic search functionality",
+        "AI-powered Q&A interface",
+        "Document management system",
+        "User authentication",
+        "Document sharing and collaboration",
+        "Search analytics",
+        "Knowledge base organization",
+        "Citation and source tracking",
+        "Export and backup capabilities"
+      ],
+      "tech_stack": "Next.js 14, React, Tailwind CSS, FastAPI/Express.js, PostgreSQL, Pinecone/Weaviate, OpenAI/Anthropic API, LangChain"
+    },
+    "DASHBOARD": {
+      "name": "Analytics Dashboard Application",
+      "description": "Data visualization and analytics dashboard with real-time metrics",
+      "prompt_template": "You are coding an Analytics Dashboard application called {project_name}. Follow these rules: {claude_constitution}. Here is the project brief: {project_brief}. Here is the frontend boilerplate spec: {frontend_spec}. Here is the backend boilerplate spec: {backend_spec}. Focus on: 1) Real-time data visualization with charts 2) Data aggregation and processing 3) Interactive filters and date ranges 4) Multiple dashboard views and layouts 5) Data export and reporting 6) User authentication and role-based access 7) Automated data refresh and caching 8) Mobile-responsive design",
+      "key_features": [
+        "Real-time data visualization",
+        "Interactive charts and graphs",
+        "Data aggregation and processing",
+        "Filtering and date range selection",
+        "Multiple dashboard layouts",
+        "Data export (CSV, PDF)",
+        "User authentication and roles",
+        "Automated data refresh",
+        "Caching and performance optimization",
+        "Mobile-responsive design",
+        "Custom widget creation",
+        "Alert and notification system"
+      ],
+      "tech_stack": "Next.js 14, React, Tailwind CSS, FastAPI/Express.js, PostgreSQL, Chart.js/D3.js, Redis, Cron jobs"
+    },
+    "GENERATOR": {
+      "name": "AI Content Generator Application",
+      "description": "AI-powered content creation tool with multiple output formats",
+      "prompt_template": "You are coding an AI Content Generator application called {project_name}. Follow these rules: {claude_constitution}. Here is the project brief: {project_brief}. Here is the frontend boilerplate spec: {frontend_spec}. Here is the backend boilerplate spec: {backend_spec}. Focus on: 1) AI content generation with multiple models 2) Template management system 3) Content editing and refinement 4) Multiple output formats (text, images, videos) 5) Brand voice and style customization 6) Content scheduling and publishing 7) User authentication and content history 8) Quality control and approval workflows",
+      "key_features": [
+        "AI content generation",
+        "Template management system",
+        "Content editing interface",
+        "Multiple output formats",
+        "Brand voice customization",
+        "Content scheduling",
+        "User authentication",
+        "Content history and versioning",
+        "Quality control workflows",
+        "Social media integration",
+        "Content analytics",
+        "Bulk generation capabilities"
+      ],
+      "tech_stack": "Next.js 14, React, Tailwind CSS, FastAPI/Express.js, PostgreSQL, OpenAI/Anthropic API, DALL-E/Midjourney API, Buffer/Hootsuite API"
+    },
+    "ANALYTICS": {
+      "name": "Advanced Analytics Application",
+      "description": "Complex data analysis and business intelligence platform",
+      "prompt_template": "You are coding an Advanced Analytics application called {project_name}. Follow these rules: {claude_constitution}. Here is the project brief: {project_brief}. Here is the frontend boilerplate spec: {frontend_spec}. Here is the backend boilerplate spec: {backend_spec}. Focus on: 1) Advanced data processing and ETL pipelines 2) Machine learning model integration 3) Predictive analytics and forecasting 4) Custom report builder 5) Data visualization with advanced charts 6) User authentication and data access control 7) Real-time data streaming 8) API integrations for data sources",
+      "key_features": [
+        "Advanced data processing",
+        "Machine learning integration",
+        "Predictive analytics",
+        "Custom report builder",
+        "Advanced data visualization",
+        "User authentication and roles",
+        "Real-time data streaming",
+        "API integrations",
+        "Data pipeline management",
+        "Automated insights",
+        "Data quality monitoring",
+        "Export and sharing capabilities"
+      ],
+      "tech_stack": "Next.js 14, React, Tailwind CSS, FastAPI/Express.js, PostgreSQL, Python ML libraries, Apache Kafka, Redis"
+    }
+  },
+  "claude_constitution": {
+    "coding_rules": [
+      "Use TypeScript for all frontend and backend code",
+      "Follow React hooks best practices",
+      "Implement proper error handling and loading states",
+      "Use Tailwind CSS for styling with consistent design system",
+      "Write comprehensive API documentation",
+      "Implement proper authentication and authorization",
+      "Use environment variables for all sensitive data",
+      "Follow RESTful API design principles",
+      "Implement proper database migrations",
+      "Add comprehensive logging and monitoring",
+      "Write unit tests for critical functions",
+      "Use proper Git commit messages and branching strategy"
+    ],
+    "file_structure": {
+      "frontend": "Next.js 14 app router structure with components, lib, and utils folders",
+      "backend": "FastAPI/Express.js with models, services, and utils folders",
+      "database": "Proper migration files and seed data",
+      "docs": "API documentation and setup instructions"
+    },
+    "output_format": [
+      "Complete, runnable code with all dependencies",
+      "Clear installation and setup instructions",
+      "Environment variables documentation",
+      "API endpoint documentation",
+      "Database schema and relationships",
+      "Deployment instructions for Vercel/Render"
+    ]
+  }
+}

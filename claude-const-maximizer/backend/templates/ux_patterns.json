@@ -1,0 +1,219 @@
+{
+  "app_patterns": {
+    "CRUD": {
+      "navigation": [
+        "Top navigation bar with logo and user menu",
+        "Sidebar navigation for main sections",
+        "Breadcrumb navigation for deep pages",
+        "Search bar in header for global search"
+      ],
+      "data_tables": [
+        "Sortable columns with visual indicators",
+        "Filter dropdowns for each column",
+        "Bulk actions with checkboxes",
+        "Pagination with page numbers and items per page",
+        "Export functionality (CSV, PDF)",
+        "Row actions (edit, delete, view) with hover states"
+      ],
+      "forms": [
+        "Multi-step form wizard for complex data entry",
+        "Inline editing for simple fields",
+        "Form validation with real-time feedback",
+        "Auto-save functionality",
+        "File upload with drag-and-drop",
+        "Rich text editor for content fields"
+      ],
+      "user_management": [
+        "User profile page with avatar and settings",
+        "Role-based access control indicators",
+        "Team invitation system",
+        "User activity logs and audit trails"
+      ],
+      "mobile_patterns": [
+        "Collapsible sidebar for mobile",
+        "Bottom navigation for primary actions",
+        "Swipe gestures for row actions",
+        "Touch-friendly form inputs"
+      ]
+    },
+    "CHATBOT": {
+      "chat_interface": [
+        "Message bubbles with different styles for user/AI",
+        "Typing indicators and loading states",
+        "Message timestamps and read receipts",
+        "File attachment support with preview",
+        "Voice message recording and playback",
+        "Emoji picker and reactions"
+      ],
+      "conversation_management": [
+        "Conversation history sidebar",
+        "Search within conversations",
+        "Conversation export functionality",
+        "Conversation sharing and collaboration",
+        "Conversation templates and saved responses"
+      ],
+      "ai_features": [
+        "Model selection dropdown",
+        "Temperature and creativity controls",
+        "Context window management",
+        "Prompt templates and suggestions",
+        "AI response editing and regeneration"
+      ],
+      "mobile_patterns": [
+        "Full-screen chat interface",
+        "Voice input button for mobile",
+        "Swipe to reply or delete messages",
+        "Keyboard-aware layout adjustments"
+      ]
+    },
+    "RAG": {
+      "document_management": [
+        "Drag-and-drop file upload area",
+        "Document preview with thumbnails",
+        "Document organization with folders/tags",
+        "Document version history",
+        "Bulk document operations",
+        "Document sharing and permissions"
+      ],
+      "search_interface": [
+        "Search bar with autocomplete",
+        "Advanced search filters",
+        "Search results with snippets and highlights",
+        "Search history and saved searches",
+        "Search analytics and insights"
+      ],
+      "qa_interface": [
+        "Question input with character limit",
+        "Answer display with source citations",
+        "Follow-up question suggestions",
+        "Answer quality feedback system",
+        "Conversation thread for related questions"
+      ],
+      "knowledge_base": [
+        "Knowledge base organization tree",
+        "Document relationships and linking",
+        "Knowledge graph visualization",
+        "Content gap analysis",
+        "Automated content suggestions"
+      ]
+    },
+    "DASHBOARD": {
+      "widgets": [
+        "Draggable and resizable widgets",
+        "Widget customization and settings",
+        "Widget templates and presets",
+        "Real-time data updates with indicators",
+        "Widget export and sharing"
+      ],
+      "charts": [
+        "Interactive charts with tooltips",
+        "Chart type selection (line, bar, pie, etc.)",
+        "Chart customization (colors, labels, axes)",
+        "Chart export (PNG, SVG, PDF)",
+        "Chart annotations and comments"
+      ],
+      "filters": [
+        "Date range picker with presets",
+        "Multi-select filters with search",
+        "Filter combinations and saved filters",
+        "Filter reset and clear all options",
+        "Filter analytics and usage tracking"
+      ],
+      "mobile_patterns": [
+        "Responsive chart layouts",
+        "Touch-friendly filter controls",
+        "Swipe between dashboard views",
+        "Mobile-optimized widget layouts"
+      ]
+    },
+    "GENERATOR": {
+      "content_creation": [
+        "Template selection with previews",
+        "Content type selection (text, image, video)",
+        "Brand voice and style controls",
+        "Content length and format options",
+        "Real-time content preview",
+        "Content history and versioning"
+      ],
+      "output_management": [
+        "Generated content gallery",
+        "Content editing and refinement",
+        "Content approval workflows",
+        "Content scheduling and publishing",
+        "Content analytics and performance"
+      ],
+      "ai_controls": [
+        "Model selection and comparison",
+        "Creativity and quality sliders",
+        "Prompt engineering interface",
+        "Batch generation controls",
+        "AI feedback and learning"
+      ],
+      "mobile_patterns": [
+        "Simplified mobile creation flow",
+        "Voice input for content prompts",
+        "Mobile-optimized content preview",
+        "Quick share and export options"
+      ]
+    },
+    "ANALYTICS": {
+      "data_exploration": [
+        "Interactive data tables with drill-down",
+        "Data filtering and segmentation",
+        "Custom metric creation",
+        "Data comparison and benchmarking",
+        "Anomaly detection and alerts"
+      ],
+      "reporting": [
+        "Custom report builder",
+        "Report templates and scheduling",
+        "Report sharing and collaboration",
+        "Report export (PDF, Excel, PowerPoint)",
+        "Report analytics and usage tracking"
+      ],
+      "predictive_features": [
+        "Forecasting models and predictions",
+        "Trend analysis and insights",
+        "What-if scenario modeling",
+        "Predictive alerts and notifications",
+        "Model performance monitoring"
+      ],
+      "mobile_patterns": [
+        "Mobile-optimized data tables",
+        "Touch-friendly chart interactions",
+        "Simplified mobile reporting",
+        "Push notifications for insights"
+      ]
+    }
+  },
+  "common_patterns": {
+    "authentication": [
+      "Social login options (Google, GitHub, etc.)",
+      "Two-factor authentication setup",
+      "Password reset flow",
+      "Account verification process",
+      "Session management and timeout"
+    ],
+    "onboarding": [
+      "Welcome tour and feature introduction",
+      "Progressive disclosure of features",
+      "Sample data and demo mode",
+      "Getting started checklist",
+      "Help and support integration"
+    ],
+    "feedback": [
+      "In-app feedback forms",
+      "Rating and review system",
+      "Feature request submission",
+      "Bug reporting with screenshots",
+      "User satisfaction surveys"
+    ],
+    "accessibility": [
+      "Keyboard navigation support",
+      "Screen reader compatibility",
+      "High contrast mode",
+      "Font size adjustment",
+      "Color blind friendly design"
+    ]
+  }
+}

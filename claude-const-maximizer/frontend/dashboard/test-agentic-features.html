@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Features Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .project-card {
+            border: 2px solid #e0e0e0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .project-card.active {
+            border-color: #3b82f6;
+            background: #eff6ff;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        .agent-badge {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin: 2px;
+        }
+        .milestone {
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 4px;
+            background: #f8f9fa;
+        }
+        .milestone.in-progress {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+        }
+        .milestone.completed {
+            background: #dcfce7;
+            border-left: 4px solid #22c55e;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        button.stop {
+            background: #ef4444;
+        }
+        button.stop:hover {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <h1>🤖 Agentic Features Test</h1>
+    
+    <div class="test-section">
+        <h2>Agent Simulation Controls</h2>
+        <button onclick="startSimulation()">Start Simulation</button>
+        <button class="stop" onclick="stopSimulation()">Stop Simulation</button>
+        <button onclick="resetAll()">Reset All</button>
+        <p>Status: <span id="simulation-status">Stopped</span></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Project Status</h2>
+        <div id="projects-container">
+            <div class="project-card" id="project-1">
+                <h3>AI-Powered Code Review Assistant</h3>
+                <div id="agents-1"></div>
+                <div id="milestones-1"></div>
+            </div>
+            <div class="project-card" id="project-2">
+                <h3>Intelligent Document Processing</h3>
+                <div id="agents-2"></div>
+                <div id="milestones-2"></div>
+            </div>
+            <div class="project-card" id="project-3">
+                <h3>AI Resume Parser</h3>
+                <div id="agents-3"></div>
+                <div id="milestones-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let simulationRunning = false;
+        let simulationInterval;
+        
+        const projects = {
+            1: {
+                name: "AI-Powered Code Review Assistant",
+                activeAgents: [],
+                milestones: [
+                    { id: 'market-research', name: '🔍 Market Research', status: 'pending' },
+                    { id: 'project-brief', name: '📋 Project Brief', status: 'pending' },
+                    { id: 'backend-code', name: '⚙️ Backend Code', status: 'pending' },
+                    { id: 'frontend-code', name: '🎨 Frontend Code', status: 'pending' },
+                    { id: 'validation', name: '✅ Validation', status: 'pending' }
+                ]
+            },
+            2: {
+                name: "Intelligent Document Processing",
+                activeAgents: [],
+                milestones: [
+                    { id: 'market-research', name: '🔍 Market Research', status: 'pending' },
+                    { id: 'project-brief', name: '📋 Project Brief', status: 'pending' },
+                    { id: 'backend-code', name: '⚙️ Backend Code', status: 'pending' },
+                    { id: 'frontend-code', name: '🎨 Frontend Code', status: 'pending' },
+                    { id: 'validation', name: '✅ Validation', status: 'pending' }
+                ]
+            },
+            3: {
+                name: "AI Resume Parser",
+                activeAgents: [],
+                milestones: [
+                    { id: 'market-research', name: '🔍 Market Research', status: 'pending' },
+                    { id: 'project-brief', name: '📋 Project Brief', status: 'pending' },
+                    { id: 'backend-code', name: '⚙️ Backend Code', status: 'pending' },
+                    { id: 'frontend-code', name: '🎨 Frontend Code', status: 'pending' },
+                    { id: 'validation', name: '✅ Validation', status: 'pending' }
+                ]
+            }
+        };
+
+        const agents = ['MarketResearcher', 'PromptEngineer', 'ClaudeCoder', 'PreCodeValidator'];
+
+        function updateProjectDisplay(projectId) {
+            const project = projects[projectId];
+            const card = document.getElementById(`project-${projectId}`);
+            const agentsDiv = document.getElementById(`agents-${projectId}`);
+            const milestonesDiv = document.getElementById(`milestones-${projectId}`);
+
+            // Update active agents
+            if (project.activeAgents.length > 0) {
+                card.classList.add('active');
+                agentsDiv.innerHTML = '<strong>Active Agents:</strong> ' + 
+                    project.activeAgents.map(agent => `<span class="agent-badge">${agent}</span>`).join(' ');
+            } else {
+                card.classList.remove('active');
+                agentsDiv.innerHTML = '';
+            }
+
+            // Update milestones
+            milestonesDiv.innerHTML = project.milestones.map(milestone => {
+                let statusClass = '';
+                if (milestone.status === 'in_progress') statusClass = 'in-progress';
+                if (milestone.status === 'completed') statusClass = 'completed';
+                
+                return `<div class="milestone ${statusClass}">${milestone.name} - ${milestone.status}</div>`;
+            }).join('');
+        }
+
+        function startAgentWork(projectId, agent, milestoneId) {
+            const project = projects[projectId];
+            const milestone = project.milestones.find(m => m.id === milestoneId);
+            
+            if (milestone && milestone.status === 'pending') {
+                milestone.status = 'in_progress';
+                if (!project.activeAgents.includes(agent)) {
+                    project.activeAgents.push(agent);
+                }
+                updateProjectDisplay(projectId);
+                console.log(`🤖 ${agent} started working on ${milestoneId} for project ${projectId}`);
+            }
+        }
+
+        function completeAgentWork(projectId, milestoneId) {
+            const project = projects[projectId];
+            const milestone = project.milestones.find(m => m.id === milestoneId);
+            
+            if (milestone && milestone.status === 'in_progress') {
+                milestone.status = 'completed';
+                
+                // Remove agent if no other milestones are in progress
+                const inProgressMilestones = project.milestones.filter(m => m.status === 'in_progress');
+                if (inProgressMilestones.length === 0) {
+                    project.activeAgents = [];
+                }
+                
+                updateProjectDisplay(projectId);
+                console.log(`✅ Completed ${milestoneId} for project ${projectId}`);
+            }
+        }
+
+        function simulateAgentWork() {
+            if (!simulationRunning) return;
+
+            const projectIds = [1, 2, 3];
+            const randomProjectId = projectIds[Math.floor(Math.random() * projectIds.length)];
+            const randomAgent = agents[Math.floor(Math.random() * agents.length)];
+            const project = projects[randomProjectId];
+            const pendingMilestones = project.milestones.filter(m => m.status === 'pending');
+            const inProgressMilestones = project.milestones.filter(m => m.status === 'in_progress');
+
+            if (pendingMilestones.length > 0 && Math.random() > 0.5) {
+                // Start new work
+                const randomMilestone = pendingMilestones[Math.floor(Math.random() * pendingMilestones.length)];
+                startAgentWork(randomProjectId, randomAgent, randomMilestone.id);
+            } else if (inProgressMilestones.length > 0 && Math.random() > 0.7) {
+                // Complete work
+                const randomMilestone = inProgressMilestones[Math.floor(Math.random() * inProgressMilestones.length)];
+                completeAgentWork(randomProjectId, randomMilestone.id);
+            }
+        }
+
+        function startSimulation() {
+            simulationRunning = true;
+            document.getElementById('simulation-status').textContent = 'Running';
+            simulationInterval = setInterval(simulateAgentWork, 2000);
+            console.log('🤖 Starting Agent Simulation...');
+        }
+
+        function stopSimulation() {
+            simulationRunning = false;
+            document.getElementById('simulation-status').textContent = 'Stopped';
+            if (simulationInterval) {
+                clearInterval(simulationInterval);
+            }
+            console.log('🛑 Agent Simulation Stopped');
+        }
+
+        function resetAll() {
+            stopSimulation();
+            
+            // Reset all projects
+            Object.keys(projects).forEach(projectId => {
+                const project = projects[projectId];
+                project.activeAgents = [];
+                project.milestones.forEach(milestone => {
+                    milestone.status = 'pending';
+                });
+                updateProjectDisplay(projectId);
+            });
+            
+            console.log('🔄 All projects reset to initial state');
+        }
+
+        // Initialize display
+        Object.keys(projects).forEach(projectId => {
+            updateProjectDisplay(projectId);
+        });
+    </script>
+</body>
+</html>

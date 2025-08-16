@@ -1,0 +1,906 @@
+[
+  {
+    "project_name": "AI-Powered Code Review & Refactoring Assistant",
+    "description": "Automated code analysis, security vulnerability detection, performance optimization suggestions, automated refactoring",
+    "tech_stack": "Python, FastAPI, React, OpenAI/Claude API",
+    "why_impressive": "Shows full-stack development, AI integration, and understanding of software engineering best practices",
+    "archetype": "dev_tools",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic"
+    ],
+    "project_slug": "ai-powered-code-review---refactoring-assistant"
+  },
+  {
+    "project_name": "Intelligent Document Processing & Knowledge Base",
+    "description": "Multi-format document ingestion, semantic search, automated summarization, Q&A system",
+    "tech_stack": "Python, LangChain, Vector DB (Pinecone/Weaviate), React, FastAPI",
+    "why_impressive": "Demonstrates RAG architecture, vector embeddings, and enterprise-level document management",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "intelligent-document-processing---knowledge-base",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "AI-Powered Resume Parser & Job Matcher",
+    "description": "Intelligent resume parsing, skill extraction, job matching algorithm, interview preparation suggestions",
+    "tech_stack": "Python, spaCy/NLTK, OpenAI API, React, PostgreSQL",
+    "why_impressive": "Shows NLP expertise, data processing, and solving real HR problems",
+    "archetype": "hr_recruitment",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "resend"
+    ],
+    "project_slug": "ai-powered-resume-parser---job-matcher",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Real-Time AI Content Moderation System",
+    "description": "Text/image/video moderation, toxicity detection, automated flagging, moderation dashboard",
+    "tech_stack": "Python, TensorFlow/PyTorch, FastAPI, WebSocket, React",
+    "why_impressive": "Demonstrates real-time AI, multi-modal processing, and scalable architecture",
+    "archetype": "smart_city_iot",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "pusher"
+    ],
+    "project_slug": "real-time-ai-content-moderation-system"
+  },
+  {
+    "project_name": "AI-Powered Financial Analysis & Trading Bot",
+    "description": "Market sentiment analysis, technical indicators, automated trading signals, portfolio optimization",
+    "tech_stack": "Python, Pandas, NumPy, OpenAI API, React, WebSocket",
+    "why_impressive": "Shows data science skills, financial domain knowledge, and real-time processing",
+    "archetype": "finance_trading",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "stripe"
+    ],
+    "project_slug": "ai-powered-financial-analysis---trading-bot"
+  },
+  {
+    "project_name": "Intelligent Customer Support Chatbot",
+    "description": "Multi-language support, intent recognition, sentiment analysis, human handoff, knowledge base integration",
+    "tech_stack": "Python, Rasa/Botpress, OpenAI API, React, PostgreSQL",
+    "why_impressive": "Demonstrates conversational AI, NLP, and customer experience optimization",
+    "archetype": "support_crm",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "resend"
+    ],
+    "project_slug": "intelligent-customer-support-chatbot"
+  },
+  {
+    "project_name": "AI-Powered Medical Diagnosis Assistant",
+    "description": "Symptom analysis, disease prediction, drug interaction checking, medical report generation",
+    "tech_stack": "Python, TensorFlow/PyTorch, FastAPI, React, HIPAA-compliant storage",
+    "why_impressive": "Shows healthcare AI expertise, compliance understanding, and ethical AI practices",
+    "archetype": "healthcare_demo",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic"
+    ],
+    "project_slug": "ai-powered-medical-diagnosis-assistant"
+  },
+  {
+    "project_name": "Smart Contract Analysis & Security Auditor",
+    "description": "Smart contract vulnerability detection, gas optimization, security scoring, automated audit reports",
+    "tech_stack": "Python, Solidity parser, OpenAI API, React, Web3.py",
+    "why_impressive": "Demonstrates blockchain expertise, security knowledge, and emerging tech skills",
+    "archetype": "legal",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "cloudflare_r2"
+    ],
+    "project_slug": "smart-contract-analysis---security-auditor",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "AI-Powered Video Content Generator",
+    "description": "Text-to-video generation, video editing automation, subtitle generation, content optimization",
+    "tech_stack": "Python, OpenCV, FFmpeg, OpenAI API, React, AWS S3",
+    "why_impressive": "Shows multimedia AI, video processing, and content creation automation",
+    "archetype": "media_content",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "assemblyai",
+      "cloudflare_r2"
+    ],
+    "project_slug": "ai-powered-video-content-generator"
+  },
+  {
+    "project_name": "Intelligent Supply Chain Optimization System",
+    "description": "Demand forecasting, inventory optimization, route planning, supplier risk assessment",
+    "tech_stack": "Python, Pandas, Scikit-learn, OpenAI API, React, PostgreSQL",
+    "why_impressive": "Demonstrates operations research, predictive analytics, and enterprise optimization",
+    "archetype": "ops_analytics",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "posthog"
+    ],
+    "project_slug": "intelligent-supply-chain-optimization-system"
+  },
+  {
+    "project_name": "Autonomous Research & Report Generation System",
+    "description": "Automated research, data synthesis, report generation, quality assurance",
+    "tech_stack": "CrewAI, Research Agent, Data Analysis Agent, Writing Agent, Fact-Checking Agent",
+    "why_impressive": "Shows agent orchestration, research automation, and complex workflow management",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "autonomous-research---report-generation-system"
+  },
+  {
+    "project_name": "Multi-Agent Software Development Team",
+    "description": "Requirements analysis, system design, code generation, testing, deployment automation",
+    "tech_stack": "CrewAI, Product Manager Agent, Architect Agent, Developer Agent, Tester Agent",
+    "why_impressive": "Demonstrates full SDLC automation, agent collaboration, and software engineering expertise",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "multi-agent-software-development-team"
+  },
+  {
+    "project_name": "Intelligent E-commerce Management System",
+    "description": "Dynamic pricing, inventory optimization, personalized marketing, customer support automation",
+    "tech_stack": "CrewAI, Inventory Agent, Pricing Agent, Marketing Agent, Customer Service Agent",
+    "why_impressive": "Shows business automation, multi-agent coordination, and e-commerce expertise",
+    "archetype": "ecommerce",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "stripe",
+      "resend"
+    ],
+    "project_slug": "intelligent-e-commerce-management-system"
+  },
+  {
+    "project_name": "AI-Powered Legal Document Analysis & Contract Negotiation",
+    "description": "Contract analysis, risk identification, negotiation strategy, compliance checking",
+    "tech_stack": "CrewAI, Document Parser Agent, Legal Analysis Agent, Risk Assessment Agent, Negotiation Agent",
+    "why_impressive": "Demonstrates legal AI, document processing, and complex decision-making",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "ai-powered-legal-document-analysis---contract-negotiation",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Autonomous Data Science Pipeline",
+    "description": "Automated data pipeline, model optimization, performance monitoring, deployment",
+    "tech_stack": "CrewAI, Data Collection Agent, Cleaning Agent, Feature Engineering Agent, Model Selection Agent",
+    "why_impressive": "Shows end-to-end ML automation, agent specialization, and data science expertise",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "autonomous-data-science-pipeline"
+  },
+  {
+    "project_name": "Multi-Agent Cybersecurity Defense System",
+    "description": "Real-time threat detection, automated response, incident recovery, threat intelligence",
+    "tech_stack": "CrewAI, Threat Detection Agent, Analysis Agent, Response Agent, Recovery Agent",
+    "why_impressive": "Demonstrates cybersecurity expertise, real-time processing, and adaptive learning",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "multi-agent-cybersecurity-defense-system"
+  },
+  {
+    "project_name": "Intelligent Healthcare Diagnosis & Treatment Planning",
+    "description": "Multi-symptom analysis, differential diagnosis, treatment optimization, patient monitoring",
+    "tech_stack": "CrewAI, Symptom Analysis Agent, Diagnosis Agent, Treatment Planning Agent, Drug Interaction Agent",
+    "why_impressive": "Shows healthcare AI, medical knowledge integration, and patient care automation",
+    "archetype": "healthcare_demo",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic"
+    ],
+    "project_slug": "intelligent-healthcare-diagnosis---treatment-planning"
+  },
+  {
+    "project_name": "Autonomous Financial Trading & Portfolio Management",
+    "description": "Market analysis, risk management, automated trading, portfolio optimization, regulatory compliance",
+    "tech_stack": "CrewAI, Market Analysis Agent, Risk Assessment Agent, Trading Agent, Portfolio Agent",
+    "why_impressive": "Demonstrates financial AI, risk management, and regulatory understanding",
+    "archetype": "finance_trading",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "stripe"
+    ],
+    "project_slug": "autonomous-financial-trading---portfolio-management"
+  },
+  {
+    "project_name": "Multi-Agent Content Creation & Marketing System",
+    "description": "Content research, writing automation, SEO optimization, social media management, performance tracking",
+    "tech_stack": "CrewAI, Research Agent, Content Writer Agent, SEO Agent, Social Media Agent",
+    "why_impressive": "Shows content marketing automation, multi-channel coordination, and creative AI",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "multi-agent-content-creation---marketing-system"
+  },
+  {
+    "project_name": "Intelligent Smart City Management System",
+    "description": "Traffic optimization, energy efficiency, waste reduction, public safety monitoring, citizen services",
+    "tech_stack": "CrewAI, Traffic Management Agent, Energy Optimization Agent, Waste Management Agent, Public Safety Agent",
+    "why_impressive": "Demonstrates IoT integration, urban planning, and large-scale system management",
+    "archetype": "smart_city_iot",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "pusher"
+    ],
+    "project_slug": "intelligent-smart-city-management-system"
+  },
+  {
+    "project_name": "Personal AI-Powered Codebase Documentation Tool",
+    "description": "Automatically generate comprehensive documentation for a codebase using LLM APIs",
+    "tech_stack": "Python, LangChain, OpenAI API, React, FastAPI",
+    "why_impressive": "Demonstrates prompt engineering and API integration skills for code analysis",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "personal-ai-powered-codebase-documentation-tool",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Local Retrieval-Augmented Generation (RAG) System",
+    "description": "Local RAG system that answers questions based on private, custom datasets",
+    "tech_stack": "Python, LangChain, Vector DB, OpenAI API, React",
+    "why_impressive": "Shows vector database and embedding model expertise for private information retrieval",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "local-retrieval-augmented-generation--rag--system",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Multimodal AI Medical Assistant",
+    "description": "Process multiple data types (text, image, voice) for preliminary medical analysis",
+    "tech_stack": "Python, OpenAI API, React, FastAPI, HIPAA-compliant storage",
+    "why_impressive": "Demonstrates multimodal AI integration and healthcare application expertise",
+    "archetype": "healthcare_demo",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic"
+    ],
+    "project_slug": "multimodal-ai-medical-assistant"
+  },
+  {
+    "project_name": "AI-Driven Music Composition Tool",
+    "description": "Generate short, original musical pieces by interacting with music generation APIs",
+    "tech_stack": "Python, Magenta, OpenAI API, React, Web Audio API",
+    "why_impressive": "Shows creative AI application and audio processing expertise",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "ai-driven-music-composition-tool",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Realistic Synthetic Data Generator",
+    "description": "Generate realistic, high-quality synthetic data for specific use cases",
+    "tech_stack": "Python, OpenAI API, DALL-E API, React, PostgreSQL",
+    "why_impressive": "Demonstrates data generation skills for addressing data scarcity and privacy issues",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "realistic-synthetic-data-generator",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Real-Time AI-Powered Text-to-3D Model Generator",
+    "description": "Text-to-3D model generation with user interface for 3D data handling",
+    "tech_stack": "Python, OpenAI API, Three.js, React, FastAPI",
+    "why_impressive": "Shows advanced 3D processing and creative AI application",
+    "archetype": "smart_city_iot",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "pusher"
+    ],
+    "project_slug": "real-time-ai-powered-text-to-3d-model-generator"
+  },
+  {
+    "project_name": "AI-Powered Resume and Cover Letter Tailor",
+    "description": "Suggest specific edits to resumes to better align with job descriptions",
+    "tech_stack": "Python, OpenAI API, React, FastAPI, PostgreSQL",
+    "why_impressive": "Demonstrates practical application of language models for career optimization",
+    "archetype": "hr_recruitment",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "resend"
+    ],
+    "project_slug": "ai-powered-resume-and-cover-letter-tailor",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Dynamic Video Storyboard Creator",
+    "description": "Generate visual storyboards from text scripts using text-to-image APIs",
+    "tech_stack": "Python, DALL-E API, React, FastAPI, AWS S3",
+    "why_impressive": "Shows orchestration of multiple AI APIs for creative content generation",
+    "archetype": "media_content",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "assemblyai",
+      "cloudflare_r2"
+    ],
+    "project_slug": "dynamic-video-storyboard-creator"
+  },
+  {
+    "project_name": "Customer Support Chatbot with Hallucination Correction",
+    "description": "RAG-based chatbot that pulls from private knowledge base to prevent hallucinations",
+    "tech_stack": "Python, LangChain, OpenAI API, React, PostgreSQL",
+    "why_impressive": "Demonstrates robust RAG system design and hallucination prevention",
+    "archetype": "support_crm",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "resend"
+    ],
+    "project_slug": "customer-support-chatbot-with-hallucination-correction"
+  },
+  {
+    "project_name": "Creative Content Generator for Social Media",
+    "description": "Generate complete social media campaigns including captions, hashtags, and visual concepts",
+    "tech_stack": "Python, OpenAI API, DALL-E API, React, FastAPI",
+    "why_impressive": "Shows orchestration of multiple generative AI APIs for marketing automation",
+    "archetype": "media_content",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "assemblyai",
+      "cloudflare_r2"
+    ],
+    "project_slug": "creative-content-generator-for-social-media"
+  },
+  {
+    "project_name": "Automated Market Research and Report Generation Team",
+    "description": "Crew of AI agents for automated research, data synthesis, and report generation",
+    "tech_stack": "CrewAI, Search Agent, Data Analyst Agent, Report Writer Agent",
+    "why_impressive": "Demonstrates agent orchestration and research automation",
+    "archetype": "media_content",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "assemblyai",
+      "cloudflare_r2"
+    ],
+    "project_slug": "automated-market-research-and-report-generation-team"
+  },
+  {
+    "project_name": "Cybersecurity Threat Analysis Team",
+    "description": "Team of AI agents to monitor and analyze cybersecurity threats",
+    "tech_stack": "CrewAI, Intelligence Agent, Vulnerability Agent, Incident Response Agent",
+    "why_impressive": "Shows complex problem-solving and cybersecurity expertise",
+    "archetype": "hr_recruitment",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "resend"
+    ],
+    "project_slug": "cybersecurity-threat-analysis-team",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Financial Portfolio Management System",
+    "description": "Multiple agents managing hypothetical investment portfolio with mock trading",
+    "tech_stack": "CrewAI, Market Analyst Agent, Risk Assessment Agent, Trader Agent",
+    "why_impressive": "Demonstrates financial AI and risk management system design",
+    "archetype": "finance_trading",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "stripe"
+    ],
+    "project_slug": "financial-portfolio-management-system"
+  },
+  {
+    "project_name": "Personalized Career Coach Agent System",
+    "description": "Collaborative agents for resume analysis, job search, and networking suggestions",
+    "tech_stack": "CrewAI, Resume Agent, Job Search Agent, Networking Agent",
+    "why_impressive": "Shows holistic career development automation",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "personalized-career-coach-agent-system"
+  },
+  {
+    "project_name": "Automated Software Development Team",
+    "description": "Team of agents that develop software applications from natural language prompts",
+    "tech_stack": "CrewAI, Product Manager Agent, Software Engineer Agent, QA Agent",
+    "why_impressive": "Demonstrates end-to-end software development automation",
+    "archetype": "dev_tools",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic"
+    ],
+    "project_slug": "automated-software-development-team"
+  },
+  {
+    "project_name": "Creative Content Generation and Marketing Team",
+    "description": "Crew of agents for content production and marketing automation",
+    "tech_stack": "CrewAI, Content Strategist Agent, Writer Agent, Image Generator Agent, Social Media Agent",
+    "why_impressive": "Shows content marketing automation and multi-channel coordination",
+    "archetype": "media_content",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "assemblyai",
+      "cloudflare_r2"
+    ],
+    "project_slug": "creative-content-generation-and-marketing-team"
+  },
+  {
+    "project_name": "E-commerce Customer Service and Fraud Detection",
+    "description": "Multi-agent system for e-commerce platform management",
+    "tech_stack": "CrewAI, Customer Service Agent, Fraud Detection Agent, Refund Agent",
+    "why_impressive": "Demonstrates e-commerce automation and fraud prevention",
+    "archetype": "support_crm",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "resend"
+    ],
+    "project_slug": "e-commerce-customer-service-and-fraud-detection"
+  },
+  {
+    "project_name": "Autonomous Learning and Research Assistant",
+    "description": "Multi-agent system for learning about new topics with quiz generation",
+    "tech_stack": "CrewAI, Researcher Agent, Summarizer Agent, Quiz Master Agent",
+    "why_impressive": "Shows educational AI and personalized learning automation",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "autonomous-learning-and-research-assistant"
+  },
+  {
+    "project_name": "Virtual Real Estate Agent System",
+    "description": "Group of agents working together to help clients find homes",
+    "tech_stack": "CrewAI, Property Search Agent, Neighborhood Analyst Agent, Financial Advisor Agent",
+    "why_impressive": "Demonstrates real estate AI and investment decision automation",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "virtual-real-estate-agent-system"
+  },
+  {
+    "project_name": "Personal Brain Agent System",
+    "description": "System with agents that help manage personal information and knowledge",
+    "tech_stack": "CrewAI, Note-Taking Agent, Scheduler Agent, Knowledge Retrieval Agent",
+    "why_impressive": "Shows personal productivity automation and knowledge management",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "personal-brain-agent-system"
+  },
+  {
+    "project_name": "Universal RAG Chatbot",
+    "description": "Upload PDFs, websites, YouTube transcripts for conversational search",
+    "tech_stack": "LangChain, OpenAI/Gemini, Postgres/LanceDB, React, FastAPI",
+    "why_impressive": "Core RAG architecture and enterprise-ready AI search",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "universal-rag-chatbot",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "AI Meeting Notes & Action Items",
+    "description": "Takes meeting audio and auto-generates summaries, tasks, deadlines",
+    "tech_stack": "OpenAI Whisper API, GPT, Google Calendar API, React, FastAPI",
+    "why_impressive": "Shows API orchestration and productivity automation",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "ai-meeting-notes---action-items",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Multilingual Customer Support Reply Generator",
+    "description": "Auto-drafts replies to support tickets in multiple languages",
+    "tech_stack": "LangChain, OpenAI, Zendesk API, React, FastAPI",
+    "why_impressive": "Demonstrates localization and customer service automation",
+    "archetype": "support_crm",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "resend"
+    ],
+    "project_slug": "multilingual-customer-support-reply-generator"
+  },
+  {
+    "project_name": "Smart Contract Clause Explainer",
+    "description": "Upload Ethereum smart contracts and AI explains in plain language",
+    "tech_stack": "LangChain, OpenAI, Web3.py, React, FastAPI",
+    "why_impressive": "Shows blockchain expertise and technical documentation automation",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "smart-contract-clause-explainer",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Podcast to Blog Post Converter",
+    "description": "Converts podcast episodes into SEO blog posts",
+    "tech_stack": "Whisper API, GPT, React, FastAPI",
+    "why_impressive": "Demonstrates content transformation and SEO optimization",
+    "archetype": "media_content",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "assemblyai",
+      "cloudflare_r2"
+    ],
+    "project_slug": "podcast-to-blog-post-converter"
+  },
+  {
+    "project_name": "Website Content Refresher",
+    "description": "Crawls a site, identifies outdated copy, suggests rewrites",
+    "tech_stack": "LangChain, Playwright, GPT, React, FastAPI",
+    "why_impressive": "Shows web scraping and content optimization automation",
+    "archetype": "media_content",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "assemblyai",
+      "cloudflare_r2"
+    ],
+    "project_slug": "website-content-refresher"
+  },
+  {
+    "project_name": "Resume & Cover Letter Personalizer",
+    "description": "Tailors resumes for specific job postings instantly",
+    "tech_stack": "LangChain, GPT, ATS Keywords, React, FastAPI",
+    "why_impressive": "Demonstrates career tool automation and ATS optimization",
+    "archetype": "hr_recruitment",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "resend"
+    ],
+    "project_slug": "resume---cover-letter-personalizer",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Learning Path Generator",
+    "description": "Given a skill goal, generates a personalized learning plan with resources",
+    "tech_stack": "GPT, YouTube/Data APIs, React, FastAPI",
+    "why_impressive": "Shows educational AI and personalized learning automation",
+    "archetype": "education",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "stripe"
+    ],
+    "project_slug": "learning-path-generator",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Auto Blog Post Series Creator",
+    "description": "Generates an entire blog series from trending topics",
+    "tech_stack": "LangChain, GPT, RSS API, React, FastAPI",
+    "why_impressive": "Demonstrates content marketing automation and trend analysis",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "auto-blog-post-series-creator",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "AI Email Campaign Writer",
+    "description": "Writes and schedules an email drip campaign for a product launch",
+    "tech_stack": "GPT, Mailchimp API, React, FastAPI",
+    "why_impressive": "Shows marketing automation and email campaign optimization",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "ai-email-campaign-writer",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Startup Idea to Pitch Deck Crew",
+    "description": "Multi-agent system for market analysis, business planning, and pitch deck creation",
+    "tech_stack": "CrewAI, LangChain, GPT, Google Slides API, React, FastAPI",
+    "why_impressive": "Demonstrates business automation and startup development pipeline",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "startup-idea-to-pitch-deck-crew"
+  },
+  {
+    "project_name": "Social Media Factory",
+    "description": "End-to-end social media content creation and scheduling automation",
+    "tech_stack": "CrewAI, OpenAI, DALL-E, Buffer API, React, FastAPI",
+    "why_impressive": "Shows social media marketing automation and multi-channel coordination",
+    "archetype": "media_content",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "assemblyai",
+      "cloudflare_r2"
+    ],
+    "project_slug": "social-media-factory"
+  },
+  {
+    "project_name": "Automated Research Department",
+    "description": "Complete research automation with scraping, summarization, fact-checking, and reporting",
+    "tech_stack": "LangGraph, Playwright, GPT, React, FastAPI",
+    "why_impressive": "Demonstrates research automation and data synthesis",
+    "archetype": "research",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "automated-research-department"
+  },
+  {
+    "project_name": "AI Content Localizer",
+    "description": "Multi-agent system for translation, cultural review, and copy editing",
+    "tech_stack": "CrewAI, GPT, DeepL API, React, FastAPI",
+    "why_impressive": "Shows localization expertise and cultural adaptation automation",
+    "archetype": "media_content",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "assemblyai",
+      "cloudflare_r2"
+    ],
+    "project_slug": "ai-content-localizer"
+  },
+  {
+    "project_name": "Recruitment Flow AI",
+    "description": "End-to-end recruitment automation from job matching to interview script writing",
+    "tech_stack": "CrewAI, GPT, LinkedIn API, React, FastAPI",
+    "why_impressive": "Demonstrates HR automation and recruitment pipeline optimization",
+    "archetype": "hr_recruitment",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "resend"
+    ],
+    "project_slug": "recruitment-flow-ai",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "Real Estate Investment Finder",
+    "description": "Multi-agent system for property hunting, market analysis, and ROI calculation",
+    "tech_stack": "CrewAI, GPT, Zillow API, React, FastAPI",
+    "why_impressive": "Shows real estate AI and investment decision automation",
+    "archetype": "finance_trading",
+    "backend": "express",
+    "services": [
+      "openai",
+      "anthropic",
+      "stripe"
+    ],
+    "project_slug": "real-estate-investment-finder"
+  },
+  {
+    "project_name": "Conference Planning Crew",
+    "description": "Automated conference planning with budget planning, vendor finding, and itinerary creation",
+    "tech_stack": "CrewAI, GPT, Google Sheets API, React, FastAPI",
+    "why_impressive": "Demonstrates event planning automation and project management",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "conference-planning-crew"
+  },
+  {
+    "project_name": "B2B Sales Prospecting AI",
+    "description": "Lead scraping, company research, and cold email writing automation",
+    "tech_stack": "CrewAI, GPT, Apollo.io API, React, FastAPI",
+    "why_impressive": "Shows B2B sales automation and lead generation optimization",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "b2b-sales-prospecting-ai",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "SEO Growth Team",
+    "description": "Multi-agent system for keyword research, content writing, and internal link planning",
+    "tech_stack": "CrewAI, GPT, Ahrefs API, React, FastAPI",
+    "why_impressive": "Demonstrates SEO automation and content optimization",
+    "archetype": "rag_kb",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "cloudflare_r2",
+      "render_pg"
+    ],
+    "project_slug": "seo-growth-team",
+    "vector": "pgvector"
+  },
+  {
+    "project_name": "E-Commerce Launch Crew",
+    "description": "Complete e-commerce launch automation from product research to ad copywriting",
+    "tech_stack": "CrewAI, GPT, Shopify API, React, FastAPI",
+    "why_impressive": "Shows e-commerce automation and product launch optimization",
+    "archetype": "agentic",
+    "backend": "fastapi",
+    "services": [
+      "openai",
+      "anthropic",
+      "tavily",
+      "resend"
+    ],
+    "project_slug": "e-commerce-launch-crew"
+  }
+]

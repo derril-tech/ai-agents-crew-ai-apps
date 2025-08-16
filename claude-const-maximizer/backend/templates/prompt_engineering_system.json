@@ -1,0 +1,329 @@
+{
+  "claude_optimization": {
+    "claude_strengths": [
+      "Exceptional reasoning and analysis",
+      "Strong code generation with context understanding",
+      "Excellent pattern recognition",
+      "Great at following detailed instructions",
+      "Strong mathematical and logical thinking",
+      "Excellent at breaking down complex problems",
+      "Good at maintaining consistency across large codebases",
+      "Strong understanding of software architecture"
+    ],
+    "claude_quirks": [
+      "Prefers explicit, structured instructions",
+      "Needs clear context and background information",
+      "Responds well to examples and templates",
+      "Can be overly verbose if not constrained",
+      "Sometimes needs explicit formatting requirements",
+      "Works better with step-by-step breakdowns",
+      "Appreciates clear success criteria"
+    ],
+    "claude_best_practices": [
+      "Use clear, hierarchical structure",
+      "Provide context and background",
+      "Include specific examples",
+      "Set explicit constraints and requirements",
+      "Use numbered lists and bullet points",
+      "Define success criteria clearly",
+      "Break complex tasks into steps",
+      "Use consistent terminology"
+    ]
+  },
+  "prompt_engineering_archetypes": {
+    "research_to_brief": {
+      "name": "Research to Brief Conversion",
+      "description": "Convert market research into comprehensive project brief",
+      "claude_optimization": {
+        "structure": "hierarchical_with_context",
+        "examples": "brief_templates",
+        "constraints": "specific_formatting",
+        "success_criteria": "complete_brief_with_all_sections"
+      },
+      "prompt_template": {
+        "context_setting": "You are an expert project manager and technical architect. Your task is to convert raw market research into a comprehensive, actionable project brief.",
+        "background": "Market research has been conducted for {project_name}. The research includes target audience analysis, competitive landscape, technical requirements, and market opportunities.",
+        "task_breakdown": [
+          "Analyze the provided market research data",
+          "Extract key insights and requirements",
+          "Structure information into a comprehensive brief",
+          "Ensure all sections are complete and actionable"
+        ],
+        "format_requirements": {
+          "structure": "Use markdown formatting with clear headers",
+          "sections": "Follow the exact section structure provided",
+          "content": "Be comprehensive but concise",
+          "actionability": "Make every section actionable for developers"
+        },
+        "success_criteria": [
+          "All brief sections are complete",
+          "Information is well-organized and structured",
+          "Requirements are clear and actionable",
+          "Technical specifications are detailed",
+          "Market context is properly integrated"
+        ]
+      }
+    },
+    "brief_to_prompt": {
+      "name": "Brief to Claude Prompt Conversion",
+      "description": "Convert project brief into optimized Claude prompt",
+      "claude_optimization": {
+        "structure": "context_heavy_with_examples",
+        "examples": "code_snippets_and_patterns",
+        "constraints": "explicit_formatting",
+        "success_criteria": "claude_ready_prompt"
+      },
+      "prompt_template": {
+        "context_setting": "You are an expert prompt engineer specializing in Claude optimization. Your task is to convert a project brief into a highly effective Claude prompt for code generation.",
+        "background": "A comprehensive project brief has been created for {project_name}. The brief includes technical requirements, design specifications, and implementation details.",
+        "task_breakdown": [
+          "Analyze the project brief thoroughly",
+          "Identify key technical requirements",
+          "Structure information for Claude's strengths",
+          "Create clear, actionable instructions",
+          "Include relevant examples and patterns"
+        ],
+        "format_requirements": {
+          "structure": "Use Claude's preferred hierarchical structure",
+          "context": "Provide comprehensive background information",
+          "examples": "Include relevant code examples and patterns",
+          "constraints": "Set explicit formatting and output requirements",
+          "clarity": "Use clear, unambiguous language"
+        },
+        "success_criteria": [
+          "Prompt is optimized for Claude's strengths",
+          "All requirements are clearly communicated",
+          "Examples and patterns are relevant",
+          "Output format is explicitly defined",
+          "Instructions are actionable and specific"
+        ]
+      }
+    },
+    "code_generation": {
+      "name": "Code Generation Prompt",
+      "description": "Optimized prompt for Claude code generation",
+      "claude_optimization": {
+        "structure": "step_by_step_with_context",
+        "examples": "code_patterns_and_templates",
+        "constraints": "explicit_output_format",
+        "success_criteria": "production_ready_code"
+      },
+      "prompt_template": {
+        "context_setting": "You are a senior software architect and developer. Your task is to generate production-ready code based on the provided specifications and requirements.",
+        "background": "A comprehensive project brief and technical specifications have been provided for {project_name}. The project requires {architecture_type} architecture with {tech_stack}.",
+        "task_breakdown": [
+          "Understand the project requirements and architecture",
+          "Generate backend code following the specified patterns",
+          "Generate frontend code with the specified design system",
+          "Create integration and deployment configurations",
+          "Ensure all code is production-ready and well-documented"
+        ],
+        "format_requirements": {
+          "structure": "Use the exact file format specified",
+          "code_quality": "Follow best practices and patterns",
+          "documentation": "Include comprehensive comments and docs",
+          "completeness": "Generate all required files and configurations",
+          "consistency": "Maintain consistency across all components"
+        },
+        "success_criteria": [
+          "All required files are generated",
+          "Code follows specified architecture patterns",
+          "Design system is properly implemented",
+          "Integration points are correctly configured",
+          "Deployment setup is complete and functional"
+        ]
+      }
+    },
+    "validation_and_verification": {
+      "name": "Validation and Verification Prompt",
+      "description": "Prompt for code validation and quality assurance",
+      "claude_optimization": {
+        "structure": "analytical_with_checklists",
+        "examples": "validation_patterns",
+        "constraints": "comprehensive_coverage",
+        "success_criteria": "thorough_validation_report"
+      },
+      "prompt_template": {
+        "context_setting": "You are a senior software quality assurance engineer and technical reviewer. Your task is to validate and verify the generated code for quality, completeness, and correctness.",
+        "background": "Code has been generated for {project_name} following {architecture_type} patterns and {tech_stack} requirements. A comprehensive validation is required.",
+        "task_breakdown": [
+          "Review code structure and architecture",
+          "Validate implementation against requirements",
+          "Check for security and best practices",
+          "Verify integration and deployment setup",
+          "Generate comprehensive validation report"
+        ],
+        "format_requirements": {
+          "structure": "Use systematic validation approach",
+          "coverage": "Cover all aspects of the codebase",
+          "detail": "Provide specific findings and recommendations",
+          "actionability": "Make all findings actionable",
+          "clarity": "Use clear, professional language"
+        },
+        "success_criteria": [
+          "All code aspects are thoroughly reviewed",
+          "Validation report is comprehensive and clear",
+          "Findings are specific and actionable",
+          "Quality assessment is accurate and detailed",
+          "Recommendations are practical and implementable"
+        ]
+      }
+    }
+  },
+  "claude_specific_techniques": {
+    "context_heavy_approach": {
+      "description": "Claude works best with comprehensive context",
+      "techniques": [
+        "Provide full project background",
+        "Include market research context",
+        "Explain technical decisions",
+        "Share architectural reasoning",
+        "Include relevant examples and patterns"
+      ],
+      "benefits": [
+        "Better understanding of requirements",
+        "More accurate code generation",
+        "Consistent implementation",
+        "Proper integration of components"
+      ]
+    },
+    "hierarchical_structure": {
+      "description": "Claude prefers clear, hierarchical information",
+      "techniques": [
+        "Use numbered lists for tasks",
+        "Organize information in logical sections",
+        "Provide clear section headers",
+        "Use bullet points for details",
+        "Maintain consistent formatting"
+      ],
+      "benefits": [
+        "Easier to follow instructions",
+        "Better task breakdown",
+        "Clearer output organization",
+        "Reduced confusion and errors"
+      ]
+    },
+    "example_driven_approach": {
+      "description": "Claude learns from examples and patterns",
+      "techniques": [
+        "Include code examples",
+        "Provide template structures",
+        "Show expected output formats",
+        "Include pattern examples",
+        "Reference similar implementations"
+      ],
+      "benefits": [
+        "More accurate implementation",
+        "Consistent code patterns",
+        "Better understanding of requirements",
+        "Faster and more reliable generation"
+      ]
+    },
+    "constraint_based_instructions": {
+      "description": "Claude needs explicit constraints and requirements",
+      "techniques": [
+        "Set clear output format requirements",
+        "Specify file naming conventions",
+        "Define code style requirements",
+        "Set performance expectations",
+        "Specify security requirements"
+      ],
+      "benefits": [
+        "Consistent output format",
+        "Proper code organization",
+        "Meeting quality standards",
+        "Reduced need for revisions"
+      ]
+    },
+    "step_by_step_breakdown": {
+      "description": "Claude excels with detailed step-by-step instructions",
+      "techniques": [
+        "Break complex tasks into steps",
+        "Provide clear success criteria",
+        "Include intermediate checkpoints",
+        "Specify dependencies between steps",
+        "Provide clear completion criteria"
+      ],
+      "benefits": [
+        "Better task execution",
+        "Easier to track progress",
+        "Reduced errors and omissions",
+        "More reliable completion"
+      ]
+    }
+  },
+  "prompt_optimization_strategies": {
+    "for_research_conversion": {
+      "strategy": "Context + Structure + Examples",
+      "approach": [
+        "Provide full research context",
+        "Use structured brief template",
+        "Include example brief sections",
+        "Set clear completion criteria"
+      ],
+      "claude_optimization": "Focus on Claude's analytical strengths"
+    },
+    "for_brief_to_prompt": {
+      "strategy": "Technical + Architectural + Constraints",
+      "approach": [
+        "Emphasize technical requirements",
+        "Include architectural patterns",
+        "Set explicit output constraints",
+        "Provide code generation examples"
+      ],
+      "claude_optimization": "Leverage Claude's code generation capabilities"
+    },
+    "for_code_generation": {
+      "strategy": "Patterns + Examples + Quality",
+      "approach": [
+        "Provide code patterns and templates",
+        "Include relevant examples",
+        "Set quality and completeness standards",
+        "Specify file structure requirements"
+      ],
+      "claude_optimization": "Use Claude's pattern recognition strengths"
+    },
+    "for_validation": {
+      "strategy": "Systematic + Comprehensive + Actionable",
+      "approach": [
+        "Use systematic validation approach",
+        "Cover all code aspects comprehensively",
+        "Make all findings actionable",
+        "Provide clear recommendations"
+      ],
+      "claude_optimization": "Leverage Claude's analytical and reasoning capabilities"
+    }
+  },
+  "quality_assurance": {
+    "prompt_quality_checks": [
+      "Is the context comprehensive and clear?",
+      "Are instructions specific and actionable?",
+      "Are examples relevant and helpful?",
+      "Are constraints explicit and reasonable?",
+      "Are success criteria clearly defined?",
+      "Is the structure logical and hierarchical?",
+      "Are all requirements covered?",
+      "Is the language clear and unambiguous?"
+    ],
+    "claude_optimization_checks": [
+      "Does the prompt leverage Claude's strengths?",
+      "Is the context sufficient for Claude's understanding?",
+      "Are examples provided for pattern recognition?",
+      "Are constraints clear to avoid verbosity?",
+      "Is the structure hierarchical and clear?",
+      "Are success criteria specific and measurable?",
+      "Does the prompt avoid Claude's known quirks?",
+      "Is the format consistent with Claude's preferences?"
+    ],
+    "output_quality_indicators": [
+      "Completeness of generated content",
+      "Adherence to specified format",
+      "Quality and consistency of code",
+      "Relevance and accuracy of information",
+      "Actionability of recommendations",
+      "Clarity and professionalism of output",
+      "Compliance with requirements",
+      "Integration of all specified components"
+    ]
+  }
+}

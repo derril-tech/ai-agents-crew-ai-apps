@@ -1,0 +1,97 @@
+{
+  "rag_kb": {
+    "backend": "fastapi",
+    "vector": "pgvector",
+    "services": ["openai", "anthropic", "tavily", "cloudflare_r2", "render_pg"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "TAVILY_API_KEY", "R2_BUCKET", "DATABASE_URL"],
+    "description": "RAG/Knowledge Base apps with document processing and semantic search"
+  },
+  "agentic": {
+    "backend": "fastapi",
+    "services": ["openai", "anthropic", "tavily", "resend"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "TAVILY_API_KEY", "RESEND_API_KEY", "DATABASE_URL"],
+    "description": "Multi-agent orchestration and autonomous workflows"
+  },
+  "dev_tools": {
+    "backend": "fastapi",
+    "services": ["openai", "anthropic"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "DATABASE_URL"],
+    "description": "AI-powered development tools and code analysis"
+  },
+  "support_crm": {
+    "backend": "express",
+    "services": ["openai", "anthropic", "resend"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "RESEND_API_KEY", "DATABASE_URL"],
+    "description": "Customer support chatbots and CRM automation"
+  },
+  "finance_trading": {
+    "backend": "express",
+    "services": ["openai", "anthropic", "stripe"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "STRIPE_SECRET_KEY", "DATABASE_URL"],
+    "description": "Financial analysis, trading bots, and portfolio management"
+  },
+  "healthcare_demo": {
+    "backend": "fastapi",
+    "services": ["openai", "anthropic"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "DATABASE_URL"],
+    "description": "Healthcare applications (demo mode only, no PHI)"
+  },
+  "legal": {
+    "backend": "fastapi",
+    "vector": "pgvector",
+    "services": ["openai", "anthropic", "cloudflare_r2"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "R2_BUCKET", "DATABASE_URL"],
+    "description": "Legal document analysis and contract processing"
+  },
+  "media_content": {
+    "backend": "express",
+    "services": ["openai", "anthropic", "assemblyai", "cloudflare_r2"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "ASSEMBLYAI_API_KEY", "R2_BUCKET", "DATABASE_URL"],
+    "description": "Video/audio generation and content creation"
+  },
+  "ops_analytics": {
+    "backend": "fastapi",
+    "services": ["openai", "anthropic", "posthog"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "POSTHOG_API_KEY", "DATABASE_URL"],
+    "description": "Operations optimization and analytics dashboards"
+  },
+  "smart_city_iot": {
+    "backend": "express",
+    "services": ["openai", "anthropic", "pusher"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "PUSHER_APP_ID", "PUSHER_KEY", "DATABASE_URL"],
+    "description": "IoT data processing and smart city applications"
+  },
+  "blockchain": {
+    "backend": "fastapi",
+    "services": ["openai", "anthropic", "alchemy"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "ALCHEMY_API_KEY", "DATABASE_URL"],
+    "description": "Smart contract analysis and blockchain applications"
+  },
+  "education": {
+    "backend": "fastapi",
+    "vector": "pgvector",
+    "services": ["openai", "anthropic", "stripe"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "STRIPE_SECRET_KEY", "DATABASE_URL"],
+    "description": "Educational content and learning management systems"
+  },
+  "ecommerce": {
+    "backend": "express",
+    "services": ["openai", "anthropic", "stripe", "resend"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "STRIPE_SECRET_KEY", "RESEND_API_KEY", "DATABASE_URL"],
+    "description": "E-commerce automation and product recommendations"
+  },
+  "hr_recruitment": {
+    "backend": "fastapi",
+    "vector": "pgvector",
+    "services": ["openai", "anthropic", "resend"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "RESEND_API_KEY", "DATABASE_URL"],
+    "description": "HR tools, resume matching, and recruitment automation"
+  },
+  "research": {
+    "backend": "fastapi",
+    "services": ["openai", "anthropic", "tavily", "resend"],
+    "env": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "TAVILY_API_KEY", "RESEND_API_KEY", "DATABASE_URL"],
+    "description": "Research automation and academic tools"
+  }
+}
+

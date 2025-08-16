@@ -1,0 +1,396 @@
+{
+  "ai-powered-code-review---refactoring-assistant": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "intelligent-document-processing---knowledge-base": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "intelligent-document-processing---knowledge-base-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-powered-resume-parser---job-matcher": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "real-time-ai-content-moderation-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "PUSHER_APP_ID": "${PUSHER_APP_ID}",
+    "PUSHER_KEY": "${PUSHER_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-powered-financial-analysis---trading-bot": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "intelligent-customer-support-chatbot": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-powered-medical-diagnosis-assistant": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "smart-contract-analysis---security-auditor": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "R2_BUCKET": "smart-contract-analysis---security-auditor-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-powered-video-content-generator": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "ASSEMBLYAI_API_KEY": "${ASSEMBLYAI_API_KEY}",
+    "R2_BUCKET": "ai-powered-video-content-generator-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "intelligent-supply-chain-optimization-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "POSTHOG_API_KEY": "${POSTHOG_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "autonomous-research---report-generation-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "multi-agent-software-development-team": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "intelligent-e-commerce-management-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-powered-legal-document-analysis---contract-negotiation": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "ai-powered-legal-document-analysis---contract-negotiation-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "autonomous-data-science-pipeline": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "multi-agent-cybersecurity-defense-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "intelligent-healthcare-diagnosis---treatment-planning": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "autonomous-financial-trading---portfolio-management": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "multi-agent-content-creation---marketing-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "intelligent-smart-city-management-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "PUSHER_APP_ID": "${PUSHER_APP_ID}",
+    "PUSHER_KEY": "${PUSHER_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "personal-ai-powered-codebase-documentation-tool": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "personal-ai-powered-codebase-documentation-tool-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "local-retrieval-augmented-generation--rag--system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "local-retrieval-augmented-generation--rag--system-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "multimodal-ai-medical-assistant": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-driven-music-composition-tool": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "ai-driven-music-composition-tool-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "realistic-synthetic-data-generator": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "realistic-synthetic-data-generator-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "real-time-ai-powered-text-to-3d-model-generator": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "PUSHER_APP_ID": "${PUSHER_APP_ID}",
+    "PUSHER_KEY": "${PUSHER_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-powered-resume-and-cover-letter-tailor": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "dynamic-video-storyboard-creator": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "ASSEMBLYAI_API_KEY": "${ASSEMBLYAI_API_KEY}",
+    "R2_BUCKET": "dynamic-video-storyboard-creator-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "customer-support-chatbot-with-hallucination-correction": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "creative-content-generator-for-social-media": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "ASSEMBLYAI_API_KEY": "${ASSEMBLYAI_API_KEY}",
+    "R2_BUCKET": "creative-content-generator-for-social-media-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "automated-market-research-and-report-generation-team": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "ASSEMBLYAI_API_KEY": "${ASSEMBLYAI_API_KEY}",
+    "R2_BUCKET": "automated-market-research-and-report-generation-team-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "cybersecurity-threat-analysis-team": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "financial-portfolio-management-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "personalized-career-coach-agent-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "automated-software-development-team": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "creative-content-generation-and-marketing-team": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "ASSEMBLYAI_API_KEY": "${ASSEMBLYAI_API_KEY}",
+    "R2_BUCKET": "creative-content-generation-and-marketing-team-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "e-commerce-customer-service-and-fraud-detection": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "autonomous-learning-and-research-assistant": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "virtual-real-estate-agent-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "personal-brain-agent-system": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "universal-rag-chatbot": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "universal-rag-chatbot-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-meeting-notes---action-items": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "ai-meeting-notes---action-items-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "multilingual-customer-support-reply-generator": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "smart-contract-clause-explainer": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "smart-contract-clause-explainer-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "podcast-to-blog-post-converter": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "ASSEMBLYAI_API_KEY": "${ASSEMBLYAI_API_KEY}",
+    "R2_BUCKET": "podcast-to-blog-post-converter-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "website-content-refresher": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "ASSEMBLYAI_API_KEY": "${ASSEMBLYAI_API_KEY}",
+    "R2_BUCKET": "website-content-refresher-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "resume---cover-letter-personalizer": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "learning-path-generator": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "auto-blog-post-series-creator": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "auto-blog-post-series-creator-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-email-campaign-writer": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "ai-email-campaign-writer-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "startup-idea-to-pitch-deck-crew": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "social-media-factory": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "ASSEMBLYAI_API_KEY": "${ASSEMBLYAI_API_KEY}",
+    "R2_BUCKET": "social-media-factory-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "automated-research-department": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "ai-content-localizer": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "ASSEMBLYAI_API_KEY": "${ASSEMBLYAI_API_KEY}",
+    "R2_BUCKET": "ai-content-localizer-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "recruitment-flow-ai": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "real-estate-investment-finder": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "conference-planning-crew": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "b2b-sales-prospecting-ai": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "b2b-sales-prospecting-ai-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "seo-growth-team": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "R2_BUCKET": "seo-growth-team-assets",
+    "DATABASE_URL": "${DATABASE_URL}"
+  },
+  "e-commerce-launch-crew": {
+    "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "TAVILY_API_KEY": "${TAVILY_API_KEY}",
+    "RESEND_API_KEY": "${RESEND_API_KEY}",
+    "DATABASE_URL": "${DATABASE_URL}"
+  }
+}

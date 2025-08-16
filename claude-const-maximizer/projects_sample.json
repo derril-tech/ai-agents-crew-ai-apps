@@ -1,0 +1,183 @@
+[
+  {
+    "project_name": "AI-Powered Code Review & Refactoring Assistant",
+    "app_type": "Development tool with intelligent code analysis",
+    "target_users": "Software developers, engineering teams, code reviewers",
+    "core_features": [
+      "Automated code review with AI insights",
+      "Security vulnerability detection",
+      "Performance optimization suggestions",
+      "Code refactoring recommendations",
+      "Integration with GitHub/GitLab",
+      "Team collaboration features"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "FastAPI",
+      "db": "PostgreSQL"
+    }
+  },
+  {
+    "project_name": "Intelligent Document Processing Knowledge Base",
+    "app_type": "RAG-powered document analysis and Q&A system",
+    "target_users": "Business professionals, researchers, legal teams",
+    "core_features": [
+      "PDF/document upload and processing",
+      "Semantic search across documents",
+      "AI-powered Q&A with citations",
+      "Document summarization",
+      "Multi-format support (PDF, DOC, TXT)",
+      "User authentication and document sharing"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "FastAPI",
+      "db": "PostgreSQL"
+    }
+  },
+  {
+    "project_name": "Autonomous Research Crew",
+    "app_type": "Multi-agent research automation system",
+    "target_users": "Researchers, analysts, content creators",
+    "core_features": [
+      "Multi-agent orchestration for research",
+      "Automated data collection and analysis",
+      "Report generation with insights",
+      "Source validation and fact-checking",
+      "Customizable research workflows",
+      "Export to multiple formats"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "FastAPI",
+      "db": "PostgreSQL"
+    }
+  },
+  {
+    "project_name": "Smart Contract Auditor & Analyzer",
+    "app_type": "Blockchain security and analysis tool",
+    "target_users": "Blockchain developers, security auditors, DeFi projects",
+    "core_features": [
+      "Smart contract vulnerability detection",
+      "Code analysis and optimization",
+      "Gas usage optimization",
+      "Security best practices checking",
+      "Audit report generation",
+      "Integration with multiple blockchains"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "FastAPI",
+      "db": "PostgreSQL"
+    }
+  },
+  {
+    "project_name": "AI Video Generator & Editor",
+    "app_type": "AI-powered video creation and editing platform",
+    "target_users": "Content creators, marketers, educators",
+    "core_features": [
+      "Text-to-video generation",
+      "Video editing with AI assistance",
+      "Template library and customization",
+      "Multi-format export options",
+      "Collaborative editing features",
+      "Analytics and performance tracking"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "Express.js",
+      "db": "PostgreSQL"
+    }
+  },
+  {
+    "project_name": "Financial Analysis & Trading Bot",
+    "app_type": "AI-powered financial analysis and automated trading",
+    "target_users": "Traders, investors, financial analysts",
+    "core_features": [
+      "Real-time market data analysis",
+      "AI-powered trading signals",
+      "Portfolio optimization",
+      "Risk management tools",
+      "Backtesting and strategy validation",
+      "Integration with major exchanges"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "Express.js",
+      "db": "PostgreSQL"
+    }
+  },
+  {
+    "project_name": "Healthcare Diagnosis Assistant",
+    "app_type": "AI-powered medical diagnosis support system",
+    "target_users": "Healthcare professionals, medical students",
+    "core_features": [
+      "Symptom analysis and diagnosis suggestions",
+      "Medical literature search and summarization",
+      "Treatment recommendation engine",
+      "Patient history analysis",
+      "Medical image analysis support",
+      "Compliance and safety features"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "FastAPI",
+      "db": "PostgreSQL"
+    }
+  },
+  {
+    "project_name": "Supply Chain Optimization Platform",
+    "app_type": "AI-powered supply chain management and optimization",
+    "target_users": "Supply chain managers, logistics companies, manufacturers",
+    "core_features": [
+      "Demand forecasting and planning",
+      "Route optimization and logistics",
+      "Inventory management automation",
+      "Supplier performance analysis",
+      "Real-time tracking and monitoring",
+      "Cost optimization recommendations"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "FastAPI",
+      "db": "PostgreSQL"
+    }
+  },
+  {
+    "project_name": "Real-Time Content Moderation System",
+    "app_type": "AI-powered content moderation and safety platform",
+    "target_users": "Social media platforms, content creators, online communities",
+    "core_features": [
+      "Real-time content analysis",
+      "Multi-language moderation support",
+      "Customizable moderation rules",
+      "Bulk content processing",
+      "Analytics and reporting",
+      "API integration for platforms"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "Express.js",
+      "db": "PostgreSQL"
+    }
+  },
+  {
+    "project_name": "Resume Matcher & Job Recommendation Engine",
+    "app_type": "AI-powered recruitment and job matching platform",
+    "target_users": "HR professionals, job seekers, recruitment agencies",
+    "core_features": [
+      "Resume parsing and analysis",
+      "Job-candidate matching algorithm",
+      "Skills gap analysis",
+      "Interview preparation tools",
+      "Employer branding features",
+      "Analytics and reporting"
+    ],
+    "must_use_stack": {
+      "frontend": "Next.js 14 + React + Tailwind",
+      "backend": "FastAPI",
+      "db": "PostgreSQL"
+    }
+  }
+]
+

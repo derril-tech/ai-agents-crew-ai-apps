@@ -1,0 +1,148 @@
+{
+  "pre_code_validation": {
+    "overall_status": "warning",
+    "results": [
+      {
+        "component": "Project Brief",
+        "status": "passed",
+        "message": "Project brief is complete and ready",
+        "details": null
+      },
+      {
+        "component": "Prompt Template",
+        "status": "passed",
+        "message": "Prompt template for CRUD is ready",
+        "details": null
+      },
+      {
+        "component": "Boilerplate Selection",
+        "status": "passed",
+        "message": "Boilerplate validation skipped - using direct code generation",
+        "details": {
+          "approach": "Phase 3 direct generation"
+        }
+      },
+      {
+        "component": "API Integrations",
+        "status": "warning",
+        "message": "API integrations file not found - will use defaults",
+        "details": null
+      },
+      {
+        "component": "Environment Variables",
+        "status": "warning",
+        "message": "Environment requirements file not found - will use defaults",
+        "details": null
+      }
+    ],
+    "summary": {
+      "total": 5,
+      "passed": 3,
+      "failed": 0,
+      "warnings": 2
+    }
+  },
+  "dependency_verification": {
+    "overall_status": "warning",
+    "results": [
+      {
+        "service": "OpenAI API",
+        "status": "passed",
+        "message": "OpenAI API key is valid and working",
+        "details": {
+          "model": "gpt-3.5-turbo",
+          "status_code": 200
+        }
+      },
+      {
+        "service": "Anthropic API",
+        "status": "warning",
+        "message": "Anthropic API key not found - optional for most projects",
+        "details": {
+          "optional": true
+        }
+      },
+      {
+        "service": "Pinecone API",
+        "status": "warning",
+        "message": "Pinecone API key not found - required for RAG projects",
+        "details": {
+          "required_for": "RAG projects"
+        }
+      },
+      {
+        "service": "Clerk Auth",
+        "status": "warning",
+        "message": "Clerk authentication keys not configured - optional for development",
+        "details": {
+          "missing": [
+            "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+            "CLERK_SECRET_KEY"
+          ],
+          "optional": true
+        }
+      },
+      {
+        "service": "UploadThing",
+        "status": "warning",
+        "message": "UploadThing not configured - file uploads will not work",
+        "details": {
+          "missing": [
+            "UPLOADTHING_SECRET",
+            "UPLOADTHING_APP_ID"
+          ]
+        }
+      },
+      {
+        "service": "Stripe",
+        "status": "warning",
+        "message": "Stripe not configured - payments will not work",
+        "details": {
+          "missing": [
+            "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+            "STRIPE_SECRET_KEY"
+          ]
+        }
+      },
+      {
+        "service": "Node.js Environment",
+        "status": "warning",
+        "message": "Node.js not found - will be installed during deployment",
+        "details": {
+          "error": "[WinError 2] The system cannot find the file specified",
+          "auto_install": true
+        }
+      },
+      {
+        "service": "Python Dependencies",
+        "status": "warning",
+        "message": "Missing Python packages: fastapi, pinecone-client - will be installed during deployment",
+        "details": {
+          "missing_packages": [
+            "fastapi",
+            "pinecone-client"
+          ],
+          "auto_install": true
+        }
+      },
+      {
+        "service": "Deployment Platforms",
+        "status": "warning",
+        "message": "No deployment platform tokens configured",
+        "details": {
+          "missing": [
+            "VERCEL_TOKEN",
+            "RENDER_TOKEN"
+          ]
+        }
+      }
+    ],
+    "summary": {
+      "total": 9,
+      "passed": 1,
+      "failed": 0,
+      "warnings": 8
+    }
+  },
+  "timestamp": "2025-08-16T16:58:43.395421"
+}

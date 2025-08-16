@@ -1,0 +1,375 @@
+{
+  "api_categories": {
+    "ai_ml": {
+      "openai": {
+        "name": "OpenAI API",
+        "description": "GPT models, DALL-E, Whisper, embeddings",
+        "use_cases": ["text generation", "image generation", "speech-to-text", "embeddings"],
+        "pricing": "Pay per token",
+        "rate_limits": "High",
+        "documentation": "Excellent",
+        "integration_difficulty": "Easy"
+      },
+      "anthropic": {
+        "name": "Anthropic Claude API",
+        "description": "Claude models for text generation and analysis",
+        "use_cases": ["text generation", "analysis", "coding assistance"],
+        "pricing": "Pay per token",
+        "rate_limits": "High",
+        "documentation": "Good",
+        "integration_difficulty": "Easy"
+      },
+      "huggingface": {
+        "name": "Hugging Face API",
+        "description": "Open source models and datasets",
+        "use_cases": ["custom models", "datasets", "inference"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "Medium",
+        "documentation": "Good",
+        "integration_difficulty": "Medium"
+      },
+      "assemblyai": {
+        "name": "AssemblyAI",
+        "description": "Speech recognition and audio analysis",
+        "use_cases": ["transcription", "sentiment analysis", "speaker detection"],
+        "pricing": "Pay per minute",
+        "rate_limits": "High",
+        "documentation": "Excellent",
+        "integration_difficulty": "Easy"
+      }
+    },
+    "database_vector": {
+      "pinecone": {
+        "name": "Pinecone",
+        "description": "Vector database for embeddings",
+        "use_cases": ["semantic search", "recommendations", "RAG"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Good",
+        "integration_difficulty": "Medium"
+      },
+      "weaviate": {
+        "name": "Weaviate",
+        "description": "Vector database with graph capabilities",
+        "use_cases": ["semantic search", "knowledge graphs", "RAG"],
+        "pricing": "Open source + cloud",
+        "rate_limits": "High",
+        "documentation": "Good",
+        "integration_difficulty": "Medium"
+      },
+      "supabase": {
+        "name": "Supabase",
+        "description": "PostgreSQL with real-time and auth",
+        "use_cases": ["database", "authentication", "real-time"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Excellent",
+        "integration_difficulty": "Easy"
+      }
+    },
+    "authentication": {
+      "clerk": {
+        "name": "Clerk",
+        "description": "User authentication and management",
+        "use_cases": ["auth", "user management", "social login"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Excellent",
+        "integration_difficulty": "Easy"
+      },
+      "authjs": {
+        "name": "Auth.js (NextAuth)",
+        "description": "Authentication for Next.js",
+        "use_cases": ["auth", "social login", "session management"],
+        "pricing": "Free",
+        "rate_limits": "N/A",
+        "documentation": "Good",
+        "integration_difficulty": "Medium"
+      },
+      "firebase_auth": {
+        "name": "Firebase Auth",
+        "description": "Google's authentication service",
+        "use_cases": ["auth", "social login", "phone auth"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Excellent",
+        "integration_difficulty": "Easy"
+      }
+    },
+    "file_storage": {
+      "uploadthing": {
+        "name": "UploadThing",
+        "description": "File upload service for Next.js",
+        "use_cases": ["file upload", "image processing", "cloud storage"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Good",
+        "integration_difficulty": "Easy"
+      },
+      "aws_s3": {
+        "name": "AWS S3",
+        "description": "Cloud object storage",
+        "use_cases": ["file storage", "static hosting", "backup"],
+        "pricing": "Pay per use",
+        "rate_limits": "Very high",
+        "documentation": "Excellent",
+        "integration_difficulty": "Medium"
+      },
+      "cloudinary": {
+        "name": "Cloudinary",
+        "description": "Image and video management",
+        "use_cases": ["image upload", "video processing", "transformations"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Excellent",
+        "integration_difficulty": "Easy"
+      }
+    },
+    "communication": {
+      "resend": {
+        "name": "Resend",
+        "description": "Email API for developers",
+        "use_cases": ["transactional emails", "newsletters", "notifications"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Good",
+        "integration_difficulty": "Easy"
+      },
+      "pusher": {
+        "name": "Pusher",
+        "description": "Real-time messaging and notifications",
+        "use_cases": ["chat", "notifications", "real-time updates"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Excellent",
+        "integration_difficulty": "Easy"
+      },
+      "ably": {
+        "name": "Ably",
+        "description": "Real-time messaging platform",
+        "use_cases": ["chat", "live updates", "collaboration"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Good",
+        "integration_difficulty": "Medium"
+      }
+    },
+    "payment": {
+      "stripe": {
+        "name": "Stripe",
+        "description": "Payment processing platform",
+        "use_cases": ["payments", "subscriptions", "invoicing"],
+        "pricing": "Transaction fees",
+        "rate_limits": "Very high",
+        "documentation": "Excellent",
+        "integration_difficulty": "Medium"
+      },
+      "paypal": {
+        "name": "PayPal",
+        "description": "Payment processing and transfers",
+        "use_cases": ["payments", "donations", "marketplace"],
+        "pricing": "Transaction fees",
+        "rate_limits": "High",
+        "documentation": "Good",
+        "integration_difficulty": "Medium"
+      }
+    },
+    "analytics": {
+      "posthog": {
+        "name": "PostHog",
+        "description": "Product analytics and feature flags",
+        "use_cases": ["analytics", "feature flags", "session recording"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Good",
+        "integration_difficulty": "Easy"
+      },
+      "mixpanel": {
+        "name": "Mixpanel",
+        "description": "Product analytics and user behavior",
+        "use_cases": ["analytics", "funnel analysis", "cohort analysis"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Good",
+        "integration_difficulty": "Easy"
+      },
+      "google_analytics": {
+        "name": "Google Analytics",
+        "description": "Web analytics and reporting",
+        "use_cases": ["web analytics", "traffic analysis", "conversion tracking"],
+        "pricing": "Free",
+        "rate_limits": "High",
+        "documentation": "Excellent",
+        "integration_difficulty": "Easy"
+      }
+    },
+    "monitoring": {
+      "sentry": {
+        "name": "Sentry",
+        "description": "Error monitoring and performance tracking",
+        "use_cases": ["error tracking", "performance monitoring", "release tracking"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "High",
+        "documentation": "Excellent",
+        "integration_difficulty": "Easy"
+      },
+      "logrocket": {
+        "name": "LogRocket",
+        "description": "Session replay and error monitoring",
+        "use_cases": ["session replay", "error tracking", "user feedback"],
+        "pricing": "Free tier + paid",
+        "rate_limits": "Medium",
+        "documentation": "Good",
+        "integration_difficulty": "Easy"
+      }
+    }
+  },
+  "datasets": {
+    "text_data": {
+      "huggingface_datasets": {
+        "name": "Hugging Face Datasets",
+        "description": "Large collection of datasets for ML",
+        "categories": ["text", "images", "audio", "multimodal"],
+        "access": "Free",
+        "quality": "High"
+      },
+      "kaggle_datasets": {
+        "name": "Kaggle Datasets",
+        "description": "Community-driven dataset platform",
+        "categories": ["all types"],
+        "access": "Free",
+        "quality": "Variable"
+      },
+      "openml": {
+        "name": "OpenML",
+        "description": "Open machine learning datasets",
+        "categories": ["tabular", "text", "images"],
+        "access": "Free",
+        "quality": "High"
+      }
+    },
+    "financial_data": {
+      "alpha_vantage": {
+        "name": "Alpha Vantage",
+        "description": "Stock market and financial data",
+        "categories": ["stocks", "forex", "crypto"],
+        "access": "Free tier + paid",
+        "quality": "High"
+      },
+      "finnhub": {
+        "name": "Finnhub",
+        "description": "Real-time financial data",
+        "categories": ["stocks", "forex", "news"],
+        "access": "Free tier + paid",
+        "quality": "High"
+      },
+      "polygon_io": {
+        "name": "Polygon.io",
+        "description": "Financial market data API",
+        "categories": ["stocks", "options", "forex"],
+        "access": "Free tier + paid",
+        "quality": "High"
+      }
+    },
+    "news_data": {
+      "newsapi": {
+        "name": "NewsAPI",
+        "description": "News articles and headlines",
+        "categories": ["news", "articles", "headlines"],
+        "access": "Free tier + paid",
+        "quality": "Good"
+      },
+      "gnews": {
+        "name": "GNews",
+        "description": "Google News API",
+        "categories": ["news", "articles"],
+        "access": "Free tier + paid",
+        "quality": "Good"
+      }
+    }
+  },
+  "open_source_components": {
+    "ui_libraries": {
+      "shadcn_ui": {
+        "name": "shadcn/ui",
+        "description": "Re-usable components built with Radix UI and Tailwind CSS",
+        "use_cases": ["forms", "navigation", "data display", "feedback"],
+        "license": "MIT",
+        "maintenance": "Active"
+      },
+      "mantine": {
+        "name": "Mantine",
+        "description": "React components library with 100+ components",
+        "use_cases": ["forms", "data display", "navigation", "feedback"],
+        "license": "MIT",
+        "maintenance": "Active"
+      },
+      "chakra_ui": {
+        "name": "Chakra UI",
+        "description": "Simple, modular and accessible component library",
+        "use_cases": ["forms", "layout", "data display", "feedback"],
+        "license": "MIT",
+        "maintenance": "Active"
+      }
+    },
+    "chart_libraries": {
+      "recharts": {
+        "name": "Recharts",
+        "description": "Composable charting library built on React components",
+        "use_cases": ["line charts", "bar charts", "pie charts", "area charts"],
+        "license": "MIT",
+        "maintenance": "Active"
+      },
+      "chartjs": {
+        "name": "Chart.js",
+        "description": "Simple yet flexible JavaScript charting library",
+        "use_cases": ["all chart types", "interactive charts", "responsive charts"],
+        "license": "MIT",
+        "maintenance": "Active"
+      },
+      "d3": {
+        "name": "D3.js",
+        "description": "Data-driven documents for data visualization",
+        "use_cases": ["custom visualizations", "complex charts", "data manipulation"],
+        "license": "BSD-3-Clause",
+        "maintenance": "Active"
+      }
+    },
+    "form_libraries": {
+      "react_hook_form": {
+        "name": "React Hook Form",
+        "description": "Performant, flexible and extensible forms with easy validation",
+        "use_cases": ["form handling", "validation", "performance"],
+        "license": "MIT",
+        "maintenance": "Active"
+      },
+      "formik": {
+        "name": "Formik",
+        "description": "Form library without the tears",
+        "use_cases": ["form handling", "validation", "complex forms"],
+        "license": "Apache-2.0",
+        "maintenance": "Active"
+      }
+    }
+  },
+  "discovery_process": {
+    "steps": [
+      "Identify app type and core functionality",
+      "Research competitors and their tech stack",
+      "Find relevant APIs for core features",
+      "Identify datasets for training/testing",
+      "Find open-source components for UI/UX",
+      "Evaluate pricing and rate limits",
+      "Check documentation quality",
+      "Assess integration difficulty",
+      "Create integration roadmap"
+    ],
+    "evaluation_criteria": {
+      "pricing": ["Free tier available", "Reasonable pricing", "Scalable costs"],
+      "documentation": ["Clear examples", "API reference", "Tutorials available"],
+      "integration": ["SDK available", "REST API", "Webhook support"],
+      "reliability": ["Uptime SLA", "Support quality", "Community size"],
+      "performance": ["Response times", "Rate limits", "Scalability"]
+    }
+  }
+}

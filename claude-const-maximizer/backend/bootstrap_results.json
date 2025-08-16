@@ -1,0 +1,909 @@
+{
+  "vercel_projects": [
+    {
+      "name": "AI-Powered Code Review & Refactoring Assistant",
+      "slug": "ai-powered-code-review---refactoring-assistant",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Document Processing & Knowledge Base",
+      "slug": "intelligent-document-processing---knowledge-base",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Resume Parser & Job Matcher",
+      "slug": "ai-powered-resume-parser---job-matcher",
+      "status": "would_create"
+    },
+    {
+      "name": "Real-Time AI Content Moderation System",
+      "slug": "real-time-ai-content-moderation-system",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Financial Analysis & Trading Bot",
+      "slug": "ai-powered-financial-analysis---trading-bot",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Customer Support Chatbot",
+      "slug": "intelligent-customer-support-chatbot",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Medical Diagnosis Assistant",
+      "slug": "ai-powered-medical-diagnosis-assistant",
+      "status": "would_create"
+    },
+    {
+      "name": "Smart Contract Analysis & Security Auditor",
+      "slug": "smart-contract-analysis---security-auditor",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Video Content Generator",
+      "slug": "ai-powered-video-content-generator",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Supply Chain Optimization System",
+      "slug": "intelligent-supply-chain-optimization-system",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Research & Report Generation System",
+      "slug": "autonomous-research---report-generation-system",
+      "status": "would_create"
+    },
+    {
+      "name": "Multi-Agent Software Development Team",
+      "slug": "multi-agent-software-development-team",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent E-commerce Management System",
+      "slug": "intelligent-e-commerce-management-system",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Legal Document Analysis & Contract Negotiation",
+      "slug": "ai-powered-legal-document-analysis---contract-negotiation",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Data Science Pipeline",
+      "slug": "autonomous-data-science-pipeline",
+      "status": "would_create"
+    },
+    {
+      "name": "Multi-Agent Cybersecurity Defense System",
+      "slug": "multi-agent-cybersecurity-defense-system",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Healthcare Diagnosis & Treatment Planning",
+      "slug": "intelligent-healthcare-diagnosis---treatment-planning",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Financial Trading & Portfolio Management",
+      "slug": "autonomous-financial-trading---portfolio-management",
+      "status": "would_create"
+    },
+    {
+      "name": "Multi-Agent Content Creation & Marketing System",
+      "slug": "multi-agent-content-creation---marketing-system",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Smart City Management System",
+      "slug": "intelligent-smart-city-management-system",
+      "status": "would_create"
+    },
+    {
+      "name": "Personal AI-Powered Codebase Documentation Tool",
+      "slug": "personal-ai-powered-codebase-documentation-tool",
+      "status": "would_create"
+    },
+    {
+      "name": "Local Retrieval-Augmented Generation (RAG) System",
+      "slug": "local-retrieval-augmented-generation--rag--system",
+      "status": "would_create"
+    },
+    {
+      "name": "Multimodal AI Medical Assistant",
+      "slug": "multimodal-ai-medical-assistant",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Driven Music Composition Tool",
+      "slug": "ai-driven-music-composition-tool",
+      "status": "would_create"
+    },
+    {
+      "name": "Realistic Synthetic Data Generator",
+      "slug": "realistic-synthetic-data-generator",
+      "status": "would_create"
+    },
+    {
+      "name": "Real-Time AI-Powered Text-to-3D Model Generator",
+      "slug": "real-time-ai-powered-text-to-3d-model-generator",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Resume and Cover Letter Tailor",
+      "slug": "ai-powered-resume-and-cover-letter-tailor",
+      "status": "would_create"
+    },
+    {
+      "name": "Dynamic Video Storyboard Creator",
+      "slug": "dynamic-video-storyboard-creator",
+      "status": "would_create"
+    },
+    {
+      "name": "Customer Support Chatbot with Hallucination Correction",
+      "slug": "customer-support-chatbot-with-hallucination-correction",
+      "status": "would_create"
+    },
+    {
+      "name": "Creative Content Generator for Social Media",
+      "slug": "creative-content-generator-for-social-media",
+      "status": "would_create"
+    },
+    {
+      "name": "Automated Market Research and Report Generation Team",
+      "slug": "automated-market-research-and-report-generation-team",
+      "status": "would_create"
+    },
+    {
+      "name": "Cybersecurity Threat Analysis Team",
+      "slug": "cybersecurity-threat-analysis-team",
+      "status": "would_create"
+    },
+    {
+      "name": "Financial Portfolio Management System",
+      "slug": "financial-portfolio-management-system",
+      "status": "would_create"
+    },
+    {
+      "name": "Personalized Career Coach Agent System",
+      "slug": "personalized-career-coach-agent-system",
+      "status": "would_create"
+    },
+    {
+      "name": "Automated Software Development Team",
+      "slug": "automated-software-development-team",
+      "status": "would_create"
+    },
+    {
+      "name": "Creative Content Generation and Marketing Team",
+      "slug": "creative-content-generation-and-marketing-team",
+      "status": "would_create"
+    },
+    {
+      "name": "E-commerce Customer Service and Fraud Detection",
+      "slug": "e-commerce-customer-service-and-fraud-detection",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Learning and Research Assistant",
+      "slug": "autonomous-learning-and-research-assistant",
+      "status": "would_create"
+    },
+    {
+      "name": "Virtual Real Estate Agent System",
+      "slug": "virtual-real-estate-agent-system",
+      "status": "would_create"
+    },
+    {
+      "name": "Personal Brain Agent System",
+      "slug": "personal-brain-agent-system",
+      "status": "would_create"
+    },
+    {
+      "name": "Universal RAG Chatbot",
+      "slug": "universal-rag-chatbot",
+      "status": "would_create"
+    },
+    {
+      "name": "AI Meeting Notes & Action Items",
+      "slug": "ai-meeting-notes---action-items",
+      "status": "would_create"
+    },
+    {
+      "name": "Multilingual Customer Support Reply Generator",
+      "slug": "multilingual-customer-support-reply-generator",
+      "status": "would_create"
+    },
+    {
+      "name": "Smart Contract Clause Explainer",
+      "slug": "smart-contract-clause-explainer",
+      "status": "would_create"
+    },
+    {
+      "name": "Podcast to Blog Post Converter",
+      "slug": "podcast-to-blog-post-converter",
+      "status": "would_create"
+    },
+    {
+      "name": "Website Content Refresher",
+      "slug": "website-content-refresher",
+      "status": "would_create"
+    },
+    {
+      "name": "Resume & Cover Letter Personalizer",
+      "slug": "resume---cover-letter-personalizer",
+      "status": "would_create"
+    },
+    {
+      "name": "Learning Path Generator",
+      "slug": "learning-path-generator",
+      "status": "would_create"
+    },
+    {
+      "name": "Auto Blog Post Series Creator",
+      "slug": "auto-blog-post-series-creator",
+      "status": "would_create"
+    },
+    {
+      "name": "AI Email Campaign Writer",
+      "slug": "ai-email-campaign-writer",
+      "status": "would_create"
+    },
+    {
+      "name": "Startup Idea to Pitch Deck Crew",
+      "slug": "startup-idea-to-pitch-deck-crew",
+      "status": "would_create"
+    },
+    {
+      "name": "Social Media Factory",
+      "slug": "social-media-factory",
+      "status": "would_create"
+    },
+    {
+      "name": "Automated Research Department",
+      "slug": "automated-research-department",
+      "status": "would_create"
+    },
+    {
+      "name": "AI Content Localizer",
+      "slug": "ai-content-localizer",
+      "status": "would_create"
+    },
+    {
+      "name": "Recruitment Flow AI",
+      "slug": "recruitment-flow-ai",
+      "status": "would_create"
+    },
+    {
+      "name": "Real Estate Investment Finder",
+      "slug": "real-estate-investment-finder",
+      "status": "would_create"
+    },
+    {
+      "name": "Conference Planning Crew",
+      "slug": "conference-planning-crew",
+      "status": "would_create"
+    },
+    {
+      "name": "B2B Sales Prospecting AI",
+      "slug": "b2b-sales-prospecting-ai",
+      "status": "would_create"
+    },
+    {
+      "name": "SEO Growth Team",
+      "slug": "seo-growth-team",
+      "status": "would_create"
+    },
+    {
+      "name": "E-Commerce Launch Crew",
+      "slug": "e-commerce-launch-crew",
+      "status": "would_create"
+    }
+  ],
+  "render_services": [
+    {
+      "name": "AI-Powered Code Review & Refactoring Assistant-api",
+      "slug": "ai-powered-code-review---refactoring-assistant-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Document Processing & Knowledge Base-api",
+      "slug": "intelligent-document-processing---knowledge-base-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Resume Parser & Job Matcher-api",
+      "slug": "ai-powered-resume-parser---job-matcher-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Real-Time AI Content Moderation System-api",
+      "slug": "real-time-ai-content-moderation-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Financial Analysis & Trading Bot-api",
+      "slug": "ai-powered-financial-analysis---trading-bot-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Customer Support Chatbot-api",
+      "slug": "intelligent-customer-support-chatbot-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Medical Diagnosis Assistant-api",
+      "slug": "ai-powered-medical-diagnosis-assistant-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Smart Contract Analysis & Security Auditor-api",
+      "slug": "smart-contract-analysis---security-auditor-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Video Content Generator-api",
+      "slug": "ai-powered-video-content-generator-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Supply Chain Optimization System-api",
+      "slug": "intelligent-supply-chain-optimization-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Research & Report Generation System-api",
+      "slug": "autonomous-research---report-generation-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Multi-Agent Software Development Team-api",
+      "slug": "multi-agent-software-development-team-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent E-commerce Management System-api",
+      "slug": "intelligent-e-commerce-management-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Legal Document Analysis & Contract Negotiation-api",
+      "slug": "ai-powered-legal-document-analysis---contract-negotiation-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Data Science Pipeline-api",
+      "slug": "autonomous-data-science-pipeline-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Multi-Agent Cybersecurity Defense System-api",
+      "slug": "multi-agent-cybersecurity-defense-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Healthcare Diagnosis & Treatment Planning-api",
+      "slug": "intelligent-healthcare-diagnosis---treatment-planning-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Financial Trading & Portfolio Management-api",
+      "slug": "autonomous-financial-trading---portfolio-management-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Multi-Agent Content Creation & Marketing System-api",
+      "slug": "multi-agent-content-creation---marketing-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Smart City Management System-api",
+      "slug": "intelligent-smart-city-management-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Personal AI-Powered Codebase Documentation Tool-api",
+      "slug": "personal-ai-powered-codebase-documentation-tool-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Local Retrieval-Augmented Generation (RAG) System-api",
+      "slug": "local-retrieval-augmented-generation--rag--system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Multimodal AI Medical Assistant-api",
+      "slug": "multimodal-ai-medical-assistant-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Driven Music Composition Tool-api",
+      "slug": "ai-driven-music-composition-tool-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Realistic Synthetic Data Generator-api",
+      "slug": "realistic-synthetic-data-generator-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Real-Time AI-Powered Text-to-3D Model Generator-api",
+      "slug": "real-time-ai-powered-text-to-3d-model-generator-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Resume and Cover Letter Tailor-api",
+      "slug": "ai-powered-resume-and-cover-letter-tailor-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Dynamic Video Storyboard Creator-api",
+      "slug": "dynamic-video-storyboard-creator-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Customer Support Chatbot with Hallucination Correction-api",
+      "slug": "customer-support-chatbot-with-hallucination-correction-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Creative Content Generator for Social Media-api",
+      "slug": "creative-content-generator-for-social-media-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Automated Market Research and Report Generation Team-api",
+      "slug": "automated-market-research-and-report-generation-team-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Cybersecurity Threat Analysis Team-api",
+      "slug": "cybersecurity-threat-analysis-team-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Financial Portfolio Management System-api",
+      "slug": "financial-portfolio-management-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Personalized Career Coach Agent System-api",
+      "slug": "personalized-career-coach-agent-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Automated Software Development Team-api",
+      "slug": "automated-software-development-team-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Creative Content Generation and Marketing Team-api",
+      "slug": "creative-content-generation-and-marketing-team-api",
+      "status": "would_create"
+    },
+    {
+      "name": "E-commerce Customer Service and Fraud Detection-api",
+      "slug": "e-commerce-customer-service-and-fraud-detection-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Learning and Research Assistant-api",
+      "slug": "autonomous-learning-and-research-assistant-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Virtual Real Estate Agent System-api",
+      "slug": "virtual-real-estate-agent-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Personal Brain Agent System-api",
+      "slug": "personal-brain-agent-system-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Universal RAG Chatbot-api",
+      "slug": "universal-rag-chatbot-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI Meeting Notes & Action Items-api",
+      "slug": "ai-meeting-notes---action-items-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Multilingual Customer Support Reply Generator-api",
+      "slug": "multilingual-customer-support-reply-generator-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Smart Contract Clause Explainer-api",
+      "slug": "smart-contract-clause-explainer-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Podcast to Blog Post Converter-api",
+      "slug": "podcast-to-blog-post-converter-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Website Content Refresher-api",
+      "slug": "website-content-refresher-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Resume & Cover Letter Personalizer-api",
+      "slug": "resume---cover-letter-personalizer-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Learning Path Generator-api",
+      "slug": "learning-path-generator-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Auto Blog Post Series Creator-api",
+      "slug": "auto-blog-post-series-creator-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI Email Campaign Writer-api",
+      "slug": "ai-email-campaign-writer-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Startup Idea to Pitch Deck Crew-api",
+      "slug": "startup-idea-to-pitch-deck-crew-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Social Media Factory-api",
+      "slug": "social-media-factory-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Automated Research Department-api",
+      "slug": "automated-research-department-api",
+      "status": "would_create"
+    },
+    {
+      "name": "AI Content Localizer-api",
+      "slug": "ai-content-localizer-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Recruitment Flow AI-api",
+      "slug": "recruitment-flow-ai-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Real Estate Investment Finder-api",
+      "slug": "real-estate-investment-finder-api",
+      "status": "would_create"
+    },
+    {
+      "name": "Conference Planning Crew-api",
+      "slug": "conference-planning-crew-api",
+      "status": "would_create"
+    },
+    {
+      "name": "B2B Sales Prospecting AI-api",
+      "slug": "b2b-sales-prospecting-ai-api",
+      "status": "would_create"
+    },
+    {
+      "name": "SEO Growth Team-api",
+      "slug": "seo-growth-team-api",
+      "status": "would_create"
+    },
+    {
+      "name": "E-Commerce Launch Crew-api",
+      "slug": "e-commerce-launch-crew-api",
+      "status": "would_create"
+    }
+  ],
+  "render_databases": [
+    {
+      "name": "AI-Powered Code Review & Refactoring Assistant-db",
+      "slug": "ai-powered-code-review---refactoring-assistant-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Document Processing & Knowledge Base-db",
+      "slug": "intelligent-document-processing---knowledge-base-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Resume Parser & Job Matcher-db",
+      "slug": "ai-powered-resume-parser---job-matcher-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Real-Time AI Content Moderation System-db",
+      "slug": "real-time-ai-content-moderation-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Financial Analysis & Trading Bot-db",
+      "slug": "ai-powered-financial-analysis---trading-bot-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Customer Support Chatbot-db",
+      "slug": "intelligent-customer-support-chatbot-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Medical Diagnosis Assistant-db",
+      "slug": "ai-powered-medical-diagnosis-assistant-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Smart Contract Analysis & Security Auditor-db",
+      "slug": "smart-contract-analysis---security-auditor-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Video Content Generator-db",
+      "slug": "ai-powered-video-content-generator-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Supply Chain Optimization System-db",
+      "slug": "intelligent-supply-chain-optimization-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Research & Report Generation System-db",
+      "slug": "autonomous-research---report-generation-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Multi-Agent Software Development Team-db",
+      "slug": "multi-agent-software-development-team-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent E-commerce Management System-db",
+      "slug": "intelligent-e-commerce-management-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Legal Document Analysis & Contract Negotiation-db",
+      "slug": "ai-powered-legal-document-analysis---contract-negotiation-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Data Science Pipeline-db",
+      "slug": "autonomous-data-science-pipeline-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Multi-Agent Cybersecurity Defense System-db",
+      "slug": "multi-agent-cybersecurity-defense-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Healthcare Diagnosis & Treatment Planning-db",
+      "slug": "intelligent-healthcare-diagnosis---treatment-planning-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Financial Trading & Portfolio Management-db",
+      "slug": "autonomous-financial-trading---portfolio-management-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Multi-Agent Content Creation & Marketing System-db",
+      "slug": "multi-agent-content-creation---marketing-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Intelligent Smart City Management System-db",
+      "slug": "intelligent-smart-city-management-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Personal AI-Powered Codebase Documentation Tool-db",
+      "slug": "personal-ai-powered-codebase-documentation-tool-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Local Retrieval-Augmented Generation (RAG) System-db",
+      "slug": "local-retrieval-augmented-generation--rag--system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Multimodal AI Medical Assistant-db",
+      "slug": "multimodal-ai-medical-assistant-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Driven Music Composition Tool-db",
+      "slug": "ai-driven-music-composition-tool-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Realistic Synthetic Data Generator-db",
+      "slug": "realistic-synthetic-data-generator-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Real-Time AI-Powered Text-to-3D Model Generator-db",
+      "slug": "real-time-ai-powered-text-to-3d-model-generator-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI-Powered Resume and Cover Letter Tailor-db",
+      "slug": "ai-powered-resume-and-cover-letter-tailor-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Dynamic Video Storyboard Creator-db",
+      "slug": "dynamic-video-storyboard-creator-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Customer Support Chatbot with Hallucination Correction-db",
+      "slug": "customer-support-chatbot-with-hallucination-correction-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Creative Content Generator for Social Media-db",
+      "slug": "creative-content-generator-for-social-media-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Automated Market Research and Report Generation Team-db",
+      "slug": "automated-market-research-and-report-generation-team-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Cybersecurity Threat Analysis Team-db",
+      "slug": "cybersecurity-threat-analysis-team-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Financial Portfolio Management System-db",
+      "slug": "financial-portfolio-management-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Personalized Career Coach Agent System-db",
+      "slug": "personalized-career-coach-agent-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Automated Software Development Team-db",
+      "slug": "automated-software-development-team-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Creative Content Generation and Marketing Team-db",
+      "slug": "creative-content-generation-and-marketing-team-db",
+      "status": "would_create"
+    },
+    {
+      "name": "E-commerce Customer Service and Fraud Detection-db",
+      "slug": "e-commerce-customer-service-and-fraud-detection-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Autonomous Learning and Research Assistant-db",
+      "slug": "autonomous-learning-and-research-assistant-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Virtual Real Estate Agent System-db",
+      "slug": "virtual-real-estate-agent-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Personal Brain Agent System-db",
+      "slug": "personal-brain-agent-system-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Universal RAG Chatbot-db",
+      "slug": "universal-rag-chatbot-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI Meeting Notes & Action Items-db",
+      "slug": "ai-meeting-notes---action-items-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Multilingual Customer Support Reply Generator-db",
+      "slug": "multilingual-customer-support-reply-generator-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Smart Contract Clause Explainer-db",
+      "slug": "smart-contract-clause-explainer-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Podcast to Blog Post Converter-db",
+      "slug": "podcast-to-blog-post-converter-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Website Content Refresher-db",
+      "slug": "website-content-refresher-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Resume & Cover Letter Personalizer-db",
+      "slug": "resume---cover-letter-personalizer-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Learning Path Generator-db",
+      "slug": "learning-path-generator-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Auto Blog Post Series Creator-db",
+      "slug": "auto-blog-post-series-creator-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI Email Campaign Writer-db",
+      "slug": "ai-email-campaign-writer-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Startup Idea to Pitch Deck Crew-db",
+      "slug": "startup-idea-to-pitch-deck-crew-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Social Media Factory-db",
+      "slug": "social-media-factory-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Automated Research Department-db",
+      "slug": "automated-research-department-db",
+      "status": "would_create"
+    },
+    {
+      "name": "AI Content Localizer-db",
+      "slug": "ai-content-localizer-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Recruitment Flow AI-db",
+      "slug": "recruitment-flow-ai-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Real Estate Investment Finder-db",
+      "slug": "real-estate-investment-finder-db",
+      "status": "would_create"
+    },
+    {
+      "name": "Conference Planning Crew-db",
+      "slug": "conference-planning-crew-db",
+      "status": "would_create"
+    },
+    {
+      "name": "B2B Sales Prospecting AI-db",
+      "slug": "b2b-sales-prospecting-ai-db",
+      "status": "would_create"
+    },
+    {
+      "name": "SEO Growth Team-db",
+      "slug": "seo-growth-team-db",
+      "status": "would_create"
+    },
+    {
+      "name": "E-Commerce Launch Crew-db",
+      "slug": "e-commerce-launch-crew-db",
+      "status": "would_create"
+    }
+  ],
+  "errors": []
+}

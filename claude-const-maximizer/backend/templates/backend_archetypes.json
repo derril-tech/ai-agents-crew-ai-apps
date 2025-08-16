@@ -1,0 +1,488 @@
+{
+  "backend_archetypes": {
+    "professional_saas": {
+      "name": "Professional SaaS Backend",
+      "description": "Scalable business application backend",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "layered_mvc",
+      "patterns": [
+        "repository_pattern",
+        "service_layer",
+        "dependency_injection",
+        "middleware_stack"
+      ],
+      "features": [
+        "jwt_authentication",
+        "role_based_access",
+        "rate_limiting",
+        "logging_monitoring",
+        "caching_redis",
+        "file_uploads",
+        "email_notifications"
+      ],
+      "integrations": [
+        "stripe_payments",
+        "sendgrid_email",
+        "aws_s3_storage"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "cache": "redis_cloud"
+      },
+      "projects": ["CRUD", "DASHBOARD", "ANALYTICS"]
+    },
+    "ai_ml_backend": {
+      "name": "AI/ML Backend",
+      "description": "AI-powered application backend",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "microservices",
+      "patterns": [
+        "queue_worker",
+        "async_processing",
+        "model_serving",
+        "batch_processing"
+      ],
+      "features": [
+        "openai_integration",
+        "anthropic_integration",
+        "vector_embeddings",
+        "model_caching",
+        "async_tasks",
+        "webhook_handlers",
+        "streaming_responses"
+      ],
+      "integrations": [
+        "openai_api",
+        "anthropic_api",
+        "pinecone_vector_db",
+        "celery_worker"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "vector_db": "pinecone_cloud",
+        "queue": "redis_cloud"
+      },
+      "projects": ["GENERATOR", "CREATIVE_AI", "AI_CHATBOT"]
+    },
+    "rag_knowledge_backend": {
+      "name": "RAG & Knowledge Base Backend",
+      "description": "Document processing and retrieval backend",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "event_driven",
+      "patterns": [
+        "document_processor",
+        "vector_search",
+        "chunking_strategy",
+        "semantic_search"
+      ],
+      "features": [
+        "document_upload",
+        "text_extraction",
+        "embedding_generation",
+        "vector_search",
+        "document_metadata",
+        "version_control",
+        "search_analytics"
+      ],
+      "integrations": [
+        "pinecone_vector_db",
+        "langchain_framework",
+        "pdf_processing",
+        "ocr_services"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "vector_db": "pinecone_cloud",
+        "storage": "aws_s3"
+      },
+      "projects": ["RAG", "KNOWLEDGE_BASE", "DOCUMENT_AI"]
+    },
+    "real_time_backend": {
+      "name": "Real-time Backend",
+      "description": "Real-time communication and updates",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "websocket_centric",
+      "patterns": [
+        "websocket_manager",
+        "pub_sub_pattern",
+        "connection_pooling",
+        "message_queue"
+      ],
+      "features": [
+        "websocket_connections",
+        "real_time_updates",
+        "room_management",
+        "presence_tracking",
+        "message_history",
+        "typing_indicators",
+        "file_sharing"
+      ],
+      "integrations": [
+        "pusher_realtime",
+        "socket_io",
+        "redis_pubsub"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "realtime": "pusher_cloud"
+      },
+      "projects": ["CHATBOT", "CONVERSATIONAL_AI", "CUSTOMER_SUPPORT"]
+    },
+    "financial_backend": {
+      "name": "Financial & Trading Backend",
+      "description": "Financial data and trading backend",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "event_sourcing",
+      "patterns": [
+        "event_store",
+        "cqrs_pattern",
+        "saga_pattern",
+        "outbox_pattern"
+      ],
+      "features": [
+        "market_data_streaming",
+        "portfolio_tracking",
+        "risk_management",
+        "order_management",
+        "real_time_pricing",
+        "historical_data",
+        "compliance_checks"
+      ],
+      "integrations": [
+        "alpaca_trading",
+        "finnhub_data",
+        "stripe_payments",
+        "plaid_banking"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "cache": "redis_cloud",
+        "monitoring": "datadog"
+      },
+      "projects": ["FINANCE_TRADING", "CRYPTO_ANALYTICS", "PORTFOLIO_MANAGER"]
+    },
+    "healthcare_backend": {
+      "name": "Healthcare Demo Backend",
+      "description": "Healthcare application backend (demo only)",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "domain_driven",
+      "patterns": [
+        "domain_events",
+        "aggregate_pattern",
+        "value_objects",
+        "specification_pattern"
+      ],
+      "features": [
+        "patient_management",
+        "appointment_scheduling",
+        "medical_records",
+        "prescription_management",
+        "health_analytics",
+        "compliance_audit",
+        "data_encryption"
+      ],
+      "integrations": [
+        "hipaa_compliant_storage",
+        "medical_apis",
+        "encryption_services"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "security": "hipaa_compliant"
+      },
+      "projects": ["HEALTHCARE_DEMO", "MEDICAL_ANALYTICS", "PATIENT_PORTAL"]
+    },
+    "legal_backend": {
+      "name": "Legal Document Backend",
+      "description": "Legal document processing backend",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "document_centric",
+      "patterns": [
+        "document_versioning",
+        "workflow_engine",
+        "approval_process",
+        "audit_trail"
+      ],
+      "features": [
+        "document_processing",
+        "contract_analysis",
+        "compliance_checking",
+        "version_control",
+        "digital_signatures",
+        "legal_workflows",
+        "audit_logging"
+      ],
+      "integrations": [
+        "docu_sign",
+        "legal_apis",
+        "document_storage"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "storage": "encrypted_s3"
+      },
+      "projects": ["LEGAL_DOCUMENT", "CONTRACT_ANALYSIS", "COMPLIANCE_TOOL"]
+    },
+    "gaming_backend": {
+      "name": "Gaming & Entertainment Backend",
+      "description": "Gaming and entertainment backend",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "game_server",
+      "patterns": [
+        "game_state_management",
+        "player_session",
+        "leaderboard_system",
+        "achievement_system"
+      ],
+      "features": [
+        "player_authentication",
+        "game_state_sync",
+        "multiplayer_support",
+        "leaderboards",
+        "achievements",
+        "in_game_purchases",
+        "social_features"
+      ],
+      "integrations": [
+        "steam_api",
+        "discord_api",
+        "payment_gateways"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "cache": "redis_cloud"
+      },
+      "projects": ["GAMING_AI", "ENTERTAINMENT_PLATFORM", "VIRTUAL_REALITY"]
+    },
+    "educational_backend": {
+      "name": "Educational & Learning Backend",
+      "description": "Educational platform backend",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "learning_management",
+      "patterns": [
+        "course_management",
+        "progress_tracking",
+        "adaptive_learning",
+        "assessment_engine"
+      ],
+      "features": [
+        "course_creation",
+        "student_progress",
+        "quiz_system",
+        "video_streaming",
+        "certification",
+        "collaboration_tools",
+        "analytics_dashboard"
+      ],
+      "integrations": [
+        "video_platforms",
+        "lms_apis",
+        "payment_gateways"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "media": "cloudfront"
+      },
+      "projects": ["EDUCATIONAL_AI", "LEARNING_PLATFORM", "TUTORING_SYSTEM"]
+    },
+    "research_backend": {
+      "name": "Research & Analytics Backend",
+      "description": "Research and data analytics backend",
+      "framework": "fastapi",
+      "database": "postgresql",
+      "architecture": "data_pipeline",
+      "patterns": [
+        "etl_pipeline",
+        "data_warehouse",
+        "analytics_engine",
+        "reporting_system"
+      ],
+      "features": [
+        "data_ingestion",
+        "data_processing",
+        "statistical_analysis",
+        "visualization_api",
+        "report_generation",
+        "data_export",
+        "collaboration_tools"
+      ],
+      "integrations": [
+        "jupyter_notebooks",
+        "data_sources",
+        "visualization_libs"
+      ],
+      "deployment": {
+        "container": "docker",
+        "platform": "render",
+        "database": "postgresql_cloud",
+        "analytics": "bigquery"
+      },
+      "projects": ["RESEARCH_AI", "DATA_ANALYTICS", "SCIENTIFIC_TOOLS"]
+    }
+  },
+  "backend_patterns": {
+    "layered_mvc": {
+      "description": "Model-View-Controller with service layer",
+      "layers": ["controllers", "services", "repositories", "models"],
+      "benefits": ["Separation of concerns", "Testability", "Maintainability"],
+      "best_for": ["CRUD applications", "Business applications"]
+    },
+    "microservices": {
+      "description": "Service-oriented architecture",
+      "layers": ["api_gateway", "services", "message_queue", "databases"],
+      "benefits": ["Scalability", "Independent deployment", "Technology diversity"],
+      "best_for": ["Complex applications", "AI/ML systems"]
+    },
+    "event_driven": {
+      "description": "Event-driven architecture",
+      "layers": ["event_producers", "event_bus", "event_handlers", "event_store"],
+      "benefits": ["Loose coupling", "Scalability", "Real-time processing"],
+      "best_for": ["RAG systems", "Real-time applications"]
+    },
+    "websocket_centric": {
+      "description": "WebSocket-focused architecture",
+      "layers": ["websocket_manager", "connection_pool", "message_handlers", "state_store"],
+      "benefits": ["Real-time communication", "Low latency", "Bidirectional"],
+      "best_for": ["Chat applications", "Real-time dashboards"]
+    },
+    "event_sourcing": {
+      "description": "Event sourcing with CQRS",
+      "layers": ["command_handlers", "event_store", "read_models", "projections"],
+      "benefits": ["Audit trail", "Temporal queries", "Scalability"],
+      "best_for": ["Financial applications", "Trading systems"]
+    },
+    "domain_driven": {
+      "description": "Domain-driven design",
+      "layers": ["domain_services", "aggregates", "value_objects", "repositories"],
+      "benefits": ["Business alignment", "Complex domain modeling", "Maintainability"],
+      "best_for": ["Healthcare systems", "Legal applications"]
+    },
+    "document_centric": {
+      "description": "Document-focused architecture",
+      "layers": ["document_processor", "version_control", "workflow_engine", "storage"],
+      "benefits": ["Document management", "Version control", "Workflow automation"],
+      "best_for": ["Legal systems", "Content management"]
+    },
+    "game_server": {
+      "description": "Game server architecture",
+      "layers": ["game_logic", "session_manager", "state_sync", "leaderboard"],
+      "benefits": ["Real-time gaming", "State management", "Social features"],
+      "best_for": ["Gaming applications", "Entertainment platforms"]
+    },
+    "learning_management": {
+      "description": "Learning management system",
+      "layers": ["course_engine", "progress_tracker", "assessment_system", "analytics"],
+      "benefits": ["Educational features", "Progress tracking", "Adaptive learning"],
+      "best_for": ["Educational platforms", "Training systems"]
+    },
+    "data_pipeline": {
+      "description": "Data pipeline architecture",
+      "layers": ["data_ingestion", "processing_engine", "warehouse", "analytics"],
+      "benefits": ["Data processing", "Analytics", "Scalability"],
+      "best_for": ["Research applications", "Analytics platforms"]
+    }
+  },
+  "database_patterns": {
+    "postgresql": {
+      "name": "PostgreSQL",
+      "description": "Relational database with advanced features",
+      "installation": "pip install psycopg2-binary",
+      "features": ["ACID compliance", "JSON support", "Full-text search", "Extensions"],
+      "best_for": ["Most applications", "Complex queries", "Data integrity"]
+    },
+    "sqlite": {
+      "name": "SQLite",
+      "description": "Lightweight file-based database",
+      "installation": "Built into Python",
+      "features": ["Zero configuration", "File-based", "Portable", "ACID"],
+      "best_for": ["Development", "Simple applications", "Prototyping"]
+    },
+    "mongodb": {
+      "name": "MongoDB",
+      "description": "Document-oriented NoSQL database",
+      "installation": "pip install motor",
+      "features": ["Document storage", "Schema flexibility", "Horizontal scaling"],
+      "best_for": ["Document-heavy applications", "Rapid prototyping"]
+    },
+    "redis": {
+      "name": "Redis",
+      "description": "In-memory data structure store",
+      "installation": "pip install redis",
+      "features": ["Caching", "Session storage", "Pub/Sub", "Real-time"],
+      "best_for": ["Caching", "Real-time features", "Session management"]
+    }
+  },
+  "authentication_patterns": {
+    "jwt": {
+      "name": "JWT Authentication",
+      "description": "JSON Web Token-based authentication",
+      "implementation": "python-jose[cryptography]",
+      "features": ["Stateless", "Scalable", "Cross-domain"],
+      "best_for": ["Most applications", "Microservices"]
+    },
+    "oauth2": {
+      "name": "OAuth 2.0",
+      "description": "OAuth 2.0 with OpenID Connect",
+      "implementation": "authlib",
+      "features": ["Third-party login", "Standard protocol", "Secure"],
+      "best_for": ["Social login", "Enterprise applications"]
+    },
+    "session_based": {
+      "name": "Session-based Authentication",
+      "description": "Traditional session-based auth",
+      "implementation": "fastapi-sessions",
+      "features": ["Simple", "Server-side control", "Easy revocation"],
+      "best_for": ["Simple applications", "Monolithic apps"]
+    }
+  },
+  "deployment_patterns": {
+    "docker": {
+      "name": "Docker Containerization",
+      "description": "Containerized deployment",
+      "files": ["Dockerfile", "docker-compose.yml"],
+      "benefits": ["Consistency", "Portability", "Isolation"],
+      "best_for": ["All applications", "Cloud deployment"]
+    },
+    "serverless": {
+      "name": "Serverless Deployment",
+      "description": "Serverless function deployment",
+      "platforms": ["Vercel", "Netlify", "AWS Lambda"],
+      "benefits": ["Auto-scaling", "Pay-per-use", "No server management"],
+      "best_for": ["Simple APIs", "Event-driven applications"]
+    },
+    "kubernetes": {
+      "name": "Kubernetes Orchestration",
+      "description": "Container orchestration",
+      "files": ["deployment.yaml", "service.yaml", "ingress.yaml"],
+      "benefits": ["Scalability", "High availability", "Service mesh"],
+      "best_for": ["Complex applications", "Microservices"]
+    }
+  }
+}

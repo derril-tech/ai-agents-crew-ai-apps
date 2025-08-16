@@ -1,0 +1,20 @@
+{
+  "name": "CRUD SaaS Application",
+  "description": "Automated code analysis, security vulnerability detection, performance optimization suggestions, automated refactoring",
+  "prompt_template": "You are coding a CRUD SaaS application called {project_name}. Follow these rules: {claude_constitution}. Here is the project brief: {project_brief}. Here is the frontend boilerplate spec: {frontend_spec}. Here is the backend boilerplate spec: {backend_spec}. Focus on: 1) User authentication and authorization 2) Data models and relationships 3) CRUD operations with proper validation 4) Responsive data tables and forms 5) Search and filtering capabilities 6) File upload and management 7) User dashboard and analytics 8) API rate limiting and security",
+  "key_features": [
+    "User authentication (Clerk/Auth.js)",
+    "Database models (PostgreSQL/MongoDB)",
+    "CRUD API endpoints",
+    "Data tables with sorting/filtering",
+    "Form validation and error handling",
+    "File upload (UploadThing/AWS S3)",
+    "User roles and permissions",
+    "Search functionality",
+    "Pagination and infinite scroll",
+    "Export/import capabilities"
+  ],
+  "tech_stack": "Python, FastAPI, React, OpenAI/Claude API",
+  "project_name": "AI-Powered Code Review & Refactoring Assistant",
+  "app_type": "CRUD"
+}
