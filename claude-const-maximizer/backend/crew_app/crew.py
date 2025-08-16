@@ -78,9 +78,9 @@ def build_crew() -> Crew:
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             
-            return f"✅ File written: {file_path}"
+            return f"[OK] File written: {file_path}"
         except Exception as e:
-            return f"❌ Error writing file: {e}"
+            return f"[ERROR] Error writing file: {e}"
     
     write_file_tool = Tool(
         name="write_file",

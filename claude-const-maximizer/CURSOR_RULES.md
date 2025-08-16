@@ -20,6 +20,7 @@
 - Prefer **functional components** + hooks; no class components.
 - **Beginner-friendly**: add clear comments and short docstrings; keep functions single-purpose.
 - Keep PR-sized changes: **small, focused, and atomic**.
+- Do not use emojies in the backend code.
 
 ---
 

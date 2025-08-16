@@ -131,7 +131,7 @@ def generate_env_vars(archetype_config: Dict, project_slug: str) -> Dict[str, st
 
 def tag_projects():
     """Tag all projects with archetypes and generate environment variables."""
-    print("🏷️  Starting project tagging...")
+    print("[EMOJI]️  Starting project tagging...")
     
     # Load configurations
     archetypes = load_archetypes()
@@ -140,7 +140,7 @@ def tag_projects():
     tagged_projects = []
     envs = {}
     
-    print(f"📋 Processing {len(projects)} projects...")
+    print(f"[CHECKLIST] Processing {len(projects)} projects...")
     
     for i, project in enumerate(projects, 1):
         project_name = project.get("project_name", f"Project {i}")
@@ -174,10 +174,10 @@ def tag_projects():
         tagged_projects.append(tagged_project)
         envs[project_slug] = project_envs
         
-        print(f"  🏷️  Archetype: {archetype}")
-        print(f"  🔧 Backend: {archetype_config['backend']}")
-        print(f"  🔗 Services: {', '.join(archetype_config['services'])}")
-        print(f"  🔑 Env vars: {list(project_envs.keys())}")
+        print(f"  [EMOJI]️  Archetype: {archetype}")
+        print(f"  [TOOL] Backend: {archetype_config['backend']}")
+        print(f"  [CONNECT] Services: {', '.join(archetype_config['services'])}")
+        print(f"  [EMOJI] Env vars: {list(project_envs.keys())}")
     
     # Save tagged projects
     tagged_projects_file = Path("../tagged_projects.json")
@@ -200,31 +200,31 @@ def tag_projects():
         archetype_counts[archetype] = archetype_counts.get(archetype, 0) + 1
         backend_counts[backend] = backend_counts.get(backend, 0) + 1
     
-    print(f"\n📊 Tagging Summary:")
+    print(f"\n[METRICS] Tagging Summary:")
     print(f"  Total projects: {len(tagged_projects)}")
     print(f"  Archetypes used: {len(archetype_counts)}")
     print(f"  Backends used: {len(backend_counts)}")
     
-    print(f"\n🏷️  Archetype Distribution:")
+    print(f"\n[EMOJI]️  Archetype Distribution:")
     for archetype, count in sorted(archetype_counts.items()):
         percentage = (count / len(tagged_projects)) * 100
         print(f"  {archetype}: {count} ({percentage:.1f}%)")
     
-    print(f"\n🔧 Backend Distribution:")
+    print(f"\n[TOOL] Backend Distribution:")
     for backend, count in sorted(backend_counts.items()):
         percentage = (count / len(tagged_projects)) * 100
         print(f"  {backend}: {count} ({percentage:.1f}%)")
     
-    print(f"\n✅ Files generated:")
-    print(f"  📄 Tagged projects: {tagged_projects_file}")
-    print(f"  🔑 Environment vars: {envs_file}")
+    print(f"\n[OK] Files generated:")
+    print(f"  [DOC] Tagged projects: {tagged_projects_file}")
+    print(f"  [EMOJI] Environment vars: {envs_file}")
     
     # Generate stack choice documentation
     generate_stack_choices(tagged_projects, archetypes)
 
 def generate_stack_choices(tagged_projects: List[Dict], archetypes: Dict):
     """Generate stack choice documentation for each project."""
-    print(f"\n📝 Generating stack choice documentation...")
+    print(f"\n[WRITE] Generating stack choice documentation...")
     
     deliverables_dir = Path("../deliverables")
     deliverables_dir.mkdir(exist_ok=True)
@@ -276,6 +276,6 @@ if __name__ == "__main__":
     try:
         tag_projects()
     except Exception as e:
-        print(f"❌ Project tagging failed: {e}")
+        print(f"[ERROR] Project tagging failed: {e}")
         exit(1)
 

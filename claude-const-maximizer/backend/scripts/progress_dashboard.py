@@ -178,7 +178,7 @@ def generate_project_card(project_name: str, project_slug: str, status_info: Dic
     if files:
         file_list = "<div class='text-xs text-gray-400 mt-2'>"
         for file in files:
-            file_list += f"<div>✓ {file}</div>"
+            file_list += f"<div>[EMOJI] {file}</div>"
         file_list += "</div>"
     
     return f"""
@@ -207,35 +207,35 @@ def load_projects() -> List[Dict]:
     """Load projects from projects.json."""
     projects_file = Path("projects.json")
     if not projects_file.exists():
-        print("❌ projects.json not found!")
+        print("[ERROR] projects.json not found!")
         return []
     
     try:
         with open(projects_file, 'r', encoding='utf-8') as f:
             return json.load(f)
     except Exception as e:
-        print(f"❌ Error loading projects.json: {e}")
+        print(f"[ERROR] Error loading projects.json: {e}")
         return []
 
 def generate_dashboard():
     """Generate the progress dashboard."""
-    print("🔍 Scanning projects...")
+    print("[INVESTIGATE] Scanning projects...")
     
     # Load projects from root directory
     projects_file = Path("../../projects.json")
     if not projects_file.exists():
-        print("❌ projects.json not found!")
+        print("[ERROR] projects.json not found!")
         return
     
     try:
         with open(projects_file, 'r', encoding='utf-8') as f:
             projects = json.load(f)
     except Exception as e:
-        print(f"❌ Error loading projects.json: {e}")
+        print(f"[ERROR] Error loading projects.json: {e}")
         return
     
     if not projects:
-        print("❌ No projects found!")
+        print("[ERROR] No projects found!")
         return
     
     # Create deliverables directory if it doesn't exist
@@ -284,8 +284,8 @@ def generate_dashboard():
     with open(dashboard_file, 'w', encoding='utf-8') as f:
         f.write(dashboard_html)
     
-    print(f"✅ Dashboard generated: {dashboard_file}")
-    print(f"📊 Stats: {completed}/{total_projects} complete ({progress_percent}%)")
+    print(f"[OK] Dashboard generated: {dashboard_file}")
+    print(f"[METRICS] Stats: {completed}/{total_projects} complete ({progress_percent}%)")
 
 if __name__ == "__main__":
     generate_dashboard()

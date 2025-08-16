@@ -141,7 +141,7 @@ def load_envs() -> Dict:
     """Load environment variables from envs.json."""
     envs_file = Path("../envs.json")
     if not envs_file.exists():
-        print("⚠️  envs.json not found, using empty env vars")
+        print("[WARN]  envs.json not found, using empty env vars")
         return {}
     
     with open(envs_file, 'r', encoding='utf-8') as f:
@@ -153,7 +153,7 @@ def slugify(name: str) -> str:
 
 def bootstrap_services(dry_run: bool = True):
     """Bootstrap all services for the projects."""
-    print("🚀 Starting services bootstrap...")
+    print("[LAUNCH] Starting services bootstrap...")
     
     # Load configuration
     projects = load_projects()
@@ -183,7 +183,7 @@ def bootstrap_services(dry_run: bool = True):
         "errors": []
     }
     
-    print(f"📋 Processing {len(projects)} projects...")
+    print(f"[CHECKLIST] Processing {len(projects)} projects...")
     
     for i, project in enumerate(projects, 1):
         project_name = project.get("project_name", f"Project {i}")
@@ -197,7 +197,7 @@ def bootstrap_services(dry_run: bool = True):
         try:
             # Create Vercel project (frontend)
             if dry_run:
-                print(f"  🔮 Would create Vercel project: {project_name}")
+                print(f"  [EMOJI] Would create Vercel project: {project_name}")
                 print(f"     Slug: {project_slug}")
                 print(f"     Env vars: {list(project_envs.keys())}")
                 results["vercel_projects"].append({
@@ -206,7 +206,7 @@ def bootstrap_services(dry_run: bool = True):
                     "status": "would_create"
                 })
             else:
-                print(f"  🎨 Creating Vercel project: {project_name}")
+                print(f"  [UI] Creating Vercel project: {project_name}")
                 vercel_project = vercel.create_project(project_name, project_slug)
                 vercel.set_env_vars(vercel_project["id"], project_envs)
                 results["vercel_projects"].append({
@@ -215,18 +215,18 @@ def bootstrap_services(dry_run: bool = True):
                     "url": vercel_project.get("url"),
                     "status": "created"
                 })
-                print(f"     ✅ Created: {vercel_project.get('url')}")
+                print(f"     [OK] Created: {vercel_project.get('url')}")
             
             # Create Render web service (backend)
             if dry_run:
-                print(f"  🔮 Would create Render service: {project_name}-api")
+                print(f"  [EMOJI] Would create Render service: {project_name}-api")
                 results["render_services"].append({
                     "name": f"{project_name}-api",
                     "slug": f"{project_slug}-api",
                     "status": "would_create"
                 })
             else:
-                print(f"  🔧 Creating Render service: {project_name}-api")
+                print(f"  [TOOL] Creating Render service: {project_name}-api")
                 render_service = render.create_web_service(
                     f"{project_name}-api", 
                     f"{project_slug}-api"
@@ -238,18 +238,18 @@ def bootstrap_services(dry_run: bool = True):
                     "url": render_service.get("serviceUrl"),
                     "status": "created"
                 })
-                print(f"     ✅ Created: {render_service.get('serviceUrl')}")
+                print(f"     [OK] Created: {render_service.get('serviceUrl')}")
             
             # Create Render PostgreSQL database
             if dry_run:
-                print(f"  🔮 Would create PostgreSQL database: {project_name}-db")
+                print(f"  [EMOJI] Would create PostgreSQL database: {project_name}-db")
                 results["render_databases"].append({
                     "name": f"{project_name}-db",
                     "slug": f"{project_slug}-db",
                     "status": "would_create"
                 })
             else:
-                print(f"  🗄️  Creating PostgreSQL database: {project_name}-db")
+                print(f"  [EMOJI]️  Creating PostgreSQL database: {project_name}-db")
                 render_db = render.create_postgres_db(
                     f"{project_name}-db", 
                     f"{project_slug}-db"
@@ -260,11 +260,11 @@ def bootstrap_services(dry_run: bool = True):
                     "connection_string": render_db.get("connectionString"),
                     "status": "created"
                 })
-                print(f"     ✅ Created database")
+                print(f"     [OK] Created database")
         
         except Exception as e:
             error_msg = f"Failed to process {project_name}: {str(e)}"
-            print(f"     ❌ {error_msg}")
+            print(f"     [ERROR] {error_msg}")
             results["errors"].append({
                 "project": project_name,
                 "error": str(e)
@@ -275,7 +275,7 @@ def bootstrap_services(dry_run: bool = True):
     with open(results_file, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2)
     
-    print(f"\n📊 Bootstrap Summary:")
+    print(f"\n[METRICS] Bootstrap Summary:")
     print(f"  Vercel projects: {len(results['vercel_projects'])}")
     print(f"  Render services: {len(results['render_services'])}")
     print(f"  Render databases: {len(results['render_databases'])}")
@@ -283,10 +283,10 @@ def bootstrap_services(dry_run: bool = True):
     print(f"  Results saved to: {results_file}")
     
     if dry_run:
-        print(f"\n🔮 This was a dry run. To actually create services, run:")
+        print(f"\n[EMOJI] This was a dry run. To actually create services, run:")
         print(f"   python scripts/services_bootstrapper.py")
     else:
-        print(f"\n✅ Services bootstrap completed!")
+        print(f"\n[OK] Services bootstrap completed!")
 
 def main():
     parser = argparse.ArgumentParser(description="Bootstrap Vercel and Render services for all projects")
@@ -303,7 +303,7 @@ def main():
     try:
         bootstrap_services(dry_run=dry_run)
     except Exception as e:
-        print(f"❌ Bootstrap failed: {e}")
+        print(f"[ERROR] Bootstrap failed: {e}")
         exit(1)
 
 if __name__ == "__main__":

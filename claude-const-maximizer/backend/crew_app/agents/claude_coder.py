@@ -45,11 +45,11 @@ class ClaudeCoder:
                     openai_api_key=openai_api_key,
                     base_url="https://api.deepseek.com/v1"
                 )
-                print("  ✅ DeepSeek primary LLM configured for Claude Coder")
+                print("  [OK] DeepSeek primary LLM configured for Claude Coder")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure DeepSeek: {e}")
+                print(f"  [WARN] Failed to configure DeepSeek: {e}")
         else:
-            print("  ⚠️ OPENAI_API_KEY not found - DeepSeek not available")
+            print("  [WARN] OPENAI_API_KEY not found - DeepSeek not available")
         
         # Add Gemini if API key is available
         if google_api_key:
@@ -60,11 +60,11 @@ class ClaudeCoder:
                     google_api_key=google_api_key
                 )
                 self.backup_llms.append(gemini_llm)
-                print("  ✅ Gemini Pro backup LLM configured")
+                print("  [OK] Gemini Pro backup LLM configured")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure Gemini Pro: {e}")
+                print(f"  [WARN] Failed to configure Gemini Pro: {e}")
         else:
-            print("  ⚠️ GOOGLE_API_KEY/GEMINI_API_KEY not found - Gemini Pro not available")
+            print("  [WARN] GOOGLE_API_KEY/GEMINI_API_KEY not found - Gemini Pro not available")
         
         # Add Hugging Face if API key is available
         if huggingface_api_key:
@@ -77,11 +77,11 @@ class ClaudeCoder:
                     task="text-generation"  # Added required field
                 )
                 self.backup_llms.append(huggingface_llm)
-                print("  ✅ Hugging Face LLM configured for Claude Coder")
+                print("  [OK] Hugging Face LLM configured for Claude Coder")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure Hugging Face: {e}")
+                print(f"  [WARN] Failed to configure Hugging Face: {e}")
         else:
-            print("  ⚠️ HUGGINGFACE_API_KEY not found - Hugging Face not available")
+            print("  [WARN] HUGGINGFACE_API_KEY not found - Hugging Face not available")
         
         # Add Mistral if API key is available
         if mistral_api_key:
@@ -94,11 +94,11 @@ class ClaudeCoder:
                     base_url="https://api.mistral.ai/v1"
                 )
                 self.backup_llms.append(mistral_llm)
-                print("  ✅ Mistral LLM configured for Claude Coder")
+                print("  [OK] Mistral LLM configured for Claude Coder")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure Mistral: {e}")
+                print(f"  [WARN] Failed to configure Mistral: {e}")
         else:
-            print("  ⚠️ MISTRAL_API_KEY not found - Mistral not available")
+            print("  [WARN] MISTRAL_API_KEY not found - Mistral not available")
         
         # Add GPT-3.5 as backup if OpenAI key is available
         if openai_api_key:
@@ -109,22 +109,22 @@ class ClaudeCoder:
                     openai_api_key=openai_api_key
                 )
                 self.backup_llms.append(gpt_llm)
-                print("  ✅ GPT-3.5 Turbo backup LLM configured")
+                print("  [OK] GPT-3.5 Turbo backup LLM configured")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure GPT-3.5 Turbo: {e}")
+                print(f"  [WARN] Failed to configure GPT-3.5 Turbo: {e}")
         
         # Check if we have any working LLMs
         if not self.primary_llm and not self.backup_llms:
-            print("  ❌ No LLMs available! Please set one of: OPENAI_API_KEY, GEMINI_API_KEY, HUGGINGFACE_API_KEY, MISTRAL_API_KEY")
+            print("  [ERROR] No LLMs available! Please set one of: OPENAI_API_KEY, GEMINI_API_KEY, HUGGINGFACE_API_KEY, MISTRAL_API_KEY")
             raise ValueError("No LLMs available for Claude Coder")
         
         # Set primary LLM to first available backup if primary failed
         if not self.primary_llm and self.backup_llms:
             self.primary_llm = self.backup_llms[0]
             self.backup_llms = self.backup_llms[1:]
-            print("  ✅ Using backup LLM as primary")
+            print("  [OK] Using backup LLM as primary")
         
-        print(f"  ✅ Claude Coder: {len(self.backup_llms) + 1} LLM(s) configured")
+        print(f"  [OK] Claude Coder: {len(self.backup_llms) + 1} LLM(s) configured")
         
         self.current_llm_index = 0
     
@@ -137,17 +137,17 @@ class ClaudeCoder:
     ) -> Dict[str, str]:
         """Generate complete application code using 5-prompt development plan"""
         
-        print(f"🚀 Starting code generation for {project_name}")
+        print(f"[LAUNCH] Starting code generation for {project_name}")
         
         # In debug mode, use fewer prompts for faster testing
         if self.DEBUG_MODE:
-            print("  ⚙️ DEBUG_MODE: Using minimal prompts for faster testing")
+            print("  [CONFIG] DEBUG_MODE: Using minimal prompts for faster testing")
             prompts_to_run = [
                 ("Backend Architecture", self._prompt1_backend_architecture),
                 ("Frontend Implementation", self._prompt2_frontend_implementation)
             ]
         else:
-            print("  🔄 Using full 5-prompt development plan")
+            print("  [PROCESS] Using full 5-prompt development plan")
             prompts_to_run = [
                 ("Backend Architecture", self._prompt1_backend_architecture),
                 ("Frontend Implementation", self._prompt2_frontend_implementation),
@@ -159,7 +159,7 @@ class ClaudeCoder:
         all_code = {}
         
         for section_name, prompt_func in prompts_to_run:
-            print(f"\n📝 Generating {section_name}...")
+            print(f"\n[WRITE] Generating {section_name}...")
             
             # Handle different parameter requirements
             if section_name == "Backend Architecture":
@@ -186,25 +186,25 @@ class ClaudeCoder:
             if self.DEBUG_MODE:
                 await asyncio.sleep(1)
         
-        print(f"\n✅ Code generation completed for {project_name}")
+        print(f"\n[OK] Code generation completed for {project_name}")
         return all_code
     
     async def _generate_with_fallback(self, section_name: str, prompt_func) -> Dict[str, str]:
         """Generate code with LLM fallback system"""
         
         try:
-            print(f"  🔄 Generating with primary LLM for {section_name}...")
+            print(f"  [PROCESS] Generating with primary LLM for {section_name}...")
             result = await prompt_func()
             
             # Check if we got actual files (not just fallback)
             if self._has_real_files(result):
-                print(f"  ✅ Primary LLM succeeded for {section_name}")
+                print(f"  [OK] Primary LLM succeeded for {section_name}")
                 return result
             else:
-                print(f"  ⚠️ Primary LLM created fallback for {section_name}, trying backup...")
+                print(f"  [WARN] Primary LLM created fallback for {section_name}, trying backup...")
                 
         except Exception as e:
-            print(f"  ❌ Primary LLM failed for {section_name}: {e}")
+            print(f"  [ERROR] Primary LLM failed for {section_name}: {e}")
         
         # Try backup LLMs
         backup_names = []
@@ -215,7 +215,7 @@ class ClaudeCoder:
         
         for i, backup_llm in enumerate(self.backup_llms):
             try:
-                print(f"  🔄 Trying backup LLM {i+1} ({backup_names[i]}) for {section_name}...")
+                print(f"  [PROCESS] Trying backup LLM {i+1} ({backup_names[i]}) for {section_name}...")
                 
                 # Temporarily switch to backup LLM
                 original_llm = self.primary_llm
@@ -227,24 +227,24 @@ class ClaudeCoder:
                 self.primary_llm = original_llm
                 
                 if self._has_real_files(result):
-                    print(f"  ✅ Backup LLM {i+1} ({backup_names[i]}) succeeded for {section_name}")
+                    print(f"  [OK] Backup LLM {i+1} ({backup_names[i]}) succeeded for {section_name}")
                     return result
                 else:
-                    print(f"  ⚠️ Backup LLM {i+1} ({backup_names[i]}) also created fallback for {section_name}")
+                    print(f"  [WARN] Backup LLM {i+1} ({backup_names[i]}) also created fallback for {section_name}")
                     
             except Exception as e:
-                print(f"  ❌ Backup LLM {i+1} ({backup_names[i]}) failed for {section_name}: {e}")
+                print(f"  [ERROR] Backup LLM {i+1} ({backup_names[i]}) failed for {section_name}: {e}")
                 # Restore primary LLM if we switched it
                 if hasattr(self, 'original_llm'):
                     self.primary_llm = self.original_llm
             
             # In debug mode, limit to first backup LLM only
             if self.DEBUG_MODE:
-                print("  ⚙️ DEBUG_MODE: Limiting to first backup LLM only")
+                print("  [CONFIG] DEBUG_MODE: Limiting to first backup LLM only")
                 break
         
         # If all LLMs failed, return the last result (even if it's a fallback)
-        print(f"  🚨 All LLMs failed for {section_name}, using last result")
+        print(f"  [EMOJI] All LLMs failed for {section_name}, using last result")
         if 'result' in locals():
             return result
         else:

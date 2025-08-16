@@ -346,20 +346,20 @@ class PreCodeValidator:
 
 ## Summary
 - Total Components: {validation['summary']['total']}
-- ✅ Passed: {validation['summary']['passed']}
-- ❌ Failed: {validation['summary']['failed']}
-- ⚠️ Warnings: {validation['summary']['warnings']}
+- [OK] Passed: {validation['summary']['passed']}
+- [ERROR] Failed: {validation['summary']['failed']}
+- [WARN] Warnings: {validation['summary']['warnings']}
 
 ## Detailed Results
 """
         
         for result in validation['results']:
             status_icon = {
-                'passed': '✅',
-                'failed': '❌', 
-                'warning': '⚠️',
+                'passed': '[OK]',
+                'failed': '[ERROR]', 
+                'warning': '[WARN]',
                 'pending': '⏳'
-            }.get(result['status'], '❓')
+            }.get(result['status'], '[EMOJI]')
             
             report += f"""
 ### {status_icon} {result['component']}
@@ -373,7 +373,7 @@ class PreCodeValidator:
         # Add recommendations
         if validation['overall_status'] == 'failed':
             report += """
-## 🚨 CRITICAL ISSUES FOUND
+## [EMOJI] CRITICAL ISSUES FOUND
 **DO NOT PROCEED WITH CODING** until all failed validations are resolved.
 
 ### Required Actions:
@@ -384,7 +384,7 @@ class PreCodeValidator:
 """
         elif validation['overall_status'] == 'warning':
             report += """
-## ⚠️ WARNINGS DETECTED
+## [WARN] WARNINGS DETECTED
 Proceed with caution. Some components may use default configurations.
 
 ### Recommendations:
@@ -394,13 +394,13 @@ Proceed with caution. Some components may use default configurations.
 """
         else:
             report += """
-## ✅ ALL SYSTEMS GO
+## [OK] ALL SYSTEMS GO
 All validations passed successfully. Ready to proceed with coding.
 
 ### Next Steps:
-1. ✅ Validation complete
-2. 🚀 Ready for Claude coding
-3. 📋 Follow 5-prompt development plan
+1. [OK] Validation complete
+2. [LAUNCH] Ready for Claude coding
+3. [CHECKLIST] Follow 5-prompt development plan
 """
         
         return report
@@ -430,12 +430,12 @@ def main():
     print(f"\nOverall Status: {validation['overall_status'].upper()}")
     
     if validation['overall_status'] == 'failed':
-        print("❌ CRITICAL ISSUES FOUND - DO NOT PROCEED")
+        print("[ERROR] CRITICAL ISSUES FOUND - DO NOT PROCEED")
         sys.exit(1)
     elif validation['overall_status'] == 'warning':
-        print("⚠️ WARNINGS DETECTED - Proceed with caution")
+        print("[WARN] WARNINGS DETECTED - Proceed with caution")
     else:
-        print("✅ ALL SYSTEMS GO - Ready for coding")
+        print("[OK] ALL SYSTEMS GO - Ready for coding")
 
 if __name__ == "__main__":
     main()

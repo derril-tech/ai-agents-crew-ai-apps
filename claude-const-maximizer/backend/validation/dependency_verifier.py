@@ -476,20 +476,20 @@ class DependencyVerifier:
 
 ## Summary
 - Total Services: {verification['summary']['total']}
-- ✅ Passed: {verification['summary']['passed']}
-- ❌ Failed: {verification['summary']['failed']}
-- ⚠️ Warnings: {verification['summary']['warnings']}
+- [OK] Passed: {verification['summary']['passed']}
+- [ERROR] Failed: {verification['summary']['failed']}
+- [WARN] Warnings: {verification['summary']['warnings']}
 
 ## Detailed Results
 """
         
         for result in verification['results']:
             status_icon = {
-                'passed': '✅',
-                'failed': '❌', 
-                'warning': '⚠️',
+                'passed': '[OK]',
+                'failed': '[ERROR]', 
+                'warning': '[WARN]',
                 'pending': '⏳'
-            }.get(result['status'], '❓')
+            }.get(result['status'], '[EMOJI]')
             
             report += f"""
 ### {status_icon} {result['service']}
@@ -503,7 +503,7 @@ class DependencyVerifier:
         # Add recommendations
         if verification['overall_status'] == 'failed':
             report += """
-## 🚨 CRITICAL ISSUES FOUND
+## [EMOJI] CRITICAL ISSUES FOUND
 **DO NOT PROCEED WITH CODING** until all failed verifications are resolved.
 
 ### Required Actions:
@@ -515,7 +515,7 @@ class DependencyVerifier:
 """
         elif verification['overall_status'] == 'warning':
             report += """
-## ⚠️ WARNINGS DETECTED
+## [WARN] WARNINGS DETECTED
 Some optional services are not configured. Proceed with caution.
 
 ### Recommendations:
@@ -525,13 +525,13 @@ Some optional services are not configured. Proceed with caution.
 """
         else:
             report += """
-## ✅ ALL DEPENDENCIES READY
+## [OK] ALL DEPENDENCIES READY
 All required dependencies are verified and working.
 
 ### Next Steps:
-1. ✅ Dependencies verified
-2. 🚀 Ready for development
-3. 📋 Proceed with coding
+1. [OK] Dependencies verified
+2. [LAUNCH] Ready for development
+3. [CHECKLIST] Proceed with coding
 """
         
         return report
@@ -554,12 +554,12 @@ def main():
     print(f"\nOverall Status: {verification['overall_status'].upper()}")
     
     if verification['overall_status'] == 'failed':
-        print("❌ CRITICAL ISSUES FOUND - DO NOT PROCEED")
+        print("[ERROR] CRITICAL ISSUES FOUND - DO NOT PROCEED")
         sys.exit(1)
     elif verification['overall_status'] == 'warning':
-        print("⚠️ WARNINGS DETECTED - Proceed with caution")
+        print("[WARN] WARNINGS DETECTED - Proceed with caution")
     else:
-        print("✅ ALL DEPENDENCIES READY - Ready for development")
+        print("[OK] ALL DEPENDENCIES READY - Ready for development")
 
 if __name__ == "__main__":
     main()

@@ -8,7 +8,7 @@
   }
   
   .card-hover:hover {
-    @apply bg-gradient-to-br from-red-800 to-red-900 dark:from-red-900 dark:to-red-950;
+    @apply bg-gradient-to-br from-yellow-600 to-yellow-700 dark:from-yellow-700 dark:to-yellow-800;
   }
   
   .card-hover:hover h3,
@@ -19,7 +19,7 @@
   }
   
   .card-hover:hover .text-muted-foreground {
-    @apply text-red-100 !important;
+    @apply text-yellow-100 !important;
   }
   
   .card-hover:hover .badge,

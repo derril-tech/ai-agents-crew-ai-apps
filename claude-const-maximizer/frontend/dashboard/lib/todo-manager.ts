@@ -157,127 +157,107 @@ class TodoManager {
   }
 
   // Get todos for a specific project
-  getTodos(projectId: string): ProjectTodo {
-    this.getAllTodos().then(todos => {
-      const existing = todos.find((t: ProjectTodo) => t.projectId === projectId)
-      
-      if (existing) {
-        // Ensure items array exists (fix for old data)
-        if (!existing.items) {
-          existing.items = this.getPipelineMilestones()
-          existing.progress = 0
-          existing.activeAgents = []
-          existing.lastUpdated = new Date().toISOString()
-          this.saveTodos(todos)
-        }
-        return existing
+  async getTodos(projectId: string): Promise<ProjectTodo> {
+    const todos = await this.getAllTodos()
+    const existing = todos.find((t: ProjectTodo) => t.projectId === projectId)
+    
+    if (existing) {
+      // Ensure items array exists (fix for old data)
+      if (!existing.items) {
+        existing.items = this.getPipelineMilestones()
+        existing.progress = 0
+        existing.activeAgents = []
+        existing.lastUpdated = new Date().toISOString()
+        this.saveTodos(todos)
       }
+      return existing
+    }
 
-      // Create new todo list with pipeline milestones
-      const newTodo: ProjectTodo = {
-        projectId,
-        projectName: projectId, // Will be updated when we have the actual name
-        items: this.getPipelineMilestones(),
-        progress: 0,
-        activeAgents: [],
-        lastUpdated: new Date().toISOString()
-      }
+    // Create new todo list with pipeline milestones
+    const newTodo: ProjectTodo = {
+      projectId,
+      projectName: projectId, // Will be updated when we have the actual name
+      items: this.getPipelineMilestones(),
+      progress: 0,
+      activeAgents: [],
+      lastUpdated: new Date().toISOString()
+    }
 
-      todos.push(newTodo)
-      this.saveTodos(todos)
-      return newTodo
-    }).catch(error => {
-      console.error('Error fetching todos for project:', error)
-      throw new Error('Failed to get project todos')
-    })
+    todos.push(newTodo)
+    this.saveTodos(todos)
+    return newTodo
   }
 
   // Get todos for a specific project (alias for compatibility)
-  getProjectTodos(projectId: string): ProjectTodo | null {
-    this.getAllTodos().then(allTodos => {
-      const projectTodo = allTodos.find((t: ProjectTodo) => t.projectId === projectId)
-      
-      if (projectTodo) {
-        // Ensure items array exists (fix for old data)
-        if (!projectTodo.items) {
-          projectTodo.items = this.getPipelineMilestones()
-          projectTodo.progress = 0
-          projectTodo.activeAgents = []
-          projectTodo.lastUpdated = new Date().toISOString()
-          this.saveTodos(allTodos)
-        }
+  async getProjectTodos(projectId: string): Promise<ProjectTodo | null> {
+    const allTodos = await this.getAllTodos()
+    const projectTodo = allTodos.find((t: ProjectTodo) => t.projectId === projectId)
+    
+    if (projectTodo) {
+      // Ensure items array exists (fix for old data)
+      if (!projectTodo.items) {
+        projectTodo.items = this.getPipelineMilestones()
+        projectTodo.progress = 0
+        projectTodo.activeAgents = []
+        projectTodo.lastUpdated = new Date().toISOString()
+        this.saveTodos(allTodos)
       }
-      
-      return projectTodo || null
-    }).catch(error => {
-      console.error('Error fetching project todos:', error)
-      return null
-    })
+    }
+    
+    return projectTodo || null
   }
 
   // Add a new todo item
-  addTodo(projectId: string, text: string): TodoItem {
-    this.getProjectTodos(projectId).then(projectTodo => {
-      if (!projectTodo) throw new Error('Project not found')
-      
-      const newTodo: TodoItem = {
-        id: this.generateId(),
-        text,
-        completed: false,
-        status: 'pending'
-      }
-      
-      projectTodo.items.push(newTodo)
-      projectTodo.lastUpdated = new Date().toISOString()
-      this.saveProjectTodos(projectId, projectTodo)
-      
-      return newTodo
-    }).catch(error => {
-      console.error('Error adding todo:', error)
-      throw new Error('Failed to add todo')
-    })
+  async addTodo(projectId: string, text: string): Promise<TodoItem> {
+    const projectTodo = await this.getProjectTodos(projectId)
+    if (!projectTodo) throw new Error('Project not found')
+    
+    const newTodo: TodoItem = {
+      id: this.generateId(),
+      text,
+      completed: false,
+      status: 'pending'
+    }
+    
+    projectTodo.items.push(newTodo)
+    projectTodo.lastUpdated = new Date().toISOString()
+    this.saveProjectTodos(projectId, projectTodo)
+    
+    return newTodo
   }
-  
+   
   // Toggle todo completion
-  toggleTodo(projectId: string, todoId: string): TodoItem | null {
-    this.getProjectTodos(projectId).then(projectTodo => {
-      if (!projectTodo) return null
-      
-      const todo = projectTodo.items.find((t: TodoItem) => t.id === todoId)
-      if (!todo) return null
-      
-      todo.completed = !todo.completed
-      todo.status = todo.completed ? 'completed' : 'pending'
-      
+  async toggleTodo(projectId: string, todoId: string): Promise<TodoItem | null> {
+    const projectTodo = await this.getProjectTodos(projectId)
+    if (!projectTodo) return null
+    
+    const todo = projectTodo.items.find((t: TodoItem) => t.id === todoId)
+    if (!todo) return null
+    
+    todo.completed = !todo.completed
+    todo.status = todo.completed ? 'completed' : 'pending'
+    
+    projectTodo.lastUpdated = new Date().toISOString()
+    this.saveProjectTodos(projectId, projectTodo)
+    
+    return todo
+  }
+   
+  // Delete a todo item
+  async deleteTodo(projectId: string, todoId: string): Promise<boolean> {
+    const projectTodo = await this.getProjectTodos(projectId)
+    if (!projectTodo) return false
+    
+    const initialLength = projectTodo.items.length
+    projectTodo.items = projectTodo.items.filter((t: TodoItem) => t.id !== todoId)
+    
+    if (projectTodo.items.length !== initialLength) {
       projectTodo.lastUpdated = new Date().toISOString()
       this.saveProjectTodos(projectId, projectTodo)
-      
-      return todo
-    }).catch(error => {
-      console.error('Error toggling todo:', error)
-      return null
-    })
-  }
-  
-  // Delete a todo item
-  deleteTodo(projectId: string, todoId: string): boolean {
-    this.getProjectTodos(projectId).then(projectTodo => {
-      if (!projectTodo) return false
-      
-      const initialLength = projectTodo.items.length
-      projectTodo.items = projectTodo.items.filter((t: TodoItem) => t.id !== todoId)
-      
-      if (projectTodo.items.length !== initialLength) {
-        projectTodo.lastUpdated = new Date().toISOString()
-        this.saveProjectTodos(projectId, projectTodo)
-        return true
-      }
-      
-      return false
-    }).catch(error => {
-      console.error('Error deleting todo:', error)
-      return false
-    })
+      return true
+    }
+    
+    return false
   }
 
   // Calculate progress percentage
@@ -288,45 +268,38 @@ class TodoManager {
   }
 
   // Get progress percentage for a project
-  getProgressPercentage(projectId: string): number {
-    this.getProjectTodos(projectId).then(projectTodo => {
-      if (!projectTodo || projectTodo.items.length === 0) return 0
-      
-      return this.calculateProgress(projectTodo.items)
-    }).catch(error => {
-      console.error('Error getting progress percentage:', error)
-      return 0
-    })
+  async getProgressPercentage(projectId: string): Promise<number> {
+    const projectTodo = await this.getProjectTodos(projectId)
+    if (!projectTodo || projectTodo.items.length === 0) return 0
+    
+    return this.calculateProgress(projectTodo.items)
   }
 
   // Update item status (for agent integration)
-  updateItemStatus(projectId: string, itemId: string, status: TodoItem['status'], agent?: string): void {
-    this.getAllTodos().then(todos => {
-      const projectTodo = todos.find((t: ProjectTodo) => t.projectId === projectId)
-      
-      if (projectTodo) {
-        const item = projectTodo.items.find((i: TodoItem) => i.id === itemId)
-        if (item) {
-          item.status = status
-          item.completed = status === 'completed'
-          if (agent) item.agent = agent
-          if (status === 'in_progress') {
-            item.timestamp = new Date().toISOString()
-          }
-          
-          // Update active agents
-          this.updateActiveAgents(projectTodo)
-          
-          // Recalculate progress
-          projectTodo.progress = this.calculateProgress(projectTodo.items)
-          projectTodo.lastUpdated = new Date().toISOString()
-          
-          this.saveTodos(todos)
+  async updateItemStatus(projectId: string, itemId: string, status: TodoItem['status'], agent?: string): Promise<void> {
+    const todos = await this.getAllTodos()
+    const projectTodo = todos.find((t: ProjectTodo) => t.projectId === projectId)
+    
+    if (projectTodo) {
+      const item = projectTodo.items.find((i: TodoItem) => i.id === itemId)
+      if (item) {
+        item.status = status
+        item.completed = status === 'completed'
+        if (agent) item.agent = agent
+        if (status === 'in_progress') {
+          item.timestamp = new Date().toISOString()
         }
+        
+        // Update active agents
+        this.updateActiveAgents(projectTodo)
+        
+        // Recalculate progress
+        projectTodo.progress = this.calculateProgress(projectTodo.items)
+        projectTodo.lastUpdated = new Date().toISOString()
+        
+        this.saveTodos(todos)
       }
-    }).catch(error => {
-      console.error('Error updating item status:', error)
-    })
+    }
   }
 
   private updateActiveAgents(projectTodo: ProjectTodo): void {
@@ -359,19 +332,16 @@ class TodoManager {
   }
 
   // Save project todos to localStorage
-  private saveProjectTodos(projectId: string, projectTodo: ProjectTodo): void {
+  private async saveProjectTodos(projectId: string, projectTodo: ProjectTodo): Promise<void> {
     try {
-      this.getAllTodos().then(allTodos => {
-        const index = allTodos.findIndex((t: ProjectTodo) => t.projectId === projectId)
-        if (index !== -1) {
-          allTodos[index] = projectTodo
-        } else {
-          allTodos.push(projectTodo)
-        }
-        localStorage.setItem(this.storageKey, JSON.stringify(allTodos))
-      }).catch(error => {
-        console.error('Error saving todos:', error)
-      })
+      const allTodos = await this.getAllTodos()
+      const index = allTodos.findIndex((t: ProjectTodo) => t.projectId === projectId)
+      if (index !== -1) {
+        allTodos[index] = projectTodo
+      } else {
+        allTodos.push(projectTodo)
+      }
+      localStorage.setItem(this.storageKey, JSON.stringify(allTodos))
     } catch (error) {
       console.error('Error saving todos:', error)
     }

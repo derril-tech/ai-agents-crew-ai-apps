@@ -50,11 +50,11 @@ class PromptEngineer:
                     openai_api_key=openai_api_key,
                     base_url="https://api.deepseek.com/v1"
                 )
-                print("  ✅ DeepSeek primary LLM configured for Prompt Engineer")
+                print("  [OK] DeepSeek primary LLM configured for Prompt Engineer")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure DeepSeek: {e}")
+                print(f"  [WARN] Failed to configure DeepSeek: {e}")
         else:
-            print("  ⚠️ OPENAI_API_KEY not found - DeepSeek not available")
+            print("  [WARN] OPENAI_API_KEY not found - DeepSeek not available")
         
         # Add Gemini if API key is available
         if google_api_key:
@@ -66,11 +66,11 @@ class PromptEngineer:
                     google_api_key=google_api_key
                 )
                 self.backup_llms.append(gemini_llm)
-                print("  ✅ Gemini Pro backup LLM configured for Prompt Engineer")
+                print("  [OK] Gemini Pro backup LLM configured for Prompt Engineer")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure Gemini Pro for Prompt Engineer: {e}")
+                print(f"  [WARN] Failed to configure Gemini Pro for Prompt Engineer: {e}")
         else:
-            print("  ⚠️ GOOGLE_API_KEY/GEMINI_API_KEY not found - Gemini Pro not available")
+            print("  [WARN] GOOGLE_API_KEY/GEMINI_API_KEY not found - Gemini Pro not available")
         
         # Add Hugging Face if API key is available
         if huggingface_api_key:
@@ -83,11 +83,11 @@ class PromptEngineer:
                     task="text-generation"  # Added required field
                 )
                 self.backup_llms.append(huggingface_llm)
-                print("  ✅ Hugging Face LLM configured for Prompt Engineer")
+                print("  [OK] Hugging Face LLM configured for Prompt Engineer")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure Hugging Face: {e}")
+                print(f"  [WARN] Failed to configure Hugging Face: {e}")
         else:
-            print("  ⚠️ HUGGINGFACE_API_KEY not found - Hugging Face not available")
+            print("  [WARN] HUGGINGFACE_API_KEY not found - Hugging Face not available")
         
         # Add Mistral if API key is available
         if mistral_api_key:
@@ -100,11 +100,11 @@ class PromptEngineer:
                     base_url="https://api.mistral.ai/v1"
                 )
                 self.backup_llms.append(mistral_llm)
-                print("  ✅ Mistral LLM configured for Prompt Engineer")
+                print("  [OK] Mistral LLM configured for Prompt Engineer")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure Mistral: {e}")
+                print(f"  [WARN] Failed to configure Mistral: {e}")
         else:
-            print("  ⚠️ MISTRAL_API_KEY not found - Mistral not available")
+            print("  [WARN] MISTRAL_API_KEY not found - Mistral not available")
         
         # Add GPT-3.5 as backup if OpenAI key is available
         if openai_api_key:
@@ -115,22 +115,22 @@ class PromptEngineer:
                     openai_api_key=openai_api_key
                 )
                 self.backup_llms.append(gpt_llm)
-                print("  ✅ GPT-3.5 Turbo backup LLM configured for Prompt Engineer")
+                print("  [OK] GPT-3.5 Turbo backup LLM configured for Prompt Engineer")
             except Exception as e:
-                print(f"  ⚠️ Failed to configure GPT-3.5 Turbo: {e}")
+                print(f"  [WARN] Failed to configure GPT-3.5 Turbo: {e}")
         
         # Check if we have any working LLMs
         if not self.primary_llm and not self.backup_llms:
-            print("  ❌ No LLMs available! Please set one of: OPENAI_API_KEY, GEMINI_API_KEY, HUGGINGFACE_API_KEY, MISTRAL_API_KEY")
+            print("  [ERROR] No LLMs available! Please set one of: OPENAI_API_KEY, GEMINI_API_KEY, HUGGINGFACE_API_KEY, MISTRAL_API_KEY")
             raise ValueError("No LLMs available for Prompt Engineer")
         
         # Set primary LLM to first available backup if primary failed
         if not self.primary_llm and self.backup_llms:
             self.primary_llm = self.backup_llms[0]
             self.backup_llms = self.backup_llms[1:]
-            print("  ✅ Using backup LLM as primary")
+            print("  [OK] Using backup LLM as primary")
         
-        print(f"  ✅ Prompt Engineer: {len(self.backup_llms) + 1} LLM(s) configured")
+        print(f"  [OK] Prompt Engineer: {len(self.backup_llms) + 1} LLM(s) configured")
         
         self.current_llm_index = 0
     
@@ -143,7 +143,7 @@ class PromptEngineer:
     ) -> str:
         """Create a Claude-optimized prompt using the comprehensive prompt engineering system"""
         
-        print(f"🎯 Creating Claude-optimized prompt for {project_name} ({prompt_type})")
+        print(f"[GOAL] Creating Claude-optimized prompt for {project_name} ({prompt_type})")
         
         # Generate the optimized prompt using our system
         optimized_prompt = generate_claude_optimized_prompt(
@@ -214,7 +214,7 @@ Remember: The goal is to create the most effective prompt possible for Claude, l
         
         try:
             # Try primary LLM first
-            print(f"  🔄 Enhancing prompt with DeepSeek...")
+            print(f"  [PROCESS] Enhancing prompt with DeepSeek...")
             response = await self.primary_llm.agenerate([
                 [HumanMessage(content=enhancement_prompt)]
             ])
@@ -222,17 +222,17 @@ Remember: The goal is to create the most effective prompt possible for Claude, l
             if response.generations and response.generations[0]:
                 enhanced_content = response.generations[0][0].text
                 if not self._is_fallback_response(enhanced_content):
-                    print(f"  ✅ Prompt enhanced successfully with DeepSeek")
+                    print(f"  [OK] Prompt enhanced successfully with DeepSeek")
                     return enhanced_content
             
         except Exception as e:
-            print(f"  ⚠️ DeepSeek enhancement failed: {e}")
+            print(f"  [WARN] DeepSeek enhancement failed: {e}")
         
         # Try backup LLMs
         for i, backup_llm in enumerate(self.backup_llms):
             try:
                 llm_name = "Gemini Pro" if i == 0 else "GPT-3.5 Turbo"
-                print(f"  🔄 Trying {llm_name} for prompt enhancement...")
+                print(f"  [PROCESS] Trying {llm_name} for prompt enhancement...")
                 
                 response = await backup_llm.agenerate([
                     [HumanMessage(content=enhancement_prompt)]
@@ -241,19 +241,19 @@ Remember: The goal is to create the most effective prompt possible for Claude, l
                 if response.generations and response.generations[0]:
                     enhanced_content = response.generations[0][0].text
                     if not self._is_fallback_response(enhanced_content):
-                        print(f"  ✅ Prompt enhanced successfully with {llm_name}")
+                        print(f"  [OK] Prompt enhanced successfully with {llm_name}")
                         return enhanced_content
                         
             except Exception as e:
-                print(f"  ⚠️ {llm_name} enhancement failed: {e}")
+                print(f"  [WARN] {llm_name} enhancement failed: {e}")
             
             # In debug mode, limit to first backup LLM only
             if self.DEBUG_MODE:
-                print("  ⚙️ DEBUG_MODE: Limiting to first backup LLM only")
+                print("  [CONFIG] DEBUG_MODE: Limiting to first backup LLM only")
                 break
         
         # Return base prompt if all LLMs fail
-        print(f"  ⚠️ All LLMs failed, using base prompt")
+        print(f"  [WARN] All LLMs failed, using base prompt")
         return base_prompt
     
     def _is_fallback_response(self, content: str) -> bool:

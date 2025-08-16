@@ -32,6 +32,7 @@ interface Project {
   status?: 'complete' | 'in_progress' | 'not_started' | 'failed'
   progress?: number
   files?: string[]
+  activeAgents?: string[]
 }
 
 interface Stats {
@@ -56,15 +57,28 @@ export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isSimulationRunning, setIsSimulationRunning] = useState(false)
 
+  // Helper function for safer API calls
+  async function getJson(url: string) {
+    const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      throw new Error(`Fetch failed: ${res.status} ${res.statusText} – ${text || 'no body'}`);
+    }
+    return res.json();
+  }
+
   useEffect(() => {
-    // Load projects from the parent directory
-    fetch('/api/projects')
-      .then(res => res.json())
-      .then(data => {
+    console.log('🚀 Dashboard useEffect started')
+    
+    // Load projects from backend server
+    const loadProjects = async () => {
+      try {
+        const data = await getJson('/api/projects');
+        console.log('📋 Projects loaded:', data)
         setProjects(data)
         calculateStats(data)
-      })
-      .catch(() => {
+      } catch (error) {
+        console.error('❌ Failed to load /api/projects:', error)
         // Fallback to sample data
         const sampleProjects = [
           {
@@ -86,7 +100,61 @@ export default function Dashboard() {
         ]
         setProjects(sampleProjects)
         calculateStats(sampleProjects)
-      })
+      }
+    }
+    
+    loadProjects()
+
+        // Set up real-time refresh for pipeline data
+    const refreshInterval = setInterval(async () => {
+      try {
+        const response = await getJson(`/api/pipeline?v=${Date.now()}`);
+        const pipelineData = response.items || response // Handle both new and old format
+        console.log('🔄 Pipeline data refreshed:', pipelineData)
+        
+        // Update projects with pipeline data
+        setProjects(prevProjects => {
+          console.log('[DEBUG] Pipeline data keys:', Object.keys(pipelineData))
+          
+          const updatedProjects: Project[] = prevProjects.map(project => {
+            const projectId = project.project_name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9\s-]+/g, '').replace(/\s+/g, '-').replace(/^-+|-+$/g, '')
+            const pipelineProject = pipelineData[projectId]
+            
+            // Debug for the specific project
+            if (project.project_name === "AI-Powered Code Review & Refactoring Assistant") {
+              console.log(`[DEBUG] Looking for project ID: "${projectId}"`)
+              console.log(`[DEBUG] Found pipeline data:`, pipelineProject)
+              console.log(`[DEBUG] Pipeline data keys:`, Object.keys(pipelineData))
+            }
+            
+            if (pipelineProject) {
+              const updatedProject = {
+                ...project,
+                progress: pipelineProject.progress || 0,
+                status: (pipelineProject.progress === 100 ? 'complete' : 
+                        pipelineProject.progress > 0 ? 'in_progress' : 'not_started') as 'complete' | 'in_progress' | 'not_started' | 'failed',
+                activeAgents: pipelineProject.activeAgents || []
+              }
+              
+              // Debug for the specific project
+              if (project.project_name === "AI-Powered Code Review & Refactoring Assistant") {
+                console.log(`[DEBUG] Updated project:`, updatedProject)
+              }
+              
+              return updatedProject
+            }
+            return project
+          })
+          
+          calculateStats(updatedProjects)
+          return updatedProjects
+        })
+      } catch (error) {
+        console.error('❌ /api/pipeline failed:', error)
+      }
+    }, 2000) // Refresh every 2 seconds
+
+    return () => clearInterval(refreshInterval)
   }, [])
 
   const calculateStats = (projectList: Project[]) => {
@@ -113,9 +181,7 @@ export default function Dashboard() {
   }
 
   const getStatusBadge = (project: Project) => {
-    const projectId = project.project_name.toLowerCase().replace(/[^a-z0-9]/g, '-')
-    const projectTodo = todoManager.getProjectTodos(projectId)
-    const hasActiveAgents = projectTodo?.activeAgents && projectTodo.activeAgents.length > 0
+    const hasActiveAgents = project.activeAgents && project.activeAgents.length > 0
     
     if (project.progress === 100) {
       return <Badge variant="outline" className="text-green-600 bg-green-50 border-green-200">Complete</Badge>
@@ -123,9 +189,15 @@ export default function Dashboard() {
       return (
         <Badge 
           variant="outline" 
-          className={`text-blue-600 bg-blue-50 border-blue-200 ${hasActiveAgents ? 'animate-pulse' : ''}`}
+          className={`text-blue-600 bg-blue-50 border-blue-200 ${hasActiveAgents ? 'animate-pulse font-bold' : ''}`}
+          style={hasActiveAgents ? {
+            animation: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            backgroundColor: '#dbeafe',
+            borderColor: '#3b82f6',
+            color: '#1d4ed8'
+          } : {}}
         >
-          {hasActiveAgents ? '🤖 Working...' : 'In Progress'}
+          {hasActiveAgents ? '[WORKING] Active Agent' : 'In Progress'}
         </Badge>
       )
     } else if (project.status === 'failed') {
@@ -150,7 +222,7 @@ export default function Dashboard() {
   const handleProgressUpdate = (projectId: string, progress: number) => {
     setProjects(prevProjects => {
       const updatedProjects = prevProjects.map(project => {
-        const projectIdMatch = project.project_name.toLowerCase().replace(/[^a-z0-9]/g, '-')
+                 const projectIdMatch = project.project_name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9\s-]+/g, '').replace(/\s+/g, '-').replace(/^-+|-+$/g, '')
         if (projectIdMatch === projectId) {
           return { ...project, progress }
         }
@@ -163,14 +235,52 @@ export default function Dashboard() {
     })
   }
 
-  const handleStartSimulation = () => {
-    agentSimulator.startSimulation()
+  const handleStartSimulation = async () => {
+    console.log('🚀 Starting real pipeline execution...')
     setIsSimulationRunning(true)
+    
+    try {
+      const res = await fetch('/api/run-pipeline', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' } 
+      });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      const result = await res.json();
+      if (!result.success) throw new Error(result.error || 'pipeline failed');
+      console.log('🎉 Pipeline executed successfully!')
+    } catch (error) {
+      console.error('❌ /api/run-pipeline failed:', error)
+      setIsSimulationRunning(false)
+    }
   }
 
-  const handleStopSimulation = () => {
-    agentSimulator.stopSimulation()
+  const handleStopSimulation = async () => {
+    console.log('🛑 Stopping simulation and clearing active agents...')
     setIsSimulationRunning(false)
+    
+    try {
+      // Call backend to clear pipeline data
+      const res = await fetch('/api/stop-pipeline', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' } 
+      });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      const result = await res.json();
+      if (!result.success) throw new Error(result.error || 'stop pipeline failed');
+      console.log('✅ Pipeline stopped and active agents cleared')
+    } catch (error) {
+      console.error('❌ /api/stop-pipeline failed:', error)
+    }
+    
+    // Clear all active agents from projects immediately
+    setProjects(prevProjects => {
+      const updatedProjects = prevProjects.map(project => ({
+        ...project,
+        activeAgents: []
+      }))
+      calculateStats(updatedProjects)
+      return updatedProjects
+    })
   }
 
   const handleResetSimulation = () => {
@@ -314,14 +424,28 @@ export default function Dashboard() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.slice(0, showAllProjects ? projects.length : 12).map((project, index) => {
-            const projectId = project.project_name.toLowerCase().replace(/[^a-z0-9]/g, '-')
-            const projectTodo = todoManager.getProjectTodos(projectId)
-            const hasActiveAgents = projectTodo?.activeAgents && projectTodo.activeAgents.length > 0
+                         const projectId = project.project_name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9\s-]+/g, '').replace(/\s+/g, '-').replace(/^-+|-+$/g, '')
+            const hasActiveAgents = project.activeAgents && project.activeAgents.length > 0
+            
+            // Debug logging
+            if (project.project_name === "AI-Powered Code Review & Refactoring Assistant") {
+              console.log(`[DEBUG] Project: ${project.project_name}`)
+              console.log(`[DEBUG] activeAgents:`, project.activeAgents)
+              console.log(`[DEBUG] hasActiveAgents:`, hasActiveAgents)
+              console.log(`[DEBUG] progress:`, project.progress)
+              console.log(`[DEBUG] status:`, project.status)
+            }
             
             return (
             <Card 
               key={index} 
-              className={`card-hover cursor-pointer ${hasActiveAgents ? 'animate-pulse border-blue-300 bg-blue-50/30 dark:bg-blue-900/10' : ''}`}
+              className={`card-hover cursor-pointer ${hasActiveAgents ? 'animate-pulse border-red-300 shadow-lg shadow-red-200 bg-red-50' : ''}`}
+              style={hasActiveAgents ? {
+                animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                borderWidth: '2px',
+                borderColor: '#ef4444',
+                backgroundColor: '#fef2f2 !important'
+              } : {}}
               onClick={() => handleProjectClick(project)}
             >
               <CardHeader>
@@ -388,7 +512,7 @@ export default function Dashboard() {
             isOpen={isModalOpen}
             onClose={handleModalClose}
             onProgressUpdate={(progress) => {
-              const projectId = selectedProject.project_name.toLowerCase().replace(/[^a-z0-9]/g, '-')
+                             const projectId = selectedProject.project_name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9\s-]+/g, '').replace(/\s+/g, '-').replace(/^-+|-+$/g, '')
               handleProgressUpdate(projectId, progress)
             }}
           />

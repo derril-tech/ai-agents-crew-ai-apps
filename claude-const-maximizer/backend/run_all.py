@@ -23,10 +23,10 @@ def process_one(brief, attempt=1):
     try:
         crew = build_crew()
         result = crew.kickoff(inputs={"project_brief": brief})
-        print(f"✓ Done: {name} → {result['deliverables_dir']}")
+        print(f"[EMOJI] Done: {name} → {result['deliverables_dir']}")
         return {"name": name, "ok": True, "dir": result["deliverables_dir"]}
     except Exception as e:
-        print(f"✗ Failed: {name}: {e}")
+        print(f"[EMOJI] Failed: {name}: {e}")
         if attempt <= RETRY:
             time.sleep(2)
             return process_one(brief, attempt=attempt + 1)

@@ -18,16 +18,16 @@
     "why_impressive": "Shows NLP expertise, data processing, and solving real HR problems"
   },
   {
-    "project_name": "Real-Time AI Content Moderation System",
-    "description": "Text/image/video moderation, toxicity detection, automated flagging, moderation dashboard",
-    "tech_stack": "Python, TensorFlow/PyTorch, FastAPI, WebSocket, React",
-    "why_impressive": "Demonstrates real-time AI, multi-modal processing, and scalable architecture"
+    "project_name": "AI-Powered Voice-Based Health & Wellness Coach",
+    "description": "Voice-activated health tracking, workout planning, nutrition advice, meditation guidance, and wellness monitoring",
+    "tech_stack": "Python, Whisper API, ElevenLabs API, Health APIs, React, FastAPI",
+    "why_impressive": "Shows voice AI, health tech integration, and personalized wellness automation"
   },
   {
-    "project_name": "AI-Powered Financial Analysis & Trading Bot",
-    "description": "Market sentiment analysis, technical indicators, automated trading signals, portfolio optimization",
-    "tech_stack": "Python, Pandas, NumPy, OpenAI API, React, WebSocket",
-    "why_impressive": "Shows data science skills, financial domain knowledge, and real-time processing"
+    "project_name": "AI-Powered Personal Voice Assistant & Calendar Manager",
+    "description": "Voice-activated personal assistant that manages calendar, schedules meetings, sends reminders, checks emails, and provides daily briefings",
+    "tech_stack": "Python, Whisper API, ElevenLabs API, Google Calendar API, Gmail API, React, FastAPI",
+    "why_impressive": "Shows voice AI integration, productivity automation, and personal assistant capabilities"
   },
   {
     "project_name": "Intelligent Customer Support Chatbot",
@@ -54,10 +54,10 @@
     "why_impressive": "Shows multimedia AI, video processing, and content creation automation"
   },
   {
-    "project_name": "Intelligent Supply Chain Optimization System",
-    "description": "Demand forecasting, inventory optimization, route planning, supplier risk assessment",
-    "tech_stack": "Python, Pandas, Scikit-learn, OpenAI API, React, PostgreSQL",
-    "why_impressive": "Demonstrates operations research, predictive analytics, and enterprise optimization"
+    "project_name": "AI-Powered Voice-Controlled Smart Home Manager",
+    "description": "Voice-activated home automation, device control, energy monitoring, security alerts, and daily routine management",
+    "tech_stack": "Python, Whisper API, ElevenLabs API, IoT APIs, React, FastAPI",
+    "why_impressive": "Shows IoT integration, voice AI, and smart home automation expertise"
   },
   {
     "project_name": "Autonomous Research & Report Generation System",
@@ -84,10 +84,10 @@
     "why_impressive": "Demonstrates legal AI, document processing, and complex decision-making"
   },
   {
-    "project_name": "Autonomous Data Science Pipeline",
-    "description": "Automated data pipeline, model optimization, performance monitoring, deployment",
-    "tech_stack": "CrewAI, Data Collection Agent, Cleaning Agent, Feature Engineering Agent, Model Selection Agent",
-    "why_impressive": "Shows end-to-end ML automation, agent specialization, and data science expertise"
+    "project_name": "AI-Powered Voice-Based Meeting Assistant & Note Taker",
+    "description": "Voice-activated meeting transcription, action item extraction, follow-up scheduling, and intelligent meeting summaries",
+    "tech_stack": "Python, Whisper API, ElevenLabs API, Google Calendar API, React, FastAPI",
+    "why_impressive": "Shows voice AI, meeting automation, and productivity enhancement"
   },
   {
     "project_name": "Multi-Agent Cybersecurity Defense System",
@@ -102,10 +102,10 @@
     "why_impressive": "Shows healthcare AI, medical knowledge integration, and patient care automation"
   },
   {
-    "project_name": "Autonomous Financial Trading & Portfolio Management",
-    "description": "Market analysis, risk management, automated trading, portfolio optimization, regulatory compliance",
-    "tech_stack": "CrewAI, Market Analysis Agent, Risk Assessment Agent, Trading Agent, Portfolio Agent",
-    "why_impressive": "Demonstrates financial AI, risk management, and regulatory understanding"
+    "project_name": "AI-Powered Interactive Storybook Creator",
+    "description": "Text-to-image generation, voice synthesis, background music generation, interactive animations, personalized storytelling",
+    "tech_stack": "Python, DALL-E API, ElevenLabs API, OpenAI API, React, Three.js, FastAPI",
+    "why_impressive": "Shows creative AI, multimedia storytelling, and interactive content generation"
   },
   {
     "project_name": "Multi-Agent Content Creation & Marketing System",
@@ -192,10 +192,10 @@
     "why_impressive": "Shows complex problem-solving and cybersecurity expertise"
   },
   {
-    "project_name": "Financial Portfolio Management System",
-    "description": "Multiple agents managing hypothetical investment portfolio with mock trading",
-    "tech_stack": "CrewAI, Market Analyst Agent, Risk Assessment Agent, Trader Agent",
-    "why_impressive": "Demonstrates financial AI and risk management system design"
+    "project_name": "AI-Powered Voice-Controlled Task & Project Manager",
+    "description": "Voice-activated task creation, project tracking, deadline management, team coordination, and progress reporting",
+    "tech_stack": "Python, Whisper API, ElevenLabs API, Project Management APIs, React, FastAPI",
+    "why_impressive": "Shows voice AI, project management automation, and team collaboration tools"
   },
   {
     "project_name": "Personalized Career Coach Agent System",

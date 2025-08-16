@@ -53,7 +53,7 @@ class Phase3Orchestrator:
         self.pipeline_integration = PipelineIntegrationManager()
         
         # Load projects
-        self.projects = self._load_projects()
+        self.projects = self.load_projects()
         
     def load_projects(self) -> List[Dict[str, Any]]:
         """Load projects from JSON file"""
@@ -74,7 +74,7 @@ class Phase3Orchestrator:
     
     async def step1_market_research(self, spec: ProjectSpecification) -> ProjectSpecification:
         """Step 1: Market research and analysis"""
-        print(f"🔍 Step 1: Market Research for {spec.project_name}")
+        print(f"[INVESTIGATE] Step 1: Market Research for {spec.project_name}")
         
         research_result = await self.market_researcher.research_project(
             project_name=spec.project_name,
@@ -92,12 +92,12 @@ class Phase3Orchestrator:
         with open(research_file, 'w', encoding='utf-8') as f:
             json.dump(research_result, f, indent=2)
         
-        print(f"✅ Market research complete: {research_file}")
+        print(f"[OK] Market research complete: {research_file}")
         return spec
     
     def step2_create_project_brief(self, spec: ProjectSpecification) -> ProjectSpecification:
         """Step 2: Create comprehensive project brief"""
-        print(f"📋 Step 2: Creating Project Brief for {spec.project_name}")
+        print(f"[CHECKLIST] Step 2: Creating Project Brief for {spec.project_name}")
         
         if not spec.market_research:
             raise ValueError("Market research must be completed first")
@@ -139,12 +139,12 @@ class Phase3Orchestrator:
         with open(brief_file, 'w', encoding='utf-8') as f:
             f.write(brief_content)
         
-        print(f"✅ Project brief complete: {brief_file}")
+        print(f"[OK] Project brief complete: {brief_file}")
         return spec
     
     def step3_select_prompt_template(self, spec: ProjectSpecification) -> ProjectSpecification:
         """Step 3: Select and customize prompt template"""
-        print(f"🎯 Step 3: Selecting Prompt Template for {spec.project_name}")
+        print(f"[GOAL] Step 3: Selecting Prompt Template for {spec.project_name}")
         
         # Determine app type based on archetype
         app_type = self.map_archetype_to_app_type(spec.archetype)
@@ -170,12 +170,12 @@ class Phase3Orchestrator:
         with open(template_file, 'w', encoding='utf-8') as f:
             json.dump(template, f, indent=2)
         
-        print(f"✅ Prompt template selected: {template_file}")
+        print(f"[OK] Prompt template selected: {template_file}")
         return spec
     
     async def step4_generate_code(self, spec: ProjectSpecification) -> ProjectSpecification:
         """Step 4: Generate code using Claude"""
-        print(f"💻 Step 4: Generating Code for {spec.project_name}")
+        print(f"[CODE] Step 4: Generating Code for {spec.project_name}")
         
         if not spec.prompt_template:
             raise ValueError("Prompt template must be selected first")
@@ -219,12 +219,12 @@ class Phase3Orchestrator:
                 with open(component_file, 'w', encoding='utf-8') as f:
                     json.dump(content, f, indent=2)
         
-        print(f"✅ Code generation complete: {code_dir}")
+        print(f"[OK] Code generation complete: {code_dir}")
         return spec
     
     def step5_validate_and_verify(self, spec: ProjectSpecification) -> ProjectSpecification:
         """Step 5: Validate specifications and verify dependencies"""
-        print(f"✅ Step 5: Validation and Verification for {spec.project_name}")
+        print(f"[OK] Step 5: Validation and Verification for {spec.project_name}")
         
         project_dir = self.deliverables_dir / spec.project_name
         
@@ -255,7 +255,7 @@ class Phase3Orchestrator:
         with open(validation_file, 'w', encoding='utf-8') as f:
             json.dump(spec.validation_report, f, indent=2)
         
-        print(f"✅ Validation complete: {validation_file}")
+        print(f"[OK] Validation complete: {validation_file}")
         return spec
     
     def map_archetype_to_app_type(self, archetype: str) -> str:
@@ -316,11 +316,11 @@ class Phase3Orchestrator:
             # Update final project status
             self.pipeline_integration.update_project_status(project_id, spec.status)
             
-            print(f"\n🎉 Project Complete: {project_name}")
+            print(f"\n[SUCCESS] Project Complete: {project_name}")
             print(f"Status: {spec.status}")
             
         except Exception as e:
-            print(f"❌ Error processing {project_name}: {e}")
+            print(f"[ERROR] Error processing {project_name}: {e}")
             # Mark current step as failed
             self.pipeline_integration.complete_step(project_id, "current_step", False)
             spec.status = "error"
@@ -329,7 +329,7 @@ class Phase3Orchestrator:
     
     async def process_all_projects(self, start_index: int = 0, end_index: Optional[int] = None) -> List[ProjectSpecification]:
         """Process all projects through the pipeline"""
-        print(f"🚀 Starting Phase 3: Research → Prompt → Code")
+        print(f"[LAUNCH] Starting Phase 3: Research → Prompt → Code")
         print(f"Total projects: {len(self.projects)}")
         
         if end_index is None:
@@ -340,14 +340,14 @@ class Phase3Orchestrator:
         
         # Process projects with progress tracking
         for i, project in enumerate(projects_to_process, start=start_index + 1):
-            print(f"\n📊 Progress: {i}/{len(projects_to_process)}")
+            print(f"\n[METRICS] Progress: {i}/{len(projects_to_process)}")
             
             # In debug mode, limit to first project only
             if self.DEBUG_MODE and i > 1:
-                print("  ⚙️ DEBUG_MODE: Limiting to first project only")
+                print("  [CONFIG] DEBUG_MODE: Limiting to first project only")
                 break
             
-            print(f"\n🚀 Processing Project: {project['project_name']}")
+            print(f"\n[LAUNCH] Processing Project: {project['project_name']}")
             print("=" * 60)
             
             try:
@@ -359,14 +359,14 @@ class Phase3Orchestrator:
                     await asyncio.sleep(2)
                     
             except Exception as e:
-                print(f"❌ Error processing project {project['project_name']}: {e}")
+                print(f"[ERROR] Error processing project {project['project_name']}: {e}")
                 results.append({
                     "project_name": project['project_name'],
                     "status": "error",
                     "error": str(e)
                 })
         
-        print(f"\n🎉 Phase 3 Complete!")
+        print(f"\n[SUCCESS] Phase 3 Complete!")
         print(f"Processed: {len(results)} projects")
         
         return results
@@ -410,7 +410,7 @@ def main():
     
     if args.step5_only:
         # Test only Step 5 (validation) without expensive LLM calls
-        print("🧪 Running STEP 5 ONLY - Testing validation without LLM calls")
+        print("[EMOJI] Running STEP 5 ONLY - Testing validation without LLM calls")
         test_project = orchestrator.projects[0]
         spec = orchestrator.get_project_specification(test_project)
         
@@ -422,12 +422,12 @@ def main():
         
         # Run only Step 5
         spec = orchestrator.step5_validate_and_verify(spec)
-        print(f"✅ Step 5 Complete: {spec.project_name}")
+        print(f"[OK] Step 5 Complete: {spec.project_name}")
         print(f"Status: {spec.status}")
         return
     
     if args.test:
-        print("🧪 Running in TEST MODE - Processing first project only")
+        print("[EMOJI] Running in TEST MODE - Processing first project only")
         # Run the pipeline on first project only
         asyncio.run(orchestrator.process_all_projects(0, 1))
     else:

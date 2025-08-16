@@ -35,28 +35,36 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
   const [newTodoText, setNewTodoText] = useState('')
   const [isAdding, setIsAdding] = useState(false)
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const projectId = project.project_name.toLowerCase().replace(/[^a-z0-9]/g, '-')
+  const projectId = project.project_name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9\s]+/g, '').replace(/\s+/g, '-').replace(/^-+|-+$/g, '')
 
   useEffect(() => {
     if (isOpen && project && project.project_name) {
-      try {
-        const todo = todoManager.getTodos(projectId)
-        setProjectTodo(todo)
-        updateProgress(todo)
-      } catch (error) {
-        console.error('Error loading project todos:', error)
-        // Create a fallback todo if there's an error
-        const fallbackTodo: ProjectTodo = {
-          projectId,
-          projectName: project.project_name || projectId,
-          items: [],
-          progress: 0,
-          activeAgents: [],
-          lastUpdated: new Date().toISOString()
+      const loadTodos = async () => {
+        setIsLoading(true)
+        try {
+          const todo = await todoManager.getTodos(projectId)
+          setProjectTodo(todo)
+          updateProgress(todo)
+        } catch (error) {
+          console.error('Error loading project todos:', error)
+          // Create a fallback todo if there's an error
+          const fallbackTodo: ProjectTodo = {
+            projectId,
+            projectName: project.project_name || projectId,
+            items: [],
+            progress: 0,
+            activeAgents: [],
+            lastUpdated: new Date().toISOString()
+          }
+          setProjectTodo(fallbackTodo)
+        } finally {
+          setIsLoading(false)
         }
-        setProjectTodo(fallbackTodo)
       }
+      
+      loadTodos()
     }
   }, [isOpen, project, projectId])
 
@@ -65,16 +73,20 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
     onProgressUpdate(progress)
   }
 
-  const handleToggleTodo = (todoId: string) => {
+  const handleToggleTodo = async (todoId: string) => {
     if (!projectTodo) return
 
-    const updatedTodo = todoManager.toggleTodo(projectId, todoId)
-    if (updatedTodo) {
-      const updatedProjectTodo = todoManager.getProjectTodos(projectId)
-      if (updatedProjectTodo) {
-        setProjectTodo(updatedProjectTodo)
-        updateProgress(updatedProjectTodo)
+    try {
+      const updatedTodo = await todoManager.toggleTodo(projectId, todoId)
+      if (updatedTodo) {
+        const updatedProjectTodo = await todoManager.getProjectTodos(projectId)
+        if (updatedProjectTodo) {
+          setProjectTodo(updatedProjectTodo)
+          updateProgress(updatedProjectTodo)
+        }
       }
+    } catch (error) {
+      console.error('Error toggling todo:', error)
     }
   }
 
@@ -83,8 +95,8 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
 
     setIsAdding(true)
     try {
-      const newTodo = todoManager.addTodo(projectId, newTodoText.trim())
-      const updatedProjectTodo = todoManager.getProjectTodos(projectId)
+      const newTodo = await todoManager.addTodo(projectId, newTodoText.trim())
+      const updatedProjectTodo = await todoManager.getProjectTodos(projectId)
       if (updatedProjectTodo) {
         setProjectTodo(updatedProjectTodo)
         updateProgress(updatedProjectTodo)
@@ -97,16 +109,20 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
     }
   }
 
-  const handleDeleteTodo = (todoId: string) => {
+  const handleDeleteTodo = async (todoId: string) => {
     if (!projectTodo) return
 
-    const success = todoManager.deleteTodo(projectId, todoId)
-    if (success) {
-      const updatedProjectTodo = todoManager.getProjectTodos(projectId)
-      if (updatedProjectTodo) {
-        setProjectTodo(updatedProjectTodo)
-        updateProgress(updatedProjectTodo)
+    try {
+      const success = await todoManager.deleteTodo(projectId, todoId)
+      if (success) {
+        const updatedProjectTodo = await todoManager.getProjectTodos(projectId)
+        if (updatedProjectTodo) {
+          setProjectTodo(updatedProjectTodo)
+          updateProgress(updatedProjectTodo)
+        }
       }
+    } catch (error) {
+      console.error('Error deleting todo:', error)
     }
   }
 
@@ -116,7 +132,7 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
     }
   }
 
-  if (!isOpen || !projectTodo) return null
+  if (!isOpen || !projectTodo || isLoading) return null
 
   // Safety check for items array
   const items = projectTodo.items || []
@@ -170,7 +186,7 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
                <Progress value={progress} className="h-2" />
                
                {/* Active Agents Indicator */}
-               {projectTodo.activeAgents.length > 0 && (
+               {projectTodo.activeAgents && projectTodo.activeAgents.length > 0 && (
                  <div className="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400 animate-pulse">
                    <span>🤖 Active Agents:</span>
                    {projectTodo.activeAgents.map((agent, index) => (
@@ -215,7 +231,7 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
 
             {/* Todo List */}
             <div className="space-y-2 max-h-96 overflow-y-auto">
-              {items.length === 0 ? (
+              {!items || items.length === 0 ? (
                 <div className="text-center py-8 text-gray-500">
                   <Circle className="h-8 w-8 mx-auto mb-2 opacity-50" />
                   <p>No tasks yet. Add your first task above!</p>

@@ -29,11 +29,11 @@ export class AgentSimulator {
   }
 
   // Simulate random agent work
-  private simulateAgentWork() {
+  private async simulateAgentWork() {
     const projectIds = [
-      'ai-powered-code-review-refactoring-assistant',
-      'intelligent-document-processing-knowledge-base',
-      'ai-powered-resume-parser-job-matcher',
+      'ai-powered-code-review-and-refactoring-assistant',
+      'intelligent-document-processing-and-knowledge-base',
+      'ai-powered-resume-parser-and-job-matcher',
       'real-time-ai-content-moderation-system'
     ]
 
@@ -45,36 +45,58 @@ export class AgentSimulator {
     const randomAgent = agents[Math.floor(Math.random() * agents.length)]
     const randomMilestone = milestones[Math.floor(Math.random() * milestones.length)]
 
-    // Get current project todo
-    const projectTodo = todoManager.getProjectTodos(randomProjectId)
-    if (!projectTodo) return
+    try {
+      console.log(`🤖 Simulation: ${randomAgent} working on ${randomMilestone} for ${randomProjectId}`)
+      
+      // Get current project todo
+      const projectTodo = await todoManager.getProjectTodos(randomProjectId)
+      if (!projectTodo) {
+        console.log(`❌ No project todo found for ${randomProjectId}`)
+        return
+      }
 
-    // Find the milestone item
-    const milestoneItem = projectTodo.items.find(item => item.id === randomMilestone)
-    if (!milestoneItem) return
+      // Find the milestone item
+      const milestoneItem = projectTodo.items.find(item => item.id === randomMilestone)
+      if (!milestoneItem) {
+        console.log(`❌ No milestone found: ${randomMilestone}`)
+        return
+      }
 
-    // Simulate different actions based on current status
-    if (milestoneItem.status === 'pending') {
-      // Start working on this milestone
-      todoManager.startAgentWork(randomProjectId, randomAgent, randomMilestone)
-      console.log(`🤖 ${randomAgent} started working on ${randomMilestone} for ${randomProjectId}`)
-    } else if (milestoneItem.status === 'in_progress' && Math.random() > 0.7) {
-      // 30% chance to complete the work
-      todoManager.completeAgentWork(randomProjectId, randomMilestone)
-      console.log(`✅ ${randomAgent} completed ${randomMilestone} for ${randomProjectId}`)
+      console.log(`📊 Current status: ${milestoneItem.status}`)
+
+      // Simulate different actions based on current status
+      if (milestoneItem.status === 'pending') {
+        // Start working on this milestone
+        await todoManager.updateItemStatus(randomProjectId, randomMilestone, 'in_progress', randomAgent)
+        console.log(`🤖 ${randomAgent} started working on ${randomMilestone} for ${randomProjectId}`)
+      } else if (milestoneItem.status === 'in_progress' && Math.random() > 0.7) {
+        // 30% chance to complete the work
+        await todoManager.updateItemStatus(randomProjectId, randomMilestone, 'completed')
+        console.log(`✅ ${randomAgent} completed ${randomMilestone} for ${randomProjectId}`)
+      }
+    } catch (error) {
+      console.error('❌ Error in agent simulation:', error)
     }
   }
 
   // Manually trigger agent work for testing
-  triggerAgentWork(projectId: string, agent: string, milestoneId: string) {
-    todoManager.startAgentWork(projectId, agent, milestoneId)
-    console.log(`🤖 Manual trigger: ${agent} started working on ${milestoneId} for ${projectId}`)
+  async triggerAgentWork(projectId: string, agent: string, milestoneId: string) {
+    try {
+      await todoManager.updateItemStatus(projectId, milestoneId, 'in_progress', agent)
+      console.log(`🤖 Manual trigger: ${agent} started working on ${milestoneId} for ${projectId}`)
+    } catch (error) {
+      console.error('Error triggering agent work:', error)
+    }
   }
 
   // Manually complete agent work for testing
-  completeAgentWork(projectId: string, milestoneId: string) {
-    todoManager.completeAgentWork(projectId, milestoneId)
-    console.log(`✅ Manual completion: ${milestoneId} for ${projectId}`)
+  async completeAgentWork(projectId: string, milestoneId: string) {
+    try {
+      await todoManager.updateItemStatus(projectId, milestoneId, 'completed')
+      console.log(`✅ Manual completion: ${milestoneId} for ${projectId}`)
+    } catch (error) {
+      console.error('Error completing agent work:', error)
+    }
   }
 
   // Reset all project todos

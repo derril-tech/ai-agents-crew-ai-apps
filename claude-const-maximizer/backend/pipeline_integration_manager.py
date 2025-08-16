@@ -23,42 +23,42 @@ class PipelineIntegrationManager:
             "market_research": {
                 "todo_id": "market-research",
                 "agent": "MarketResearcher",
-                "description": "🔍 Market Research & Analysis"
+                "description": "[INVESTIGATE] Market Research & Analysis"
             },
             "project_brief": {
                 "todo_id": "project-brief", 
                 "agent": "PromptEngineer",
-                "description": "📋 Create Project Brief"
+                "description": "[CHECKLIST] Create Project Brief"
             },
             "prompt_template": {
                 "todo_id": "prompt-template",
                 "agent": "PromptEngineer", 
-                "description": "🎯 Select & Customize Prompt Template"
+                "description": "[GOAL] Select & Customize Prompt Template"
             },
             "backend_code": {
                 "todo_id": "backend-code",
                 "agent": "ClaudeCoder",
-                "description": "⚙️ Generate Backend Code"
+                "description": "[CONFIG] Generate Backend Code"
             },
             "frontend_code": {
                 "todo_id": "frontend-code",
                 "agent": "ClaudeCoder",
-                "description": "🎨 Generate Frontend Code"
+                "description": "[UI] Generate Frontend Code"
             },
             "integration": {
                 "todo_id": "integration",
                 "agent": "ClaudeCoder",
-                "description": "🔗 Integration & API Connections"
+                "description": "[CONNECT] Integration & API Connections"
             },
             "deployment": {
                 "todo_id": "deployment",
                 "agent": "ClaudeCoder",
-                "description": "🚀 Deployment Configuration"
+                "description": "[LAUNCH] Deployment Configuration"
             },
             "validation": {
                 "todo_id": "validation",
                 "agent": "PreCodeValidator",
-                "description": "✅ Validation & Testing"
+                "description": "[OK] Validation & Testing"
             }
         }
     
@@ -88,7 +88,7 @@ class PipelineIntegrationManager:
             })
         
         self._save_project_todos(project_id, todos)
-        print(f"📋 Initialized to-do list for project: {project_name}")
+        print(f"[CHECKLIST] Initialized to-do list for project: {project_name}")
         return todos
     
     def start_agent_work(self, project_id: str, step_name: str) -> None:
@@ -115,7 +115,7 @@ class PipelineIntegrationManager:
         todos["lastUpdated"] = datetime.now().isoformat()
         self._save_project_todos(project_id, todos)
         
-        print(f"🚀 Agent {step_info['agent']} started working on {step_info['description']}")
+        print(f"[LAUNCH] Agent {step_info['agent']} started working on {step_info['description']}")
     
     def complete_step(self, project_id: str, step_name: str, success: bool = True) -> None:
         """Mark a pipeline step as completed"""
@@ -146,7 +146,7 @@ class PipelineIntegrationManager:
         todos["lastUpdated"] = datetime.now().isoformat()
         self._save_project_todos(project_id, todos)
         
-        status = "✅ completed" if success else "❌ failed"
+        status = "[OK] completed" if success else "[ERROR] failed"
         print(f"{status} {step_info['description']} for project {project_id}")
     
     def update_project_status(self, project_id: str, status: str) -> None:
@@ -159,7 +159,7 @@ class PipelineIntegrationManager:
         todos["lastUpdated"] = datetime.now().isoformat()
         self._save_project_todos(project_id, todos)
         
-        print(f"📊 Updated project {project_id} status to: {status}")
+        print(f"[METRICS] Updated project {project_id} status to: {status}")
     
     def get_project_todos(self, project_id: str) -> Dict[str, Any]:
         """Get current to-do list for a project"""
@@ -177,7 +177,7 @@ class PipelineIntegrationManager:
                     elif isinstance(data, list):
                         all_todos = data
             except Exception as e:
-                print(f"⚠️ Error loading to-do lists: {e}")
+                print(f"[WARN] Error loading to-do lists: {e}")
         
         return all_todos
     
@@ -196,7 +196,7 @@ class PipelineIntegrationManager:
                         if project.get("projectId") == project_id:
                             return project
         except Exception as e:
-            print(f"⚠️ Error loading to-do list for {project_id}: {e}")
+            print(f"[WARN] Error loading to-do list for {project_id}: {e}")
         
         return None
     
@@ -221,7 +221,7 @@ class PipelineIntegrationManager:
                 json.dump(existing_data, f, indent=2, ensure_ascii=False)
                 
         except Exception as e:
-            print(f"⚠️ Error saving to-do list for {project_id}: {e}")
+            print(f"[WARN] Error saving to-do list for {project_id}: {e}")
     
     def clear_project_todos(self, project_id: str) -> None:
         """Clear to-do list for a specific project"""
@@ -238,6 +238,6 @@ class PipelineIntegrationManager:
                 with open(self.todo_file, 'w', encoding='utf-8') as f:
                     json.dump(data, f, indent=2, ensure_ascii=False)
                     
-                print(f"🗑️ Cleared to-do list for project: {project_id}")
+                print(f"[EMOJI]️ Cleared to-do list for project: {project_id}")
         except Exception as e:
-            print(f"⚠️ Error clearing to-do list for {project_id}: {e}")
+            print(f"[WARN] Error clearing to-do list for {project_id}: {e}")

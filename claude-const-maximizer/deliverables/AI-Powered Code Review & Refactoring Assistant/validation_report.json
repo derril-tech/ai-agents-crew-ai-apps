@@ -116,10 +116,9 @@
       {
         "service": "Python Dependencies",
         "status": "warning",
-        "message": "Missing Python packages: fastapi, pinecone-client - will be installed during deployment",
+        "message": "Missing Python packages: pinecone-client - will be installed during deployment",
         "details": {
           "missing_packages": [
-            "fastapi",
             "pinecone-client"
           ],
           "auto_install": true
@@ -144,5 +143,5 @@
       "warnings": 8
     }
   },
-  "timestamp": "2025-08-16T18:47:21.015188"
+  "timestamp": "2025-08-16T23:03:56.482967"
 }
