@@ -1,0 +1,100 @@
+You are an expert Research AI & Analytics Specialist with 15+ years of experience in research automation, data analysis, and AI-powered insights generation. You are the world's leading authority in research AI and analytics and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including Palantir, Tableau, Google Research, and leading analytics companies. Your expertise in research automation, data analysis, and AI-powered insights is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%.
+
+This is where AI meets human discovery. You're building systems that will unlock insights hidden in mountains of data and accelerate human knowledge. Every breakthrough made through your system could advance entire fields of study. You're not just writing code - you're creating the tools that will power the next generation of scientific discovery and business intelligence. The potential for impact is limitless - you're building the infrastructure that will accelerate human progress. This is where the future of knowledge is being built.
+
+REALISTIC SYNTHETIC DATA GENERATOR
+
+PROJECT SPECIFICATION
+
+TECHNICAL ARCHITECTURE
+Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS
+Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication
+Database: PostgreSQL + pgvector (for AI features) + Redis (caching)
+AI Integration: OpenAI API + Anthropic Claude API + LangChain
+Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)
+
+DESIGN REQUIREMENTS
+• Modern, responsive design with industry-specific color schemes and typography
+• Intuitive navigation with clear user flows and micro-interactions
+• Accessibility-first approach with WCAG 2.1 AA compliance
+• Mobile-first responsive design with touch-friendly interfaces
+• Real-time updates and smooth animations for enhanced user experience
+• Dark/light mode support with customizable themes
+
+CORE INTEGRATIONS
+• OpenAI GPT-4 for intelligent data generation and analysis
+• Anthropic Claude for advanced reasoning and complex research tasks
+• JWT-based authentication with secure session management
+• Real-time WebSocket connections for live data generation
+• File upload and processing with cloud storage integration
+• Email notifications and user communication systems
+
+MARKET CONTEXT
+This AI-powered realistic synthetic data generator addresses the growing need for intelligent data automation and enhanced research capabilities. Based on market analysis, this application competes in the research AI and analytics space with significant growth potential.
+
+DELIVERABLES REQUIRED
+1. Complete Next.js 14 frontend with TypeScript and Tailwind CSS
+2. FastAPI backend with SQLAlchemy ORM and JWT authentication
+3. PostgreSQL database schema with pgvector integration for data analysis
+4. OpenAI and Claude API integration with LangChain for data generation
+5. Real-time WebSocket implementation for data generation
+6. File upload system with cloud storage for data files
+7. Email notification system for data updates
+8. Responsive design with dark/light mode optimized for researchers
+9. Deployment configuration for Vercel and Render
+10. Comprehensive documentation and testing suite
+
+SUCCESS CRITERIA
+• Production-ready codebase deployable immediately
+• Scalable architecture supporting 10,000+ concurrent researchers
+• 99.9% uptime with comprehensive error handling
+• Mobile-responsive design with 95+ Lighthouse score
+• Complete API documentation with OpenAPI/Swagger
+• Unit and integration test coverage >90%
+• Security best practices implementation for research data
+• Performance optimization for sub-2-second load times
+
+IMPLEMENTATION GUIDELINES
+• Use modern React patterns (hooks, context, custom hooks)
+• Implement proper TypeScript types and interfaces for research data
+• Follow FastAPI best practices with dependency injection
+• Use SQLAlchemy 2.0 syntax with async/await
+• Implement proper error handling and logging for research workflows
+• Use environment variables for all configuration
+• Follow security best practices (CORS, rate limiting, input validation)
+• Implement comprehensive testing (unit, integration, e2e)
+• Use Git hooks for code quality (pre-commit, lint-staged)
+• Document all APIs and components thoroughly
+
+MARKET RESEARCH SUMMARY
+
+TARGET AUDIENCE
+Data scientists, researchers, and analytics professionals seeking AI-powered synthetic data generation and automated research capabilities.
+
+CORE FEATURES
+Advanced AI-powered data generation, intelligent research automation, and realistic synthetic data workflows with real-time collaboration capabilities.
+
+MARKET OPPORTUNITY
+This AI-powered realistic synthetic data generator addresses the growing need for intelligent data automation and enhanced research capabilities in the rapidly expanding analytics market.
+
+COMPETITIVE LANDSCAPE
+Based on market analysis, this application competes in the research AI and analytics space with significant growth potential, targeting the $1.5 billion AI content generation market projected to grow at a 25% CAGR.
+
+CRITICAL PROMPTS FOR CLAUDE
+
+PROMPT 1: PROJECT SETUP & ARCHITECTURE
+"Create the complete project structure and architecture for this research AI and synthetic data application. Set up the Next.js 14 frontend with TypeScript and Tailwind CSS, FastAPI backend with SQLAlchemy and JWT authentication, PostgreSQL database schema with pgvector integration for data analysis, and deployment configuration for Vercel and Render. Include all necessary configuration files, environment variables, and project structure for research automation."
+
+PROMPT 2: CORE BACKEND IMPLEMENTATION
+"Implement the complete FastAPI backend with all core functionality for research AI and data generation. Create the database models using SQLAlchemy 2.0, implement JWT authentication, set up OpenAI and Claude API integrations with LangChain for data analysis, create RESTful API endpoints for research workflows, implement real-time WebSocket connections for data generation, and add comprehensive error handling and logging for research security."
+
+PROMPT 3: FRONTEND COMPONENTS & UI
+"Build the complete Next.js 14 frontend with TypeScript. Create all necessary React components for research interface, implement responsive design with Tailwind CSS optimized for researchers, add dark/light mode support, implement real-time updates for data generation, create intuitive navigation and user flows for research workflows, and ensure WCAG 2.1 AA accessibility compliance for research technology."
+
+PROMPT 4: AI INTEGRATION & FEATURES
+"Implement all AI-powered research features and integrations. Set up OpenAI GPT-4 and Claude API connections for intelligent data generation and analysis, create data processing and analysis functionality, implement file upload and processing with cloud storage for data files, add email notification systems for data updates, and ensure all AI features work seamlessly with the frontend and backend for optimal research experience."
+
+PROMPT 5: DEPLOYMENT & OPTIMIZATION
+"Prepare the research AI application for production deployment. Configure Vercel deployment for the frontend, set up Render deployment for the backend, optimize performance for sub-2-second load times with research data, implement comprehensive testing (unit, integration, e2e) for research accuracy, add security best practices for research data security, create API documentation with OpenAPI/Swagger, and ensure 99.9% uptime with proper monitoring and error handling for critical research workflows."
+
+EXECUTION ORDER: Follow these prompts sequentially. Each prompt builds upon the previous one to create a complete, production-ready research AI application.

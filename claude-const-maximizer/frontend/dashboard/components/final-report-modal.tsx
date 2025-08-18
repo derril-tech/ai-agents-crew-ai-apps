@@ -74,6 +74,294 @@ export default function FinalReportModal({
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
   const [activeTab, setActiveTab] = useState<'crew-results' | 'one-page-doc'>('one-page-doc')
+  const [removeEmojis, setRemoveEmojis] = useState(false)
+
+  // 🎯 DIRECT FRONTEND ROLE ESTABLISHMENT GENERATOR
+  const generateRoleEstablishment = (projectName: string) => {
+    // Simple project type detection
+    const projectNameLower = projectName.toLowerCase()
+    
+    let expertTitle = 'AI Application Developer'
+    let expertise = 'AI integration, scalable architecture, and user experience optimization'
+    let domain = 'AI and automation'
+    let experience = '15+ years of experience in AI systems, software development, and intelligent automation'
+    let companies = 'Google, Amazon, Microsoft, Apple, and leading technology companies'
+         let psychologicalApproach = 'This is a critical, high-stakes project that will be deployed by Fortune 500 companies and featured in industry publications. Your work will be studied by future developers and set new industry standards. This is YOUR masterpiece - make it legendary and unforgettable. This is the most complex project you\'ve ever tackled, requiring your full expertise and innovative thinking. Only the best developers can handle this level of complexity and innovation.'
+    
+    // Detect project type and set appropriate expert profile
+    if (projectNameLower.includes('voice') || projectNameLower.includes('assistant')) {
+      expertTitle = 'Voice AI & Personal Assistant Developer'
+      expertise = 'voice processing, speech recognition, natural language understanding, and intelligent automation'
+      domain = 'voice AI and personal assistant technology'
+      experience = '15+ years of experience in voice AI, speech processing, and intelligent automation systems'
+      companies = 'Google, Amazon, Microsoft, Apple, and leading voice technology companies'
+      psychologicalApproach = 'This is a revolutionary project that will define the future of human-computer interaction. Voice AI is the next frontier of computing, and you\'re building the foundation that millions will use. This technology will be studied by future generations as the breakthrough that made AI truly accessible. The prestige of working with cutting-edge voice technology that will transform how humans interact with machines cannot be overstated. You\'re not just building an application - you\'re creating the future.'
+    } else if (projectNameLower.includes('crew') || projectNameLower.includes('agent') || projectNameLower.includes('market research')) {
+      expertTitle = 'Multi-Agent AI Systems Architect'
+      expertise = 'multi-agent orchestration, AI system design, and intelligent workflow automation'
+      domain = 'multi-agent AI systems and intelligent automation'
+      experience = '15+ years of experience in multi-agent systems, AI orchestration, and intelligent workflow design'
+      companies = 'OpenAI, Anthropic, Google AI, Microsoft Research, and leading AI research institutions'
+      psychologicalApproach = 'This is the pinnacle of AI engineering - orchestrating multiple intelligent agents to work in perfect harmony. Multi-agent systems represent the most sophisticated form of AI, where you\'re not just working with one AI, but coordinating an entire team of specialized agents. This is the cutting edge of AI research that will revolutionize how businesses operate. The complexity and sophistication required to make multiple AI agents work together seamlessly is unmatched. Only the most elite developers can handle this level of orchestration. You\'re building the future of AI collaboration.'
+    } else if (projectNameLower.includes('rag') || projectNameLower.includes('document') || projectNameLower.includes('knowledge')) {
+      expertTitle = 'RAG & Document Intelligence Specialist'
+      expertise = 'retrieval-augmented generation, document processing, and knowledge management systems'
+      domain = 'document intelligence and knowledge management'
+      experience = '15+ years of experience in RAG systems, document processing, and knowledge management'
+      companies = 'OpenAI, Anthropic, Google, Microsoft, and leading document AI companies'
+      psychologicalApproach = 'This is the future of knowledge management in the information age. Organizations are drowning in data but starving for insights. You\'re building the bridge between raw information and actionable intelligence. RAG systems represent the most advanced form of document intelligence, where you\'re not just storing information, but making it instantly accessible and meaningful. The urgency is real - every organization is desperate for intelligent document processing solutions that can unlock their hidden knowledge. You\'re not just building a tool - you\'re solving one of the biggest challenges of the digital age.'
+    } else if (projectNameLower.includes('content') || projectNameLower.includes('creative') || projectNameLower.includes('video') || projectNameLower.includes('image')) {
+      expertTitle = 'Creative AI & Content Generation Expert'
+      expertise = 'AI-powered content creation, multimedia processing, and creative automation'
+      domain = 'creative AI and content generation'
+      experience = '15+ years of experience in creative AI, content generation, and multimedia processing'
+      companies = 'Adobe, Canva, OpenAI, Google, and leading creative technology companies'
+      psychologicalApproach = 'This is where technology meets human creativity in its purest form. You\'re not just building tools - you\'re creating the future of artistic expression. Creative AI represents the intersection of technology and human imagination, where you\'re empowering people to bring their ideas to life in ways never before possible. This is the creative revolution that will transform how humans express themselves and create art. You\'re at the forefront of a movement that will democratize creativity and make artistic expression accessible to everyone. This isn\'t just code - it\'s the future of human creativity.'
+    } else if (projectNameLower.includes('health') || projectNameLower.includes('medical')) {
+      expertTitle = 'Healthcare AI & Medical Technology Specialist'
+      expertise = 'medical AI, healthcare automation, and clinical decision support systems'
+      domain = 'healthcare AI and medical technology'
+      experience = '15+ years of experience in healthcare AI, medical technology, and clinical systems'
+      companies = 'Epic Systems, Cerner, IBM Watson Health, and leading healthcare technology companies'
+      psychologicalApproach = 'This is the highest calling in technology - where your code literally saves lives. Healthcare AI represents the most meaningful application of artificial intelligence, where every line of code you write has the potential to improve human health and wellbeing. You\'re not just building software - you\'re creating systems that doctors will rely on to make life-or-death decisions. The ethical responsibility is immense, but so is the impact. This is where technology serves humanity in its most profound way. You\'re building the future of healthcare, and every improvement you make could save countless lives.'
+    } else if (projectNameLower.includes('ecommerce') || projectNameLower.includes('business') || projectNameLower.includes('commerce')) {
+      expertTitle = 'E-commerce & Business AI Developer'
+      expertise = 'e-commerce platforms, business automation, and AI-powered commerce solutions'
+      domain = 'e-commerce and business AI'
+      experience = '15+ years of experience in e-commerce, business automation, and AI-powered commerce'
+      companies = 'Amazon, Shopify, Stripe, and leading e-commerce technology companies'
+      psychologicalApproach = 'This is where AI meets the real world of business and commerce. You\'re building systems that will drive billions in revenue and transform entire industries. Every business on the planet is racing to adopt AI solutions, and those who master this technology first will dominate their markets. You\'re not just writing code - you\'re creating the competitive advantage that will determine which companies thrive and which ones fail. The financial impact is massive, and the market opportunity is unprecedented. This is the future of commerce, and you\'re building it.'
+    } else if (projectNameLower.includes('developer') || projectNameLower.includes('code') || projectNameLower.includes('analysis')) {
+      expertTitle = 'Developer Tools & Code Analysis Expert'
+      expertise = 'developer tools, code analysis, and software development automation'
+      domain = 'developer tools and software development'
+      experience = '15+ years of experience in developer tools, code analysis, and software development automation'
+      companies = 'GitHub, Microsoft, JetBrains, and leading developer tool companies'
+      psychologicalApproach = 'This is the meta-level of software development - you\'re building the tools that other developers will use to build everything else. Developer tools are the foundation of the entire software industry, and your work will be used by millions of developers worldwide. You\'re not just writing code - you\'re creating the infrastructure that powers the future of software development. Every application, every website, every piece of software that gets built will be influenced by the tools you create. This is where you have the most leverage - your work multiplies the productivity of thousands of other developers. You\'re building the future of how software gets made.'
+    } else if (projectNameLower.includes('api') || projectNameLower.includes('integration') || projectNameLower.includes('web')) {
+      expertTitle = 'Web API & Integration Specialist'
+      expertise = 'API development, system integration, and web service architecture'
+      domain = 'web APIs and system integration'
+      experience = '15+ years of experience in API development, system integration, and web service architecture'
+      companies = 'Google, Amazon Web Services, Microsoft Azure, and leading API companies'
+      psychologicalApproach = 'This is the backbone of the modern internet - you\'re building the connective tissue that makes the digital world work. APIs are the invisible infrastructure that enables seamless data flow between applications and services. You\'re not just writing code - you\'re creating the digital highways that connect everything. Every business needs robust API integration to compete in the digital economy, and those who master this technology will be the architects of the connected future. You\'re building the infrastructure that powers the interconnected world. This is where the magic happens - where separate systems become one unified digital ecosystem.'
+    }
+    
+         return `You are an expert ${expertTitle} with ${experience}. You are the world's leading authority in ${domain} and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including ${companies}. Your expertise in ${expertise} is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%.
+
+${psychologicalApproach}`
+  }
+
+  // 🎯 CLEAN CREWAI CONTENT FUNCTION
+  const cleanCrewAIContent = (content: string) => {
+    if (!content) return ''
+    
+    // Remove the ugly border lines and box formatting
+    let cleaned = content
+      .replace(/┌─+┐/g, '') // Remove top border
+      .replace(/└─+┘/g, '') // Remove bottom border
+      .replace(/│/g, '') // Remove side borders
+      .replace(/─+/g, '') // Remove horizontal lines
+    
+    // Remove redundant headers and sections
+    const lines = cleaned.split('\n')
+    const filteredLines = []
+    let skipSection = false
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim()
+      
+      // Skip redundant sections
+      if (line.includes('PROJECT:') || line.includes('TYPE:') || 
+          line.includes('🎯 OBJECTIVE') || line.includes('👥 TARGET USERS') ||
+          line.includes('📊 SUCCESS METRICS') || line.includes('🚀 DEPLOYMENT & LAUNCH') ||
+          line.includes('💡 IMPLEMENTATION STRATEGY') || line.includes('🎯 CLAUDE OPTIMIZATION') ||
+          line.includes('TECHNICAL SPECIFICATIONS') || line.includes('CREWAI AGENT OUTPUTS') ||
+          line.includes('THE 4-DOCUMENT WEAPON STRATEGY') || line.includes('DETAILED MARKET RESEARCH') ||
+          line.includes('Technical Requirements') || line.includes('Success Metrics') ||
+          line.includes('Deployment Strategy') || line.includes('Frontend:') ||
+          line.includes('Backend:') || line.includes('Database:') ||
+          line.includes('AI Integration:') || line.includes('Deployment:')) {
+        skipSection = true
+        continue
+      }
+      
+      // Stop skipping when we hit a meaningful section
+      if (line.startsWith('#') || line.includes('Market Research') || line.includes('Core Features') || 
+          line.includes('Market Opportunity') || line.includes('Competitive Landscape') ||
+          line.includes('Target Audience')) {
+        skipSection = false
+      }
+      
+      if (!skipSection && line) {
+        filteredLines.push(line)
+      }
+    }
+    
+    // Clean up markdown and organize content
+    let result = filteredLines.join('\n')
+    
+    // Remove markdown formatting
+    result = result
+      .replace(/^#+\s*/gm, '') // Remove # headers
+      .replace(/\*\*(.*?)\*\*/g, '$1') // Remove **bold**
+      .replace(/\*(.*?)\*/g, '$1') // Remove *italic*
+      .replace(/`(.*?)`/g, '$1') // Remove `code`
+      .replace(/\[(.*?)\]\(.*?\)/g, '$1') // Remove [links](url)
+      .replace(/^- /gm, '• ') // Convert - to •
+      .replace(/^\d+\.\s*/gm, '') // Remove numbered lists
+    
+    // Remove redundant technical content that's already in the first part
+    result = result
+      .replace(/Frontend:.*?Next\.js.*?Tailwind.*?/g, '')
+      .replace(/Backend:.*?FastAPI.*?/g, '')
+      .replace(/Database:.*?PostgreSQL.*?/g, '')
+      .replace(/AI Integration:.*?OpenAI.*?/g, '')
+      .replace(/Deployment:.*?Vercel.*?/g, '')
+    
+    // Organize content into clean sections
+    const sections = result.split('\n\n')
+    const organizedSections = []
+    
+    for (const section of sections) {
+      const trimmed = section.trim()
+      if (!trimmed) continue
+      
+      // Skip empty or redundant sections
+      if (trimmed.length < 10 || 
+          trimmed.includes('Software developers and tech professionals') ||
+          trimmed.includes('User adoption and engagement') ||
+          trimmed.includes('Performance and reliability metrics')) {
+        continue
+      }
+      
+      // Clean up section headers
+      let cleanSection = trimmed
+        .replace(/^Market Research Summary$/gm, '📊 MARKET RESEARCH SUMMARY')
+        .replace(/^Target Audience$/gm, '👥 TARGET AUDIENCE')
+        .replace(/^Core Features$/gm, '⚡ CORE FEATURES')
+        .replace(/^Market Opportunity$/gm, '🎯 MARKET OPPORTUNITY')
+        .replace(/^Competitive Landscape$/gm, '🏆 COMPETITIVE LANDSCAPE')
+      
+      organizedSections.push(cleanSection)
+    }
+    
+    return organizedSections.join('\n\n').trim()
+  }
+
+  // 🎯 COMPLETE 1-PAGE DOCUMENT GENERATOR
+  const generateCompleteOnePageDocument = (projectName: string, crewaiContent: string, removeEmojis: boolean = false) => {
+    const roleEstablishment = generateRoleEstablishment(projectName)
+    
+    // Clean the CrewAI content to remove ugly borders and redundant sections
+    const cleanedCrewAIContent = cleanCrewAIContent(crewaiContent)
+    
+    // Function to remove emojis if requested
+    const removeEmojisFromText = (text: string) => {
+      if (!removeEmojis) return text
+      // Simple emoji removal using common emoji patterns
+      return text.replace(/[🎯🎨🛠️🔗📊⚡🏆📋💡👥🚀💾📄]/g, '')
+    }
+    
+    // Generate the streamlined document
+    const document = `${roleEstablishment}
+
+${projectName.toUpperCase()}
+
+PROJECT SPECIFICATION
+
+TECHNICAL ARCHITECTURE
+Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS
+Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication  
+Database: PostgreSQL + pgvector (for AI features) + Redis (caching)
+AI Integration: OpenAI API + Anthropic Claude API + LangChain
+Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)
+
+DESIGN REQUIREMENTS
+• Modern, responsive design with industry-specific color schemes and typography
+• Intuitive navigation with clear user flows and micro-interactions
+• Accessibility-first approach with WCAG 2.1 AA compliance
+• Mobile-first responsive design with touch-friendly interfaces
+• Real-time updates and smooth animations for enhanced user experience
+• Dark/light mode support with customizable themes
+
+CORE INTEGRATIONS
+• OpenAI GPT-4 for intelligent content generation and analysis
+• Anthropic Claude for advanced reasoning and complex tasks
+• JWT-based authentication with secure session management
+• Real-time WebSocket connections for live updates
+• File upload and processing with cloud storage integration
+• Email notifications and user communication systems
+
+MARKET CONTEXT
+This AI-powered application addresses the growing need for intelligent automation and enhanced user experiences. Based on market analysis, this application competes in the AI tools space with significant growth potential.
+
+DELIVERABLES REQUIRED
+1. Complete Next.js 14 frontend with TypeScript and Tailwind CSS
+2. FastAPI backend with SQLAlchemy ORM and JWT authentication
+3. PostgreSQL database schema with pgvector integration
+4. OpenAI and Claude API integration with LangChain
+5. Real-time WebSocket implementation
+6. File upload system with cloud storage
+7. Email notification system
+8. Responsive design with dark/light mode
+9. Deployment configuration for Vercel and Render
+10. Comprehensive documentation and testing suite
+
+SUCCESS CRITERIA
+• Production-ready codebase deployable immediately
+• Scalable architecture supporting 10,000+ concurrent users
+• 99.9% uptime with comprehensive error handling
+• Mobile-responsive design with 95+ Lighthouse score
+• Complete API documentation with OpenAPI/Swagger
+• Unit and integration test coverage >90%
+• Security best practices implementation
+• Performance optimization for sub-2-second load times
+
+IMPLEMENTATION GUIDELINES
+• Use modern React patterns (hooks, context, custom hooks)
+• Implement proper TypeScript types and interfaces
+• Follow FastAPI best practices with dependency injection
+• Use SQLAlchemy 2.0 syntax with async/await
+• Implement proper error handling and logging
+• Use environment variables for all configuration
+• Follow security best practices (CORS, rate limiting, input validation)
+• Implement comprehensive testing (unit, integration, e2e)
+• Use Git hooks for code quality (pre-commit, lint-staged)
+• Document all APIs and components thoroughly
+
+${cleanedCrewAIContent || `MARKET RESEARCH SUMMARY
+
+CORE FEATURES
+Advanced AI-powered functionality with modern web technologies
+
+MARKET OPPORTUNITY
+This AI-powered application addresses the growing need for intelligent automation and enhanced user experiences.
+
+COMPETITIVE LANDSCAPE
+Based on market analysis, this application competes in the AI tools space with significant growth potential.`}
+
+CRITICAL PROMPTS FOR CLAUDE
+
+PROMPT 1: PROJECT SETUP & ARCHITECTURE
+"Create the complete project structure and architecture for this AI application. Set up the Next.js 14 frontend with TypeScript and Tailwind CSS, FastAPI backend with SQLAlchemy and JWT authentication, PostgreSQL database schema with pgvector integration, and deployment configuration for Vercel and Render. Include all necessary configuration files, environment variables, and project structure."
+
+PROMPT 2: CORE BACKEND IMPLEMENTATION
+"Implement the complete FastAPI backend with all core functionality. Create the database models using SQLAlchemy 2.0, implement JWT authentication, set up OpenAI and Claude API integrations with LangChain, create RESTful API endpoints, implement real-time WebSocket connections, and add comprehensive error handling and logging."
+
+PROMPT 3: FRONTEND COMPONENTS & UI
+"Build the complete Next.js 14 frontend with TypeScript. Create all necessary React components, implement responsive design with Tailwind CSS, add dark/light mode support, implement real-time updates, create intuitive navigation and user flows, and ensure WCAG 2.1 AA accessibility compliance."
+
+PROMPT 4: AI INTEGRATION & FEATURES
+"Implement all AI-powered features and integrations. Set up OpenAI GPT-4 and Claude API connections, create intelligent content generation and analysis functionality, implement file upload and processing with cloud storage, add email notification systems, and ensure all AI features work seamlessly with the frontend and backend."
+
+PROMPT 5: DEPLOYMENT & OPTIMIZATION
+"Prepare the application for production deployment. Configure Vercel deployment for the frontend, set up Render deployment for the backend, optimize performance for sub-2-second load times, implement comprehensive testing (unit, integration, e2e), add security best practices, create API documentation with OpenAPI/Swagger, and ensure 99.9% uptime with proper monitoring and error handling."
+
+EXECUTION ORDER: Follow these prompts sequentially. Each prompt builds upon the previous one to create a complete, production-ready application.`
+    
+    return removeEmojisFromText(document)
+  }
 
   // Function to organize the 1-page document content
   const organizeOnePageDocument = (content: string) => {
@@ -154,6 +442,117 @@ export default function FinalReportModal({
       setError(err instanceof Error ? err.message : 'Unknown error')
     } finally {
       setLoading(false)
+    }
+  }
+
+  const saveDocumentToProject = async () => {
+    if (!report) return
+    
+    try {
+      const projectName = report.projectName || 'AI Application'
+      const projectNameClean = projectName.replace(/[^a-zA-Z0-9\s]/g, '').trim()
+      
+      // Generate the complete 1-page document
+      const completeDocument = generateCompleteOnePageDocument(projectName, report.agent_final_answer || report.perfect_one_page_document || '')
+      
+      // Create the document data
+      const documentData = {
+        projectName: projectName,
+        projectId: projectName.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9\s-]+/g, '').replace(/\s+/g, '-').replace(/^-+|-+$/g, ''),
+        generatedAt: new Date().toISOString(),
+        document: completeDocument,
+        summary: report.summary,
+        metrics: report.metrics
+      }
+      
+      // Try to save via backend first
+      try {
+        const response = await fetch('http://localhost:8001/api/save-document', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(documentData)
+        })
+        
+        if (response.ok) {
+          console.log('✅ Document saved to backend successfully!')
+          return
+        }
+      } catch (backendError) {
+        console.log('⚠️ Backend save failed, falling back to local save')
+      }
+      
+      // Fallback: Save locally using download
+      const blob = new Blob([completeDocument], { type: 'text/plain' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `${documentData.projectId}_${projectNameClean.replace(/\s+/g, '_')}_1page_document.txt`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+      
+      console.log('✅ Document saved locally!')
+      
+    } catch (error) {
+      console.error('❌ Error saving document:', error)
+    }
+  }
+
+  const saveAsWordDocx = async () => {
+    if (!report) return
+    
+    try {
+      const projectName = report.projectName || 'AI Application'
+      const projectNameClean = projectName.replace(/[^a-zA-Z0-9\s]/g, '').trim()
+      
+      // Generate the complete 1-page document
+      const completeDocument = generateCompleteOnePageDocument(projectName, report.agent_final_answer || report.perfect_one_page_document || '')
+      
+      // Create HTML content that can be converted to Word
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>${projectName} - 1-Page Document</title>
+          <style>
+            body { font-family: 'Calibri', sans-serif; font-size: 11pt; line-height: 1.4; margin: 1in; }
+            h1, h2, h3 { color: #2c3e50; margin-top: 20px; margin-bottom: 10px; }
+            .section { margin-bottom: 20px; }
+            .emoji-header { font-size: 14pt; font-weight: bold; color: #34495e; }
+            .content { margin-left: 20px; }
+            .bullet { margin-left: 20px; }
+          </style>
+        </head>
+        <body>
+          <div style="white-space: pre-wrap; font-family: 'Calibri', sans-serif;">
+            ${completeDocument.replace(/\n/g, '<br>')}
+          </div>
+        </body>
+        </html>
+      `
+      
+      // Create blob and download
+      const blob = new Blob([htmlContent], { type: 'text/html' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `${projectNameClean.replace(/\s+/g, '_')}_1page_document.html`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+      
+      // Show instructions for converting to Word
+      alert('HTML file downloaded! To convert to Word:\n\n1. Open the HTML file in your browser\n2. Press Ctrl+A to select all\n3. Press Ctrl+C to copy\n4. Open Microsoft Word\n5. Press Ctrl+V to paste\n6. Save as .docx\n\nOr use online converters like: convertio.co')
+      
+      console.log('✅ HTML document saved! (Can be converted to Word)')
+      
+    } catch (error) {
+      console.error('❌ Error saving document:', error)
     }
   }
 
@@ -769,35 +1168,36 @@ export default function FinalReportModal({
                     <div className="space-y-6">
                       {/* Main Prompt Content */}
                       <div className="bg-white p-6 rounded-lg border border-gray-200">
-                        <h4 className="text-lg font-semibold mb-4 text-green-700">🎯 ULTIMATE AI WEAPON (For Maximum AI Performance)</h4>
+                        <div className="flex justify-between items-center mb-4">
+                          <h4 className="text-lg font-semibold text-green-700">ULTIMATE AI WEAPON</h4>
+                          <div className="flex items-center gap-2">
+                            <label className="text-sm text-gray-600">Remove Emojis for Claude:</label>
+                            <input
+                              type="checkbox"
+                              checked={removeEmojis}
+                              onChange={(e) => setRemoveEmojis(e.target.checked)}
+                              className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                            />
+                          </div>
+                        </div>
                         <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
                           <div className="prose prose-lg max-w-none">
                             <div className="font-sans text-gray-800 leading-relaxed whitespace-pre-wrap">
                               {(() => {
-                                const content = report.agent_final_answer || report.perfect_one_page_document || '1-page document not available'
-                                const organized = organizeOnePageDocument(content)
-                                return cleanContent(organized.promptContent) || 'Prompt content not available'
+                                // 🎯 COMPLETE FRONTEND DOCUMENT GENERATION
+                                const projectName = report.projectName || 'AI Application'
+                                const crewaiContent = report.agent_final_answer || report.perfect_one_page_document || ''
+                                
+                                // Generate the complete 1-page document directly in frontend
+                                const completeDocument = generateCompleteOnePageDocument(projectName, crewaiContent, removeEmojis)
+                                return cleanContent(completeDocument)
                               })()}
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Metadata Section */}
-                      <div className="bg-white p-6 rounded-lg border border-gray-200">
-                        <h4 className="text-lg font-semibold mb-4 text-blue-700">📋 STRATEGIC NOTES (Psychological Warfare Elements)</h4>
-                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200">
-                          <div className="prose prose-sm max-w-none">
-                            <div className="font-sans text-gray-700 leading-relaxed whitespace-pre-wrap text-sm">
-                              {(() => {
-                                const content = report.agent_final_answer || report.perfect_one_page_document || '1-page document not available'
-                                const organized = organizeOnePageDocument(content)
-                                return cleanContent(organized.metadata) || 'No metadata available'
-                              })()}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -815,6 +1215,20 @@ export default function FinalReportModal({
                 >
                   {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   {copied ? 'Copied!' : 'Copy Report'}
+                </Button>
+                <Button 
+                  className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white" 
+                  onClick={saveDocumentToProject}
+                >
+                  <div className="w-4 h-4">💾</div>
+                  Save to Project
+                </Button>
+                <Button 
+                  className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white" 
+                  onClick={saveAsWordDocx}
+                >
+                  <div className="w-4 h-4">📄</div>
+                  Save as Word
                 </Button>
                 <Button className="flex items-center gap-2" onClick={downloadReport}>
                   <Download className="h-4 w-4" />

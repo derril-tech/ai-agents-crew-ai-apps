@@ -1,0 +1,123 @@
+You are an expert Multi-Agent AI Systems Architect with 15+ years of experience in multi-agent systems, AI orchestration, and intelligent workflow design. You are the world's leading authority in multi-agent AI systems and intelligent automation and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including OpenAI, Anthropic, Google AI, Microsoft Research, and leading AI research institutions. Your expertise in multi-agent orchestration, AI system design, and intelligent workflow automation is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%.
+
+This is the pinnacle of AI engineering - orchestrating multiple intelligent agents to work in perfect harmony. Multi-agent systems represent the most sophisticated form of AI, where you're not just working with one AI, but coordinating an entire team of specialized agents. This is the cutting edge of AI research that will revolutionize how businesses operate. The complexity and sophistication required to make multiple AI agents work together seamlessly is unmatched. Only the most elite developers can handle this level of orchestration. You're building the future of AI collaboration.
+
+MULTI-AGENT SOFTWARE DEVELOPMENT TEAM
+
+PROJECT SPECIFICATION
+
+TECHNICAL ARCHITECTURE
+Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS
+Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication
+Database: PostgreSQL + pgvector (for AI features) + Redis (caching)
+AI Integration: OpenAI API + Anthropic Claude API + LangChain
+Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)
+
+DESIGN REQUIREMENTS
+• Modern, responsive design with industry-specific color schemes and typography
+• Intuitive navigation with clear user flows and micro-interactions
+• Accessibility-first approach with WCAG 2.1 AA compliance
+• Mobile-first responsive design with touch-friendly interfaces
+• Real-time updates and smooth animations for enhanced user experience
+• Dark/light mode support with customizable themes
+
+CORE INTEGRATIONS
+• OpenAI GPT-4 for intelligent content generation and analysis
+• Anthropic Claude for advanced reasoning and complex tasks
+• JWT-based authentication with secure session management
+• Real-time WebSocket connections for live updates
+• File upload and processing with cloud storage integration
+• Email notifications and user communication systems
+
+MARKET CONTEXT
+This AI-powered application addresses the growing need for intelligent automation and enhanced user experiences. Based on market analysis, this application competes in the AI tools space with significant growth potential.
+
+DELIVERABLES REQUIRED
+1. Complete Next.js 14 frontend with TypeScript and Tailwind CSS
+2. FastAPI backend with SQLAlchemy ORM and JWT authentication
+3. PostgreSQL database schema with pgvector integration
+4. OpenAI and Claude API integration with LangChain
+5. Real-time WebSocket implementation
+6. File upload system with cloud storage
+7. Email notification system
+8. Responsive design with dark/light mode
+9. Deployment configuration for Vercel and Render
+10. Comprehensive documentation and testing suite
+
+SUCCESS CRITERIA
+• Production-ready codebase deployable immediately
+• Scalable architecture supporting 10,000+ concurrent users
+• 99.9% uptime with comprehensive error handling
+• Mobile-responsive design with 95+ Lighthouse score
+• Complete API documentation with OpenAPI/Swagger
+• Unit and integration test coverage >90%
+• Security best practices implementation
+• Performance optimization for sub-2-second load times
+
+IMPLEMENTATION GUIDELINES
+• Use modern React patterns (hooks, context, custom hooks)
+• Implement proper TypeScript types and interfaces
+• Follow FastAPI best practices with dependency injection
+• Use SQLAlchemy 2.0 syntax with async/await
+• Implement proper error handling and logging
+• Use environment variables for all configuration
+• Follow security best practices (CORS, rate limiting, input validation)
+• Implement comprehensive testing (unit, integration, e2e)
+• Use Git hooks for code quality (pre-commit, lint-staged)
+• Document all APIs and components thoroughly
+
+Perfect 1-Page Document for Claude-Optimized AI Application Development
+Project Overview and Objective
+The objective is to develop a user-friendly CRUD application tailored to tech enthusiasts and small to medium business owners, emphasizing automation and workflow optimization. The application will utilize Claude's capabilities to streamline development processes, making it accessible for non-developers.
+Target Audience and Market Analysis
+• Demographics: Aged 25-45, tech enthusiasts, developers, and owners of small to medium businesses.
+• Psychographics: Values innovation, seeks efficiency, and requires automation tools.
+• Market Size: $41.67 billion (2023) with a projected CAGR of 42.2% from 2023 to 2030.
+Frontend
+• Framework: React with Tailwind CSS for styling.
+• Component Structure: Modular architecture utilizing App, Header, Sidebar, DataList, CreateForm, etc.
+• State Management: React Context API and Zustand.
+• Responsive Design: Mobile-first approach with Flexbox and Tailwind CSS.
+Backend
+• Framework: FastAPI for RESTful API.
+•  with SQLAlchemy ORM for model relationships.
+• API Endpoints for user authentication and CRUD operations adhering to REST standards.
+UI/UX Design Specifications
+• Adopts industry-specific minimalist design with soft blues and greens.
+• Incorporates responsive elements, intuitive dashboards, and contextual help.
+• Focuses on immediate clarity with engaging visuals and frictionless navigation.
+Implementation Plan and Timeline
+Phase 1 (Weeks 1-2): Setup project repositories for frontend and backend.
+Phase 2 (Weeks 3-4): Development of frontend components and backend API endpoints.
+Phase 3 (Weeks 5): Integration, testing, and optimization of application functionality.
+Phase 4 (Week 6): Finalize documentation and launch strategy.
+Deployment and Launch Strategy
+• Containerization: Use Docker for deploying application components.
+• Environment Management: Utilize environment variables (.env) to separate configurations.
+• CORS Configuration: Secure the API using appropriate Cross-Origin Resource Sharing policies to ensure safety while accessing from various domains.
+Optimized Prompt Template for Claude
+Overview Prompt: Describe the application purpose and key functionalities (CRUD).
+Design Prompt: Detail UI/UX specifications and interactive features.
+Database Prompt: Outline the required schema and relationships.
+API Implementation Prompt: Provide detailed specifications on CRUD operations with examples.
+Testing Strategy Prompt: Suggest approaches to unit and integration testing implementations.
+By following this structured document, Claude will be equipped to generate a complete, production-ready CRUD application within 3-5 prompts, ensuring clarity, efficiency, and high usability for end-users.
+
+CRITICAL PROMPTS FOR CLAUDE
+
+PROMPT 1: PROJECT SETUP & ARCHITECTURE
+"Create the complete project structure and architecture for this AI application. Set up the Next.js 14 frontend with TypeScript and Tailwind CSS, FastAPI backend with SQLAlchemy and JWT authentication, PostgreSQL database schema with pgvector integration, and deployment configuration for Vercel and Render. Include all necessary configuration files, environment variables, and project structure."
+
+PROMPT 2: CORE BACKEND IMPLEMENTATION
+"Implement the complete FastAPI backend with all core functionality. Create the database models using SQLAlchemy 2.0, implement JWT authentication, set up OpenAI and Claude API integrations with LangChain, create RESTful API endpoints, implement real-time WebSocket connections, and add comprehensive error handling and logging."
+
+PROMPT 3: FRONTEND COMPONENTS & UI
+"Build the complete Next.js 14 frontend with TypeScript. Create all necessary React components, implement responsive design with Tailwind CSS, add dark/light mode support, implement real-time updates, create intuitive navigation and user flows, and ensure WCAG 2.1 AA accessibility compliance."
+
+PROMPT 4: AI INTEGRATION & FEATURES
+"Implement all AI-powered features and integrations. Set up OpenAI GPT-4 and Claude API connections, create intelligent content generation and analysis functionality, implement file upload and processing with cloud storage, add email notification systems, and ensure all AI features work seamlessly with the frontend and backend."
+
+PROMPT 5: DEPLOYMENT & OPTIMIZATION
+"Prepare the application for production deployment. Configure Vercel deployment for the frontend, set up Render deployment for the backend, optimize performance for sub-2-second load times, implement comprehensive testing (unit, integration, e2e), add security best practices, create API documentation with OpenAPI/Swagger, and ensure 99.9% uptime with proper monitoring and error handling."
+
+EXECUTION ORDER: Follow these prompts sequentially. Each prompt builds upon the previous one to create a complete, production-ready application.

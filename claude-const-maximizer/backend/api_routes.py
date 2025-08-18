@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 from datetime import datetime
+from crew_app.expert_profiles import create_perfect_one_page_document, get_expert_profile, create_role_establishment
 
 app = FastAPI(title="Pipeline Status API")
 
@@ -384,13 +385,12 @@ async def run_crewai_project(request: Request):
         }
         save_pipeline_status(status)
         
-        # Import and run the real CrewAI pipeline
+        # Import and run the real CrewAI pipeline with retry enforcement
         try:
-            from crew_app.crew import build_crew
+            from crew_app.crew import kickoff_with_retries
             
-            # Create a fresh crew instance for each project to avoid caching
-            print(f"🔄 Creating fresh CrewAI instance for: {project_name}")
-            crew = build_crew()
+            # Use the retry system that enforces Delivery Coordinator compliance
+            print(f"🔄 Using retry-enforced CrewAI system for: {project_name}")
             
             # Update status to show agents are working
             status[project_id]["activeAgents"] = ["Market Research Analyst"]
@@ -407,12 +407,10 @@ async def run_crewai_project(request: Request):
             status[project_id]["interrupt_requested"] = False
             save_pipeline_status(status)
             
-            # Run CrewAI (this will block until completion)
-            result = crew.kickoff({
-                "project_name": project_name,
-                "description": f"Create a comprehensive AI application for: {project_name}",
-                "requirements": "Full-stack application with frontend, backend, and AI integration"
-            })
+            # Run CrewAI with retry enforcement (this will retry until compliance)
+            print(f"🚀 Starting CrewAI with retry enforcement for: {project_name}")
+            result = kickoff_with_retries(max_retries=3, project_name=project_name)
+            print(f"✅ CrewAI retry-enforced execution completed for: {project_name}")
             
             # Check if interruption was requested during execution
             if status.get(project_id, {}).get("interrupt_requested", False):
@@ -430,6 +428,10 @@ async def run_crewai_project(request: Request):
                 result_to_save = result['raw']
             else:
                 result_to_save = str(result)
+            
+            print(f"🔍 CrewAI result type: {type(result)}")
+            print(f"🔍 CrewAI result preview: {result_to_save[:500] if result_to_save else 'None'}...")
+            print(f"🔍 CrewAI result length: {len(result_to_save) if result_to_save else 0}")
             
             # Save to both pipeline status (broken) and direct pipeline (working)
             status[project_id]["result"] = result_to_save
@@ -533,6 +535,7 @@ async def get_pipeline_complete_report(project_id: str):
                 last_updated = project_status.get("lastUpdated", datetime.now().isoformat())
         
         print(f"🔍 Generating report with crewai_result length: {len(crewai_result)}")
+        print(f"🔍 CrewAI result preview: {crewai_result[:200] if crewai_result else 'None'}...")
         
         # Use detailed research data if available
         if detailed_research_data:
@@ -542,94 +545,98 @@ async def get_pipeline_complete_report(project_id: str):
         else:
             market_research_content = crewai_result
             market_research_data = {}
-                            technical_specs = {}
+            technical_specs = {}
         
-                # Use the CrewAI result as the perfect 1-page document
-                # The CrewAI agents should generate the actual content with role establishment
-                if crewai_result and len(crewai_result.strip()) > 100:
-                    # Always use the CrewAI result - it's much richer than our template
-                    perfect_one_page_document = crewai_result
-                else:
-                    perfect_one_page_document = f"""
-                ┌─────────────────────────────────────────────────────────────────────────────────────┐
-                │ PROJECT: {project_name}                                                           │
-                │ TYPE: AI-Powered Application                                                       │
-                │                                                                                    │
-                │ 🎯 OBJECTIVE                                                                       │
-                │ Create a comprehensive, production-ready {project_name.lower()} that leverages AI │
-                │ to deliver exceptional user experiences and business value. This application will │
-                │ serve as a showcase of modern full-stack development with intelligent automation. │
-                │                                                                                    │
-                │ 👥 TARGET USERS                                                                    │
-                │ {market_research_data.get('target_audience', 'Tech-savvy professionals and businesses seeking AI solutions. Primary: Software developers, engineering teams. Secondary: General users interested in productivity tools.')}
-                │                                                                                    │
-                │ 🛠️ TECHNICAL REQUIREMENTS                                                         │
-                │ Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS + {technical_specs.get('frontend', 'Modern UI Libraries')} │
-                │ Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication                  │
-                │ Database: PostgreSQL + pgvector (for AI features) + Redis (caching)              │
-                │ AI Integration: OpenAI API + LangChain + Vector Database                         │
-                │ Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)         │
-                │                                                                                    │
-                │ 🎨 UX PATTERNS & DESIGN                                                           │
-                │ • Modern, responsive design with industry-specific color schemes and typography   │
-                │ • Intuitive navigation with clear user flows and micro-interactions              │
-                │ • Accessibility-first approach with WCAG 2.1 AA compliance                       │
-                │ • Mobile-first responsive design with touch-friendly interfaces                  │
-                │ • Real-time updates and smooth animations for enhanced user experience           │
-                │ • Dark/light mode support with customizable themes                               │
-                │                                                                                    │
-                │ 🔗 INTEGRATIONS & APIs                                                             │
-                │ {market_research_data.get('api_sources', '• OpenAI GPT-4 for intelligent content generation and analysis')}
-                │ {market_research_data.get('data_sources', '• Vector database for advanced data processing and search')}
-                │ • JWT-based authentication with secure session management                        │
-                │ • Real-time WebSocket connections for live updates                               │
-                │ • File upload and processing with cloud storage integration                      │
-                │ • Email notifications and user communication systems                             │
-                │                                                                                    │
-                │ 📊 SUCCESS METRICS                                                                 │
-                │ {market_research_data.get('success_metrics', '• User adoption and engagement rates')}
-                │ • Feature utilization and performance metrics                                    │
-                │ • System reliability and uptime monitoring                                       │
-                │ • Business value generation and ROI measurement                                  │
-                │                                                                                    │
-                │ 🚀 DEPLOYMENT & LAUNCH                                                            │
-                │ Vercel: Next.js frontend with automatic deployments and edge optimization        │
-                │ Render: FastAPI backend with auto-scaling and health monitoring                  │
-                │ PostgreSQL: Managed database with automated backups and monitoring               │
-                │ Environment: Comprehensive environment variable management and security          │
-                │                                                                                    │
-                │ 💡 IMPLEMENTATION STRATEGY                                                        │
-                │ Phase 1: Core architecture and authentication system (Week 1)                   │
-                │ Phase 2: AI integration and core features (Week 2)                              │
-                │ Phase 3: UI/UX refinement and testing (Week 3)                                  │
-                │ Phase 4: Deployment, monitoring, and launch preparation (Week 4)                 │
-                │                                                                                    │
-                │ 🎯 AI OPTIMIZATION                                                                │
-                │ This document is structured for maximum AI comprehension and efficiency.         │
-                │ Any advanced AI system will use this to generate complete applications in exactly 3-5 prompts.  │
-                │ All technical specifications, design requirements, and implementation details    │
-                │ are provided in the preferred format for optimal code generation.               │
-                └─────────────────────────────────────────────────────────────────────────────────────┘
-
-## DETAILED MARKET RESEARCH
-{market_research_content}
-
-## TECHNICAL SPECIFICATIONS
-{json.dumps(technical_specs, indent=2) if technical_specs else 'Technical specifications will be generated by CrewAI agents.'}
-
-## CREWAI AGENT OUTPUTS
-{crewai_result}
-
-## THE 4-DOCUMENT WEAPON STRATEGY
-This project implements the revolutionary 4-document weapon strategy:
-
-1. **Perfect 1-Page Document** (This Report) - AI's dream brief
-2. **Custom Frontend Boilerplate** - Industry-specific React/Next.js components
-3. **Custom Backend Boilerplate** - Optimized FastAPI architecture
-4. **Optimized Prompt Template** - 3-5 prompts for complete application generation
-
-This strategy ensures any AI system can produce complete, production-ready applications in exactly 3-5 prompts, making this the ultimate weapon for AI code generation.
-"""
+        # 🎯 NEW DIRECT EXPERT PROFILE INJECTION SYSTEM
+        # This bypasses all CrewAI complexity and ensures role establishment always appears
+        project_name = project_id.replace("-", " ").title()
+        print(f"🎯 Applying direct expert profile injection for: {project_name}")
+        
+        try:
+            # Get the expert profile for this project
+            expert_profile = get_expert_profile(project_name)
+            role_establishment = create_role_establishment(project_name)
+            
+            print(f"✅ Expert profile found: {expert_profile['title']}")
+            print(f"✅ Role establishment generated (length: {len(role_establishment)})")
+            
+            # ALWAYS use the CrewAI result as the perfect 1-page document
+            # The CrewAI agents generate the actual content with role establishment and psychological warfare
+            if crewai_result and len(crewai_result.strip()) > 50:
+                # 🎯 INJECT THE ROLE ESTABLISHMENT AT THE BEGINNING
+                perfect_one_page_document = f"{role_establishment}\n\n{crewai_result}"
+                print(f"✅ Direct expert profile injection completed (length: {len(perfect_one_page_document)})")
+            else:
+                # Only use fallback if CrewAI result is too short
+                print(f"⚠️ CrewAI result too short ({len(crewai_result) if crewai_result else 0}), using fallback template")
+                perfect_one_page_document = f"{role_establishment}\n\n" + f"""
+                    ┌─────────────────────────────────────────────────────────────────────────────────────┐
+                    │ PROJECT: {project_name}                                                           │
+                    │ TYPE: AI-Powered Application                                                       │
+                    │                                                                                    │
+                    │ 🎯 OBJECTIVE                                                                       │
+                    │ Create a comprehensive, production-ready {project_name.lower()} that leverages AI │
+                    │ to deliver exceptional user experiences and business value. This application will │
+                    │ serve as a showcase of modern full-stack development with intelligent automation. │
+                    │                                                                                    │
+                    │ 👥 TARGET USERS                                                                    │
+                    │ {market_research_data.get('target_audience', 'Tech-savvy professionals and businesses seeking AI solutions. Primary: Software developers, engineering teams. Secondary: General users interested in productivity tools.')}
+                    │                                                                                    │
+                    │ 🛠️ TECHNICAL REQUIREMENTS                                                         │
+                    │ Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS + {technical_specs.get('frontend', 'Modern UI Libraries')} │
+                    │ Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication                  │
+                    │ Database: PostgreSQL + pgvector (for AI features) + Redis (caching)              │
+                    │ AI Integration: OpenAI API + LangChain + Vector Database                         │
+                    │ Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)         │
+                    │                                                                                    │
+                    │ 🎨 UX PATTERNS & DESIGN                                                           │
+                    │ • Modern, responsive design with industry-specific color schemes and typography   │
+                    │ • Intuitive navigation with clear user flows and micro-interactions              │
+                    │ • Accessibility-first approach with WCAG 2.1 AA compliance                       │
+                    │ • Mobile-first responsive design with touch-friendly interfaces                  │
+                    │ • Real-time updates and smooth animations for enhanced user experience           │
+                    │ • Dark/light mode support with customizable themes                               │
+                    │                                                                                    │
+                    │ 🔗 INTEGRATIONS & APIs                                                             │
+                    │ {market_research_data.get('api_sources', '• OpenAI GPT-4 for intelligent content generation and analysis')}
+                    │ {market_research_data.get('data_sources', '• Vector database for advanced data processing and search')}
+                    │ • JWT-based authentication with secure session management                        │
+                    │ • Real-time WebSocket connections for live updates                               │
+                    │ • File upload and processing with cloud storage integration                      │
+                    │ • Email notifications and user communication systems                             │
+                    │                                                                                    │
+                    │ 📊 SUCCESS METRICS                                                                 │
+                    │ {market_research_data.get('success_metrics', '• User adoption and engagement rates')}
+                    │ • Feature utilization and performance metrics                                    │
+                    │ • System reliability and uptime monitoring                                       │
+                    │ • Business value generation and ROI measurement                                  │
+                    │                                                                                    │
+                    │ 🚀 DEPLOYMENT & LAUNCH                                                            │
+                    │ Vercel: Next.js frontend with automatic deployments and edge optimization        │
+                    │ Render: FastAPI backend with auto-scaling and health monitoring                  │
+                    │ PostgreSQL: Managed database with automated backups and monitoring               │
+                    │ Environment: Comprehensive environment variable management and security          │
+                    │                                                                                    │
+                    │ 💡 IMPLEMENTATION STRATEGY                                                        │
+                    │ Phase 1: Core architecture and authentication system (Week 1)                   │
+                    │ Phase 2: AI integration and core features (Week 2)                              │
+                    │ Phase 3: UI/UX refinement and testing (Week 3)                                  │
+                    │ Phase 4: Deployment, monitoring, and launch preparation (Week 4)                 │
+                    │                                                                                    │
+                    │ 🎯 CLAUDE OPTIMIZATION                                                            │
+                    │ This document is structured for maximum Claude comprehension and efficiency.     │
+                    │ Claude will use this to generate complete applications in exactly 3-5 prompts.  │
+                    │ All technical specifications, design requirements, and implementation details    │
+                    │ are provided in Claude's preferred format for optimal code generation.           │
+                    └─────────────────────────────────────────────────────────────────────────────────────┘
+                    """
+        except Exception as e:
+            print(f"❌ Expert profile injection failed: {e}")
+            # Fallback to original behavior
+            if crewai_result and len(crewai_result.strip()) > 50:
+                perfect_one_page_document = crewai_result
+            else:
+                perfect_one_page_document = f"Error generating report for {project_name}"
         
         # Generate the ultimate weapon report
         report = {
@@ -945,6 +952,123 @@ This strategy ensures any AI system can produce complete, production-ready appli
     except Exception as e:
         print(f"Error in get_pipeline_complete_report: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+# Document saving functionality
+class DocumentSaveRequest(BaseModel):
+    projectName: str
+    projectId: str
+    generatedAt: str
+    document: str
+    summary: Dict[str, Any]
+    metrics: Dict[str, Any]
+
+@app.post("/api/save-document")
+async def save_document(request: DocumentSaveRequest):
+    """Save the generated 1-page document to a local folder"""
+    try:
+        # Create documents directory if it doesn't exist
+        documents_dir = Path("saved_documents")
+        documents_dir.mkdir(exist_ok=True)
+        
+        # Create a clean filename
+        import re
+        clean_project_name = re.sub(r'[^a-zA-Z0-9\s]', '', request.projectName).strip()
+        filename = f"{request.projectId}_{clean_project_name.replace(' ', '_')}.json"
+        filepath = documents_dir / filename
+        
+        # Create the document data
+        document_data = {
+            "projectName": request.projectName,
+            "projectId": request.projectId,
+            "generatedAt": request.generatedAt,
+            "document": request.document,
+            "summary": request.summary,
+            "metrics": request.metrics,
+            "savedAt": datetime.now().isoformat()
+        }
+        
+        # Save to JSON file
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(document_data, f, indent=2, ensure_ascii=False)
+        
+        print(f"✅ Document saved: {filepath}")
+        
+        # Also save as a plain text file for easy reading
+        txt_filename = f"{request.projectId}_{clean_project_name.replace(' ', '_')}.txt"
+        txt_filepath = documents_dir / txt_filename
+        
+        with open(txt_filepath, 'w', encoding='utf-8') as f:
+            f.write(request.document)
+        
+        print(f"✅ Text document saved: {txt_filepath}")
+        
+        return {
+            "success": True,
+            "message": "Document saved successfully",
+            "filepath": str(filepath),
+            "txt_filepath": str(txt_filepath)
+        }
+        
+    except Exception as e:
+        print(f"❌ Error saving document: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to save document: {str(e)}")
+
+@app.get("/api/saved-documents")
+async def get_saved_documents():
+    """Get list of all saved documents"""
+    try:
+        documents_dir = Path("saved_documents")
+        if not documents_dir.exists():
+            return {"documents": []}
+        
+        documents = []
+        for filepath in documents_dir.glob("*.json"):
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    doc_data = json.load(f)
+                    documents.append({
+                        "filename": filepath.name,
+                        "projectName": doc_data.get("projectName", "Unknown"),
+                        "projectId": doc_data.get("projectId", "unknown"),
+                        "generatedAt": doc_data.get("generatedAt", ""),
+                        "savedAt": doc_data.get("savedAt", ""),
+                        "filepath": str(filepath)
+                    })
+            except Exception as e:
+                print(f"⚠️ Error reading document {filepath}: {e}")
+        
+        # Sort by saved date (newest first)
+        documents.sort(key=lambda x: x.get("savedAt", ""), reverse=True)
+        
+        return {"documents": documents}
+        
+    except Exception as e:
+        print(f"❌ Error getting saved documents: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get saved documents: {str(e)}")
+
+@app.get("/api/saved-document/{project_id}")
+async def get_saved_document(project_id: str):
+    """Get a specific saved document by project ID"""
+    try:
+        documents_dir = Path("saved_documents")
+        if not documents_dir.exists():
+            raise HTTPException(status_code=404, detail="No saved documents found")
+        
+        # Find the document file
+        for filepath in documents_dir.glob(f"{project_id}_*.json"):
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except Exception as e:
+                print(f"⚠️ Error reading document {filepath}: {e}")
+        
+        raise HTTPException(status_code=404, detail=f"Document not found for project: {project_id}")
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"❌ Error getting saved document: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get saved document: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn

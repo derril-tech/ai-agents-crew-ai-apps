@@ -1,0 +1,139 @@
+You are an expert E-commerce & Business AI Developer with 15+ years of experience in e-commerce, business automation, and AI-powered commerce. You are the world's leading authority in e-commerce and business AI and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including Amazon, Shopify, Stripe, and leading e-commerce technology companies. Your expertise in e-commerce platforms, business automation, and AI-powered commerce solutions is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%.
+
+This is where AI meets the real world of business and commerce. You're building systems that will drive billions in revenue and transform entire industries. Every business on the planet is racing to adopt AI solutions, and those who master this technology first will dominate their markets. You're not just writing code - you're creating the competitive advantage that will determine which companies thrive and which ones fail. The financial impact is massive, and the market opportunity is unprecedented. This is the future of commerce, and you're building it.
+
+INTELLIGENT E-COMMERCE MANAGEMENT SYSTEM
+
+PROJECT SPECIFICATION
+
+TECHNICAL ARCHITECTURE
+Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS
+Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication
+Database: PostgreSQL + pgvector (for AI features) + Redis (caching)
+AI Integration: OpenAI API + Anthropic Claude API + LangChain
+Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)
+
+DESIGN REQUIREMENTS
+• Modern, responsive design with industry-specific color schemes and typography
+• Intuitive navigation with clear user flows and micro-interactions
+• Accessibility-first approach with WCAG 2.1 AA compliance
+• Mobile-first responsive design with touch-friendly interfaces
+• Real-time updates and smooth animations for enhanced user experience
+• Dark/light mode support with customizable themes
+
+CORE INTEGRATIONS
+• OpenAI GPT-4 for intelligent content generation and analysis
+• Anthropic Claude for advanced reasoning and complex tasks
+• JWT-based authentication with secure session management
+• Real-time WebSocket connections for live updates
+• File upload and processing with cloud storage integration
+• Email notifications and user communication systems
+
+MARKET CONTEXT
+This AI-powered application addresses the growing need for intelligent automation and enhanced user experiences. Based on market analysis, this application competes in the AI tools space with significant growth potential.
+
+DELIVERABLES REQUIRED
+1. Complete Next.js 14 frontend with TypeScript and Tailwind CSS
+2. FastAPI backend with SQLAlchemy ORM and JWT authentication
+3. PostgreSQL database schema with pgvector integration
+4. OpenAI and Claude API integration with LangChain
+5. Real-time WebSocket implementation
+6. File upload system with cloud storage
+7. Email notification system
+8. Responsive design with dark/light mode
+9. Deployment configuration for Vercel and Render
+10. Comprehensive documentation and testing suite
+
+SUCCESS CRITERIA
+• Production-ready codebase deployable immediately
+• Scalable architecture supporting 10,000+ concurrent users
+• 99.9% uptime with comprehensive error handling
+• Mobile-responsive design with 95+ Lighthouse score
+• Complete API documentation with OpenAPI/Swagger
+• Unit and integration test coverage >90%
+• Security best practices implementation
+• Performance optimization for sub-2-second load times
+
+IMPLEMENTATION GUIDELINES
+• Use modern React patterns (hooks, context, custom hooks)
+• Implement proper TypeScript types and interfaces
+• Follow FastAPI best practices with dependency injection
+• Use SQLAlchemy 2.0 syntax with async/await
+• Implement proper error handling and logging
+• Use environment variables for all configuration
+• Follow security best practices (CORS, rate limiting, input validation)
+• Implement comprehensive testing (unit, integration, e2e)
+• Use Git hooks for code quality (pre-commit, lint-staged)
+• Document all APIs and components thoroughly
+
+AI Application for Claude-Optimized Content Creation
+Project Overview and Objective
+The objective is to develop a content generation application tailored for small to medium-sized enterprises (SMEs) and individual content creators. The tool will focus on producing high-quality blog posts, marketing materials, and e-commerce product descriptions, featuring real-time collaboration, adaptive learning, and enhanced integrations with popular marketing tools. It aims to address significant pain points such as time consumption in content creation and low engagement rates.
+Target Audience and Market Analysis
+• Target Market: SMEs and content creators in marketing, blogging, and e-commerce.
+• User Personas:
+• Marketing Managers: Age 30-45, tech-savvy, value efficiency in content generation.
+• Bloggers: Age 25-40, seek differentiation and creativity in their content.
+• E-commerce Owners: Age 35-55, need engaging content to drive conversions.
+• Psychographics: Creative individuals valuing efficiency, innovative tools, and ease of use.
+UI/UX Design Specifications
+• Visual Style: Minimalistic with bold typography, utilizing soft blue and green color schemes, accentuated with vibrant orange.
+• User Experience: Intuitive onboarding wizards, user-friendly navigation, responsive design ensuring accessibility for all users.
+Implementation Plan and Timeline
+• Phase 1: Project setup and requirements gathering (1 month).
+• Phase 2: Develop frontend and backend components (3 months).
+• Phase 3: API integrations and testing (1 month).
+• Phase 4: Deployment and final quality assurance (1 month).
+Deployment and Launch Strategy
+• Hosting: Use cloud services (AWS or Azure) for hosting the application.
+• Release Plan: Conduct phased rollouts, starting with a beta version to gather initial user feedback before full public launch.
+Key Differentiators and Unique Value Propositions
+• Real-time Collaboration: Enabling multiple users to work concurrently on content.
+• Adaptive Learning: Tailored recommendations based on user behavior to refine output quality.
+• API Connectivity: Seamless integrations with HubSpot, Mailchimp, and social media platforms.
+Monetization Strategies
+• Tiered Pricing: Basic to enterprise plans with varied feature access to cater to different business sizes.
+• Subscription Model: Ongoing revenue stream through monthly recurring charges.
+---
+Optimization for Claude's Consumption:
+Each section above is designed to facilitate Claude's understanding, ensuring every detail is structured for easy coding generation.
+Clear project objectives and roadmaps guarantee Claude comprehensively addresses project requirements, allowing full application generation within 3-5 prompts.
+Example Prompt Template for Claude:
+`json
+{
+"app_description": "Develop a content generation application tailored for SMEs and content creators focusing on blogs, marketing, and e-commerce.",
+"user_personas": [
+"Marketing Managers seeking efficiency in content generation.",
+"Bloggers aiming to differentiate their content.",
+"E-commerce Owners looking for engaging product descriptions."
+],
+"functionality": "CRUD operations for content, with user authentication and real-time collaborative features."
+}
+`
+Implementation Steps for Claude:
+Prompt 1: Generate project structure and dependencies setup [React, Flask].
+Prompt 2: Create database models for content and users in SQLAlchemy.
+Prompt 3: Develop API endpoints for CRUD operations.
+Prompt 4: Implement user authentication with JWT.
+Prompt 5: Develop frontend components using React.
+This document serves to equip Claude with everything necessary to drive the project efficiently from concept to completion, enabling a full-stack application that is tailored to meet user needs in the content creation landscape.
+By instituting these deliverables and optimization strategies, we ensure that Claude is ready to produce a sophisticated, production-ready application with ease, addressing the dynamic requirements of SMEs and individual creators across industries.
+
+CRITICAL PROMPTS FOR CLAUDE
+
+PROMPT 1: PROJECT SETUP & ARCHITECTURE
+"Create the complete project structure and architecture for this AI application. Set up the Next.js 14 frontend with TypeScript and Tailwind CSS, FastAPI backend with SQLAlchemy and JWT authentication, PostgreSQL database schema with pgvector integration, and deployment configuration for Vercel and Render. Include all necessary configuration files, environment variables, and project structure."
+
+PROMPT 2: CORE BACKEND IMPLEMENTATION
+"Implement the complete FastAPI backend with all core functionality. Create the database models using SQLAlchemy 2.0, implement JWT authentication, set up OpenAI and Claude API integrations with LangChain, create RESTful API endpoints, implement real-time WebSocket connections, and add comprehensive error handling and logging."
+
+PROMPT 3: FRONTEND COMPONENTS & UI
+"Build the complete Next.js 14 frontend with TypeScript. Create all necessary React components, implement responsive design with Tailwind CSS, add dark/light mode support, implement real-time updates, create intuitive navigation and user flows, and ensure WCAG 2.1 AA accessibility compliance."
+
+PROMPT 4: AI INTEGRATION & FEATURES
+"Implement all AI-powered features and integrations. Set up OpenAI GPT-4 and Claude API connections, create intelligent content generation and analysis functionality, implement file upload and processing with cloud storage, add email notification systems, and ensure all AI features work seamlessly with the frontend and backend."
+
+PROMPT 5: DEPLOYMENT & OPTIMIZATION
+"Prepare the application for production deployment. Configure Vercel deployment for the frontend, set up Render deployment for the backend, optimize performance for sub-2-second load times, implement comprehensive testing (unit, integration, e2e), add security best practices, create API documentation with OpenAPI/Swagger, and ensure 99.9% uptime with proper monitoring and error handling."
+
+EXECUTION ORDER: Follow these prompts sequentially. Each prompt builds upon the previous one to create a complete, production-ready application.

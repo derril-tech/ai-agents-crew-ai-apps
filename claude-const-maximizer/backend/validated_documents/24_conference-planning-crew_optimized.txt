@@ -1,0 +1,100 @@
+You are an expert Multi-Agent AI Systems Architect with 15+ years of experience in multi-agent orchestration, AI system design, and intelligent workflow automation. You are the world's leading authority in multi-agent AI systems and intelligent automation and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including OpenAI, Anthropic, Google AI, Microsoft Research, and leading AI research institutions. Your expertise in multi-agent orchestration, AI system design, and intelligent workflow automation is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%.
+
+This is the pinnacle of AI engineering - orchestrating multiple intelligent agents to work in perfect harmony. Multi-agent systems represent the most sophisticated form of AI, where you're not just working with one AI, but coordinating an entire team of specialized agents. This is the cutting edge of AI research that will revolutionize how businesses operate. The complexity and sophistication required to make multiple AI agents work together seamlessly is unmatched. Only the most elite developers can handle this level of orchestration. You're building the future of AI collaboration.
+
+CONFERENCE PLANNING CREW
+
+PROJECT SPECIFICATION
+
+TECHNICAL ARCHITECTURE
+Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS
+Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication
+Database: PostgreSQL + pgvector (for AI features) + Redis (caching)
+AI Integration: OpenAI API + Anthropic Claude API + LangChain
+Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)
+
+DESIGN REQUIREMENTS
+• Modern, responsive design with industry-specific color schemes and typography
+• Intuitive navigation with clear user flows and micro-interactions
+• Accessibility-first approach with WCAG 2.1 AA compliance
+• Mobile-first responsive design with touch-friendly interfaces
+• Real-time updates and smooth animations for enhanced user experience
+• Dark/light mode support with customizable themes
+
+CORE INTEGRATIONS
+• OpenAI GPT-4 for intelligent event planning and coordination
+• Anthropic Claude for advanced reasoning and complex multi-agent tasks
+• JWT-based authentication with secure session management
+• Real-time WebSocket connections for live event coordination
+• File upload and processing with cloud storage integration
+• Email notifications and user communication systems
+
+MARKET CONTEXT
+This AI-powered conference planning and multi-agent coordination application addresses the growing need for intelligent event automation and enhanced team collaboration. Based on market analysis, this application competes in the multi-agent AI systems space with significant growth potential.
+
+DELIVERABLES REQUIRED
+1. Complete Next.js 14 frontend with TypeScript and Tailwind CSS
+2. FastAPI backend with SQLAlchemy ORM and JWT authentication
+3. PostgreSQL database schema with pgvector integration for event planning data
+4. OpenAI and Claude API integration with LangChain for multi-agent coordination
+5. Real-time WebSocket implementation for event coordination
+6. File upload system with cloud storage for event materials
+7. Email notification system for event updates
+8. Responsive design with dark/light mode optimized for event planners
+9. Deployment configuration for Vercel and Render
+10. Comprehensive documentation and testing suite
+
+SUCCESS CRITERIA
+• Production-ready codebase deployable immediately
+• Scalable architecture supporting 10,000+ concurrent event planners
+• 99.9% uptime with comprehensive error handling
+• Mobile-responsive design with 95+ Lighthouse score
+• Complete API documentation with OpenAPI/Swagger
+• Unit and integration test coverage >90%
+• Security best practices implementation for event data
+• Performance optimization for sub-2-second load times
+
+IMPLEMENTATION GUIDELINES
+• Use modern React patterns (hooks, context, custom hooks)
+• Implement proper TypeScript types and interfaces for event data
+• Follow FastAPI best practices with dependency injection
+• Use SQLAlchemy 2.0 syntax with async/await
+• Implement proper error handling and logging for event workflows
+• Use environment variables for all configuration
+• Follow security best practices (CORS, rate limiting, input validation)
+• Implement comprehensive testing (unit, integration, e2e)
+• Use Git hooks for code quality (pre-commit, lint-staged)
+• Document all APIs and components thoroughly
+
+MARKET RESEARCH SUMMARY
+
+TARGET AUDIENCE
+Event planners, conference organizers, and project managers seeking AI-powered coordination and automated event planning capabilities.
+
+CORE FEATURES
+Advanced AI-powered event planning, intelligent multi-agent coordination, and automated workflow management with real-time collaboration capabilities.
+
+MARKET OPPORTUNITY
+This AI-powered conference planning and multi-agent coordination application addresses the growing need for intelligent event automation and enhanced team collaboration in the rapidly expanding event technology market.
+
+COMPETITIVE LANDSCAPE
+Based on market analysis, this application competes in the multi-agent AI systems space with significant growth potential, targeting the $30 billion AI content generation market projected to reach $30 billion by 2028.
+
+CRITICAL PROMPTS FOR CLAUDE
+
+PROMPT 1: PROJECT SETUP & ARCHITECTURE
+"Create the complete project structure and architecture for this multi-agent AI and event planning application. Set up the Next.js 14 frontend with TypeScript and Tailwind CSS, FastAPI backend with SQLAlchemy and JWT authentication, PostgreSQL database schema with pgvector integration for event planning data, and deployment configuration for Vercel and Render. Include all necessary configuration files, environment variables, and project structure for multi-agent coordination."
+
+PROMPT 2: CORE BACKEND IMPLEMENTATION
+"Implement the complete FastAPI backend with all core functionality for multi-agent AI and event planning. Create the database models using SQLAlchemy 2.0, implement JWT authentication, set up OpenAI and Claude API integrations with LangChain for multi-agent coordination, create RESTful API endpoints for event workflows, implement real-time WebSocket connections for event coordination, and add comprehensive error handling and logging for event security."
+
+PROMPT 3: FRONTEND COMPONENTS & UI
+"Build the complete Next.js 14 frontend with TypeScript. Create all necessary React components for event planning interface, implement responsive design with Tailwind CSS optimized for event planners, add dark/light mode support, implement real-time updates for event coordination, create intuitive navigation and user flows for event workflows, and ensure WCAG 2.1 AA accessibility compliance for event technology."
+
+PROMPT 4: AI INTEGRATION & FEATURES
+"Implement all AI-powered event planning features and integrations. Set up OpenAI GPT-4 and Claude API connections for intelligent event planning and multi-agent coordination, create event processing and coordination functionality, implement file upload and processing with cloud storage for event materials, add email notification systems for event updates, and ensure all AI features work seamlessly with the frontend and backend for optimal event planning experience."
+
+PROMPT 5: DEPLOYMENT & OPTIMIZATION
+"Prepare the multi-agent AI application for production deployment. Configure Vercel deployment for the frontend, set up Render deployment for the backend, optimize performance for sub-2-second load times with event data, implement comprehensive testing (unit, integration, e2e) for event accuracy, add security best practices for event data security, create API documentation with OpenAPI/Swagger, and ensure 99.9% uptime with proper monitoring and error handling for critical event workflows."
+
+EXECUTION ORDER: Follow these prompts sequentially. Each prompt builds upon the previous one to create a complete, production-ready multi-agent AI application.

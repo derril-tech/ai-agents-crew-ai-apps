@@ -1,0 +1,107 @@
+You are an expert Blockchain & Smart Contract Security Expert with 15+ years of experience in blockchain, smart contracts, and decentralized systems. You are the world's leading authority in blockchain and smart contract technology and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including Ethereum Foundation, ConsenSys, Chainlink, and leading blockchain companies. Your expertise in smart contract development, blockchain security, and decentralized application architecture is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%.
+
+This is the frontier of digital trust and security. You're building the infrastructure that will secure trillions of dollars in digital assets and enable the future of decentralized finance. Smart contract security is the most critical aspect of blockchain technology - where a single line of code can protect or lose millions. You're not just writing code - you're creating the digital foundations of trust that will power the next generation of the internet. This is where the future of money and contracts is being built, and you're at the forefront.
+
+SMART CONTRACT CLAUSE EXPLAINER
+
+PROJECT SPECIFICATION
+
+TECHNICAL ARCHITECTURE
+Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS
+Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication
+Database: PostgreSQL + pgvector (for AI features) + Redis (caching)
+AI Integration: OpenAI API + Anthropic Claude API + LangChain
+Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)
+
+DESIGN REQUIREMENTS
+• Modern, responsive design with industry-specific color schemes and typography
+• Intuitive navigation with clear user flows and micro-interactions
+• Accessibility-first approach with WCAG 2.1 AA compliance
+• Mobile-first responsive design with touch-friendly interfaces
+• Real-time updates and smooth animations for enhanced user experience
+• Dark/light mode support with customizable themes
+
+CORE INTEGRATIONS
+• OpenAI GPT-4 for intelligent content generation and analysis
+• Anthropic Claude for advanced reasoning and complex tasks
+• JWT-based authentication with secure session management
+• Real-time WebSocket connections for live updates
+• File upload and processing with cloud storage integration
+• Email notifications and user communication systems
+
+MARKET CONTEXT
+This AI-powered application addresses the growing need for intelligent automation and enhanced user experiences. Based on market analysis, this application competes in the AI tools space with significant growth potential.
+
+DELIVERABLES REQUIRED
+1. Complete Next.js 14 frontend with TypeScript and Tailwind CSS
+2. FastAPI backend with SQLAlchemy ORM and JWT authentication
+3. PostgreSQL database schema with pgvector integration
+4. OpenAI and Claude API integration with LangChain
+5. Real-time WebSocket implementation
+6. File upload system with cloud storage
+7. Email notification system
+8. Responsive design with dark/light mode
+9. Deployment configuration for Vercel and Render
+10. Comprehensive documentation and testing suite
+
+SUCCESS CRITERIA
+• Production-ready codebase deployable immediately
+• Scalable architecture supporting 10,000+ concurrent users
+• 99.9% uptime with comprehensive error handling
+• Mobile-responsive design with 95+ Lighthouse score
+• Complete API documentation with OpenAPI/Swagger
+• Unit and integration test coverage >90%
+• Security best practices implementation
+• Performance optimization for sub-2-second load times
+
+IMPLEMENTATION GUIDELINES
+• Use modern React patterns (hooks, context, custom hooks)
+• Implement proper TypeScript types and interfaces
+• Follow FastAPI best practices with dependency injection
+• Use SQLAlchemy 2.0 syntax with async/await
+• Implement proper error handling and logging
+• Use environment variables for all configuration
+• Follow security best practices (CORS, rate limiting, input validation)
+• Implement comprehensive testing (unit, integration, e2e)
+• Use Git hooks for code quality (pre-commit, lint-staged)
+• Document all APIs and components thoroughly
+
+AI Application for Claude-Optimized Content Creation
+Project Overview and Objective
+Develop a cutting-edge AI application leveraging Claude for generating optimized content tailored for content creators, marketers, and small business owners. The goal is to produce engaging content rapidly while utilizing innovative AI capabilities to streamline the content creation process.
+Target Audience and Market Analysis
+• Demographics: Age 25-45, Gender-neutral, Tech-savvy content creators, marketers, and small business owners from North America, Europe, and Asia.
+• Psychographics: Value efficiency and innovative solutions.
+• Pain Points: Quick content generation difficulties, audience preference understanding, and need for varying formats.
+UI/UX Design Specifications
+• Design Patterns: Minimalist and responsive design with engaging initial interfaces. High-quality visuals and clear CTAs.
+• Color Scheme: Soft pastels combined with bold accents (e.g., Indigo and Amber) to enhance user interaction and engagement.
+• Accessibility: Compliance with WCAG; uses ARIA standards to ensure functionality for all users.
+Implementation Plan and Timeline
+• Phase 1 (Weeks 1-2): Finalize project requirements and architecture design.
+• Phase 2 (Weeks 3-4): Develop and test the frontend UI components and backend API endpoints.
+• Phase 3 (Weeks 5-6): Integrate components, implement caching strategies, initial user testing, and feedback.
+• Phase 4 (Weeks 7-8): Final adjustments, implement monitoring, user acquisition strategies, and launch.
+Deployment and Launch Strategy
+• Deployment: Utilize Docker for containerization and deployment on cloud platforms (AWS or Azure).
+• Go-to-Market Plan: Execute targeted marketing campaigns focusing on content creators, leveraging case studies and testimonials post-launch to drive adoption.
+This one-page document encapsulates the high-level overview, ensuring all deliverables are succinctly highlighted and Claude is primed to produce complete applications efficiently in 3-5 prompts. This format emphasizes clarity and actionable steps for Claude to generate optimal outcomes with each interaction.
+
+CRITICAL PROMPTS FOR CLAUDE
+
+PROMPT 1: PROJECT SETUP & ARCHITECTURE
+"Create the complete project structure and architecture for this AI application. Set up the Next.js 14 frontend with TypeScript and Tailwind CSS, FastAPI backend with SQLAlchemy and JWT authentication, PostgreSQL database schema with pgvector integration, and deployment configuration for Vercel and Render. Include all necessary configuration files, environment variables, and project structure."
+
+PROMPT 2: CORE BACKEND IMPLEMENTATION
+"Implement the complete FastAPI backend with all core functionality. Create the database models using SQLAlchemy 2.0, implement JWT authentication, set up OpenAI and Claude API integrations with LangChain, create RESTful API endpoints, implement real-time WebSocket connections, and add comprehensive error handling and logging."
+
+PROMPT 3: FRONTEND COMPONENTS & UI
+"Build the complete Next.js 14 frontend with TypeScript. Create all necessary React components, implement responsive design with Tailwind CSS, add dark/light mode support, implement real-time updates, create intuitive navigation and user flows, and ensure WCAG 2.1 AA accessibility compliance."
+
+PROMPT 4: AI INTEGRATION & FEATURES
+"Implement all AI-powered features and integrations. Set up OpenAI GPT-4 and Claude API connections, create intelligent content generation and analysis functionality, implement file upload and processing with cloud storage, add email notification systems, and ensure all AI features work seamlessly with the frontend and backend."
+
+PROMPT 5: DEPLOYMENT & OPTIMIZATION
+"Prepare the application for production deployment. Configure Vercel deployment for the frontend, set up Render deployment for the backend, optimize performance for sub-2-second load times, implement comprehensive testing (unit, integration, e2e), add security best practices, create API documentation with OpenAPI/Swagger, and ensure 99.9% uptime with proper monitoring and error handling."
+
+EXECUTION ORDER: Follow these prompts sequentially. Each prompt builds upon the previous one to create a complete, production-ready application.

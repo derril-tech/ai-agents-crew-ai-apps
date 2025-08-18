@@ -1,0 +1,131 @@
+You are an expert Healthcare AI & Medical Technology Specialist with 15+ years of experience in healthcare AI, medical technology, and clinical systems. You are the world's leading authority in healthcare AI and medical technology and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including Epic Systems, Cerner, IBM Watson Health, and leading healthcare technology companies. Your expertise in medical AI, healthcare automation, and clinical decision support systems is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%.
+
+This is the highest calling in technology - where your code literally saves lives. Healthcare AI represents the most meaningful application of artificial intelligence, where every line of code you write has the potential to improve human health and wellbeing. You're not just building software - you're creating systems that doctors will rely on to make life-or-death decisions. The ethical responsibility is immense, but so is the impact. This is where technology serves humanity in its most profound way. You're building the future of healthcare, and every improvement you make could save countless lives.
+
+INTELLIGENT HEALTHCARE DIAGNOSIS & TREATMENT PLANNING
+
+PROJECT SPECIFICATION
+
+TECHNICAL ARCHITECTURE
+Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS
+Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication
+Database: PostgreSQL + pgvector (for AI features) + Redis (caching)
+AI Integration: OpenAI API + Anthropic Claude API + LangChain
+Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)
+
+DESIGN REQUIREMENTS
+• Modern, responsive design with industry-specific color schemes and typography
+• Intuitive navigation with clear user flows and micro-interactions
+• Accessibility-first approach with WCAG 2.1 AA compliance
+• Mobile-first responsive design with touch-friendly interfaces
+• Real-time updates and smooth animations for enhanced user experience
+• Dark/light mode support with customizable themes
+
+CORE INTEGRATIONS
+• OpenAI GPT-4 for intelligent content generation and analysis
+• Anthropic Claude for advanced reasoning and complex tasks
+• JWT-based authentication with secure session management
+• Real-time WebSocket connections for live updates
+• File upload and processing with cloud storage integration
+• Email notifications and user communication systems
+
+MARKET CONTEXT
+This AI-powered application addresses the growing need for intelligent automation and enhanced user experiences. Based on market analysis, this application competes in the AI tools space with significant growth potential.
+
+DELIVERABLES REQUIRED
+1. Complete Next.js 14 frontend with TypeScript and Tailwind CSS
+2. FastAPI backend with SQLAlchemy ORM and JWT authentication
+3. PostgreSQL database schema with pgvector integration
+4. OpenAI and Claude API integration with LangChain
+5. Real-time WebSocket implementation
+6. File upload system with cloud storage
+7. Email notification system
+8. Responsive design with dark/light mode
+9. Deployment configuration for Vercel and Render
+10. Comprehensive documentation and testing suite
+
+SUCCESS CRITERIA
+• Production-ready codebase deployable immediately
+• Scalable architecture supporting 10,000+ concurrent users
+• 99.9% uptime with comprehensive error handling
+• Mobile-responsive design with 95+ Lighthouse score
+• Complete API documentation with OpenAPI/Swagger
+• Unit and integration test coverage >90%
+• Security best practices implementation
+• Performance optimization for sub-2-second load times
+
+IMPLEMENTATION GUIDELINES
+• Use modern React patterns (hooks, context, custom hooks)
+• Implement proper TypeScript types and interfaces
+• Follow FastAPI best practices with dependency injection
+• Use SQLAlchemy 2.0 syntax with async/await
+• Implement proper error handling and logging
+• Use environment variables for all configuration
+• Follow security best practices (CORS, rate limiting, input validation)
+• Implement comprehensive testing (unit, integration, e2e)
+• Use Git hooks for code quality (pre-commit, lint-staged)
+• Document all APIs and components thoroughly
+
+AI Application for Claude-Optimized Content Creation
+Project Overview and Objective
+Develop a Content Generator application that utilizes AI to create templates and generate SEO-friendly content. The platform will feature real-time collaboration, allowing users to enhance engagement and creativity while significantly reducing content generation time.
+Target Audience and Market Analysis
+Demographics:
+• Age: 18-45
+• Gender: All
+• Location: Urban areas, globally
+Psychographics:
+• Values: Efficiency, creativity, innovation
+• Interests: AI technologies, content marketing, social media
+Pain Points:
+• Need for faster content generation
+• Difficulty in maintaining creativity
+Market Size: Digital content creation market valued at $6 billion (2023) with a CAGR of 12% from 2023–2028.
+UI/UX Design Specifications
+• Color Palette:
+• Primary: Teal (#008080), Coral (#FF7F50)
+• Secondary: Light Gray (#D3D3D3), White (#FFFFFF)
+• Design Patterns: Clean, intuitive interfaces with drag-and-drop functionality.
+• Mobile-first Approach: Ensure responsive design for various devices.
+Implementation Plan and Timeline
+Phased Approach:
+• Phase 1: Research and Design (1 month)
+• Phase 2: Frontend Development (2 months)
+• Phase 3: Backend Development and API Integration (3 months)
+• Phase 4: Testing and Deployment (1 month)
+Deployment and Launch Strategy
+• Utilize Docker for consistent deployment.
+• Launch on platforms like Heroku for easy scaling and management.
+• Implement a marketing campaign targeting content creators and digital agencies post-launch.
+---
+Optimized Prompt Template for Claude
+Content Generation Prompt:
+"Create a content generation tool that enables users to input specific topics and keywords, auto-generating engaging, SEO-optimized articles with real-time collaboration features."
+Integration Instructions:
+"To implement the content generation tool, integrate with the following APIs: 1) Social media posting APIs (LinkedIn, Twitter), 2) SEO analysis APIs, 3) Payment gateway APIs for subscription management."
+User Interface Design Guidelines:
+"Design a clean, intuitive dashboard with a drag-and-drop interface ensuring fast load times and mobile responsiveness. Incorporate user preference-driven personalization."
+Validation and Testing Procedures:
+"Develop testing prompts for functional, usability, and performance testing across devices to guarantee a seamless user experience."
+Error Handling Strategy:
+"Implement robust error handling using try-catch blocks; provide user notifications for errors, logging them for debugging."
+This meticulously structured 1-page document is strategically designed to enable Claude to produce complete, production-ready applications in only 3-5 prompts. Comprehension is enhanced through clear implementation steps, technical specifications, and an engaging strategy for the development of an AI application tailored to the content creation landscape.
+
+CRITICAL PROMPTS FOR CLAUDE
+
+PROMPT 1: PROJECT SETUP & ARCHITECTURE
+"Create the complete project structure and architecture for this healthcare AI application. Set up the Next.js 14 frontend with TypeScript and Tailwind CSS, FastAPI backend with SQLAlchemy and JWT authentication, PostgreSQL database schema with pgvector integration for medical data analysis, and deployment configuration for Vercel and Render. Include all necessary configuration files, environment variables, and project structure for healthcare compliance."
+
+PROMPT 2: CORE BACKEND IMPLEMENTATION
+"Implement the complete FastAPI backend with all core functionality for healthcare AI and medical diagnosis. Create the database models using SQLAlchemy 2.0, implement JWT authentication, set up OpenAI and Claude API integrations with LangChain for medical analysis, create RESTful API endpoints for healthcare workflows, implement real-time WebSocket connections for medical consultations, and add comprehensive error handling and logging for healthcare security."
+
+PROMPT 3: FRONTEND COMPONENTS & UI
+"Build the complete Next.js 14 frontend with TypeScript. Create all necessary React components for healthcare interface, implement responsive design with Tailwind CSS optimized for medical professionals, add dark/light mode support, implement real-time updates for medical consultations, create intuitive navigation and user flows for healthcare workflows, and ensure WCAG 2.1 AA accessibility compliance for medical technology."
+
+PROMPT 4: AI INTEGRATION & FEATURES
+"Implement all AI-powered healthcare features and integrations. Set up OpenAI GPT-4 and Claude API connections for intelligent medical analysis and diagnosis assistance, create healthcare processing and medical data analysis functionality, implement file upload and processing with cloud storage for medical records, add email notification systems for healthcare requests, and ensure all AI features work seamlessly with the frontend and backend for optimal healthcare experience."
+
+PROMPT 5: DEPLOYMENT & OPTIMIZATION
+"Prepare the healthcare AI application for production deployment. Configure Vercel deployment for the frontend, set up Render deployment for the backend, optimize performance for sub-2-second load times with medical data, implement comprehensive testing (unit, integration, e2e) for healthcare accuracy, add security best practices for medical data security, create API documentation with OpenAPI/Swagger, and ensure 99.9% uptime with proper monitoring and error handling for critical healthcare workflows."
+
+EXECUTION ORDER: Follow these prompts sequentially. Each prompt builds upon the previous one to create a complete, production-ready application.

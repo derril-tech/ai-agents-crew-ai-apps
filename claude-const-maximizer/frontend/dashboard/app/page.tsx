@@ -60,6 +60,8 @@ export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [completionReportProject, setCompletionReportProject] = useState<Project | null>(null)
   const [isCompletionModalOpen, setIsCompletionModalOpen] = useState(false)
+  const [savedDocuments, setSavedDocuments] = useState<any[]>([])
+  const [showSavedDocuments, setShowSavedDocuments] = useState(false)
 
   // Helper function for safer API calls
   async function getJson(url: string) {
@@ -107,7 +109,21 @@ export default function Dashboard() {
       }
     }
     
+    // Load saved documents
+    const loadSavedDocuments = async () => {
+      try {
+        const response = await fetch('http://localhost:8001/api/saved-documents')
+        if (response.ok) {
+          const data = await response.json()
+          setSavedDocuments(data.documents || [])
+        }
+      } catch (error) {
+        console.error('❌ Failed to load saved documents:', error)
+      }
+    }
+    
     loadProjects()
+    loadSavedDocuments()
 
         // Set up real-time refresh for pipeline data from real backend
     const refreshInterval = setInterval(async () => {
@@ -712,6 +728,20 @@ export default function Dashboard() {
             projectId={completionReportProject.project_name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9\s-]+/g, '').replace(/\s+/g, '-').replace(/^-+|-+$/g, '')}
           />
         )}
+
+        {/* Saved Documents Info */}
+        {savedDocuments.length > 0 && (
+          <div className="fixed bottom-4 left-4 bg-blue-600 text-white p-3 rounded-lg shadow-lg z-40">
+            <div className="text-sm">
+              💾 {savedDocuments.length} document{savedDocuments.length !== 1 ? 's' : ''} saved
+            </div>
+            <div className="text-xs opacity-75">
+              Check backend/saved_documents/ folder
+            </div>
+          </div>
+        )}
+
+
       </div>
     </div>
   )

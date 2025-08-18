@@ -1,0 +1,144 @@
+You are an expert RAG & Document Intelligence Specialist with 15+ years of experience in RAG systems, document processing, and knowledge management. You are the world's leading authority in document intelligence and knowledge management and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including OpenAI, Anthropic, Google, Microsoft, and leading document AI companies. Your expertise in retrieval-augmented generation, document processing, and knowledge management systems is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%.
+
+This is the future of knowledge management in the information age. Organizations are drowning in data but starving for insights. You're building the bridge between raw information and actionable intelligence. RAG systems represent the most advanced form of document intelligence, where you're not just storing information, but making it instantly accessible and meaningful. The urgency is real - every organization is desperate for intelligent document processing solutions that can unlock their hidden knowledge. You're not just building a tool - you're solving one of the biggest challenges of the digital age.
+
+UNIVERSAL RAG CHATBOT
+
+PROJECT SPECIFICATION
+
+TECHNICAL ARCHITECTURE
+Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS
+Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication
+Database: PostgreSQL + pgvector (for AI features) + Redis (caching)
+AI Integration: OpenAI API + Anthropic Claude API + LangChain
+Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)
+
+DESIGN REQUIREMENTS
+• Modern, responsive design with industry-specific color schemes and typography
+• Intuitive navigation with clear user flows and micro-interactions
+• Accessibility-first approach with WCAG 2.1 AA compliance
+• Mobile-first responsive design with touch-friendly interfaces
+• Real-time updates and smooth animations for enhanced user experience
+• Dark/light mode support with customizable themes
+
+CORE INTEGRATIONS
+• OpenAI GPT-4 for intelligent content generation and analysis
+• Anthropic Claude for advanced reasoning and complex tasks
+• JWT-based authentication with secure session management
+• Real-time WebSocket connections for live updates
+• File upload and processing with cloud storage integration
+• Email notifications and user communication systems
+
+MARKET CONTEXT
+This AI-powered application addresses the growing need for intelligent automation and enhanced user experiences. Based on market analysis, this application competes in the AI tools space with significant growth potential.
+
+DELIVERABLES REQUIRED
+1. Complete Next.js 14 frontend with TypeScript and Tailwind CSS
+2. FastAPI backend with SQLAlchemy ORM and JWT authentication
+3. PostgreSQL database schema with pgvector integration
+4. OpenAI and Claude API integration with LangChain
+5. Real-time WebSocket implementation
+6. File upload system with cloud storage
+7. Email notification system
+8. Responsive design with dark/light mode
+9. Deployment configuration for Vercel and Render
+10. Comprehensive documentation and testing suite
+
+SUCCESS CRITERIA
+• Production-ready codebase deployable immediately
+• Scalable architecture supporting 10,000+ concurrent users
+• 99.9% uptime with comprehensive error handling
+• Mobile-responsive design with 95+ Lighthouse score
+• Complete API documentation with OpenAPI/Swagger
+• Unit and integration test coverage >90%
+• Security best practices implementation
+• Performance optimization for sub-2-second load times
+
+IMPLEMENTATION GUIDELINES
+• Use modern React patterns (hooks, context, custom hooks)
+• Implement proper TypeScript types and interfaces
+• Follow FastAPI best practices with dependency injection
+• Use SQLAlchemy 2.0 syntax with async/await
+• Implement proper error handling and logging
+• Use environment variables for all configuration
+• Follow security best practices (CORS, rate limiting, input validation)
+• Implement comprehensive testing (unit, integration, e2e)
+• Use Git hooks for code quality (pre-commit, lint-staged)
+• Document all APIs and components thoroughly
+
+Perfect 1-Page Document for Claude Optimization: AI Application for Content Generation
+Project Overview and Objective
+Develop an AI-powered application aimed at enhancing content creation for tech-savvy professionals and marketers. The application will streamline the process of generating high-quality, personalized content while improving user engagement through real-time feedback mechanisms.
+Target Audience and Market Analysis
+• Demographics: Age 25-45, predominantly male (60%); income between $60,000-$120,000; educated (Bachelor’s degree or higher).
+• Psychographics: Content creators, marketers, and small business owners looking for efficiency and innovation.
+• Pain Points: Time constraints, engagement quality, and customization needs in content production.
+• Competitive Landscape: Key competitors include OpenAI's ChatGPT, Copy.ai, and Jasper.ai, each known for specific niches in content generation. Our unique value propositions include Real-Time Adaptability, Multilingual Support, and Enhanced Collaboration.
+UI/UX Design Specifications
+• Design Trends: Minimalistic and intuitive layouts emphasizing usability; responsive design.
+• Color Scheme: Primary (#1E3A8A), Secondary (#22C55E), and accent elements (#F59E0B).
+• Accessibility: Adhere to WCAG guidelines ensuring all components are keyboard navigable with clear ARIA roles.
+Implementation Plan and Timeline
+Phase 1 (Weeks 1-2): Requirements gathering and initial design mockups.
+Phase 2 (Weeks 3-5): Frontend development and backend API setup.
+Phase 3 (Weeks 6-7): Integration of analytics and user testing.
+Phase 4 (Week 8): Final delivery, deployment, and monitoring.
+Deployment and Launch Strategy
+• Environment Setup: Use Docker for containerization, deploy via Heroku/AWS.
+• Monitoring Tools: Implement logging with Loguru or Winston to capture performance metrics and error reports.
+Prompt Template for Claude's Application Development
+`json
+{
+"prompt": {
+"description": "Develop a content generation AI application tailored for tech-savvy users.",
+"appType": "Generator",
+"specifications": [
+{
+"feature": "User Input",
+"title": "Content Customization",
+"details": "User specifies content type, audience, and preferred tone."
+},
+{
+"feature": "Content Generation",
+"title": "Real-Time Text Generation",
+"details": "Generate content based on inputs, enhancing results with user feedback."
+},
+{
+"feature": "Analytics Integration",
+"title": "Engagement Tracking",
+"details": "Incorporate Google Analytics for user engagement stats."
+},
+{
+"feature": "Publishing",
+"title": "Social Media Auto-Publishing",
+"details": "Enable direct content publication to popular platforms."
+}
+],
+"constraints": [
+"Content generation must occur within 3-5 prompts.",
+"Output compatibility with WordPress APIs is required.",
+"Support for multilingual outputs is essential."
+]
+}
+}
+`
+This 1-page document encompasses the critical aspects necessary for Claude to efficiently produce a fully functional AI content generation application in 3-5 prompts, ensuring all details contribute to a seamless implementation process.
+
+CRITICAL PROMPTS FOR CLAUDE
+
+PROMPT 1: PROJECT SETUP & ARCHITECTURE
+"Create the complete project structure and architecture for this financial AI application. Set up the Next.js 14 frontend with TypeScript and Tailwind CSS, FastAPI backend with SQLAlchemy and JWT authentication, PostgreSQL database schema with pgvector integration for financial data analysis, and deployment configuration for Vercel and Render. Include all necessary configuration files, environment variables, and project structure for financial trading features."
+
+PROMPT 2: CORE BACKEND IMPLEMENTATION
+"Implement the complete FastAPI backend with all core functionality for financial AI and trading systems. Create the database models using SQLAlchemy 2.0, implement JWT authentication, set up OpenAI and Claude API integrations with LangChain for financial analysis, create RESTful API endpoints for trading workflows, implement real-time WebSocket connections for market data, and add comprehensive error handling and logging for financial security."
+
+PROMPT 3: FRONTEND COMPONENTS & UI
+"Build the complete Next.js 14 frontend with TypeScript. Create all necessary React components for financial interface, implement responsive design with Tailwind CSS optimized for trading workflows, add dark/light mode support, implement real-time updates for market analysis, create intuitive navigation and user flows for trading processes, and ensure WCAG 2.1 AA accessibility compliance for financial technology."
+
+PROMPT 4: AI INTEGRATION & FEATURES
+"Implement all AI-powered financial features and integrations. Set up OpenAI GPT-4 and Claude API connections for intelligent financial analysis and algorithmic trading, create financial analysis and trading system functionality, implement file upload and processing with cloud storage for financial data, add email notification systems for trading alerts, and ensure all AI features work seamlessly with the frontend and backend for optimal financial experience."
+
+PROMPT 5: DEPLOYMENT & OPTIMIZATION
+"Prepare the financial AI application for production deployment. Configure Vercel deployment for the frontend, set up Render deployment for the backend, optimize performance for sub-2-second load times with financial processing, implement comprehensive testing (unit, integration, e2e) for trading accuracy, add security best practices for financial data security, create API documentation with OpenAPI/Swagger, and ensure 99.9% uptime with proper monitoring and error handling for critical financial workflows."
+
+EXECUTION ORDER: Follow these prompts sequentially. Each prompt builds upon the previous one to create a complete, production-ready application.

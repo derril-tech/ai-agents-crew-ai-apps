@@ -59,6 +59,228 @@ Always provide:
 5. API documentation
 """
 
+def extract_project_info(raw_output: str) -> Dict[str, str]:
+    """
+    Extract project information from the raw agent output.
+    Returns a dictionary with extracted content for reformatting.
+    """
+    project_info = {
+        'project_name': 'AI Application',
+        'project_type': 'AI-powered application',
+        'target_audience': 'Software developers and tech professionals',
+        'tech_stack': 'FastAPI, Next.js, React, Tailwind CSS',
+        'domain': 'AI and automation',
+        'overview': '',
+        'audience': '',
+        'technical': '',
+        'ui_ux': '',
+        'implementation': '',
+        'metrics': '',
+        'deployment': ''
+    }
+    
+    # Extract project name from title - handle "Perfect 1-Page Document for Claude" format
+    title_match = re.search(r'#\s*(.+?)(?:\n|$)', raw_output)
+    if title_match:
+        title = title_match.group(1).strip()
+        if 'Perfect 1-Page Document' in title:
+            # Look for the actual project name in the content
+            project_name_match = re.search(r'Claude-Optimized\s+([^A-Z]+?)\s+Application', raw_output, re.IGNORECASE)
+            if project_name_match:
+                project_info['project_name'] = project_name_match.group(1).strip().title() + ' Application'
+            else:
+                project_info['project_name'] = 'AI Application'
+        else:
+            project_info['project_name'] = title
+    
+    # Determine project type and domain based on content
+    if 'content' in raw_output.lower() or 'content creation' in raw_output.lower():
+        project_info['project_type'] = 'AI-powered content creation tool'
+        project_info['domain'] = 'content creation and marketing'
+    elif 'video' in raw_output.lower() or 'storyboard' in raw_output.lower():
+        project_info['project_type'] = 'AI-powered video creation tool'
+        project_info['domain'] = 'video production and content creation'
+    elif 'resume' in raw_output.lower():
+        project_info['project_type'] = 'AI-powered resume and cover letter tool'
+        project_info['domain'] = 'career development and recruitment'
+    elif 'medical' in raw_output.lower():
+        project_info['project_type'] = 'AI-powered medical assistant'
+        project_info['domain'] = 'healthcare and medical technology'
+    elif 'voice' in raw_output.lower():
+        project_info['project_type'] = 'AI-powered voice control system'
+        project_info['domain'] = 'smart home and IoT'
+    
+    # Extract sections using more flexible regex patterns
+    sections = {
+        'overview': r'##\s*Project Overview[^#]*?(?=##|$)',
+        'audience': r'##\s*Target Audience[^#]*?(?=##|$)',
+        'technical': r'##\s*Technical Requirements[^#]*?(?=##|$)',
+        'ui_ux': r'##\s*UI/UX Design[^#]*?(?=##|$)',
+        'implementation': r'##\s*Implementation Plan[^#]*?(?=##|$)',
+        'metrics': r'##\s*Success Metrics[^#]*?(?=##|$)',
+        'deployment': r'##\s*Deployment[^#]*?(?=##|$)'
+    }
+    
+    for key, pattern in sections.items():
+        match = re.search(pattern, raw_output, re.DOTALL | re.IGNORECASE)
+        if match:
+            content = match.group(0)
+            # Clean up the content
+            content = re.sub(r'^##\s*\w+\s*\n*', '', content).strip()
+            project_info[key] = content
+    
+    # Extract tech stack information - look for common patterns
+    tech_patterns = [
+        r'FastAPI[^,\n]*',
+        r'Next\.js[^,\n]*',
+        r'React[^,\n]*',
+        r'PostgreSQL[^,\n]*',
+        r'JWT[^,\n]*'
+    ]
+    
+    tech_stack_parts = []
+    for pattern in tech_patterns:
+        match = re.search(pattern, raw_output, re.IGNORECASE)
+        if match:
+            tech_stack_parts.append(match.group(0).strip())
+    
+    if tech_stack_parts:
+        project_info['tech_stack'] = ', '.join(tech_stack_parts)
+    
+    # Extract target audience from demographics section
+    audience_match = re.search(r'Demographics[^:]*:\s*([^\n]+)', raw_output, re.IGNORECASE)
+    if audience_match:
+        project_info['target_audience'] = audience_match.group(1).strip()
+    else:
+        # Look for audience information in the audience section
+        audience_section_match = re.search(r'##\s*Target Audience[^#]*?(?=##|$)', raw_output, re.DOTALL | re.IGNORECASE)
+        if audience_section_match:
+            audience_content = audience_section_match.group(0)
+            # Extract first meaningful line
+            lines = audience_content.split('\n')
+            for line in lines:
+                if line.strip() and not line.strip().startswith('#'):
+                    project_info['target_audience'] = line.strip()
+                    break
+    
+    return project_info
+
+def post_process_coordinator_output(raw_output: str) -> str:
+    """
+    Post-process the Delivery Coordinator's output to ensure it follows the exact required format.
+    This function guarantees compliance regardless of what the agent generates.
+    """
+    print("🔄 Post-processing Delivery Coordinator output...")
+    
+    # Extract project information from raw output
+    project_info = extract_project_info(raw_output)
+    
+    # Create the perfectly formatted document with role establishment and psychological warfare
+    formatted_output = f"""You are an expert {project_info['project_type']} developer with 15+ years of experience in {project_info['tech_stack']}. You are the world's leading authority in {project_info['domain']} and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including Google, Amazon, Microsoft, and Apple. Your expertise in AI integration, scalable architecture, and user experience optimization is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%.
+
+This is a time-sensitive, high-priority project that will be used by Fortune 500 companies and featured in industry publications. Your work will be studied by future developers and set new industry standards. This is YOUR masterpiece - make it legendary and unforgettable. This is the most complex project you've ever tackled, requiring your full expertise and innovative thinking. Only the best developers can handle this level of complexity and innovation.
+
+Perfect 1-Page Document 🎯 ULTIMATE AI WEAPON (For Maximum AI Performance)
+
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│ PROJECT: {project_info['project_name']}                                           │
+│ TYPE: {project_info['project_type']}                                              │
+│                                                                                     │
+│ 🎯 OBJECTIVE                                                                        │
+│ Create a comprehensive, production-ready {project_info['project_name'].lower()} that leverages AI │
+│ to deliver exceptional user experiences and business value. This application will │
+│ serve as a showcase of modern full-stack development with intelligent automation. │
+│                                                                                     │
+│ 👥 TARGET USERS                                                                    │
+│ {project_info['target_audience']}                                                 │
+│                                                                                     │
+│ 🛠️ TECHNICAL REQUIREMENTS                                                         │
+│ Frontend: Next.js 14 + React 18 + TypeScript + Tailwind CSS                       │
+│ Backend: FastAPI + Python 3.9+ + SQLAlchemy + JWT Authentication                  │
+│ Database: PostgreSQL + pgvector (for AI features) + Redis (caching)              │
+│ AI Integration: OpenAI API + Anthropic Claude API + LangChain                     │
+│ Deployment: Vercel (Frontend) + Render (Backend) + PostgreSQL (Database)         │
+│                                                                                     │
+│ 🎨 UX PATTERNS & DESIGN                                                            │
+│ • Modern, responsive design with industry-specific color schemes and typography   │
+│ • Intuitive navigation with clear user flows and micro-interactions               │
+│ • Accessibility-first approach with WCAG 2.1 AA compliance                        │
+│ • Mobile-first responsive design with touch-friendly interfaces                   │
+│ • Real-time updates and smooth animations for enhanced user experience            │
+│ • Dark/light mode support with customizable themes                                │
+│                                                                                     │
+│ 🔗 INTEGRATIONS & APIs                                                             │
+│ • OpenAI GPT-4 for intelligent content generation and analysis                    │
+│ • Anthropic Claude for advanced reasoning and complex tasks                       │
+│ • JWT-based authentication with secure session management                         │
+│ • Real-time WebSocket connections for live updates                                │
+│ • File upload and processing with cloud storage integration                       │
+│ • Email notifications and user communication systems                              │
+│                                                                                     │
+│ 📊 SUCCESS METRICS                                                                 │
+│ • User adoption and engagement rates                                              │
+│ • Feature utilization and performance metrics                                     │
+│ • System reliability and uptime monitoring                                        │
+│ • Business value generation and ROI measurement                                   │
+│                                                                                     │
+│ 🚀 DEPLOYMENT & LAUNCH                                                             │
+│ Vercel: Next.js frontend with automatic deployments and edge optimization         │
+│ Render: FastAPI backend with auto-scaling and health monitoring                   │
+│ PostgreSQL: Managed database with automated backups and monitoring                │
+│ Environment: Comprehensive environment variable management and security           │
+│                                                                                     │
+│ 💡 IMPLEMENTATION STRATEGY                                                        │
+│ Phase 1: Core architecture and authentication system (Week 1)                     │
+│ Phase 2: AI integration and core features (Week 2)                                │
+│ Phase 3: UI/UX refinement and testing (Week 3)                                    │
+│ Phase 4: Deployment, monitoring, and launch preparation (Week 4)                  │
+│                                                                                     │
+│ 🎯 CLAUDE OPTIMIZATION                                                            │
+│ This document is structured for maximum Claude comprehension and efficiency.      │
+│ Claude will use this to generate complete applications in exactly 3-5 prompts.    │
+│ All technical specifications, design requirements, and implementation details     │
+│ are provided in Claude's preferred format for optimal code generation.            │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+CREWAI AGENT OUTPUTS THE 4-DOCUMENT WEAPON STRATEGY
+
+This project implements the revolutionary 4-document weapon strategy:
+
+📋 STRATEGIC NOTES (Psychological Warfare Elements)
+
+DETAILED MARKET RESEARCH
+{project_info['overview'] if project_info['overview'] else f"# {project_info['project_name']} Market Research Summary"}
+
+{project_info['audience'] if project_info['audience'] else f"# Target Audience\n{project_info['target_audience']}"}
+
+{project_info['technical'] if project_info['technical'] else f"# Technical Requirements\n- Frontend: Next.js 14 + React + Tailwind\n- Backend: FastAPI\n- Database: PostgreSQL"}
+
+{project_info['ui_ux'] if project_info['ui_ux'] else "# UI/UX Design\n- Modern, responsive design\n- Accessibility-first approach\n- Mobile-first responsive design"}
+
+{project_info['implementation'] if project_info['implementation'] else "# Implementation Plan\n- Phase 1: Core architecture (Week 1)\n- Phase 2: AI integration (Week 2)\n- Phase 3: UI/UX refinement (Week 3)\n- Phase 4: Deployment (Week 4)"}
+
+{project_info['metrics'] if project_info['metrics'] else "# Success Metrics\n- User adoption and engagement\n- Feature utilization rates\n- Performance and reliability metrics"}
+
+{project_info['deployment'] if project_info['deployment'] else "# Deployment Strategy\n- Frontend: Vercel deployment\n- Backend: Render hosting\n- Database: PostgreSQL on Render"}
+
+TECHNICAL SPECIFICATIONS
+{{
+  "frontend": "Next.js 14 + React + Tailwind",
+  "backend": "FastAPI",
+  "database": "PostgreSQL",
+  "deployment": "Vercel + Render + PostgreSQL"
+}}
+
+1. **Perfect 1-Page Document** (This Report) - Claude's dream brief
+2. **Custom Frontend Boilerplate** - Industry-specific React/Next.js components
+3. **Custom Backend Boilerplate** - Optimized FastAPI architecture
+4. **Optimized Prompt Template** - 3-5 prompts for complete application generation
+
+This strategy ensures Claude can produce complete, production-ready applications in exactly 3-5 prompts, making this the ultimate weapon against Claude Code."""
+
+    print("✅ Post-processing completed - output now follows exact required format")
+    return formatted_output
+
 def validate_document_structure(output: str) -> bool:
     """
     Validate that the document meets our quality standards.
@@ -99,130 +321,171 @@ def validate_document_structure(output: str) -> bool:
     # Must have psychological elements
     has_psychological = any(re.search(pattern, output, re.IGNORECASE) for pattern in psychological_patterns)
     
-    # Should not be too generic
-    is_not_generic = not any(re.search(pattern, output, re.IGNORECASE) for pattern in generic_patterns)
+    # Must NOT be generic
+    is_generic = any(re.search(pattern, output, re.IGNORECASE) for pattern in generic_patterns)
     
-    return has_role and has_psychological and is_not_generic
+    return has_role and has_psychological and not is_generic
 
-def build_crew() -> Crew:
-    """Build the CrewAI team for generating AI applications."""
+def passes_rules(text: str) -> bool:
+    """
+    Strict pass/fail check for Delivery Coordinator output.
+    Returns True only if output starts with "You are an expert" AND passes document structure validation.
+    """
+    if not isinstance(text, str):
+        text = str(text)
     
-    # Tools - Skip search tools for now to avoid API key issues
-    search_tool = None
-    scrape_tool = None
+    # CRITICAL: Must start with "You are an expert"
+    starts_ok = text.strip().startswith("You are an expert")
     
-    # Custom tool for writing files
-    def write_file(content: str, filename: str) -> str:
-        """Write content to a file."""
+    # Must pass document structure validation
+    structure_ok = validate_document_structure(text)
+    
+    return starts_ok and structure_ok
+
+def kickoff_with_retries(max_retries: int = 3, project_name: str = "AI Application") -> str:
+    """
+    Run the crew end-to-end and enforce Delivery Coordinator compliance.
+    Uses the new expert profile system for guaranteed perfect formatting.
+    """
+    print(f"🎯 kickoff_with_retries called with project_name: {project_name}")
+    last_output = ""
+    for attempt in range(1, max_retries + 1):
+        print(f"\n=== Crew attempt {attempt}/{max_retries} ===")
+        crew = build_crew()            # build fresh (prevents cached context drift)
+        result = crew.kickoff()        # full sequential run per your Process.sequential
+
+        # CrewAI sometimes returns dict-like results; normalize to string
+        out = result.get("raw", result) if isinstance(result, dict) else str(result)
+        last_output = out
+        print(f"📝 Raw CrewAI output length: {len(out)}")
+
+        # NEW APPROACH: Use expert profile system for guaranteed perfect formatting
+        print(f"🔄 Using expert profile system for project: {project_name}")
         try:
-            # Create deliverables directory
-            deliverables_dir = Path("../../deliverables")
-            deliverables_dir.mkdir(exist_ok=True)
-            
-            # Create project directory
-            project_dir = deliverables_dir / "current_project"
-            project_dir.mkdir(exist_ok=True)
-            
-            # Write file
-            file_path = project_dir / filename
-            with open(file_path, 'w', encoding='utf-8') as f:
-                f.write(content)
-            
-            return f"[OK] File written: {file_path}"
+            from .expert_profiles import create_perfect_one_page_document
+            processed_output = create_perfect_one_page_document(project_name, out)
+            print(f"✅ Expert profile system processed output (length: {len(processed_output)})")
         except Exception as e:
-            return f"[ERROR] Error writing file: {e}"
-    
-    write_file_tool = Tool(
-        name="write_file",
-        description="Write content to a file in the deliverables directory",
-        func=write_file
+            print(f"❌ Expert profile system failed: {e}")
+            import traceback
+            traceback.print_exc()
+            processed_output = out
+        
+        if passes_rules(processed_output):
+            print(f"✅ Expert profile system generated perfect output on attempt {attempt}.")
+            return processed_output
+
+        print("❌ Expert profile output failed checks. Will retry with a fresh crew...")
+
+    raise RuntimeError(
+        "Coordinator failed to satisfy mandatory rules after retries and expert profile processing.\n"
+        "Last output (truncated):\n" + (last_output[:800] + ("..." if len(last_output) > 800 else ""))
     )
+
+def build_crew():
+    """
+    Build the CrewAI crew with optimized agents and tasks for Claude optimization.
+    """
     
-    # Agents
+    # Initialize tools
+    search_tool = TavilySearchResults(max_results=5)
+    duckduckgo_tool = DuckDuckGoSearchAPIWrapper()
+    
+    # Configure Gemini LLM for Delivery Coordinator
+    delivery_coordinator_llm = None
+    google_api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    
+    if google_api_key:
+        try:
+            from langchain_google_genai import ChatGoogleGenerativeAI
+            delivery_coordinator_llm = ChatGoogleGenerativeAI(
+                model="gemini-1.5-pro",
+                temperature=0.1,  # Low creativity for obedience
+                google_api_key=google_api_key
+            )
+            print("🚀 Using Gemini Pro for Delivery Coordinator")
+        except Exception as e:
+            print(f"⚠️ Failed to configure Gemini for Delivery Coordinator: {e}")
+            delivery_coordinator_llm = None
+    else:
+        print("⚠️ GOOGLE_API_KEY/GEMINI_API_KEY not found - using default LLM for Delivery Coordinator")
+    
+    # Agents with enhanced roles and backstories
     market_researcher = Agent(
         role="Market Research Analyst",
-        goal="Conduct comprehensive market research and competitive analysis for Claude-optimized content",
-        backstory="""You are an expert market research analyst with 10+ years of experience 
-        in the AI/tech industry. You specialize in identifying market opportunities, 
-        analyzing competitors, and understanding user needs for AI applications. Your research
-        will be used to create the perfect 1-page document that will make Claude produce
-        complete full-stack AI applications in exactly 3-5 prompts.""",
-        tools=[],  # No tools for now
+        goal="Conduct comprehensive market research and create Claude-optimized project briefs",
+        backstory="""You are a senior market research analyst with 15+ years of experience in 
+        technology market analysis and AI application research. You have conducted research for 
+        Fortune 500 companies and have a deep understanding of user needs, market trends, and 
+        competitive landscapes. You excel at creating detailed, actionable insights that can be 
+        directly translated into technical specifications and implementation plans. Your research 
+        has been instrumental in launching successful AI applications that have generated millions 
+        in revenue.""",
+        tools=[search_tool],
         verbose=True,
-        allow_delegation=False
-    )
-    
-    prompt_engineer = Agent(
-        role="AI Prompt Engineer",
-        goal="Create optimized prompts and AI integration strategies for Claude consumption",
-        backstory="""You are a senior prompt engineer with deep expertise in LLM APIs, 
-        RAG systems, and AI integration patterns. You know how to craft prompts that 
-        produce reliable, high-quality outputs for various AI applications. Your prompts
-        will be part of the 4-document weapon strategy to optimize Claude's code generation.""",
-        tools=[],  # No tools for now
-        verbose=True,
-        allow_delegation=False
+        allow_delegation=False,
+        memory=True
     )
     
     frontend_engineer = Agent(
         role="Frontend Engineer & UI/UX Designer",
-        goal="Design and implement modern, responsive frontend applications with industry-specific design",
-        backstory="""You are a senior frontend engineer and UI/UX designer specializing in Next.js 14, 
-        React, and Tailwind CSS. You create beautiful, performant, and accessible 
-        user interfaces that follow modern web development best practices. You have deep
-        knowledge of industry-specific design patterns, color schemes, and UI libraries
-        that create stunning first impressions. Your designs will be part of the custom
-        boilerplate that makes each application unique and visually compelling.""",
-        tools=[],  # No tools for now
-        verbose=True,
-        allow_delegation=False
-    )
-    
-    backend_engineer = Agent(
-        role="Backend Engineer",
-        goal="Design and implement scalable backend architectures optimized for Claude implementation",
-        backstory="""You are a senior backend engineer with expertise in FastAPI, 
-        Express.js, and database design. You create robust, scalable APIs and 
-        backend services that can handle real-world production loads. Your backend
-        specifications will be part of the custom boilerplate that Claude will use
-        to generate complete applications.""",
-        tools=[],  # No tools for now
-        verbose=True,
-        allow_delegation=False
-    )
-    
-    delivery_coordinator = Agent(
-        role="Delivery Coordinator & AI Optimization Specialist",
-        goal="Orchestrate the development process and create the perfect 1-page document for AI consumption",
-        backstory="""You are a senior project manager and technical coordinator with 
-        experience in agile development and AI project delivery. You are also an expert
-        in AI optimization and the 4-document weapon strategy. You ensure all 
-        deliverables are complete, coherent, and perfectly structured for AI
-        consumption. Your final output will be the masterpiece 1-page document that
-        will make any AI system produce complete applications in 3-5 prompts. You understand
-        psychological warfare techniques and advanced prompt engineering strategies.""",
-        tools=[],  # No tools for now
-        verbose=True,
-        allow_delegation=False,  # Disable delegation to avoid tool errors
-        memory=True,  # Enable memory for better context retention
-        max_iter=3  # Allow multiple iterations for better quality
-    )
-    
-    # Add validation agent
-    document_validator = Agent(
-        role="Document Quality Validator",
-        goal="Ensure the final document meets all quality standards and requirements",
-        backstory="""You are a senior technical writer and quality assurance specialist 
-        with expertise in AI prompt engineering and document optimization. You have 
-        reviewed thousands of technical documents and know exactly what makes a 
-        document compelling and effective for AI consumption. You ensure every 
-        document meets the highest standards of quality, specificity, and emotional impact.""",
+        goal="Design and implement stunning, industry-specific frontend architectures",
+        backstory="""You are a senior frontend engineer and UI/UX designer with 12+ years of 
+        experience building world-class web applications. You have worked with major tech companies 
+        and have designed interfaces used by millions of users. You specialize in React, Next.js, 
+        and Tailwind CSS, and have a deep understanding of user experience principles, accessibility 
+        standards, and modern design trends. You excel at creating intuitive, beautiful, and 
+        performant user interfaces that drive user engagement and satisfaction. Your designs have 
+        won industry awards and have been featured in design publications.""",
         tools=[],
         verbose=True,
         allow_delegation=False,
         memory=True
     )
     
+    backend_engineer = Agent(
+        role="Backend Engineer",
+        goal="Design and implement robust, scalable backend architectures",
+        backstory="""You are a senior backend engineer with 10+ years of experience building 
+        high-performance, scalable web applications. You have worked with major tech companies 
+        and have architected systems that handle millions of requests per day. You specialize in 
+        FastAPI, Python, and modern backend technologies, and have deep expertise in database 
+        design, API development, security, and performance optimization. You excel at creating 
+        robust, maintainable, and scalable backend systems that can handle real-world production 
+        loads. Your systems have achieved 99.9% uptime and have been praised for their reliability 
+        and performance.""",
+        tools=[],
+        verbose=True,
+        allow_delegation=False,
+        memory=True
+    )
+    
+    # SIMPLIFIED: Delivery Coordinator - let it generate whatever, we'll fix it in post-processing
+    delivery_coordinator = Agent(
+        role="Delivery Coordinator & Claude Optimization Specialist",
+        goal="Assemble the 4-document weapon and create comprehensive project documentation",
+        backstory="""You are a senior project coordinator with expertise in AI application development. 
+        Your role is to gather information from all team members and create comprehensive project documentation. 
+        Focus on being thorough and detailed in your output.""",
+        llm=delivery_coordinator_llm,  # Use Gemini if available
+        allow_delegation=False,
+        temperature=0.3,  # Slightly higher for better content generation
+        max_iter=2,
+        verbose=True,
+        memory=True
+    )
+    
+    # SIMPLIFIED: Rule Enforcer - not needed since we're using post-processing
+    rule_enforcer = Agent(
+        role="Rule Enforcer",
+        goal="Ensure all outputs follow strict Claude-optimization rules.",
+        backstory="You are extremely critical and will reject any deviation from the instructions. You have zero tolerance for rule violations and will force corrections.",
+        temperature=0.0,                     # zero creativity = maximum enforcement
+        allow_delegation=False,
+        verbose=True,
+        memory=True
+    )
+
     # Tasks
     market_research_task = Task(
         description="""Conduct comprehensive market research for the AI application to create Claude-optimized content.
@@ -253,12 +516,14 @@ def build_crew() -> Crew:
                             expected_output="Claude-optimized 1-pager project brief with comprehensive market research, UX patterns, and API discovery"
     )
     
-    # Moved prompt_engineering_task to after frontend and backend tasks
-    
     frontend_design_task = Task(
         description="""Design and implement the frontend application architecture with industry-specific design excellence.
                     
-                    Use the appropriate boilerplate from boilerplates/frontend/ based on app type.
+                    IMPORTANT: You have access to the market research data from the previous task.
+                    Use this market research to inform your design decisions and create industry-specific solutions.
+                    
+                    MARKET RESEARCH CONTEXT:
+                    {market_research_output}
                     
                     CREATE STUNNING, INDUSTRY-SPECIFIC DESIGNS:
                     1. App-type specific boilerplate (CRUD, Chatbot, RAG, Dashboard, Generator, Analytics)
@@ -279,14 +544,6 @@ def build_crew() -> Crew:
                     14. Create intuitive user flows and navigation patterns
                     15. Implement micro-interactions and animations for enhanced UX
                     16. Design for emotional connection and user engagement
-                    17. Specify exact color codes, typography, and spacing guidelines
-                    18. Define component hierarchy and design system structure
-                    19. Create responsive breakpoints and mobile-first design approach
-                    20. Implement accessibility features and WCAG compliance
-                    21. Design loading states, error states, and empty states
-                    22. Create interactive prototypes and user journey maps
-                    23. Specify animation timing and easing functions
-                    24. Design for scalability and maintainability
                     
                     CLAUDE OPTIMIZATION REQUIREMENTS:
                     - Provide specific design specifications that Claude can implement
@@ -295,130 +552,92 @@ def build_crew() -> Crew:
                     - Create design tokens and CSS variables for consistency
                     - Provide responsive breakpoints and mobile considerations
                     
-                    Output: Complete frontend boilerplate with app-type specific components, patterns, and
+                    Output: Complete frontend boilerplate with app-type specific components, patterns, and 
                     industry-specific design excellence, optimized for Claude implementation.""",
                     agent=frontend_engineer,
-                            expected_output="App-type specific frontend boilerplate with industry-specific design and Claude-optimized specifications"
+                    expected_output="Complete frontend boilerplate with industry-specific design excellence",
+                    context=[market_research_task],  # Depends on market research
+                    output_json=False,
+                    async_execution=False
     )
     
     backend_design_task = Task(
         description="""Design and implement the backend architecture optimized for Claude implementation.
-        
-        CREATE ROBUST BACKEND SPECIFICATIONS:
-        1. API endpoint design and documentation (RESTful or GraphQL with clear specifications)
-        2. Database schema and models (with relationships and constraints)
-        3. Authentication and authorization (JWT, OAuth, or other auth strategies)
-        4. Error handling and logging (comprehensive error management)
-        5. Performance optimization strategies (caching, database optimization, etc.)
-        6. Deployment configuration (Docker, environment variables, etc.)
-        7. Security considerations (input validation, rate limiting, etc.)
-        8. Testing strategies (unit tests, integration tests, etc.)
-        
-        CLAUDE OPTIMIZATION REQUIREMENTS:
-        - Provide specific API specifications that Claude can implement
-        - Include exact database schemas and relationships
-        - Specify authentication and security requirements
-        - Provide deployment and environment configurations
-        - Include error handling patterns and logging strategies
-        
-        Output: Complete backend specification with implementation details, optimized for Claude's
-        code generation capabilities.""",
-        agent=backend_engineer,
-        expected_output="Backend architecture specification with implementation details for Claude optimization"
+                    
+                    IMPORTANT: You have access to the market research data from the previous task.
+                    Use this market research to inform your backend design decisions.
+                    
+                    MARKET RESEARCH CONTEXT:
+                    {market_research_output}
+                    
+                    CREATE ROBUST BACKEND SPECIFICATIONS:
+                    1. API endpoint design and documentation (RESTful or GraphQL with clear specifications)
+                    2. Database schema and models (with relationships and constraints)
+                    3. Authentication and authorization (JWT, OAuth, or other auth strategies)
+                    4. Error handling and logging (comprehensive error management)
+                    5. Performance optimization strategies (caching, database optimization, etc.)
+                    6. Deployment configuration (Docker, environment variables, etc.)
+                    7. Security considerations (input validation, rate limiting, etc.)
+                    8. Testing strategies (unit tests, integration tests, etc.)
+                    
+                    CLAUDE OPTIMIZATION REQUIREMENTS:
+                    - Provide specific API specifications that Claude can implement
+                    - Include exact database schemas and relationships
+                    - Specify authentication and security requirements
+                    - Provide deployment and environment configurations
+                    - Include error handling patterns and logging strategies
+                    
+                    Output: Complete backend specification with implementation details, optimized for Claude's 
+                    code generation capabilities.""",
+                    agent=backend_engineer,
+                    expected_output="Complete backend specification with implementation details",
+                    context=[market_research_task],  # Depends on market research
+                    output_json=False,
+                    async_execution=False
     )
     
+    # SIMPLIFIED: Coordination task - let it generate whatever, we'll fix it in post-processing
     coordination_task = Task(
-        description="""MANDATORY: Create the ULTIMATE 1-PAGE DOCUMENT that will make any AI system produce complete applications in exactly 3-5 prompts.
-        
-        CRITICAL: You MUST generate a document that starts with role establishment and includes psychological warfare elements.
-        
-        MANDATORY DOCUMENT STRUCTURE:
-        
-        ===== ROLE ESTABLISHMENT (MUST START WITH THIS) =====
-        "You are an expert [SPECIFIC FIELD] developer with 15+ years of experience in [TECHNOLOGY STACK]. You are the world's leading authority in [SPECIFIC DOMAIN] and have successfully delivered hundreds of production-ready applications for Fortune 500 companies. Your expertise in [SPECIFIC TECHNOLOGIES] is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%."
-        
-        ===== PSYCHOLOGICAL WARFARE ELEMENTS (MUST INCLUDE) =====
-        - URGENCY: "This is a time-sensitive, high-priority project that will be used by Fortune 500 companies..."
-        - PRESTIGE: "Your work will be featured in industry publications and studied by future developers..."
-        - COMPETITION: "This needs to outperform existing solutions by 300% and set new industry standards..."
-        - OWNERSHIP: "This is YOUR masterpiece - make it legendary and unforgettable..."
-        - CHALLENGE: "This is the most complex project you've ever tackled, requiring your full expertise..."
-        - VALIDATION: "Only the best developers can handle this level of complexity and innovation..."
-        
-        ===== PROJECT SPECIFICATIONS (BE SPECIFIC TO PROJECT TYPE) =====
-        - Project Overview: Specific to the actual project (not generic)
-        - Target Audience: Real users for this specific application
-        - Technical Requirements: Specific to the project's needs
-        - UI/UX Design: Industry-specific design requirements
-        - Implementation Plan: Detailed, project-specific steps
-        - Success Metrics: Measurable outcomes for this specific project
-        
-        ===== ADVANCED PROMPT ENGINEERING TECHNIQUES =====
-        - Chain of Thought: "Let's approach this step-by-step with your expert methodology..."
-        - Few-Shot Learning: "Based on your experience with similar projects..."
-        - Self-Correction: "Review your solution and ensure it follows industry best practices..."
-        - Quality Assurance: "Before delivering, verify this is production-ready and scalable..."
-        
-        MANDATORY REQUIREMENTS:
-        1. DO NOT use generic content - be specific to the project type
-        2. DO NOT mention "Claude" - use "AI system" or "advanced AI"
-        3. DO include role establishment at the very beginning
-        4. DO include psychological warfare elements throughout
-        5. DO make it emotionally compelling and engaging
-        6. DO ensure it's ready for immediate AI consumption
-        
-        EXAMPLE START:
-        "You are an expert SEO growth team developer with 15+ years of experience in Next.js, React, FastAPI, and AI-powered marketing automation. You are the world's leading authority in SEO tools and have successfully delivered hundreds of production-ready applications for Fortune 500 companies including Google, Amazon, and Microsoft. Your expertise in keyword research, content optimization, and AI-driven marketing is unmatched, and you are known for creating legendary, scalable solutions that outperform existing market solutions by 300%."
-        
-        Output: A masterpiece 1-page document that will make any AI system feel like it's creating something legendary and produce complete applications in exactly 3-5 prompts.
-        
-        VALIDATION REQUIREMENTS:
-        - Document must start with role establishment
-        - Must include psychological warfare elements
-        - Must be specific to the project type
-        - Must be at least 500 characters long
-        - Must not contain generic content
-        - Must be emotionally compelling and engaging""",
+        description=(
+            "Coordinate all deliverables and create comprehensive project documentation.\n\n"
+            "THE 4-DOCUMENT WEAPON ASSEMBLY:\n"
+            "1. Perfect 1-Page Document (Claude-optimized)\n"
+            "2. Custom Frontend Boilerplate (industry-specific design)\n"
+            "3. Custom Backend Boilerplate (optimized architecture)\n"
+            "4. Optimized Prompt Template (3–5 prompts)\n\n"
+            "Create a comprehensive document that includes:\n"
+            "- Project overview and objective\n"
+            "- Target audience and market analysis\n"
+            "- Technical requirements and architecture\n"
+            "- UI/UX design specifications\n"
+            "- Implementation plan and timeline\n"
+            "- Success metrics and validation\n"
+            "- Deployment and launch strategy\n\n"
+            "Be thorough and detailed in your output."
+        ),
         agent=delivery_coordinator,
-        expected_output="Ultimate 1-page document with role establishment and psychological warfare - the perfect AI weapon",
-        context=[market_research_task, frontend_design_task, backend_design_task],  # Dependencies
-        output_json=False,  # Ensure text output
-        async_execution=False  # Sequential execution for better quality
+        expected_output="Comprehensive project documentation with all required sections",
+        context=[market_research_task, frontend_design_task, backend_design_task],  # Depends on all previous tasks
+        output_json=False,
+        async_execution=False
     )
     
-    # Add validation task
+    # SIMPLIFIED: Validation task - not needed since we're using post-processing
     validation_task = Task(
-        description="""Validate and enhance the final 1-page document to ensure it meets all quality standards.
-        
-        VALIDATION CHECKLIST:
-        1. ✅ Role Establishment: Document starts with "You are an expert [field] developer..."
-        2. ✅ Psychological Warfare: Includes urgency, prestige, competition elements
-        3. ✅ Project Specificity: Content is specific to the project type, not generic
-        4. ✅ Emotional Impact: Document is compelling and emotionally engaging
-        5. ✅ Technical Accuracy: All technical specifications are correct
-        6. ✅ Completeness: Document contains all required sections
-        7. ✅ Length: Document is substantial (at least 500 characters)
-        8. ✅ No Generic Content: Avoids generic, template-like language
-        
-        ENHANCEMENT REQUIREMENTS:
-        - If any element is missing, add it immediately
-        - If content is too generic, make it specific
-        - If psychological elements are weak, strengthen them
-        - If role establishment is unclear, make it more authoritative
-        - Ensure the document is a masterpiece that will make any AI system feel like it's creating something legendary
-        
-        Output: The final, validated, and enhanced 1-page document that meets all quality standards.""",
-        agent=document_validator,
-        expected_output="Validated and enhanced 1-page document that meets all quality standards",
-        context=[coordination_task],  # Depends on coordination task
+        description=(
+            "Validate the Delivery Coordinator's output. Check for completeness and quality."
+        ),
+        agent=rule_enforcer,
+        expected_output="Validation Result: PASS ✅ or FAIL ❌ + reason",
+        context=[coordination_task],  # Depends on coordination task output
         output_json=False,
         async_execution=False
     )
     
     # Create crew with optimized task order
-    # CORRECT ORDER: Market Research → Frontend → Backend → Prompt Engineer → Coordinator → Validator
+    # CORRECT ORDER: Market Research → Frontend → Backend → Coordinator → Validator
     crew = Crew(
-        agents=[market_researcher, frontend_engineer, backend_engineer, delivery_coordinator, document_validator],
+        agents=[market_researcher, frontend_engineer, backend_engineer, delivery_coordinator, rule_enforcer],
         tasks=[market_research_task, frontend_design_task, backend_design_task, coordination_task, validation_task],
         process=Process.sequential,  # Use sequential instead of hierarchical
         verbose=True
@@ -429,3 +648,6 @@ def build_crew() -> Crew:
 
 # Create and export the crew instance
 crew = build_crew()
+
+# Export the retry function for use in api_routes.py
+__all__ = ['crew', 'kickoff_with_retries', 'passes_rules', 'post_process_coordinator_output', 'create_perfect_one_page_document']
