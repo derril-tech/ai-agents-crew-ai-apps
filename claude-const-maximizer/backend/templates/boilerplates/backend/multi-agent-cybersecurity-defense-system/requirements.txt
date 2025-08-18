@@ -1,0 +1,161 @@
+# Core FastAPI and web framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+python-multipart==0.0.6
+
+# Authentication and security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.0
+
+# Database and ORM
+sqlalchemy==2.0.23
+alembic==1.13.0
+psycopg2-binary==2.9.9
+redis==5.0.1
+elasticsearch==8.11.0
+
+# Background tasks and queues
+celery==5.3.4
+flower==2.0.1
+
+# HTTP client and testing
+httpx==0.25.2
+pytest==7.4.3
+pytest-asyncio==0.21.1
+
+# AI and NLP libraries
+openai==1.3.7
+anthropic==0.7.8
+spacy==3.7.2
+nltk==3.8.1
+transformers==4.36.0
+torch==2.1.1
+sentence-transformers==2.2.2
+
+# Multi-agent frameworks
+crewai==0.1.0
+langchain==0.1.0
+autogen==0.1.0
+agentops==0.1.0
+swarm==0.1.0
+
+# Cybersecurity tools and frameworks
+nmap==0.1.0
+metasploit==0.1.0
+wireshark==0.1.0
+snort==0.1.0
+suricata==0.1.0
+
+# Threat intelligence and feeds
+threat-intel==0.1.0
+ioc-parser==0.1.0
+malware-analysis==0.1.0
+vulnerability-scanner==0.1.0
+
+# Security monitoring and SIEM
+siem==0.1.0
+log-analysis==0.1.0
+event-correlation==0.1.0
+alert-manager==0.1.0
+
+# Network security and monitoring
+network-monitor==0.1.0
+packet-analyzer==0.1.0
+traffic-analysis==0.1.0
+firewall-manager==0.1.0
+
+# Endpoint security and detection
+endpoint-protection==0.1.0
+edr==0.1.0
+behavior-analysis==0.1.0
+process-monitor==0.1.0
+
+# Incident response and forensics
+incident-response==0.1.0
+forensics-tools==0.1.0
+memory-analysis==0.1.0
+disk-imaging==0.1.0
+
+# Vulnerability assessment and management
+vulnerability-scanner==0.1.0
+penetration-testing==0.1.0
+security-audit==0.1.0
+compliance-checker==0.1.0
+
+# Machine learning for security
+security-ml==0.1.0
+anomaly-detection==0.1.0
+threat-prediction==0.1.0
+behavioral-analysis==0.1.0
+
+# Data processing and analysis
+pandas==2.1.4
+numpy==1.25.2
+scikit-learn==1.3.2
+scipy==1.11.4
+
+# Time series analysis for security events
+prophet==1.1.4
+pmdarima==2.0.4
+tslearn==0.6.2
+
+# Vector database for threat embeddings
+pinecone-client==2.2.4
+chromadb==0.4.18
+faiss-cpu==1.7.4
+
+# Data visualization for security
+matplotlib==3.8.2
+seaborn==0.13.0
+plotly==5.17.0
+bokeh==3.3.2
+dash==2.14.2
+
+# File handling and storage
+boto3==1.34.0
+minio==7.2.0
+python-magic==0.4.27
+
+# Utilities and helpers
+python-dateutil==2.8.2
+pytz==2023.3
+click==8.1.7
+rich==13.7.0
+tqdm==4.66.1
+
+# Development and code quality
+black==23.11.0
+isort==5.12.0
+flake8==6.1.0
+mypy==1.7.1
+pre-commit==3.6.0
+
+# Monitoring and logging
+structlog==23.2.0
+sentry-sdk[fastapi]==1.38.0
+prometheus-client==0.19.0
+
+# CORS and middleware
+fastapi-cors==0.0.6
+fastapi-limiter==0.1.5
+
+# WebSocket for real-time updates
+websockets==12.0
+
+# Scheduling and automation
+apscheduler==3.10.4
+celery-beat==2.5.0
+
+# Email and notifications
+sendgrid==6.10.0
+twilio==8.10.0
+
+# Calendar and scheduling
+icalendar==5.0.7
+python-dateutil==2.8.2
+
+# Security and encryption
+cryptography==41.0.7
+pycryptodome==3.19.0

@@ -205,7 +205,8 @@ def generate_project_card(project_name: str, project_slug: str, status_info: Dic
 
 def load_projects() -> List[Dict]:
     """Load projects from projects.json."""
-    projects_file = Path("projects.json")
+    script_dir = Path(__file__).parent
+    projects_file = script_dir.parent.parent / "projects.json"
     if not projects_file.exists():
         print("[ERROR] projects.json not found!")
         return []
@@ -222,7 +223,9 @@ def generate_dashboard():
     print("[INVESTIGATE] Scanning projects...")
     
     # Load projects from root directory
-    projects_file = Path("../../projects.json")
+    script_dir = Path(__file__).parent
+    projects_file = script_dir.parent.parent / "projects.json"
+    print(f"[DEBUG] Looking for projects.json at: {projects_file.absolute()}")
     if not projects_file.exists():
         print("[ERROR] projects.json not found!")
         return
@@ -239,7 +242,7 @@ def generate_dashboard():
         return
     
     # Create deliverables directory if it doesn't exist
-    deliverables_dir = Path("../../deliverables")
+    deliverables_dir = script_dir.parent.parent / "deliverables"
     deliverables_dir.mkdir(exist_ok=True)
     
     # Analyze each project
@@ -277,7 +280,7 @@ def generate_dashboard():
     )
     
     # Write dashboard
-    dashboard_dir = Path("../../frontend/dashboard-html")
+    dashboard_dir = script_dir.parent.parent / "frontend/dashboard-html"
     dashboard_dir.mkdir(exist_ok=True)
     
     dashboard_file = dashboard_dir / "index.html"

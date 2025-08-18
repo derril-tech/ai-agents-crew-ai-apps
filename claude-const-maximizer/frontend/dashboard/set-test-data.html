@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Test Data</title>
+</head>
+<body>
+    <h1>Setting Test Data...</h1>
+    <script>
+        localStorage.setItem('pipeline-data', JSON.stringify({
+            'ai-powered-code-review-and-refactoring-assistant': {
+                projectId: 'ai-powered-code-review-and-refactoring-assistant',
+                projectName: 'AI-Powered Code Review & Refactoring Assistant',
+                items: [],
+                progress: 45,
+                activeAgents: ['BackendEngineer'],
+                lastUpdated: new Date().toISOString()
+            }
+        }));
+        console.log('✅ Test data set!');
+        alert('Test data set! Now refresh your dashboard.');
+    </script>
+</body>
+</html>
+
+

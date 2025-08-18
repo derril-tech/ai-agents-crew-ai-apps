@@ -44,9 +44,36 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
       const loadTodos = async () => {
         setIsLoading(true)
         try {
-          const todo = await todoManager.getTodos(projectId)
-          setProjectTodo(todo)
-          updateProgress(todo)
+          // Load from pipeline-todos.json instead of todo manager
+          const response = await fetch('/api/pipeline')
+          const pipelineData = await response.json()
+          const projectData = pipelineData[projectId]
+          
+          if (projectData) {
+            setProjectTodo(projectData)
+            updateProgress(projectData)
+          } else {
+            // Create default pipeline structure
+            const defaultTodo: ProjectTodo = {
+              projectId,
+              projectName: project.project_name || projectId,
+              items: [
+                { id: 'market-research', text: '🔍 Market Research & Analysis', agent: 'MarketResearcher', completed: false, status: 'pending', timestamp: null },
+                { id: 'project-brief', text: '📋 Create Project Brief', agent: 'PromptEngineer', completed: false, status: 'pending', timestamp: null },
+                { id: 'prompt-template', text: '🎯 Select & Customize Prompt Template', agent: 'PromptEngineer', completed: false, status: 'pending', timestamp: null },
+                { id: 'backend-code', text: '⚙️ Generate Backend Code', agent: 'BackendEngineer', completed: false, status: 'pending', timestamp: null },
+                { id: 'frontend-code', text: '🎨 Generate Frontend Code', agent: 'FrontendEngineer', completed: false, status: 'pending', timestamp: null },
+                { id: 'integration', text: '🔗 Integration & API Connections', agent: 'BackendEngineer', completed: false, status: 'pending', timestamp: null },
+                { id: 'deployment', text: '🚀 Deployment Configuration', agent: 'DeliveryCoordinator', completed: false, status: 'pending', timestamp: null },
+                { id: 'validation', text: '✅ Validation & Testing', agent: 'DeliveryCoordinator', completed: false, status: 'pending', timestamp: null }
+              ],
+              progress: 0,
+              activeAgents: [],
+              lastUpdated: new Date().toISOString()
+            }
+            setProjectTodo(defaultTodo)
+            updateProgress(defaultTodo)
+          }
         } catch (error) {
           console.error('Error loading project todos:', error)
           // Create a fallback todo if there's an error
@@ -65,6 +92,24 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
       }
       
       loadTodos()
+      
+      // Set up real-time updates
+      const interval = setInterval(async () => {
+        try {
+          const response = await fetch('/api/pipeline')
+          const pipelineData = await response.json()
+          const projectData = pipelineData[projectId]
+          
+          if (projectData) {
+            setProjectTodo(projectData)
+            updateProgress(projectData)
+          }
+        } catch (error) {
+          console.error('Error updating project todos:', error)
+        }
+      }, 2000) // Update every 2 seconds
+      
+      return () => clearInterval(interval)
     }
   }, [isOpen, project, projectId])
 
@@ -73,57 +118,20 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
     onProgressUpdate(progress)
   }
 
+  // Read-only mode - todos are managed by the pipeline simulator
   const handleToggleTodo = async (todoId: string) => {
-    if (!projectTodo) return
-
-    try {
-      const updatedTodo = await todoManager.toggleTodo(projectId, todoId)
-      if (updatedTodo) {
-        const updatedProjectTodo = await todoManager.getProjectTodos(projectId)
-        if (updatedProjectTodo) {
-          setProjectTodo(updatedProjectTodo)
-          updateProgress(updatedProjectTodo)
-        }
-      }
-    } catch (error) {
-      console.error('Error toggling todo:', error)
-    }
+    // Disabled - todos are managed by the pipeline
+    console.log('Todo management is handled by the pipeline simulator')
   }
 
   const handleAddTodo = async () => {
-    if (!newTodoText.trim() || !projectTodo) return
-
-    setIsAdding(true)
-    try {
-      const newTodo = await todoManager.addTodo(projectId, newTodoText.trim())
-      const updatedProjectTodo = await todoManager.getProjectTodos(projectId)
-      if (updatedProjectTodo) {
-        setProjectTodo(updatedProjectTodo)
-        updateProgress(updatedProjectTodo)
-      }
-      setNewTodoText('')
-    } catch (error) {
-      console.error('Error adding todo:', error)
-    } finally {
-      setIsAdding(false)
-    }
+    // Disabled - todos are managed by the pipeline
+    console.log('Todo management is handled by the pipeline simulator')
   }
 
   const handleDeleteTodo = async (todoId: string) => {
-    if (!projectTodo) return
-
-    try {
-      const success = await todoManager.deleteTodo(projectId, todoId)
-      if (success) {
-        const updatedProjectTodo = await todoManager.getProjectTodos(projectId)
-        if (updatedProjectTodo) {
-          setProjectTodo(updatedProjectTodo)
-          updateProgress(updatedProjectTodo)
-        }
-      }
-    } catch (error) {
-      console.error('Error deleting todo:', error)
-    }
+    // Disabled - todos are managed by the pipeline
+    console.log('Todo management is handled by the pipeline simulator')
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -209,24 +217,15 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
           </CardHeader>
 
           <CardContent className="space-y-4">
-            {/* Add New Todo */}
-            <div className="flex gap-2">
-              <Input
-                placeholder="Add a new task..."
-                value={newTodoText}
-                onChange={(e) => setNewTodoText(e.target.value)}
-                onKeyPress={handleKeyPress}
-                disabled={isAdding}
-                className="flex-1"
-              />
-              <Button
-                onClick={handleAddTodo}
-                disabled={!newTodoText.trim() || isAdding}
-                size="sm"
-                className="px-3"
-              >
-                <Plus className="h-4 w-4" />
-              </Button>
+            {/* Pipeline Status Info */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 dark:bg-blue-900/20 dark:border-blue-700">
+              <div className="flex items-center gap-2 text-sm text-blue-700 dark:text-blue-300">
+                <Info className="h-4 w-4" />
+                <span className="font-medium">Pipeline Tasks</span>
+              </div>
+              <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">
+                These tasks are automatically managed by the AI pipeline. Progress updates in real-time as agents complete their work.
+              </p>
             </div>
 
             {/* Todo List */}
@@ -246,20 +245,15 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
                          : 'bg-gray-50 border-gray-200 dark:bg-slate-700/30 dark:border-slate-600/50'
                      }`}
                    >
-                    <button
-                      onClick={() => handleToggleTodo(todo.id)}
-                      className={`flex-shrink-0 transition-colors ${
-                        todo.completed
-                          ? 'text-green-600 hover:text-green-700'
-                          : 'text-gray-400 hover:text-gray-600'
-                      }`}
-                    >
+                    <div className="flex-shrink-0">
                       {todo.completed ? (
-                        <CheckCircle className="h-5 w-5" />
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                      ) : todo.status === 'in_progress' ? (
+                        <div className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                       ) : (
-                        <Circle className="h-5 w-5" />
+                        <Circle className="h-5 w-5 text-gray-400" />
                       )}
-                    </button>
+                    </div>
                     
                     <div className="flex-1 min-w-0">
                       <p
@@ -301,15 +295,6 @@ export function TodoModal({ project, isOpen, onClose, onProgressUpdate }: TodoMo
                         )}
                       </div>
                     </div>
-                    
-                                         <Button
-                       variant="ghost"
-                       size="sm"
-                       onClick={() => handleDeleteTodo(todo.id)}
-                       className="h-6 w-6 p-0 text-gray-400 hover:text-red-600 hover:bg-red-50 dark:text-slate-400 dark:hover:text-red-400 dark:hover:bg-red-900/10"
-                     >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
                   </div>
                 ))
               )}
